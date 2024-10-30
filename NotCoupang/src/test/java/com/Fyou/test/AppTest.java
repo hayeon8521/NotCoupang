@@ -1,19 +1,44 @@
 package com.Fyou.test;
 
-import com.Fyou.service.MemberService;
-import com.Fyou.service.MemberServiceImpl;
-import com.Fyou.vo.MemberVO;
+import com.Fyou.service.ReviewService;
+import com.Fyou.service.ReviewServiceImpl;
+import com.Fyou.vo.ReviewVO;
 
 public class AppTest {
 	public static void main(String[] args) {
 		
-		MemberService svc = new MemberServiceImpl();
+		ReviewService svc = new ReviewServiceImpl();
 		
-		String m_id = "test";
+		ReviewVO review = new ReviewVO();
 		
-		MemberVO member = svc.selectMember(m_id);
+//		review.setGoodsNum(1);
+//		review.setReview("add Review CTB");
+//		review.setBuyerId("testCTB");
+//		
+//		if(svc.addReview(review)) {
+//			System.out.println("입력OK");
+//		} else {
+//			System.out.println("입력안됨");
+//		}
 		
-		System.out.println("a");
-		System.out.println(member.toString());
+//		if(svc.removeReview("testCTB")) {
+//			System.out.println("삭제OK");
+//		} else {
+//			System.out.println("삭제안됨");
+//		}
+		
+		review.setGoodsNum(1);
+		review.setReview("Review CTB modify");
+		review.setBuyerId("testCTB");
+		
+		if(svc.modifyReview(review)) {
+			System.out.println("삭제OK");
+		} else {
+			System.out.println("삭제안됨");
+		}
+		
+		System.out.println(svc.selectReview(1));
+		
+		
 	}
 }
