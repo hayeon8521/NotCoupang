@@ -10,22 +10,48 @@
     <put-attribute name="body" value="/tiles/home_body.jsp" />
     <put-attribute name="footer" value="/tiles/credits.jsp" />
   </definition>
-  
+  <!-- 테스트 템플릿 -->
   <definition name="user.home" template="/WEB-INF/layout/temptest.jsp">
     <put-attribute name="title" value="일반 사용자용 템플릿" />
     <put-attribute name="body" value="/WEB-INF/test.jsp" />
   </definition>
-  
+  <!-- 테스트 템플릿 -->
   <definition name="WILDCARD:board/*" extends="user.home">
   	<put-attribute name="title" value="타일스 board/*.tiles" />
   	<put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp" />
   </definition>
   
+  <!-- 
+  사용방법 원하는 템플릿에
+  <tiles:insertAttribute name="body" />
+   -->
+  <!-- 일반사용자 페이지 (헤드만 있는 페이지) -->
+  <definition name="WILDCARD:BuyerTM/*" extends="/WEB-INF/layout/BuyerTM.jsp">
+  	<put-attribute name="title" value="구매자 탑 메인 만" />
+  	<put-attribute name="header" value="/WEB-INF/ahead/head.jsp" />
+  	<put-attribute name="body" value="/WEB-INF/abuyer/{1}.jsp" />
+  </definition>
+  
+  <!-- 일반사용자 페이지 (헤드와 사이드 있는 페이지 -->
+  <definition name="WILDCARD:BuyerTAM/*" extends="/WEB-INF/layout/BuyerTAM.jsp">
+  	<put-attribute name="title" value="구매자 탑 메인 만" />
+  	<put-attribute name="header" value="/WEB-INF/ahead/head.jsp" />
+  	<put-attribute name="aside" value="/WEB-INF/ahead/aside.jsp" />
+  	<put-attribute name="body" value="/WEB-INF/abuyer/{1}.jsp" />
+  </definition>
+  
+  <!-- 관리자 페이지 (헤드와 사이드 있는 페이지 -->
+  <definition name="WILDCARD:sellerAM/*" extends="/WEB-INF/layout/sellerAM.jsp">
+  	<put-attribute name="title" value="구매자 탑 메인 만" />
+  	<put-attribute name="body" value="/WEB-INF/aseller/{1}.jsp" />
+  </definition>
+  
+  
+  <!-- 
   <definition name="WILDCARD:*/*" extends="user.home">
   	<put-attribute name="title" value="일반사용자 자바스크립트연스" />
   	<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp" />
   </definition>
-  
   
   <definition name="admin.home" template="/WEB-INF/layout/templateAdmin.jsp">
     <put-attribute name="title" value="관리자용 템플릿" />
@@ -36,6 +62,6 @@
   	<put-attribute name="title" value="타일스 admin/*.tiles" />
   	<put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp" />
   </definition>
-  
+   -->
   
 </tiles-definitions>
