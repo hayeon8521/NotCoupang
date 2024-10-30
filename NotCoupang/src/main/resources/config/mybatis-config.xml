@@ -15,8 +15,14 @@
 	
 	<typeAliases>
 		<typeAlias alias="member" type="com.Fyou.vo.MemberVO"/>
-		<!-- <typeAlias alias="goods" type="com.Fyou.vo.GoodsVO"/> -->
-		<!-- <typeAlias alias="reply" type="com.Fyou.vo.ReplyVO"/> -->
+		<typeAlias alias="cart" type="com.Fyou.vo.CartVO"/>
+		<typeAlias alias="order" type="com.Fyou.vo.OrderVO"/>
+		<typeAlias alias="review" type="com.Fyou.vo.ReviewVO"/>
+		<typeAlias alias="ask" type="com.Fyou.vo.AskVO"/>
+		<typeAlias alias="answer" type="com.Fyou.vo.AnswerVO"/>
+		<typeAlias alias="goodsinfo" type="com.Fyou.vo.GoodsinfoVO"/>
+		<typeAlias alias="img" type="com.Fyou.vo.ImgVO"/>
+		<typeAlias alias="categori" type="com.Fyou.vo.CategoriVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -32,7 +38,12 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/Fyou/mapper/MemberMapper.xml" />
-		<!-- <mapper resource="com/Fyou/mapper/GoodsMapper.xml" /> -->
-		<!-- <mapper resource="com/Fyou/mapper/ReplyMapper.xml" /> -->		
+		<mapper resource="com/Fyou/mapper/CartMapper.xml" />
+		<mapper resource="com/Fyou/mapper/OrderMapper.xml" />
+		<mapper resource="com/Fyou/mapper/ReviewMapper.xml" />
+		<mapper resource="com/Fyou/mapper/AnswerMapper.xml" />
+		<mapper resource="com/Fyou/mapper/GoodsinfoMapper.xml" />
+		<mapper resource="com/Fyou/mapper/ImgMapper.xml" />
+		<mapper resource="com/Fyou/mapper/CategoriMapper.xml" />			
 	</mappers>
 </configuration>
