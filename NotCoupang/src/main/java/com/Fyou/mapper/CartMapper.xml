@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.Fyou.mapper.CartMapper">
+	<select id="cartList"  resultType="cart">
+		select *
+		from tim_cart
+
+	</select>
+
+	<select id="selectCart" parameterType="string" resultType="cart">
+		select *
+		from tim_cart
+		where member_id = #{memberId}
+
+	</select>
+	
+	<insert id="insertCart" parameterType="cart">
+		insert into tim_cart(seq_cart,goods_num,member_id,count)
+		values(#{seqCart},#{goodsNum},#{memberId},#{count})
+	</insert>
+	
+	
+	
+	
+</mapper>
