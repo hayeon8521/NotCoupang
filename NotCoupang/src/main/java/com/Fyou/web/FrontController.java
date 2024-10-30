@@ -27,6 +27,7 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/test.do", new test());	//테스트용도
 		map.put("/testlist.do", new testlist());	//테스트용도
+		map.put("/test2.do", new test2());	//테스트용도
 		
 		
 		
