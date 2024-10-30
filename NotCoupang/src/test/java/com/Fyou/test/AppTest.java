@@ -1,19 +1,47 @@
 package com.Fyou.test;
 
-import com.Fyou.service.MemberService;
-import com.Fyou.service.MemberServiceImpl;
-import com.Fyou.vo.MemberVO;
+import java.util.List;
+
+import com.Fyou.service.AnswerService;
+import com.Fyou.service.AnswerServiceImpl;
+import com.Fyou.vo.AnswerVO;
+import com.Fyou.vo.AskVO;
 
 public class AppTest {
 	public static void main(String[] args) {
 		
-		MemberService svc = new MemberServiceImpl();
+		AnswerService svc = new AnswerServiceImpl();
+		/*
+		String member_id = "test";
+		List<AskVO> list = svc.selectAskList(member_id);
 		
-		String m_id = "test";
+		System.out.println(list.get(0).toString());
+		*/
+		/*
+		int ask_num = 7;
+		AnswerVO avo = svc.selectAnswer(ask_num);
+
+		System.out.println(avo.toString());
+		*/
+		/*
+		int seq_ask = 7;
+		if (svc.deleteAsk(seq_ask)) {
+			System.out.println("success");
+		} else {
+			System.out.println("fail");
+		}
+		*/
 		
-		MemberVO member = svc.selectMember(m_id);
+		AskVO ask = new AskVO();
+		ask.setGoodsNum(10);
+		ask.setAsk("테스트용");
+		ask.setBuyerId("test");
 		
-		System.out.println("a");
-		System.out.println(member.toString());
+		if (svc.insertAsk(ask)) {
+			System.out.println("success");
+		} else {
+			System.out.println("fail");
+		}
+		
 	}
 }
