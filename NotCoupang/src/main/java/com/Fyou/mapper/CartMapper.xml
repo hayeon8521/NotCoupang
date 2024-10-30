@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.Fyou.mapper.CartMapper">
-	<select id="cartList"  resultType="cart">
-		select *
+
+	<select id="cartList" resultType="cart">
+		select seq_cart
+		,goods_num
+		,member_id
+		,count
+		,cart_date
 		from tim_cart
 
 	</select>
@@ -13,16 +16,25 @@
 	<select id="selectCart" parameterType="string" resultType="cart">
 		select *
 		from tim_cart
-		where member_id = #{memberId}
+		where member_id = #{memberId} and goods_num = #{goodsNum}
 
 	</select>
-	
+
 	<insert id="insertCart" parameterType="cart">
 		insert into tim_cart(seq_cart,goods_num,member_id,count)
-		values(#{seqCart},#{goodsNum},#{memberId},#{count})
+		values(seq_cart.nextVal,#{goodsNum},#{memberId},#{count})
 	</insert>
+
+
+	<delete id="deleteCart" parameterType="cart">
+		delete from tim_cart
+		where member_id = #{memberId} and goods_num = #{goodsNum};
+	</delete>
 	
-	
-	
-	
+	<update id="updateCart" parameterType="cart">
+		update tim_cart
+		set count = #{count}
+		where member_id = #{memberId} and goods_num = #{goodsNum}
+	</update>
+
 </mapper>
