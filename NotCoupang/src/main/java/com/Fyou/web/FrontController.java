@@ -28,7 +28,7 @@ public class FrontController extends HttpServlet {
 		map.put("/test.do", new test());	//테스트용도
 		map.put("/testlist.do", new testlist());	//테스트용도
 		
-		
+		map.put("/goods", new GoodsCont());
 		
     }
     
