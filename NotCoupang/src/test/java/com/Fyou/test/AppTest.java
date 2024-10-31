@@ -19,7 +19,7 @@ public class AppTest {
 		member.setMemberPhone("010-8521-6704");
 		member.setMemberAddress("대구시 여러분 왕초입니다");
 		member.setMemberDivision("buyer");
-		
+
 		if(svc.addMember(member)) {
 			System.out.println("성공");
 		}else {
