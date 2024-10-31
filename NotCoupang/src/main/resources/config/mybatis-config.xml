@@ -15,6 +15,7 @@
 	
 	<typeAliases>
 
+
 		<typeAlias alias="member" type="com.Fyou.vo.MemberVO"/>
 		<typeAlias alias="cart" type="com.Fyou.vo.CartVO"/>
 		<typeAlias alias="order" type="com.Fyou.vo.OrderVO"/>
@@ -22,12 +23,23 @@
 		<typeAlias alias="ask" type="com.Fyou.vo.AskVO"/>
 		<typeAlias alias="answer" type="com.Fyou.vo.AnswerVO"/>
 		<typeAlias alias="goodsinfo" type="com.Fyou.vo.GoodsinfoVO"/>
+<<<<<<< HEAD
 		<typeAlias alias="order" type="com.Fyou.vo.OrderVO"/>
 		<!-- 
+=======
+>>>>>>> branch 'CTB' of https://github.com/hayeon8521/jspbasiccode.git
 		<typeAlias alias="img" type="com.Fyou.vo.ImgVO"/>
 		<typeAlias alias="categori" type="com.Fyou.vo.CategoriVO"/>
+<<<<<<< HEAD
 		 -->
+=======
+		
+>>>>>>> branch 'CTB' of https://github.com/hayeon8521/jspbasiccode.git
 
+		<!-- 
+		
+		
+		 -->
 	</typeAliases>
 	
 	<environments default="development">
@@ -43,13 +55,24 @@
 	</environments>
 	<mappers>
 	
+
+		
+		
 		<mapper resource="com/Fyou/mapper/MemberMapper.xml" />
 		<mapper resource="com/Fyou/mapper/CartMapper.xml" />
 		<mapper resource="com/Fyou/mapper/OrderMapper.xml" />
 		<mapper resource="com/Fyou/mapper/ReviewMapper.xml" />
+		<mapper resource="com/Fyou/mapper/MemberMapper.xml" />
 		<mapper resource="com/Fyou/mapper/AnswerMapper.xml" />
 		<mapper resource="com/Fyou/mapper/GoodsinfoMapper.xml" />
-		<mapper resource="com/Fyou/mapper/ImgMapper.xml" />
 		<mapper resource="com/Fyou/mapper/CategoriMapper.xml" />
+		<mapper resource="com/Fyou/mapper/ImgMapper.xml" />
+		
+		
+		<!-- 
+		<mapper resource="com/Fyou/mapper/AskMapper.xml" />
+				
+		 -->	
+		
 	</mappers>
 </configuration>
