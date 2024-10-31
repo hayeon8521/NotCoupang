@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Fyou.mapper.AnswerMapper">
+	<select id="selectAskList" resultType="ask">
+	select seq_ask, 
+	       goods_num, 
+	       ask, 
+	       buyer_id, 
+	       ask_date 
+	from tim_ask 
+	where buyer_id = #{buyer_id}
+	</select>
+	
+	<select id="selectAnswer" resultType="answer">
+		select seq_answer, 
+		       ask_num, 
+		       answer, 
+		       seller_id, 
+		       answer_date 
+		from tim_answer
+		where ask_num = #{seq_ask}
+	</select>
+	
+	<delete id="deleteAsk" parameterType="int">
+		delete from tim_ask 
+		where seq_ask = #{seq_ask}
+	</delete>
+	
+	<insert id="insertAsk" parameterType="ask">
+		insert into tim_ask (seq_ask, 
+                             goods_num, 
+                             ask, 
+                             buyer_id) 
+		values (seq_ask.nextVal, 
+   		     	#{goodsNum}, 
+       			#{ask}, 
+        		#{buyerId})
+	</insert>
+	
+	<select id="selectAskGoods" resultType="ask">
+	select seq_ask, 
+	       goods_num, 
+	       ask, 
+	       buyer_id, 
+	       ask_date 
+	from tim_ask 
+	where goods_num = #{goods_num}
+	</select>
+	
+</mapper>
