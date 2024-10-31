@@ -6,7 +6,7 @@ import com.Fyou.vo.ImgVO;
 
 public interface ImgService {
 	
-	//테스트 해야됨.
+	//테스트 완료
 	
 	//상품 번호 이용해서 리스팅 (사진 업로드 순서대로 가져왔습니다)	
 	public List<ImgVO> images(int goodsNum);

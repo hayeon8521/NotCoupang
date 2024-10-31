@@ -80,5 +80,5 @@
 		    WHERE seq_goods = #{seqGoods}
 	</update>
 	
-	
+	 
 </mapper>
