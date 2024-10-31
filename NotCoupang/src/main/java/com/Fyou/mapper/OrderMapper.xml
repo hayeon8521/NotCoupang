@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.Fyou.mapper.OrderMapper">
+ 	<select id="orderList" resultType="order">
+ 		SELECT   *
+ 		FROM     tim_order
+ 		ORDER BY order_date
+ 	</select>
+ 	<select id="selectOrder" parameterType="string" resultType="order">
+ 		SELECT   *
+ 		FROM     tim_order
+ 		WHERE    buyer_id = #{buyerId}
+ 		ORDER BY order_date
+ 	</select>
+ 	
+ 	<insert id="insertOrder" parameterType="order">
+ 		
+ 		INSERT INTO tim_order(seq_order
+ 							 ,buyer_id
+ 							 ,goods_num
+ 							 ,count
+ 							 ,price)
+		VALUES               (seq_order.nextval
+							 ,#{buyerId}
+							 ,#{goodsNum}
+							 ,#{count}
+							 ,#{price})
+ 		
+ 	
+ 	</insert>
+ 	
+ 	
+ 	
+ 	<delete id="deleteOrder" parameterType="order">
+ 		DELETE FROM tim_order
+ 		WHERE  buyer_id = #{buyerId}
+ 		  AND  goods_num = #{goodsNum}
+ 	</delete>
+ 	<update id="updateOrder" parameterType="order">
+ 		UPDATE tim_order
+ 		SET    buyer_id = buyer_id
+ 		<if test="goodsNum != null">
+  			,goods_num = #{goodsNum}
+  		</if>
+	  	<if test="count != null">
+	  		,count = #{count}
+	  	</if>
+	  	<if test="price != null">
+	  		,price = #{price}
+	  	</if>
+	  	WHERE buyer_id = #{buyerId}
+ 		
+ 	</update>
+ 	
+ </mapper>
