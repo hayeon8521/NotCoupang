@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
 
+import CMG.Admin_insert;
+import CMG.Admin_main;
+
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -35,10 +38,9 @@ public class FrontController extends HttpServlet {
 		//민규 사용공간
 		
 		
-		
-		
-		
-		
+		map.put("/Admin_main.do", new Admin_main());
+		map.put("/Admin_insert.do", new Admin_insert());
+		map.put("/Admin_insert_control.do", new Admin_insert_control());
 		
 		
 		
