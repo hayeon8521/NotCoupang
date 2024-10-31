@@ -41,4 +41,7 @@ public interface GoodsinfoMapper {
 
 	//페이징 글목록
 	//List<GoodsinfoVO> listWithPage(SearchDTO search);
+	
+	//대분류 카테고리명 이용해서 리스팅
+	public List<GoodsinfoVO> goodsListTopCate(String goodsCatename);
 }
