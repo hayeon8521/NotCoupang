@@ -16,39 +16,70 @@
 	</select>
 	
 	<select id="selectAnswer" resultType="answer">
-		select seq_answer, 
-		       ask_num, 
-		       answer, 
-		       seller_id, 
-		       answer_date 
-		from tim_answer
-		where ask_num = #{seq_ask}
+	select seq_answer, 
+	       ask_num, 
+	       answer, 
+	       seller_id, 
+	       answer_date 
+	from tim_answer
+	where ask_num = #{seq_ask}
 	</select>
 	
 	<delete id="deleteAsk" parameterType="int">
-		delete from tim_ask 
-		where seq_ask = #{seq_ask}
+	delete from tim_ask 
+	where seq_ask = #{seq_ask}
 	</delete>
 	
 	<insert id="insertAsk" parameterType="ask">
-		insert into tim_ask (seq_ask, 
-                             goods_num, 
-                             ask, 
-                             buyer_id) 
-		values (seq_ask.nextVal, 
-   		     	#{goodsNum}, 
-       			#{ask}, 
-        		#{buyerId})
+	insert into tim_ask (seq_ask, 
+                         goods_num, 
+                         ask, 
+                         buyer_id) 
+	values (seq_ask.nextVal, 
+	     	#{goodsNum}, 
+   			#{ask}, 
+     		#{buyerId})
 	</insert>
 	
 	<select id="selectAskGoods" resultType="ask">
-	select seq_ask, 
-	       goods_num, 
-	       ask, 
-	       buyer_id, 
-	       ask_date 
-	from tim_ask 
-	where goods_num = #{goods_num}
+	select a.* 
+		from ( select rownum ru, r.* 
+			   from tim_ask r 
+		 	   where goods_num = #{goods_num}
+			   order by 2 desc) a 
+	where a.ru > (#{page} - 1) * 5 
+	<![CDATA[
+	and a.ru <= #{page} * 5 
+	]]>
 	</select>
 	
+	<delete id="deleteAnswer" parameterType="int">
+	delete from tim_answer 
+	where seq_answer = #{seq_answer}
+	</delete>
+	
+	<update id="updateAsk">
+		update tim_ask
+		set ask = #{ask}, 
+		    ask_date = sysdate
+		where seq_ask = #{seq_ask}
+	</update>
+	
+	<update id="updateAnswer">
+		update tim_answer
+		set answer = #{answer}, 
+		    answer_date = sysdate
+		where seq_answer = #{seq_answer}
+	</update>
+	
+	<insert id="insertAnswer" parameterType="answer">
+	insert into tim_ask (seq_answer, 
+                         ask_num, 
+                         answer, 
+                         seller_id) 
+	values (seq_answer.nextVal, 
+	     	#{askNum}, 
+   			#{answer}, 
+     		#{sellerId})
+	</insert>
 </mapper>
