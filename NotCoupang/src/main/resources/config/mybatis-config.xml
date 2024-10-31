@@ -17,7 +17,6 @@
 
       <typeAlias alias="member" type="com.Fyou.vo.MemberVO"/>
       <typeAlias alias="cart" type="com.Fyou.vo.CartVO"/>
-      <typeAlias alias="order" type="com.Fyou.vo.OrderVO"/>
       <typeAlias alias="review" type="com.Fyou.vo.ReviewVO"/>
       <typeAlias alias="ask" type="com.Fyou.vo.AskVO"/>
       <typeAlias alias="answer" type="com.Fyou.vo.AnswerVO"/>

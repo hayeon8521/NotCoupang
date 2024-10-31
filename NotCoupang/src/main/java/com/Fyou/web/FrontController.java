@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Fyou.BSJ.MyPageControl;
 import com.Fyou.BSJ.MyOrderListControl;
 import com.Fyou.commom.Control;
 
@@ -111,9 +112,11 @@ public class FrontController extends HttpServlet {
 		map.put("/myReview.do", new MyReviewControl());
 		//문의내역 ask.do / AskControl.java
 		map.put("/myAsk.do", new MyReviewControl());
-		//회원정보 조회 및 수정 memberInfo.do / MemberInfoCont.java
-		map.put("/myInfo.do", new MyInfoControl());
 		*/
+		
+		//회원정보 조회 및 수정 memberInfo.do / MemberInfoCont.java
+		map.put("/myPage.do", new MyPageControl());
+		
 		
 		
 		
