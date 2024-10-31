@@ -15,8 +15,8 @@ public class AnswerServiceImpl implements AnswerService {
 	AnswerMapper mapper = sqlSession.getMapper(AnswerMapper.class);
 
 	@Override
-	public List<AskVO> selectAskList(String member_id) {
-		return mapper.selectAskList(member_id);
+	public List<AskVO> selectAskList(String member_id, int page) {
+		return mapper.selectAskList(member_id, page);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class AnswerServiceImpl implements AnswerService {
 
 	@Override
 	public List<AskVO> selectAskGoods(String goods_num) {
-		return mapper.selectAskList(goods_num);
+		return mapper.selectAskGoods(goods_num);
 	}
 
 }

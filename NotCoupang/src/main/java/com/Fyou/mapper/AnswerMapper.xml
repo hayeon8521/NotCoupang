@@ -4,13 +4,15 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Fyou.mapper.AnswerMapper">
 	<select id="selectAskList" resultType="ask">
-	select seq_ask, 
-	       goods_num, 
-	       ask, 
-	       buyer_id, 
-	       ask_date 
-	from tim_ask 
-	where buyer_id = #{buyer_id}
+	select a.* 
+		from ( select rownum ru, r.* 
+			   from tim_ask r 
+		 	   where buyer_id = #{buyer_id}
+			   order by 2 desc) a 
+	where a.ru > (#{page} - 1) * 5 
+	<![CDATA[
+	and a.ru <= #{page} * 5 
+	]]>
 	</select>
 	
 	<select id="selectAnswer" resultType="answer">
