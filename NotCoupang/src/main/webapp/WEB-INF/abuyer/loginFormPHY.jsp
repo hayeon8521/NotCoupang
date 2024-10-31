@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
 <!DOCTYPE html>
+<html>
+<head>
 <!-- 기본 기능 선언부 -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -12,11 +14,11 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/hayeonPHY.js"></script>
+<title>낫쿠 - 로그인페이지</title>
 <!-- 기본 기능 선언부 끝 -->
 <style>
 .sidediv {
 	width: 100%;
-	border: 1px solid #999;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -26,7 +28,6 @@
 .table {
 	text-align: center;
 	width: 500px;
-	border: 1px solid forestgreen;
 }
 
 img {
@@ -45,42 +46,50 @@ h1 {
 	font-weight: bold;
 }
 </style>
-
 <%
     String LOGID = (String) session.getAttribute("LOGID");
-	 String LOGNAME = (String) session.getAttribute("LOGNAME");
-	 String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
+    String LOGNAME = (String) session.getAttribute("LOGNAME");
+    String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
+
+    if (MEMBERDIVISION != null) {
+        if (MEMBERDIVISION.equals("buyer")) {
 %>
+            <script>
+                window.location.replace("/NotCoupang/main.do");
+            </script>
+<%
+        } else if (MEMBERDIVISION.equals("seller")) {
+%>
+            <script>
+                window.location.replace("/NotCoupang/admin.do");
+            </script>
+<%
+        }
+    }
+%>
+</head>
+<body>
 <!-- 메인페이지 완료되면 리다액션 위치 수정필요 (js, 로고이미지, 세션) -->
-<c:if test="${sessionScope.LOGID != null}">
-    <c:choose>
-        <c:when test="${sessionScope.MEMBERDIVISION == 'seller'}">
-            <script>
-                window.location.href = '/NotCoupang/admin.do';
-            </script>
-        </c:when>
-        <c:otherwise>
-            <script>
-                window.location.href = '/NotCoupang/main.do';
-            </script>
-        </c:otherwise>
-    </c:choose>
-</c:if>
+<!-- 
+<p><%=LOGID %></p>
+<p><%=LOGNAME %></p>
+<p><%=MEMBERDIVISION %></p>
+ -->
 <div class="sidediv">
 	<h1>
 		<a href="/NotCoupang/main.do">
 			<img src="images/logo.png" alt="Logo">
 	  </a>
 	</h1>
-	<table class="table">
+	<table class="table table-borderless">
 		<tr>
-			<th colspan="2">회원 로그인</th>
+			<th colspan="2" style="border-bottom: 3px solid #4285f4;"><span style="color: #4285f4;">회원 로그인</span></th>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon1">@</span>
-					<input type="text" id="id" name="id" value="" class="form-control" placeholder="Enter your ID" onblur="foucsOutId()" aria-label="Username" aria-describedby="basic-addon1">
+			<td colspan="2"  style="padding-top: 10px; padding-right: 0px; padding-left: 0px; padding-bottom: 0px;">
+				<div class="input-group mb-0">
+					<span class="input-group-text" id="basic-addon1">🔐</span>
+					<input type="text" id="id" name="id" class="form-control" placeholder="Enter your ID" onblur="foucsOutId()" aria-label="Username" aria-describedby="basic-addon1">
 				 </div>
 			</td>
 		</tr>
@@ -88,18 +97,16 @@ h1 {
 			<td id="idconfig" colspan="2"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="password" id="pw" name="pw" value="" 
-				placeholder="Enter your PW" onblur="foucsOutPw()"/></td>
+			<td colspan="2"  style="padding-top: 0px; padding-right: 0px; padding-left: 0px; padding-bottom: 0px;">
+				<div class="input-group mb-0">
+					<span class="input-group-text" id="basic-addon1">🔑</span>
+					<input type="password" id="pw" name="pw" class="form-control" placeholder="Enter your PW" onblur="foucsOutPw()" aria-label="Username" aria-describedby="basic-addon1">
+				 </div>
+			</td>
 		</tr>
 		<tr>
 			<td id="pwconfig" colspan="2"></td>
 		</tr>
-		<!--
-			<tr>
-				<td>[체크박스] 자동로그인</td>
-				<td>아이디*비밀번호 찾기></td>
-			</tr>
-			-->
 		<tr>
 			<td colspan="2">
 				<div class="d-grid gap-2">
@@ -107,17 +114,27 @@ h1 {
 				</div>
 			</td>
 		</tr>
-		<td colspan="2">
-			<div class="d-grid gap-2">
-				<button class="btn btn-primary" type="button">회원가입</button>
-			</div>
-		</td>
 		<tr>
-			<td colspan="2">기타 설명들</td>
+			<td colspan="2">
+				<div class="d-flex gap-2 w-100 mx-auto">
+				    <button class="btn btn-outline-primary" style="width: 100%;" type="button" onclick="joinAction('buyer');">구매자회원가입</button>
+				    <button class="btn btn-outline-primary" style="width: 100%;" type="button" onclick="joinAction('seller');">사업자회원가입</button>
+				</div>
+			</td>
 		</tr>
 		<tr>
-			<td colspan="2">©Fyou Corp - Project NotCoupang. All rights
-				reserved.</td>
+			<td colspan="2">
+				<span style="color: #666; font-size: 0.8rem;">
+				물건을 구매하고 싶으신가요?<br>
+				물건을 판매하고 싶으신가요?<br>
+				회원가입해서 낫쿠팡의 혜택을 누려보세요.
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><span style="color: #555; font-size: 0.6rem;">©Fyou Corp - Project NotCoupang. All rights reserved.</span></td>
 		</tr>
 	</table>
 </div>
+</body>
+</html>

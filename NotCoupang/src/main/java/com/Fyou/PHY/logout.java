@@ -13,9 +13,17 @@ public class logout implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//세션 삭제
+		// 세션 삭제
 		HttpSession session = req.getSession();
 		session.invalidate();
-		req.getRequestDispatcher("BuyerTM/loginFormPHY.tiles").forward(req, resp);
+
+		try {
+			Thread.sleep(100);
+			resp.sendRedirect("login.do");
+			//req.getRequestDispatcher("BuyerTM/loginFormPHY.tiles").forward(req, resp);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 	}
 }

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Fyou.PHY.joingconfigform;
+import com.Fyou.PHY.joingform;
 import com.Fyou.PHY.logingconfingform;
 import com.Fyou.PHY.logingform;
 import com.Fyou.PHY.logout;
@@ -407,8 +409,8 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new logingform());
 		map.put("/loginconfig.do", new logingconfingform());
 		map.put("/logout.do", new logout());
-		
-		
+		map.put("/join.do", new joingform());
+		map.put("/joinconfig.do", new joingconfigform());
 		
 		
 		
