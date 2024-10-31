@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
+import com.Fyou.control.goodsinfoCTB.goodsinfoCont;
 
 
 //@WebServlet("*.do")
@@ -301,7 +302,7 @@ public class FrontController extends HttpServlet {
 		//신화 사용공간 끝
 		
 		//태백 사용공간
-		
+		map.put("/goodsinfo.do", new goodsinfoCont());
 		
 		
 		
