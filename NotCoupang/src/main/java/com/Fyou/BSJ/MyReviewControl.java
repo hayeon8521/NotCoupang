@@ -38,7 +38,7 @@ public class MyReviewControl implements Control {
 				
 				
 				try {
-					req.getRequestDispatcher("BuyerTM/myReviewListBSJ.tiles").forward(req, resp);
+					req.getRequestDispatcher("BuyerTM/myReviewBSJ.tiles").forward(req, resp);
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
