@@ -1,4 +1,35 @@
-@charset "UTF-8";
-.nav-item.dropdown:hover #dropdown {
-  display: block;
+.dropdown:hover .dropdown-menu {
+    display: block;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    z-index: 1000;
+}
+.scrollmenu {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex; /* 버튼과 함께 수평 정렬 */
+  align-items: center; /* 중앙 정렬 */
+}
+.scrollmenu a {
+  display: inline-block;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+.scroll-buttons {
+  	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	position: relative; /* 절대 위치를 위해 필요 */
+}
+.scroll-button {
+	background-color: #4285f4;
+	--bs-btn-padding-y: .25rem; 
+	--bs-btn-padding-x: .5rem; 
+	--bs-btn-font-size: .75rem;
+	border: none;
+	
+	cursor: pointer;
+	border-radius: 5px;
 }
