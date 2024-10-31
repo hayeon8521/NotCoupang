@@ -11,6 +11,19 @@
 	</natures>
 </projectDescription>
 =======
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>jspbasiccode</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+</projectDescription>
+=======
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>jspbasiccode</name>
@@ -23,3 +36,4 @@
 	</natures>
 </projectDescription>
 >>>>>>> refs/heads/master
+>>>>>>> branch 'master' of https://github.com/hayeon8521/jspbasiccode.git
