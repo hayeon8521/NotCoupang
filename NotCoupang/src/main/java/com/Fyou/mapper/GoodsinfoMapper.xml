@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.Fyou.mapper.GoodsinfoMapper">
+
+	<!-- 조건 없는 조회 -->
+	<select id="goodsList" resultType="goodsinfo">
+		SELECT *
+		FROM tim_goodsinfo
+		WHERE goods_state NOT IN ('end')
+		order by seq_goods desc
+	</select>
+	
+	<!-- 셀러아이디로 조회 -->
+	<select id="goodsListSellerMID" resultType="goodsinfo">
+		SELECT *
+		FROM tim_goodsinfo
+		WHERE goods_state NOT IN ('end')
+		and goods_mid = #{goodsMid}
+		order by seq_goods desc
+	</select>
+	
+	<!-- 대분류 카테고리 조회 -->
+	<select id="goodsListSellerTcate" resultType="goodsinfo">
+		SELECT *
+		FROM tim_goodsinfo
+		WHERE goods_state NOT IN ('end')
+		and goods_catename IN(		   
+		select b_cate
+		from tim_categori
+		where t_cate = #{tcate}
+		) order by seq_goods desc
+	</select>
+	
+	<!-- 소분류 카테고리 조회 -->
+	<select id="goodsListSellerBcate" resultType="goodsinfo">
+		SELECT *
+		FROM tim_goodsinfo
+		WHERE goods_state NOT IN ('end')
+		and goods_catename = #{bcate}
+		order by seq_goods desc
+	</select>
+	
+	<!-- 키워드 검색 카테고리 조회 -->
+	<select id="goodsListSellerkeyword" resultType="goodsinfo">
+		SELECT *
+		FROM tim_goodsinfo
+		WHERE goods_state NOT IN ('end')
+		AND goods_name like '%'||#{keyword}||'%'
+		ORDER BY seq_goods DESC
+	</select>
+	
+	<!-- 상품 등록 -->
+	<insert id="insertgoods" parameterType="goodsinfo">
+		insert into tim_goodsinfo
+		   		(seq_goods, goods_name, goods_price, goods_inven, goods_state, goods_mid, goods_catename, goods_mdate, goods_rdate)
+		values (seq_goods.nextVal, #{goodsName}, #{goodsPrice}, #{goodsInven}, #{goodsState}, #{goodsMid}, #{goodsCatename}, sysdate, sysdate)
+	</insert>
+	
+	<update id="updategoods" parameterType="goodsinfo">
+		UPDATE tim_goodsinfo
+		    SET goods_mdate = sysdate
+		    <if test="goodsName != null">
+		        , goods_name = #{goodsName}
+		    </if>
+		    <if test="goodsPrice != 0">
+		        , goods_price = #{goodsPrice}
+		    </if>
+		    <if test="goodsInven != 0">
+		        , goods_inven = #{goodsInven}
+		    </if>
+		    <if test="goodsState != null">
+		        , goods_state = #{goodsState}
+		    </if>
+		    <if test="goodsCatename != null">
+		        , goods_catename = #{goodsCatename}
+		    </if>
+		    WHERE seq_goods = #{seqGoods}
+	</update>
+</mapper>
