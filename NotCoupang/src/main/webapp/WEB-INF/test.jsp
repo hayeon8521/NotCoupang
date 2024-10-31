@@ -29,7 +29,7 @@
 </table>
 <table class="table after">
 	<tr>
-		<td>JSON 아이디</td><td>이름</td><td>연락처</td><td>권한</td>
+		<td>JSON 아이디</td><td>이름</td><td>연락처</td><td>권한ㅁㄴㅇㄹㄴ</td>
 	</tr>
 </table>
 
