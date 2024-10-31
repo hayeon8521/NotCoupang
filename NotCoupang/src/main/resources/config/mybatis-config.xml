@@ -24,6 +24,8 @@
 		<typeAlias alias="ask" type="com.Fyou.vo.AskVO"/>
 		<typeAlias alias="goodsinfo" type="com.Fyou.vo.GoodsinfoVO"/>
 		<typeAlias alias="categori" type="com.Fyou.vo.CategoriVO"/>
+		
+		<!--  -->
 
 	</typeAliases>
 	
@@ -46,8 +48,9 @@
 		<mapper resource="com/Fyou/mapper/CartMapper.xml" />
 		<mapper resource="com/Fyou/mapper/OrderMapper.xml" />
 		<mapper resource="com/Fyou/mapper/ReviewMapper.xml" />
-		<mapper resource="com/Fyou/mapper/AskMapper.xml" />
 		<mapper resource="com/Fyou/mapper/GoodsinfoMapper.xml" />
 		<mapper resource="com/Fyou/mapper/CategoriMapper.xml" />
+		
+		<!-- <mapper resource="com/Fyou/mapper/AskMapper.xml" /> -->
 	</mappers>
 </configuration>
