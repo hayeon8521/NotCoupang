@@ -14,21 +14,45 @@
 	</settings>
 	
 	<typeAliases>
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'master' of https://github.com/hayeon8521/jspbasiccode.git
 		<typeAlias alias="member" type="com.Fyou.vo.MemberVO"/>
+<<<<<<< HEAD
+=======
+		<typeAlias alias="cart" type="com.Fyou.vo.CartVO"/>
+		<typeAlias alias="order" type="com.Fyou.vo.OrderVO"/>
+>>>>>>> branch 'master' of https://github.com/hayeon8521/jspbasiccode.git
 		<typeAlias alias="review" type="com.Fyou.vo.ReviewVO"/>
 		<typeAlias alias="ask" type="com.Fyou.vo.AskVO"/>
 		<typeAlias alias="answer" type="com.Fyou.vo.AnswerVO"/>
 		<typeAlias alias="goodsinfo" type="com.Fyou.vo.GoodsinfoVO"/>
+<<<<<<< HEAD
 		<typeAlias alias="img" type="com.Fyou.vo.ImgVO"/>
+=======
+<<<<<<< HEAD
+>>>>>>> refs/heads/master
 		
 
 		<!-- 
+<<<<<<< HEAD
 		
+=======
+=======
+		<typeAlias alias="order" type="com.Fyou.vo.OrderVO"/>
+>>>>>>> branch 'master' of https://github.com/hayeon8521/jspbasiccode.git
+		<typeAlias alias="img" type="com.Fyou.vo.ImgVO"/>
+>>>>>>> refs/heads/master
 		<typeAlias alias="categori" type="com.Fyou.vo.CategoriVO"/>
+<<<<<<< HEAD
 		<typeAlias alias="cart" type="com.Fyou.vo.CartVO"/>
 		<typeAlias alias="order" type="com.Fyou.vo.OrderVO"/>
 		 -->
+=======
+
+>>>>>>> branch 'master' of https://github.com/hayeon8521/jspbasiccode.git
 	</typeAliases>
 	
 	<environments default="development">
@@ -44,13 +68,21 @@
 	</environments>
 	<mappers>
 	
+<<<<<<< HEAD
 
 		
 		
+=======
+		<mapper resource="com/Fyou/mapper/MemberMapper.xml" />
+		<mapper resource="com/Fyou/mapper/CartMapper.xml" />
+
+		<mapper resource="com/Fyou/mapper/OrderMapper.xml" />
+>>>>>>> branch 'master' of https://github.com/hayeon8521/jspbasiccode.git
 		<mapper resource="com/Fyou/mapper/ReviewMapper.xml" />
 		<mapper resource="com/Fyou/mapper/MemberMapper.xml" />
 		<mapper resource="com/Fyou/mapper/AnswerMapper.xml" />
 		<mapper resource="com/Fyou/mapper/GoodsinfoMapper.xml" />
+<<<<<<< HEAD
 		<mapper resource="com/Fyou/mapper/AskMapper.xml" />
 		<mapper resource="com/Fyou/mapper/ImgMapper.xml" />
 		
@@ -63,5 +95,9 @@
 		<mapper resource="com/Fyou/mapper/CartMapper.xml" />
 				
 		 -->	
+=======
+		<mapper resource="com/Fyou/mapper/ImgMapper.xml" />
+		<mapper resource="com/Fyou/mapper/CategoriMapper.xml" />
+>>>>>>> branch 'master' of https://github.com/hayeon8521/jspbasiccode.git
 	</mappers>
 </configuration>
