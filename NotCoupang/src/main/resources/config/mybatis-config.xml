@@ -23,10 +23,8 @@
 		<typeAlias alias="answer" type="com.Fyou.vo.AnswerVO"/>
 		<typeAlias alias="goodsinfo" type="com.Fyou.vo.GoodsinfoVO"/>
 		<typeAlias alias="order" type="com.Fyou.vo.OrderVO"/>
-		<!-- 
 		<typeAlias alias="img" type="com.Fyou.vo.ImgVO"/>
 		<typeAlias alias="categori" type="com.Fyou.vo.CategoriVO"/>
-		 -->
 
 	</typeAliases>
 	 
