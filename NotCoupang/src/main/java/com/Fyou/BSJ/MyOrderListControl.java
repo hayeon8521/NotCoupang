@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
+import com.Fyou.service.GoodsinfoService;
+import com.Fyou.service.GoodsinfoServiceImpl;
 import com.Fyou.service.OrderService;
 import com.Fyou.service.OrderServiceImpl;
+import com.Fyou.vo.GoodsinfoVO;
 import com.Fyou.vo.OrderVO;
 
 public class MyOrderListControl implements Control {
@@ -23,7 +26,19 @@ public class MyOrderListControl implements Control {
 		// 검색조건 (1.파라미터 받기)
 		String mid = req.getParameter("buyer_id");
 		
-		OrderService svc = new OrderServiceImpl();
+		
+		//////////////////////
+		GoodsinfoService svc = new GoodsinfoServiceImpl();
+		List<GoodsinfoVO> list = svc.goodsList();
+		System.out.println(list.toString());
+		//////////////////
+		
+		
+		
+		
+		//OrderService svc = new OrderServiceImpl();
+
+		/*
 		List<OrderVO> list = svc.selectOrder(mid);
 		
 		//조회해서 어트리뷰트에 값담기
@@ -35,6 +50,7 @@ public class MyOrderListControl implements Control {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		*/
 		
 	}
 

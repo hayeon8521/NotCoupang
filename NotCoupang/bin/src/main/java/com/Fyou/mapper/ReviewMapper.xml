@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.Fyou.mapper.ReviewMapper">
+	<select id="reviews" resultType="review">
+		select *
+		from   tim_review
+	</select>
+
+	<select id="selectReview" parameterType="int" resultType="review">
+		select *
+		from tim_review
+		where goods_num = #{goodsNum}
+	</select>
+	
+	<insert id="insertReview"  parameterType="review">
+		insert into tim_review(
+				seq_review,
+				goods_num,
+				review,
+				buyer_id)
+		values	(seq_review.nextVal,
+				 #{goodsNum},
+				 #{review},
+				 #{buyerId})
+	</insert>
+	
+	<delete id="deleteReview" parameterType="String">
+		delete from tim_review
+		where  buyer_id = #{buyerId}
+	</delete>
+	
+	<update id="updateReview" parameterType="review">
+		update tim_review
+		set    review_date = sysdate
+			<if test="review != null">
+				,review = #{review}
+			</if>
+		where  goods_num = #{goodsNum}
+	</update>
+</mapper>

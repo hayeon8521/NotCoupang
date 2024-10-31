@@ -1,37 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
  <h3>주문 목록</h3>
  
  
-<div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="../main.do">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="productList.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
+<!--<jsp:include page="../includes/header.jsp"></jsp:include> -->
 
+	<!-- 등록화면을 만들어보자 action에서 지정한 페이지로 이동함-->
+	<form action="myOrderList.do">
+		<table class="table">
+		<tr>
+		<th>주문번호</th>
+		<th>상품명</th>
+		<th>결제방법</th>
+		<th>연락처</th>
+		<th>주문금액</th>
+		<th>주문상태</th>
+		<th>주문일시</th>
+		<th>운송장번호</th>
+		</tr>
+		<c:forEach var="orderList" items="${selectOrder}">
+		<tr>
+		<td><a href="./myOrderList.do?${orderList.buyerId }">${orderList.goodsNum }</a></td>
+		
+		</tr>
+		</c:forEach>
+	
+		</table>
+	</form>
 
 
 

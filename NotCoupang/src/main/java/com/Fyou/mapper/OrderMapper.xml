@@ -27,7 +27,6 @@
 							 ,#{goodsNum}
 							 ,#{count}
 							 ,#{price})
- 		
  	
  	</insert>
  	
