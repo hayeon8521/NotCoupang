@@ -80,5 +80,10 @@
 		    WHERE seq_goods = #{seqGoods}
 	</update>
 	
+	<select id="goodsinfo" parameterType="int" resultType="Goodsinfo">
+		SELECT *
+		from   tim_goodsinfo
+		where  seq_goods = #{seqGoods}
+	</select>
 	 
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,23 +13,23 @@
 <body>
 	<div id="container">
 		<section class="py-5">
-			<div class="container px-4 px-lg-5 my-5">
-				<div class="row gx-4 gx-lg-5 align-items-center">
-					<!-- 이미지 상위 div 490 * 644 -->
-					<div class="col-md-6">
-						<!-- 이미지 사이즈 390 * 390 -->
+			<div class="fixed-layout">
+
+					<!-- 섬네일 이미지 600*700-->
+					<div class="content-left">
 						<img class="card-img-top mb-5 mb-md-0" id="sumnail"
 							src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
 					</div>
-					<div class="col-md-6" id="topGoodsinfo">
+					<div class="content-right" id="topGoodsinfo">
+						<br>
 						<!-- 상품명 -->
-						<h3 class="display-5 fw-bolder">"상품명"</h3>
+						<h3 class="display-5 fw-bolder">${goodsinfo.goodsName}</h3>
 						<hr>
 						<div class="fs-5 mb-5">
 							<!-- 상품가격 -->
-							<span class="goodsPrice makeBold">"가격"</span>
+							<span class="goodsPrice makeBold">${goodsinfo.goodsPrice}</span>
 							<!-- 상품재고 -->
-							<span id="stock" class="coupangGray">재고: &nbsp;개</span>
+							<span id="stock" class="coupangGray">재고: ${goodsinfo.goodsInven}개</span>
 							<div class="topShipInfo makeBold">
 								<p>
 									무료배송 <span class="coupangGray">반품비 5,000원</span>
@@ -61,7 +62,7 @@
 						</p>
 						<hr>
 					</div>
-				</div>
+
 			</div>
 		</section>
 
@@ -129,6 +130,11 @@
 			</div>
 		</section>
 	</div>
+	<p>${goodsinfo}</p>
+	<p>${reviews}</p>
+	<p>${asks}</p>
+	<p>${imgs}</p>
 </body>
+
 
 </html>
