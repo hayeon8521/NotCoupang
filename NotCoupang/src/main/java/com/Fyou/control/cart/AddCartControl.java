@@ -31,7 +31,7 @@ public class AddCartControl implements Control {
 				
 				CartService svc = new CartServiceImpl();
 				try {
-					svc.insertCart(memberId, goodsNum);
+					//svc.insertCart(memberId, goodsNum);
 					// {"retCode":"OK"}
 					resp.getWriter().print("{\"retCode\":\"OK\"}");
 				} catch (Exception e) {
