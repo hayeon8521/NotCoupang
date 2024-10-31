@@ -6,19 +6,18 @@
 <mapper namespace="com.Fyou.mapper.ImgMapper">
 	<!-- 업로드한 사진 순서대로 가져오기 -->
 	<select id="images" parameterType="int" resultType="img" >
-		select *
-		from   tim_img
-		where  goods_num = #{goodsNum}
-		order by seq_url
+		select   *
+		from     tim_img
+		where    goods_num = #{goodsNum}
+		order by seq_img
 	</select>
 	
 	<insert id="insertImages" parameterType="img" >
-		insert into tim_img(
-				seq_img,
-				goods_num,
-				img_url)
-		values	(seq_img.nextVal,
-				 #{goodsNum},
-				 #{imgUrl})
+		insert into tim_img(seq_img,
+							goods_num,
+							img_url)
+		values (seq_img.nextVal,
+				#{goodsNum},
+				#{imgUrl})
 	</insert>
 </mapper>
