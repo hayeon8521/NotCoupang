@@ -27,11 +27,8 @@
 							 ,#{goodsNum}
 							 ,#{count}
 							 ,#{price})
- 		
  	
  	</insert>
- 	
- 	
  	
  	<delete id="deleteOrder" parameterType="order">
  		DELETE FROM tim_order
