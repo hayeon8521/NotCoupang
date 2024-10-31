@@ -86,5 +86,4 @@
 		from   tim_goodsinfo
 		where  seq_goods = #{seqGoods}
 	</select>
-	 
 </mapper>

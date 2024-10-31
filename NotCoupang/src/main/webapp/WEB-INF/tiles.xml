@@ -15,7 +15,7 @@
   	<put-attribute name="header" value="/WEB-INF/layout/head.jsp" />
   	<put-attribute name="body" value="/WEB-INF/abuyer/{1}.jsp" />
   </definition>
-  
+ 
   
   <!-- 사용자 인터페이스2 -->
    <definition name="coupang.buyer2" template="/WEB-INF/layout/BuyerTAM.jsp">
@@ -38,7 +38,12 @@
   
   
   
-  
+	<definition name="coupang.buyeronly" template="/WEB-INF/layout/onlyBody.jsp">
+	</definition>
+	<definition name="WILDCARD:OnlyBody/*" extends="coupang.buyeronly">
+		<put-attribute name="body" value="/WEB-INF/abuyer/{1}.jsp" />
+	</definition>
+	
   <!-- 테스트 인터페이스 -->
   <definition name="myapp.homepage" template="/layouts/classic.jsp">
     <put-attribute name="title" value="Tiles tutorial homepage" />

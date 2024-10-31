@@ -10,8 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Fyou.BSJ.MyPageControl;
 import com.Fyou.BSJ.MyOrderListControl;
+import com.Fyou.BSJ.MyPageControl;
+import com.Fyou.PHY.joingconfigform;
+import com.Fyou.PHY.joingform;
+import com.Fyou.PHY.logingconfingform;
+import com.Fyou.PHY.logingform;
+import com.Fyou.PHY.logout;
 import com.Fyou.commom.Control;
 import com.Fyou.control.goodsinfoCTB.goodsinfoCont;
 
@@ -418,11 +423,11 @@ public class FrontController extends HttpServlet {
 		//태백 사용공간 끝
 		
 		//하연 사용공간
-		
-		
-		
-		
-		
+		map.put("/login.do", new logingform());
+		map.put("/loginconfig.do", new logingconfingform());
+		map.put("/logout.do", new logout());
+		map.put("/join.do", new joingform());
+		map.put("/joinconfig.do", new joingconfigform());
 		
 		
 		
