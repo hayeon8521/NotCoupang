@@ -1,0 +1,166 @@
+#container {
+	display: block;
+	width: 1300px; 
+	margin: 0 auto;
+}
+.fixed-layout {
+  width: 1200px; 
+  margin: 0 auto; 
+  display: flex;
+  justify-content: space-between; 
+}
+.content-left,
+.content-right {
+  width: 48%; 
+  margin: 0 auto;
+}
+
+.display-5 {
+	font-size: 2rem;
+	font-weight: 300;
+	line-height: 1.2;
+}
+
+.fw-bolder {
+	font-weight: bolder !important;
+}
+
+#topGoodsinfo {
+	display: inline-block;
+}
+.goodsPrice {
+	color: #da3d00;
+}
+.coupangBlueBack {
+	--bs-btn-bg: #4585f4;
+}
+.coupangBlueBorder {
+	--bs-btn-border-color: #4585f4;
+}
+.btnWid {
+	--bs-btn-padding-x: 3.75rem;
+	margin-right: 10px;
+}
+.addCartColor {
+	--bs-btn-color: #4585f4;
+}
+
+.custom-radius {
+      border-radius: 0;
+  }
+  
+
+p{
+	margin-bottom: 0;
+}
+.topShipInfo {
+	font-size: 12px;
+	margin-top: 26px;
+}
+
+.coupangGray {
+	color: #555555;
+}
+.makeBold {
+	font-weight: bold;
+}
+#sumnail {
+	position: relative;
+    width: 490px;
+    height: 650px;
+}
+
+.mb-5 {
+    margin-bottom: 7rem !important;
+}
+#stock {
+    position: relative;
+    right: -360px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.tab-titles {
+	height: 54px;
+	border-top: 2px solid #555;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    list-style-type: none;
+    top: 0;
+    width: 1122px;
+	padding: 0;
+    list-style: none;
+    margin: 0 auto;
+}
+
+.tab-titles li {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    display: inline-block;
+    padding: 15px 20px 8px;
+    width: 32.99%;
+    border-right: 1px solid #ccc;
+    background-color: #fafafa;
+    text-align: center;
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 0rem !important;
+}
+
+#detail {
+	display: inline-block;
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	border-bottom: 1px solid #555;
+}
+
+#detail > h4{
+	text-align: left;
+	margin-top: 25px;
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#bottomSection {
+    top: 0;
+    width: 1122px;
+	padding: 0;
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#bottomSection > div{
+	margin-bottom: 50px;
+}
+
+.bottomAlign {
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #555;
+}
+.bottomAlign h4 {
+	text-align: left;
+	margin-top: 25px;
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+#terms p {
+	text-align: left;
+	color: black;
+	font-size: 12px;
+}
+#terms .termsT {
+	color: black;
+    font-weight: bold;
+    font-size: 15px;
+}

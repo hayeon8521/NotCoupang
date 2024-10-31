@@ -26,5 +26,8 @@ public interface GoodsinfoService {
 	
 	//상품 수정 및 상태 변경
 	boolean modifyGoods(GoodsinfoVO goodsinfo);
+	
+	//상품 상세정보 가져오기
+	GoodsinfoVO goodsinfo(int seqGoods);
 
 }

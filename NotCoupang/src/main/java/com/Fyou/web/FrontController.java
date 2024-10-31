@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.Fyou.BSJ.MyPageControl;
 import com.Fyou.BSJ.MyOrderListControl;
 import com.Fyou.commom.Control;
+import com.Fyou.control.goodsinfoCTB.goodsinfoCont;
 
 import CMG.Admin_insert;
 import CMG.Admin_main;
@@ -317,7 +318,7 @@ public class FrontController extends HttpServlet {
 		//신화 사용공간 끝
 		
 		//태백 사용공간
-		
+		map.put("/goodsinfo.do", new goodsinfoCont());
 		
 		
 		

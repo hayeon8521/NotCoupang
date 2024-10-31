@@ -41,4 +41,7 @@ public interface GoodsinfoMapper {
 
 	//페이징 글목록
 	//List<GoodsinfoVO> listWithPage(SearchDTO search);
+	
+	//상품 상세정보 가져오기 (테스트 ok - 태백)
+	GoodsinfoVO goodsinfo(int seqGoods);
 }

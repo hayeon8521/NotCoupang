@@ -49,4 +49,9 @@ public class GoodsinfoServiceImpl implements GoodsinfoService{
 		return mapper.updategoods(goodsinfo) == 1;
 	}
 
+	@Override
+	public GoodsinfoVO goodsinfo(int seqGoods) {
+		return mapper.goodsinfo(seqGoods);
+	}
+
 }
