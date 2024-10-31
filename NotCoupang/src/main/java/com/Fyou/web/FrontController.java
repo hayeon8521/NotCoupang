@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Fyou.BSJ.AddCartControl;
-import com.Fyou.BSJ.CartListControl;
 import com.Fyou.BSJ.MyOrderListControl;
 import com.Fyou.commom.Control;
 
@@ -30,10 +28,6 @@ public class FrontController extends HttpServlet {
 		map.put("/test.do", new test());	//테스트용도
 		map.put("/testlist.do", new testlist());	//테스트용도
 		map.put("/test2.do", new test2());	//테스트용도
-		
-		//장바구니 관련
-		map.put("/cartList.do", new CartListControl()); //카트 보기
-		map.put("/addCart.do", new AddCartControl()); //카트 추가
 		
 		
 		

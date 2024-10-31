@@ -31,8 +31,6 @@
  	
  	</insert>
  	
- 	
- 	
  	<delete id="deleteOrder" parameterType="order">
  		DELETE FROM tim_order
  		WHERE  buyer_id = #{buyerId}
