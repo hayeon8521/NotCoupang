@@ -198,7 +198,7 @@ td {
                         <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
                         <td><a href="#">애플 공식 브랜드스토어</a><span class="cart__list__smartstore"> 스마트스토어</span>
                             <p>Apple 매직 키보드 - 한국어(MK2A3KH/A)</p>
-                            <sapn class="price">116,62원</sapn><span
+                            <span class="price">116,62원</span><span
                                 style="text-decoration: line-through; color: lightgray;">119,000</span>
                         </td>
                         <td class="cart__list__option">
@@ -246,7 +246,7 @@ td {
             <button class="cart__bigorderbtn right">주문하기</button>
         </div>
     </section>
-출처: https://7357.tistory.com/25 [응애. 나 애기 개발자.:티스토리]
+
 
 
 

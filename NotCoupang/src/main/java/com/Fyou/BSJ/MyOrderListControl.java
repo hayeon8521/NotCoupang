@@ -29,6 +29,7 @@ public class MyOrderListControl implements Control {
 		System.out.println(list.toString());
 	
 		//조회해서 어트리뷰트에 값담기
+		//내 주문 리스트 넘기기
 		req.setAttribute("selectOrder", list);
 		
 		

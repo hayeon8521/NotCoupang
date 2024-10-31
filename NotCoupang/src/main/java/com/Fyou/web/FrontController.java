@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.BSJ.MyPageControl;
+import com.Fyou.BSJ.MyReviewControl;
 import com.Fyou.BSJ.MyOrderListControl;
 import com.Fyou.commom.Control;
 
@@ -107,19 +108,20 @@ public class FrontController extends HttpServlet {
 		
 		//주문목록 orderList.do /  OrderListControl.java
 		map.put("/myOrderList.do", new MyOrderListControl());
-		/*
-		//리뷰관리 review.do / ReviewControl.java 
-		map.put("/myReview.do", new MyReviewControl());
-		//문의내역 ask.do / AskControl.java
-		map.put("/myAsk.do", new MyReviewControl());
-		*/
+		
+		
+		
 		
 		//회원정보 조회 및 수정 memberInfo.do / MemberInfoCont.java
 		map.put("/myPage.do", new MyPageControl());
 		
+		//내 리뷰 관리
+		map.put("/myReview.do", new MyReviewControl());
 		
-		
-		
+		/*
+		//문의내역 ask.do / AskControl.java
+		map.put("/myAsk.do", new MyReviewControl());
+		*/
 		
 		
 		
