@@ -29,8 +29,7 @@ public class goodsinfoCont implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//상품
 		GoodsinfoService gsvc = new GoodsinfoServiceImpl();
-		//리뷰
-		ReviewService rsvc = new ReviewServiceImpl();
+		
 		//문의
 		AnswerService asvc = new AnswerServiceImpl();
 		//이미지
@@ -47,9 +46,7 @@ public class goodsinfoCont implements Control {
 		GoodsinfoVO goods = gsvc.goodsinfo(Integer.parseInt(seqGoods));
 		req.setAttribute("goodsinfo", goods);	
 		
-		//리뷰 리스트 넘기기
-		List<ReviewVO> reviews = rsvc.reviews(Integer.parseInt(seqGoods));
-		req.setAttribute("reviews", reviews);
+		
 		
 		//문의 리스트 넘기기	--> 해당 문의에 대한 답변은 ajax로 해야됨. AnserMapper-selectAnswer사용하기
 		List<AskVO> asks = asvc.selectAskGoods(Integer.parseInt(seqGoods), page);

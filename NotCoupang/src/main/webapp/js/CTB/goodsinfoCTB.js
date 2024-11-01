@@ -54,3 +54,12 @@ function sendCheckout() {
 	location.href = "checkout.do?logid="+ logID +"&gno="+ gno +"&count="+ count +"&price=" + price;
 }
 
+//리뷰 페이징
+fetch('reviewList.do?gno='+ gno +'&page=1')
+	.then(resolve => resolve.json())
+	.then(result => {
+		console.log(result);
+		result.forEach((item) => {
+			console.log(item);
+		})
+	})

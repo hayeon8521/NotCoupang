@@ -13,8 +13,8 @@ public class ReviewServiceImpl implements ReviewService{
 	ReviewMapper mapper = sqlSession.getMapper(ReviewMapper.class);
 	
 	@Override
-	public List<ReviewVO> reviews(int goodsNum) {
-		return mapper.selectReview(goodsNum);
+	public List<ReviewVO> reviews(int goodsNum, int page) {
+		return mapper.selectReview(goodsNum, page);
 	}
 
 	@Override

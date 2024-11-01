@@ -18,7 +18,8 @@ import com.Fyou.PHY.logingconfingform;
 import com.Fyou.PHY.logingform;
 import com.Fyou.PHY.logout;
 import com.Fyou.commom.Control;
-import com.Fyou.control.CTB.cartViewCont;
+import com.Fyou.control.CTB.CartViewCont;
+import com.Fyou.control.CTB.ReviewListCont;
 import com.Fyou.control.CTB.goodsinfoCont;
 
 import CMG.Admin_insert;
@@ -325,8 +326,8 @@ public class FrontController extends HttpServlet {
 		
 		//태백 사용공간
 		map.put("/goodsinfo.do", new goodsinfoCont());
-		map.put("/cartView.do", new cartViewCont());	
-		
+		map.put("/cartView.do", new CartViewCont());	
+		map.put("/reviewList.do", new ReviewListCont());
 		
 		
 		
