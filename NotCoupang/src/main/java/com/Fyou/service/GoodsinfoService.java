@@ -21,6 +21,9 @@ public interface GoodsinfoService {
 	//키워드 검색 리스팅
 	List<GoodsinfoVO> goodsListKeyword(String keyword);
 	
+	//카테고리(대분류)와 키워드 검색 리스팅(LSH)
+	List<GoodsinfoVO> goodsListKeywordAndTcate(String tCate, String keyword);
+	
 	//상품등록
 	boolean registerGoods(GoodsinfoVO goodsinfo);
 	

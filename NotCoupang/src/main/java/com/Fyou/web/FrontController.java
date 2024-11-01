@@ -15,6 +15,7 @@ import com.Fyou.CMG.Admin_insert;
 import com.Fyou.CMG.Admin_insert_control;
 import com.Fyou.CMG.Admin_list;
 import com.Fyou.CMG.Admin_main;
+import com.Fyou.LSH.GoodsListCont;
 import com.Fyou.PHY.joingconfigform;
 import com.Fyou.PHY.joingform;
 import com.Fyou.PHY.logingconfingform;
@@ -227,7 +228,7 @@ public class FrontController extends HttpServlet {
 		//서진 사용공간 끝
 		
 		//신화 사용공간
-		
+		map.put("/goodsList.do", new GoodsListCont());
 		
 		
 		
