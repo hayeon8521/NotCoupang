@@ -10,8 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Fyou.BSJ.MyOrderListControl;
+import com.Fyou.BSJ.MyPageControl;
+import com.Fyou.PHY.joingconfigform;
+import com.Fyou.PHY.joingform;
+import com.Fyou.PHY.logingconfingform;
+import com.Fyou.PHY.logingform;
+import com.Fyou.PHY.logout;
 import com.Fyou.commom.Control;
-import com.Fyou.control.goodsinfoCTB.goodsinfoCont;
+import com.Fyou.control.CTB.cartViewCont;
+import com.Fyou.control.CTB.goodsinfoCont;
+
+import CMG.Admin_insert;
+import CMG.Admin_main;
 
 
 //@WebServlet("*.do")
@@ -36,10 +47,9 @@ public class FrontController extends HttpServlet {
 		//민규 사용공간
 		
 		
-		
-		
-		
-		
+		map.put("/Admin_main.do", new Admin_main());
+		map.put("/Admin_insert.do", new Admin_insert());
+		map.put("/Admin_insert_control.do", new Admin_insert_control());
 		
 		
 		
@@ -102,7 +112,19 @@ public class FrontController extends HttpServlet {
 		//민규 사용공간 끝
 		
 		//서진 사용공간
+		//회원 마이페이지 관련
 		
+		//주문목록 orderList.do /  OrderListControl.java
+		map.put("/myOrderList.do", new MyOrderListControl());
+		/*
+		//리뷰관리 review.do / ReviewControl.java 
+		map.put("/myReview.do", new MyReviewControl());
+		//문의내역 ask.do / AskControl.java
+		map.put("/myAsk.do", new MyReviewControl());
+		*/
+		
+		//회원정보 조회 및 수정 memberInfo.do / MemberInfoCont.java
+		map.put("/myPage.do", new MyPageControl());
 		
 		
 		
@@ -303,7 +325,7 @@ public class FrontController extends HttpServlet {
 		
 		//태백 사용공간
 		map.put("/goodsinfo.do", new goodsinfoCont());
-		
+		map.put("/cartView.do", new cartViewCont());	
 		
 		
 		
@@ -402,11 +424,11 @@ public class FrontController extends HttpServlet {
 		//태백 사용공간 끝
 		
 		//하연 사용공간
-		
-		
-		
-		
-		
+		map.put("/login.do", new logingform());
+		map.put("/loginconfig.do", new logingconfingform());
+		map.put("/logout.do", new logout());
+		map.put("/join.do", new joingform());
+		map.put("/joinconfig.do", new joingconfigform());
 		
 		
 		
