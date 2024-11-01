@@ -21,6 +21,12 @@ public class CategoriServiceImpl implements CategoriService{
 	public List<CategoriVO> Bcates(String Bcate) {
 		return mapper.selectBcate(Bcate);
 	}
+
+	@Override
+	public List<CategoriVO> listOfTcate() {
+		// TODO Auto-generated method stub
+		return mapper.listOfTcate();
+	}
 	
 	
 }

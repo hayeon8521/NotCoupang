@@ -1,6 +1,13 @@
+<%@page import="com.Fyou.service.CategoriServiceImpl"%>
+<%@page import="com.Fyou.vo.CategoriVO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.Fyou.service.CategoriService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<meta charset="UTF-8">
+<%
+	CategoriService csvc = new CategoriServiceImpl();
+	List<CategoriVO> categories = csvc.listOfTcate();
+%>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,9 +22,9 @@
 	rel="stylesheet"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="../css/LSH/vendor.css">
-<link rel="stylesheet" type="text/css" href="../css/LSH/style.css">
-<link rel="stylesheet" type="text/css" href="../css/LSH/LSH.css">
+<link rel="stylesheet" type="text/css" href="css/LSH/vendor.css">
+<link rel="stylesheet" type="text/css" href="css/LSH/style.css">
+<link rel="stylesheet" type="text/css" href="css/LSH/LSH.css">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +32,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 	rel="stylesheet">
-
+	
+<header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light py-1">
 	<div class="container d-flex justify-content-between px-2 px-lg-4">
 
@@ -49,7 +57,7 @@
 		<div
 			class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
 			<div class="d-flex align-items-center my-3 my-sm-0">
-				<a href="#"> <img src="../imagesLSH/logo.png" alt="logo"
+				<a href="#"> <img src="imagesLSH/logo.png" alt="logo"
 					class="img-fluid">
 				</a>
 			</div>
@@ -57,20 +65,23 @@
 
 		<div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-8">
 			<div class="search-bar row bg-light p-2 rounded-1">
-				<!--  
+			 <!--
               <div class="col-md-4 d-none d-md-block">
                 <select class="form-select border-0 bg-transparent">
-                  <option>All Categories</option>
-                  <option>Groceries</option>
-                  <option>Drinks</option>
-                  <option>Chocolates</option>
+                <option>전체</option>
+                 
+                <%for(CategoriVO ele : categories) {%>
+                <option><%=ele.getTcate() %></option>
+                <%} %>
+                
                 </select>
+                
               </div>
             -->
 				<div class="col-11 col-md-11">
 					<form id="search-form" class="text-center" action="#" method="post">
 						<input type="text" class="form-control border-0 bg-transparent"
-							placeholder="Search for more than 20,000 products">
+							placeholder="찾고 싶은 상품을 검색해보세요!">
 					</form>
 				</div>
 				<div class="col-1">
@@ -101,39 +112,27 @@
 			</ul>
 		</div>
 
-		<div class="scroll-buttons">
-			<button class="scroll-button btn btn-primary btn-sm" id="scrollLeft">◀</button>
+		<div class=" scroll-buttons">
+			<button class="scroll-button btn btn-sm" id="scrollLeft"><</button>
 			<div class="scrollmenu" id="scrollableMenu">
-				<a class="nav-link" href="#">패션의류/잡화</a> 
-				<a class="nav-link" href="#">뷰티</a> 
-				<a class="nav-link" href="#">출산/유아동</a> 
-				<a class="nav-link" href="#">식품</a> 
-				<a class="nav-link" href="#">주방용품</a>
-				<a class="nav-link" href="#">생활용품</a> 
-				<a class="nav-link" href="#">홈인테리어</a>
-				<a class="nav-link" href="#">가전디지털</a> 
-				<a class="nav-link" href="#">스포츠/레저</a>
-				<a class="nav-link" href="#">자동차용품</a> 
-				<a class="nav-link" href="#">도서/음반/DVD</a>
-				<a class="nav-link" href="#">완구/취미</a> 
-				<a class="nav-link" href="#">문구/오피스</a>
-				<a class="nav-link" href="#">반려동물용품</a> 
-				<a class="nav-link" href="#">헬스/건강식품</a>
+				<%for(CategoriVO ele : categories) {%>
+					<a href="#"><%=ele.getTcate() %></a> 
+				<%} %>
 			</div>
-			<button class="scroll-button btn btn-primary btn-sm" id="scrollRight">▶</button>
+			<button class="scroll-button btn btn-sm" id="scrollRight">></button>
 		</div>
 	</div>
 
 
 
 </div>
+</header>
 
-
-<script src="../js/LSH/jquery-1.11.0.min.js"></script>
+<script src="js/LSH/jquery-1.11.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"crossorigin="anonymous"></script>
-<script src="../js/LSH/plugins.js"></script>
-<script src="../js/LSH/script.js"></script>
+<script src="js/LSH/plugins.js"></script>
+<script src="js/LSH/script.js"></script>
 <script>
 		    const scrollableMenu = document.getElementById('scrollableMenu');
 		    const scrollLeftButton = document.getElementById('scrollLeft');
@@ -142,6 +141,12 @@
 		    // 스크롤 이동 함수
 		    const scrollAmount = 500; // 한 번에 스크롤할 거리 (픽셀)
 		
+		 	// 스크롤에 따라 버튼 활성화/비활성화 함수
+			function updateButtonState() {
+			    scrollLeftButton.disabled = scrollableMenu.scrollLeft === 0;
+			    scrollRightButton.disabled = scrollableMenu.scrollLeft + scrollableMenu.clientWidth >= scrollableMenu.scrollWidth;
+			}
+		    
 		    scrollLeftButton.addEventListener('click', () => {
 		        scrollableMenu.scrollBy({
 		            left: -scrollAmount,
@@ -155,5 +160,11 @@
 		            behavior: 'smooth'
 		        });
 		    });
-		</script>
+		    
+		 	// 스크롤 이동 시 버튼 상태 업데이트
+			scrollableMenu.addEventListener('scroll', updateButtonState);
+
+			// 페이지 로드 시 버튼 상태 초기화
+			window.addEventListener('load', updateButtonState);
+</script>
 
