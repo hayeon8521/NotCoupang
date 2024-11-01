@@ -37,31 +37,6 @@ List<CategoriVO> categories = csvc.listOfTcate();
 	<nav class="navbar navbar-expand-lg navbar-light bg-light py-1">
 		<div class="container d-flex justify-content-between px-2 px-lg-4">
 
-<<<<<<< HEAD
-		<div class="collapse navbar-collapse justify-content-end"
-			id="navbarSupportedContent">
-			<div class="navbar-brand fs-7">000님</div>
-			<form class="d-flex">
-				<button class="btn btn-outline-danger btn-sm" type="submit">
-					로그아웃</button>
-			</form>
-		</div>
-	</div>
-</nav>
-
-
-
-
-<div class="container ">
-	<div class="row py-3 border-bottom">
-
-		<div
-			class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
-			<div class="d-flex align-items-center my-3 my-sm-0">
-				<a href="#"> <img src="imagesLSH/logo.png" alt="logo"
-					class="img-fluid">
-				</a>
-=======
 			<div class="collapse navbar-collapse justify-content-end"
 				id="navbarSupportedContent">
 				<div class="navbar-brand fs-7">000님</div>
@@ -69,7 +44,6 @@ List<CategoriVO> categories = csvc.listOfTcate();
 					<button class="btn btn-outline-danger btn-sm" type="submit">
 						로그아웃</button>
 				</form>
->>>>>>> refs/heads/LSH
 			</div>
 		</div>
 	</nav>
@@ -164,24 +138,12 @@ List<CategoriVO> categories = csvc.listOfTcate();
 	</div>
 </header>
 
-<<<<<<< HEAD
-
-
-</div>
-
-
-=======
->>>>>>> refs/heads/LSH
 <script src="js/LSH/jquery-1.11.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<<<<<<< HEAD
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"crossorigin="anonymous"></script>
-=======
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 	crossorigin="anonymous"></script>
->>>>>>> refs/heads/LSH
 <script src="js/LSH/plugins.js"></script>
 <script src="js/LSH/script.js"></script>
 <script>
