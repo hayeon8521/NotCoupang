@@ -45,8 +45,8 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="index_edit.html">
-                    <span>2번 카테고리 이동</span></a>
+                <a class="nav-link" href="Admin_list.do?page=1">
+                    <span>등록 상품 조회</span></a>
             </li>
 
 

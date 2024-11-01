@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@page import="com.Fyou.vo.GoodsinfoVO"%>
+<%@page import="com.Fyou.vo.ImgVO"%>
+<%@page import="java.util.List"%>
+<%
+GoodsinfoVO gvo = (GoodsinfoVO) request.getAttribute("gvo");
+List<ImgVO> img_list = (List<ImgVO>) request.getAttribute("img_list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -13,24 +19,16 @@
 
 <title>!Coupang Admin</title>
 
-<!-- Custom fonts for this template -->
+<!-- Custom fonts for this template-->
 <link href="CMG/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
-
-<!-- Custom styles for this template -->
+<!-- Custom styles for this template-->
 <link href="CMG/css/sb-admin-2.min.css" rel="stylesheet">
-
-<!-- Custom styles for this page -->
-<link href="CMG/vendor/datatables/dataTables.bootstrap4.min.css"
-	rel="stylesheet">
-
 </head>
-
-<body id="page-top">
-
+<body>
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -51,27 +49,19 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active">
-                <a class="nav-link" href="Admin_insert.do">
-                    <span>상품 등록</span></a>
-            </li>
+			<li class="nav-item active"><a class="nav-link"
+				href="Admin_insert.do"> <span>상품 등록</span></a></li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="Admin_list.do?page=1">
-                    <span>등록 상품 조회</span></a>
-            </li>
+			<li class="nav-item active"><a class="nav-link"
+				href="Admin_list.do?page=1"> <span>등록 상품 조회</span></a></li>
 
 
-            <li class="nav-item active">
-                <a class="nav-link" href="index_edit.html">
-                    <span>3번 카테고리 이동</span></a>
-            </li>
+			<li class="nav-item active"><a class="nav-link"
+				href="index_edit.html"> <span>3번 카테고리 이동</span></a></li>
 
 
-            <li class="nav-item active">
-                <a class="nav-link" href="index_edit.html">
-                    <span>4번 카테고리 이동</span></a>
-            </li>
+			<li class="nav-item active"><a class="nav-link"
+				href="index_edit.html"> <span>4번 카테고리 이동</span></a></li>
 
 		</ul>
 		<!-- End of Sidebar -->
@@ -117,57 +107,36 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">상품 등록</h1>
+					<h1 class="h3 mb-2 text-gray-800">등록 상품 수정</h1>
 					<p class="mb-4"></p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-body">
 							<div class="table-responsive">
-								<form action="Admin_insert_control.do" method="post" enctype="multipart/form-data">
-									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-										<tbody>
-											<tr>
-												<td style="width: 25%; vertical-align: middle">상품명</td>
-												<td><input type="text"
-													class="form-control bg-light border-0 small"
-													aria-label="Search" aria-describedby="basic-addon2"
-													name="goods_name"></td>
-											</tr>
-											<tr>
-												<td style="vertical-align: middle">가격</td>
-												<td><input type="text"
-													class="form-control bg-light border-0 small"
-													aria-label="Search" aria-describedby="basic-addon2"
-													name="goods_price"></td>
-											</tr>
-											<tr>
-												<td style="vertical-align: middle">재고</td>
-												<td><input type="text"
-													class="form-control bg-light border-0 small"
-													aria-label="Search" aria-describedby="basic-addon2"
-													name="goods_inven"></td>
-											</tr>
-											<tr>
-												<td style="vertical-align: middle">카테고리</td>
-												<td><input type="text"
-													class="form-control bg-light border-0 small"
-													aria-label="Search" aria-describedby="basic-addon2"
-													name="goods_catename"></td>
-											</tr>
-											<tr>
-												<td style="vertical-align: middle">상품 썸네일</td>
-												<td><input type="file"
-													class="form-control bg-light border-0 small"
-													aria-label="Search" aria-describedby="basic-addon2"
-													name="img_thumbnail"></td>
-											</tr>
-										</tbody>
-									</table>
-									<div style="text-align: center;">
-										<input class="btn btn-primary" type="submit" style="width: 250px;" value="제출">
-									</div>
-								</form>
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<tbody>
+										<tr>
+											<th style="width: 15%">이미지</th>
+											<th style="width: 50%">상품명</th>
+											<th style="width: 15%">가격</th>
+											<th style="width: 10%">재고</th>
+											<th style="width: 10%">상태</th>
+										</tr>
+										<tr>
+											<td style="width: 15%"><a><img src="images/<%=img_list.get(0).getImgUrl()%>" width="150px"></a></td>
+											<td style="width: 50%"><%=gvo.getGoodsName()%></td>
+											<td style="width: 15%"><%=gvo.getGoodsPrice()%></td>
+											<td style="width: 10%"><%=gvo.getGoodsInven()%></td>
+											<td style="width: 10%"><%=gvo.getGoodsState()%></td>
+										</tr>
+									</tbody>
+								</table>
+								<div style="float: right">
+									<input type="submit" value="edit" class="btn btn-warning">
+									<input type="submit" value="delete" class="btn btn-danger">
+								</div>
 							</div>
 						</div>
 					</div>
@@ -197,7 +166,14 @@
 	<!-- Page level plugins -->
 	<script src="CMG/vendor/datatables/jquery.dataTables.min.js"></script>
 	<script src="CMG/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+	
+	<script>
+	seq_goods = <%=gvo.getSeqGoods()%>
+	document.querySelector('input[value="edit"]').addEventListener('click', function(e) {
+		console.log(seq_goods)
+	});
+	document.querySelector('input[value="delete"]').addEventListener('click', function(e) {
+	});
+	</script>
 </body>
-
 </html>
