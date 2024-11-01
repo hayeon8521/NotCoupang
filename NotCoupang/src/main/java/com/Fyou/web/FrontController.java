@@ -10,18 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Fyou.BSJ.MyOrderListControl;
-import com.Fyou.BSJ.MyPageControl;
 import com.Fyou.PHY.joingconfigform;
 import com.Fyou.PHY.joingform;
 import com.Fyou.PHY.logingconfingform;
 import com.Fyou.PHY.logingform;
 import com.Fyou.PHY.logout;
 import com.Fyou.commom.Control;
-import com.Fyou.control.goodsinfoCTB.goodsinfoCont;
-
-import CMG.Admin_insert;
-import CMG.Admin_main;
+import com.Fyou.control.BSJ.MyAskControl;
+import com.Fyou.control.BSJ.MyOrderListControl;
+import com.Fyou.control.BSJ.MyPageControl;
+import com.Fyou.control.BSJ.MyReviewControl;
+import com.Fyou.control.CMG.Admin_insert;
+import com.Fyou.control.CMG.Admin_main;
+import com.Fyou.control.CTB.goodsinfoCont;
 
 
 //@WebServlet("*.do")
@@ -115,18 +116,15 @@ public class FrontController extends HttpServlet {
 		
 		//주문목록 orderList.do /  OrderListControl.java
 		map.put("/myOrderList.do", new MyOrderListControl());
-		/*
-		//리뷰관리 review.do / ReviewControl.java 
-		map.put("/myReview.do", new MyReviewControl());
-		//문의내역 ask.do / AskControl.java
-		map.put("/myAsk.do", new MyReviewControl());
-		*/
 		
 		//회원정보 조회 및 수정 memberInfo.do / MemberInfoCont.java
 		map.put("/myPage.do", new MyPageControl());
 		
+		//내 리뷰 관리
+		map.put("/myReview.do", new MyReviewControl());
 		
-		
+		//문의내역 
+		map.put("/myAsk.do", new MyAskControl());
 		
 		
 		

@@ -1,4 +1,4 @@
-package CMG;
+package com.Fyou.control.BSJ;
 
 import java.io.IOException;
 
@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
 
-public class Admin_insert implements Control {
+public class MyAskControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("CMG/Admin_insert.jsp").forward(req, resp);
+		// 정상 구현 확인
+		System.out.println("MyAskControl");
 
 	}
 

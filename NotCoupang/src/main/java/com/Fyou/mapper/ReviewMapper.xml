@@ -15,6 +15,12 @@
 		where goods_num = #{goodsNum}
 	</select>
 	
+	<select id="memberReview" parameterType="String" resultType="review">
+		select *
+		from tim_review
+		where buyer_id = #{buyerId}
+	</select>
+	
 	<insert id="insertReview"  parameterType="review">
 		insert into tim_review(
 				seq_review,

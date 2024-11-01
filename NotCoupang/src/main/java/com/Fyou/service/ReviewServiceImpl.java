@@ -16,6 +16,12 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewVO> reviews(int goodsNum) {
 		return mapper.selectReview(goodsNum);
 	}
+	
+	@Override
+	public List<ReviewVO> memberReview(String buyerId) {
+		// TODO Auto-generated method stub
+		return mapper.memberReview(buyerId);
+	}
 
 	@Override
 	public boolean addReview(ReviewVO review) {
@@ -31,5 +37,9 @@ public class ReviewServiceImpl implements ReviewService{
 	public boolean modifyReview(ReviewVO review) {
 		return mapper.updateReview(review) == 1;
 	}
+
+	
+	
+	 
 
 }

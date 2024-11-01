@@ -1,257 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
+prefix="c"%>
 <!DOCTYPE html>
-<h3>주문 목록</h3>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
+    />
+  </head>
 
-<jsp:include page="../includes/header.jsp"></jsp:include>
+  <style>
+    .nav_btn {
+      text-align: center;
+      font-family: 'Noto Sans KR', sans-serif;
+      border: 0;
+      margin-bottom: 30px;
+      background-color: rgb(255, 255, 255, 0.3);
+    }
+  </style>
 
-<!-- 등록화면을 만들어보자 action에서 지정한 페이지로 이동함 -->
-<style>
-body {
-  margin: 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-p,
-span {
-  margin: 0;
-}
-
-a {
-  color: black;
-}
-
-img {
-  display: block;
-  width: 80%;
-  height: 80px;
-  margin: auto;
-}
-
-.cart {
-  width: 80%;
-  margin: auto;
-  padding: 30px;
-}
-
-.cart ul {
-  background-color: whitesmoke;
-  padding: 30px;
-  margin-bottom: 50px;
-  border: whitesmoke solid 1px;
-  border-radius: 5px;
-  font-size: 13px;
-  font-weight: 300;
-}
-
-.cart ul :first-child {
-  color: limegreen;
-}
-
-table {
-  border-top: solid 1.5px black;
-  border-collapse: collapse;
-  width: 100%;
-  font-size: 14px;
-}
-
-thead {
-  text-align: center;
-  font-weight: bold;
-}
-
-tbody {
-  font-size: 12px;
-}
-
-td {
-  padding: 15px 0px;
-  border-bottom: 1px solid lightgrey;
-}
-
-.cart__list__detail :nth-child(3) {
-  vertical-align: top;
-}
-
-.cart__list__detail :nth-child(3) a {
-  font-size: 12px;
-}
-
-.cart__list__detail :nth-child(3) p {
-  margin-top: 6px;
-  font-weight: bold;
-}
-
-.cart__list__smartstore {
-  font-size: 12px;
-  color: gray;
-}
-
-.cart__list__option {
-  vertical-align: top;
-  padding: 20px;
-}
-
-.cart__list__option p {
-  margin-bottom: 25px;
-  position: relative;
-}
-
-.cart__list__option p::after {
-  content: "";
-  width: 90%;
-  height: 1px;
-  background-color: lightgrey;
-  left: 0px;
-  top: 25px;
-  position: absolute;
-}
-
-.cart__list__optionbtn {
-  background-color: white;
-  font-size: 10px;
-  border: lightgrey solid 1px;
-  padding: 7px;
-}
-
-.cart__list__detail :nth-child(4),
-.cart__list__detail :nth-child(5),
-.cart__list__detail :nth-child(6) {
-  border-left: 2px solid whitesmoke;
-}
-
-.cart__list__detail :nth-child(5),
-.cart__list__detail :nth-child(6) {
-  text-align: center;
-}
-
-.cart__list__detail :nth-child(5) button {
-  background-color: limegreen;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 4px 8px;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.price {
-  font-weight: bold;
-}
-
-.cart__mainbtns {
-  width: 420px;
-  height: 200px;
-  padding-top: 40px;
-  display: block;
-  margin: auto;
-}
-
-.cart__bigorderbtn {
-  width: 200px;
-  height: 50px;
-  font-size: 16px;
-  margin: auto;
-  border-radius: 5px;
-}
-
-.cart__bigorderbtn.left {
-  background-color: white;
-  border: 1px lightgray solid;
-}
-
-.cart__bigorderbtn.right {
-  background-color: limegreen;
-  color: white;
-  border: none;
-}
-
-</style>
-
-<section class="cart">
-        <div class="cart__information">
-            <ul>
-                <li>장바구니 상품은 최대 30일간 저장됩니다.</li>
-                <li>가격, 옵션 등 정보가 변경된 경우 주문이 불가할 수 있습니다.</li>
-                <li>오늘출발 상품은 판매자 설정 시점에 따라 오늘출발 여부가 변경될 수 있으니 주문 시 꼭 다시 확인해 주시기 바랍니다.</li>
-            </ul>
+  <div class="d-flex justify-content-center bg-info-subtle">
+    <div class="d-flex flex-row mb-3" style="width: 800px">
+      <div class="p-2 w-25 bg-primary" style="height: 800px">
+        사이드 바 구성하면 되고
+        <div class="d-flex flex-column mb-3">
+          <button type="button" href="#" class="btn btn-md nav_btn">
+            주문 목록
+          </button>
+          <button type="button" href="#" class="btn btn-md nav_btn">
+            리뷰 관리
+          </button>
+          <button type="button" href="#" class="btn btn-md nav_btn">
+            문의 내역
+          </button>
+          <button type="button" href="#" class="btn btn-md nav_btn">
+            회원 정보
+          </button>
         </div>
-        <table class="cart__list">
-            <form>
-                <thead>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td colspan="2">상품정보</td>
-                        <td>옵션</td>
-                        <td>상품금액</td>
-                        <td>배송비</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="cart__list__detail">
-                        <td><input type="checkbox"></td>
-                        <td><img src="image/keyboard.jpg" alt="magic keyboard"></td>
-                        <td><a href="#">애플 공식 브랜드스토어</a><span class="cart__list__smartstore"> 스마트스토어</span>
-                            <p>Apple 매직 키보드 - 한국어(MK2A3KH/A)</p>
-                            <sapn class="price">116,62원</sapn><span
-                                style="text-decoration: line-through; color: lightgray;">119,000</span>
-                        </td>
-                        <td class="cart__list__option">
-                            <p>모델명 : 키보드 - 한국어 MK2A3KH/A / 1개</p>
-                            <button class="cart__list__optionbtn">주문조건 추가/변경</button>
-                        </td>
-                        <td><span class="price">116,620원</span><br>
-                            <button class="cart__list__orderbtn">주문하기</button>
-                        </td>
-                        <td>무료</td>
-                    </tr>
-                    <tr class="cart__list__detail">
-                        <td style="width: 2%;"><input type="checkbox"></td>
-                        <td style="width: 13%;">
-                            <img src="image/mouse.jpg" alt="magic mouse">
-                        </td>
-                        <td style="width: 27%;"><a href="#">컴퓨존</a><span class="cart__list__smartstore"> 스마트스토어</span>
-                            <p>[애플] Magic Mouse [MK2E3KH/A]</p>
-                            <span class=" price">88,900원</span>
-                        </td>
-                        <td class="cart__list__option" style="width: 27%;">
-                            <p>상품 주문 수량: 1개</p>
-                            <button class="cart__list__optionbtn">주문조건 추가/변경</button>
-                        </td>
-                        <td style="width: 15%;"><span class="price">88,900원</span><br>
-                            <button class="cart__list__orderbtn">주문하기</button>
-                        </td>
-                        <td style="width: 15%;">무료</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3"><input type="checkbox"> <button class="cart__list__optionbtn">선택상품 삭제</button>
-                            <button class="cart__list__optionbtn">선택상품 찜</button>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tfoot>
-            </form>
-        </table>
-        <div class="cart__mainbtns">
-            <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
-            <button class="cart__bigorderbtn right">주문하기</button>
+      </div>
+      <div class="p-2 w-75 bg-warning">
+        마이페이지에 있는거 구성하면되고
+        <div class="order_list_search">
+          <form>
+            <fieldset>
+              <legend>주문목록</legend>
+              <input
+                class="border-1 rounded"
+                type="text"
+                id="order_list_search"
+                name="order_list_search"
+                size="30"
+                maxlength="200"
+                placeholder="주문한 상품을 검색할 수 있어요!"
+              />
+              <i class="bi bi-search text-primary"></i>
+            </fieldset>
+          </form>
         </div>
-    </section>
-출처: https://7357.tistory.com/25 [응애. 나 애기 개발자.:티스토리]
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="../js/scripts.js"></script>
 
-
-
-<!-- Bootstrap core JS-->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="../js/scripts.js"></script>
+  <!--내 css 연동-->
+  <link rel="stylesheet" href="css/BSJ/myOrderList.css" />
+</html>

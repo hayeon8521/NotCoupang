@@ -1,4 +1,4 @@
-package com.Fyou.control.goodsinfoCTB;
+package com.Fyou.control.CTB;
 
 import java.io.IOException;
 import java.util.List;
