@@ -36,7 +36,12 @@ public class MyReviewControl implements Control {
 		// 조회해서 어트리뷰트에 값담기
 		// 내 리뷰 리스트 넘기기
 		req.setAttribute("memberReview", list);
-		req.getRequestDispatcher("BuyerTM/myReviewBSJ.tiles").forward(req, resp);
+		
+		try {
+			req.getRequestDispatcher("BuyerTM/myReviewBSJ.tiles").forward(req, resp);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 
 	}
