@@ -21,8 +21,10 @@ import com.Fyou.control.BSJ.MyAskControl;
 import com.Fyou.control.BSJ.MyOrderListControl;
 import com.Fyou.control.BSJ.MyPageControl;
 import com.Fyou.control.BSJ.MyReviewControl;
-import com.Fyou.control.CTB.cartViewCont;
+import com.Fyou.control.CTB.CartViewCont;
+import com.Fyou.control.CTB.ReviewListCont;
 import com.Fyou.control.CTB.goodsinfoCont;
+import com.Fyou.control.PHY.cartViewCont;
 import com.Fyou.control.PHY.joingconfigform;
 import com.Fyou.control.PHY.joingform;
 import com.Fyou.control.PHY.joingogoCont;
@@ -329,8 +331,8 @@ public class FrontController extends HttpServlet {
 		
 		//태백 사용공간
 		map.put("/goodsinfo.do", new goodsinfoCont());
-		map.put("/cartView.do", new cartViewCont());	
-		
+		map.put("/cartView.do", new CartViewCont());	
+		map.put("/reviewList.do", new ReviewListCont());
 		
 		
 		

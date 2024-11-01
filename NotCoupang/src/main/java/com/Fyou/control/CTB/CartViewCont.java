@@ -15,7 +15,7 @@ import com.Fyou.vo.CartVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class cartViewCont implements Control {
+public class CartViewCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
