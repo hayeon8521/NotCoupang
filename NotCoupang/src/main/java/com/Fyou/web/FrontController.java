@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Fyou.CMG.Admin_goodsinfo;
+import com.Fyou.CMG.Admin_insert;
+import com.Fyou.CMG.Admin_insert_control;
+import com.Fyou.CMG.Admin_list;
+import com.Fyou.CMG.Admin_main;
 import com.Fyou.PHY.joingconfigform;
 import com.Fyou.PHY.joingform;
 import com.Fyou.PHY.logingconfingform;
@@ -20,8 +25,6 @@ import com.Fyou.control.BSJ.MyAskControl;
 import com.Fyou.control.BSJ.MyOrderListControl;
 import com.Fyou.control.BSJ.MyPageControl;
 import com.Fyou.control.BSJ.MyReviewControl;
-import com.Fyou.control.CMG.Admin_insert;
-import com.Fyou.control.CMG.Admin_main;
 import com.Fyou.control.CTB.goodsinfoCont;
 
 
@@ -50,6 +53,8 @@ public class FrontController extends HttpServlet {
 		map.put("/Admin_main.do", new Admin_main());
 		map.put("/Admin_insert.do", new Admin_insert());
 		map.put("/Admin_insert_control.do", new Admin_insert_control());
+		map.put("/Admin_list.do", new Admin_list());
+		map.put("/Admin_goodsinfo.do", new Admin_goodsinfo());
 		
 		
 		
