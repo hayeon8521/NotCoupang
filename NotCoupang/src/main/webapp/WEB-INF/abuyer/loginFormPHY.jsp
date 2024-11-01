@@ -13,8 +13,8 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="js/hayeonPHY.js"></script>
-<title>낫쿠 - 로그인페이지</title>
+<script src="js/PHY/hayeonPHY.js"></script>
+<title>낫팡 - 로그인페이지</title>
 <!-- 기본 기능 선언부 끝 -->
 <style>
 .sidediv {
@@ -55,13 +55,14 @@ h1 {
         if (MEMBERDIVISION.equals("buyer")) {
 %>
             <script>
-                window.location.replace("/NotCoupang/main.do");
+                window.location.replace("/NotCoupang/welcome.do");
             </script>
 <%
         } else if (MEMBERDIVISION.equals("seller")) {
 %>
             <script>
-                window.location.replace("/NotCoupang/admin.do");
+            	//NotCoupang/Admin_main.do
+                window.location.replace("/NotCoupang/Admin_main.do");
             </script>
 <%
         }
@@ -77,7 +78,7 @@ h1 {
  -->
 <div class="sidediv">
 	<h1>
-		<a href="/NotCoupang/main.do">
+		<a href="/NotCoupang/welcome.do">
 			<img src="images/logo.png" alt="Logo">
 	  </a>
 	</h1>

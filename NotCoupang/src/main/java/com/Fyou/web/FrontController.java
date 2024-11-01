@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.BSJ.MyOrderListControl;
 import com.Fyou.BSJ.MyPageControl;
-import com.Fyou.PHY.joingconfigform;
-import com.Fyou.PHY.joingform;
-import com.Fyou.PHY.logingconfingform;
-import com.Fyou.PHY.logingform;
-import com.Fyou.PHY.logout;
 import com.Fyou.commom.Control;
+import com.Fyou.control.PHY.cartViewCont;
+import com.Fyou.control.PHY.joingconfigform;
+import com.Fyou.control.PHY.joingform;
+import com.Fyou.control.PHY.joingogoCont;
+import com.Fyou.control.PHY.logingconfingform;
+import com.Fyou.control.PHY.logingform;
+import com.Fyou.control.PHY.logout;
 import com.Fyou.control.goodsinfoCTB.goodsinfoCont;
 
 import CMG.Admin_insert;
@@ -423,13 +425,13 @@ public class FrontController extends HttpServlet {
 		//태백 사용공간 끝
 		
 		//하연 사용공간
-		map.put("/login.do", new logingform());
-		map.put("/loginconfig.do", new logingconfingform());
-		map.put("/logout.do", new logout());
-		map.put("/join.do", new joingform());
-		map.put("/joinconfig.do", new joingconfigform());
-		
-		
+		map.put("/login.do", new logingform());		//로그인 페이지
+		map.put("/loginconfig.do", new logingconfingform());	//로그인 확인 페이지
+		map.put("/logout.do", new logout());				//로그아웃 페이지
+		map.put("/join.do", new joingform());				//회원가입페이지
+		map.put("/joinconfig.do", new joingconfigform());	//아이디 중복 확인페이지
+		map.put("/joingogo.do", new joingogoCont());		//회원가입 확인 처리 페이지
+		map.put("/cartView.do", new cartViewCont());		//장바구니 페이지
 		
 		
 		
