@@ -21,10 +21,16 @@ public interface GoodsinfoService {
 	//키워드 검색 리스팅
 	List<GoodsinfoVO> goodsListKeyword(String keyword);
 	
+	//카테고리(대분류)와 키워드 검색 리스팅(LSH)
+	List<GoodsinfoVO> goodsListKeywordAndTcate(String tCate, String keyword);
+	
 	//상품등록
 	boolean registerGoods(GoodsinfoVO goodsinfo);
 	
 	//상품 수정 및 상태 변경
 	boolean modifyGoods(GoodsinfoVO goodsinfo);
+	
+	//상품 상세정보 가져오기
+	GoodsinfoVO goodsinfo(int seqGoods);
 
 }

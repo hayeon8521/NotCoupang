@@ -4,15 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<link href="css/styles.css" rel="stylesheet" />
 	
 	
 	<tiles:insertAttribute name="header" />
 <title>Insert title here</title>
 </head>
 <body>
-	<tiles:insertAttribute name="aside" />
-	<tiles:insertAttribute name="body" />
+	<div class="d-flex">
+		<tiles:insertAttribute name="aside" />
+		<tiles:insertAttribute name="body" />
+	</div>
 	
 	
 	

@@ -2,6 +2,8 @@ package com.Fyou.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.Fyou.vo.GoodsinfoVO;
 
 public interface GoodsinfoMapper {
@@ -30,6 +32,9 @@ public interface GoodsinfoMapper {
 
 	//5) 키워드로 리스팅
 	List<GoodsinfoVO> goodsListSellerkeyword(String keyword);
+	
+	//5-1) 키워드와 대분류 카테고리로 리스팅(LSH)
+	List<GoodsinfoVO> goodsListSellerkeywordAndTcate(@Param("tcate") String tcate, @Param("keyword") String keyword);
 
 	//6)상품등록
 	int insertgoods(GoodsinfoVO goods);
@@ -41,4 +46,7 @@ public interface GoodsinfoMapper {
 
 	//페이징 글목록
 	//List<GoodsinfoVO> listWithPage(SearchDTO search);
+	
+	//상품 상세정보 가져오기 (테스트 ok - 태백)
+	GoodsinfoVO goodsinfo(int seqGoods);
 }

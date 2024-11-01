@@ -17,7 +17,7 @@ public interface AnswerMapper {
 	// 문의 내역 작성
 	public int insertAsk(AskVO ask);
 	// 개별 상품의 문의 전체 페이징 리스트 반환
-	public List<AskVO> selectAskGoods(@Param("goods_num") String goods_num,  @Param("page") int page);
+	public List<AskVO> selectAskGoods(@Param("goods_num") int goods_num,  @Param("page") int page);
 	// 문의 번호로 문의 답변 삭제
 	public int deleteAnswer(int seq_answer);
 	// 문의 번호로 문의 내역 수정
