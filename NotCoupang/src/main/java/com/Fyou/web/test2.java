@@ -20,10 +20,10 @@ public class test2 implements Control {
 		//req.getRequestDispatcher("BuyerTM/test2.tiles").forward(req, resp);
 		
 		//해드와 사이드바가 필요할때 (BuyerTAM)
-		//req.getRequestDispatcher("BuyerTAM/test2.tiles").forward(req, resp);
+		req.getRequestDispatcher("BuyerTAM/test2.tiles").forward(req, resp);
 		
 		//관리자 페잊지
-		req.getRequestDispatcher("sellerAM/test2.tiles").forward(req, resp);
+		//req.getRequestDispatcher("sellerAM/adminlistCMG.tiles").forward(req, resp);
 	}
 
 }

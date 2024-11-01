@@ -10,10 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Fyou.BSJ.MyPageControl;
-import com.Fyou.BSJ.MyReviewControl;
-import com.Fyou.BSJ.MyOrderListControl;
+import com.Fyou.PHY.joingconfigform;
+import com.Fyou.PHY.joingform;
+import com.Fyou.PHY.logingconfingform;
+import com.Fyou.PHY.logingform;
+import com.Fyou.PHY.logout;
 import com.Fyou.commom.Control;
+import com.Fyou.control.BSJ.MyAskControl;
+import com.Fyou.control.BSJ.MyOrderListControl;
+import com.Fyou.control.BSJ.MyPageControl;
+import com.Fyou.control.BSJ.MyReviewControl;
+import com.Fyou.control.CMG.Admin_insert;
+import com.Fyou.control.CMG.Admin_main;
+import com.Fyou.control.CTB.goodsinfoCont;
 
 
 //@WebServlet("*.do")
@@ -38,10 +47,9 @@ public class FrontController extends HttpServlet {
 		//민규 사용공간
 		
 		
-		
-		
-		
-		
+		map.put("/Admin_main.do", new Admin_main());
+		map.put("/Admin_insert.do", new Admin_insert());
+		map.put("/Admin_insert_control.do", new Admin_insert_control());
 		
 		
 		
@@ -109,19 +117,15 @@ public class FrontController extends HttpServlet {
 		//주문목록 orderList.do /  OrderListControl.java
 		map.put("/myOrderList.do", new MyOrderListControl());
 		
-		
-		
-		
 		//회원정보 조회 및 수정 memberInfo.do / MemberInfoCont.java
 		map.put("/myPage.do", new MyPageControl());
 		
 		//내 리뷰 관리
 		map.put("/myReview.do", new MyReviewControl());
 		
-		/*
-		//문의내역 ask.do / AskControl.java
-		map.put("/myAsk.do", new MyReviewControl());
-		*/
+		//문의내역 
+		map.put("/myAsk.do", new MyAskControl());
+		
 		
 		
 		
@@ -317,7 +321,7 @@ public class FrontController extends HttpServlet {
 		//신화 사용공간 끝
 		
 		//태백 사용공간
-		
+		map.put("/goodsinfo.do", new goodsinfoCont());
 		
 		
 		
@@ -417,11 +421,11 @@ public class FrontController extends HttpServlet {
 		//태백 사용공간 끝
 		
 		//하연 사용공간
-		
-		
-		
-		
-		
+		map.put("/login.do", new logingform());
+		map.put("/loginconfig.do", new logingconfingform());
+		map.put("/logout.do", new logout());
+		map.put("/join.do", new joingform());
+		map.put("/joinconfig.do", new joingconfigform());
 		
 		
 		

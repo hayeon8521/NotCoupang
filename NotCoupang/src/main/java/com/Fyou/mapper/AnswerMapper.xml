@@ -41,7 +41,7 @@
      		#{buyerId})
 	</insert>
 	
-	<select id="selectAskGoods" resultType="ask">
+	<select id="selectAskGoods" resultType="ask" parameterType="int">
 	select a.* 
 		from ( select rownum ru, r.* 
 			   from tim_ask r 

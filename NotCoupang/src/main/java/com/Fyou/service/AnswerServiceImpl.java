@@ -35,7 +35,7 @@ public class AnswerServiceImpl implements AnswerService {
 	}
 
 	@Override
-	public List<AskVO> selectAskGoods(String goods_num, int page) {
+	public List<AskVO> selectAskGoods(int goods_num, int page) {
 		return mapper.selectAskGoods(goods_num, page);
 	}
 

@@ -1,4 +1,4 @@
-package com.Fyou.BSJ;
+package com.Fyou.control.BSJ;
 
 import java.io.IOException;
 
