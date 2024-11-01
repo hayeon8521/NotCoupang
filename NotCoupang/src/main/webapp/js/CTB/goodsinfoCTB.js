@@ -17,10 +17,10 @@ function addCart() {
 	
 	if (count > stock) {
 		alert("재고 수가 부족합니다 \n수량을 확인해주세요.");
-		return;
+		return "stop";
 	} else if (count <= 0) {
 		alert("잘못된 입력값입니다.");
-		return;
+		return "stop";
 	}
 
 	//이름, 가격, 선택수량 넘기면 됨
@@ -35,7 +35,9 @@ function addCart() {
 }
 
 function sendCartView() {
-	addCart();
+	if(addCart() == "stop") {
+		return;
+	}
 	alert("상품이 장바구니에 담겼습니다.")
 }
 //구매하기 장바구니 넣고 페이지로 이동
@@ -44,8 +46,9 @@ function sendCheckout() {
 	let count = document.querySelector('#inputQuantity').value;
 	
 	//장바구니 담기
-	addCart();
-	
+	if(addCart() == "stop") {
+		return;
+	}
 	//구매하기 페이지 이동
 	//checkout.do로 옮기기
 	location.href = "checkout.do?logid="+ logID +"&gno="+ gno +"&count="+ count +"&price=" + price;

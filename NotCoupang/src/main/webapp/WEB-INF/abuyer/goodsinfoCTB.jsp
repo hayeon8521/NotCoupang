@@ -62,8 +62,8 @@
 					</div>
 					<hr>
 					<p>
-						<span class="makeBold">적립</span>&nbsp;&nbsp;&nbsp;최대 5,000원 쿠팡캐시적립
-						· 쿠페이 머니 결제시
+						<span class="makeBold">적립</span>&nbsp;&nbsp;&nbsp;최대 5,000원 낫쿠팡캐시적립
+						· 낫쿠페이 머니 결제시
 					</p>
 					<hr>
 				</div>
@@ -183,17 +183,18 @@
 					등을 분리, 분실, 훼손하여 상품의 가치가 현저히 감소하여 재판매가 불가할 경우 (노트북, 데스크탑 PC 등)<br>
 					<br> 자동차용품 <br> ㆍ상품을 개봉하여 장착한 이후 단순변심인 경우<br> <br>
 					CD/DVD/GAME/<br> BOOK ㆍ복제가 가능한 상품의 포장 등을 훼손한 경우<br> <br>
-					<span class="termsT">판매자 정보</span><br> <br> 판매자 쿠팡
+					<span class="termsT">판매자 정보</span><br> <br> 판매자 낫쿠팡
 					1577-7011<br> 미성년자가 체결한 계약은 법정대리인이 동의하지 않는 경우 본인 또는 법정대리인이 취소할
 					수 있습니다.<br> <br>
 				</p>
 			</div>
 		</section>
 	</div>
-	<p>${goodsinfo}</p>
-	<p>${reviews}</p>
-	<p>${asks}</p>
-	<p>${imgs}</p>
+	<p>goodsinfo: ${goodsinfo}</p> <br>
+	<p>reviews: ${reviews}</p> <br>
+	<p>asks: ${asks}</p> <br>
+	<p>answer: ${answers}</p> <br>
+	<p>imgs: ${imgs}</p> <br>
 	<div id="quick-scroll">
 		<!-- 커서 클릭 모양으로 바뀌게 하기 위해 javascript:void(0) 사용, 실제 기능은 이벤트 핸들러에서 구현-->
 		<a href="javascript:void(0)" id="quick-scroll_top"
@@ -203,9 +204,9 @@
 </body>
 <script>
 	//const logID = '${LOGID}';
+	//로그인 기능 구현후에 위에 코드 주석 풀 예정입니다. 아래는 임시!
 	const logID = "AddTestOnInfo";
 	var gno = '${ goodsinfo.seqGoods }';
-	
 	
 	//숫자 1000단위마다 콤마찍기. 숫자로 가져와서 바꾸니가 문자열로 만들지 않았음.
 	let price = ${goodsinfo.goodsPrice};
