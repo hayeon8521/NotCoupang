@@ -16,7 +16,8 @@
 }
 
 .display-5 {
-	font-size: 2rem;
+	color: black;
+	font-size: 1.5rem;
 	font-weight: 300;
 	line-height: 1.2;
 }
@@ -73,13 +74,16 @@ p{
 .mb-5 {
     margin-bottom: 7rem !important;
 }
-#stock {
+#stock-area {
     position: relative;
     right: -360px;
 	font-weight: bold;
 	font-size: 12px;
 }
-
+#inputQuantity {
+	border: solid 1px #c3c3c3;
+    border-radius: 0px;
+}
 .tab-titles {
 	height: 54px;
 	border-top: 2px solid #555;
@@ -92,13 +96,16 @@ p{
     list-style: none;
     margin: 0 auto;
 }
-
+#buyBtn {
+	font-weight: bold;
+    height: 46px;
+}
 .tab-titles li {
     background: #fff;
     border-bottom: 1px solid #fff;
     display: inline-block;
-    padding: 15px 20px 8px;
-    width: 32.99%;
+    padding: 8px 20px 6px;
+    width: 32.97%;
     border-right: 1px solid #ccc;
     background-color: #fafafa;
     text-align: center;
@@ -142,7 +149,10 @@ p{
 #bottomSection > div{
 	margin-bottom: 50px;
 }
-
+#bottomSection .tab-titles a{
+	text-decoration: none;
+	padding: 12px 118px;
+}
 .bottomAlign {
 	border-top: 1px solid #555;
 	border-bottom: 1px solid #555;
@@ -163,4 +173,79 @@ p{
 	color: black;
     font-weight: bold;
     font-size: 15px;
+}
+#quick-scroll {
+	position: fixed; 
+	bottom: 12%;
+    right: 4%;
+}
+#quick-scroll #quick-scroll_top {
+	display: block;
+    background: url('../../images/CTB/bg_side_sprite.png') no-repeat;
+    width: 50px;
+    height: 33px;
+}
+
+#quick-scroll #quick-scroll_bottom {
+	display: block;
+    background: url('../../images/CTB/bg_side_sprite.png') no-repeat;
+    width: 50px;
+    height: 33px;
+}
+    
+#quick-scroll #quick-scroll_top {
+    background-position: -150px 0;
+}
+
+#quick-scroll a#quick-scroll_bottom {
+    background-position: -150px -140px;
+}
+
+.previous {
+	display: inline-block;
+    padding: 0;
+    margin-right: 5px;
+    border: 0;
+    outline: 0;
+    width: 31px;
+    height: 31px;
+}
+
+.next {
+	display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    margin-left: 5px;
+    border: 0;
+    outline: 0;
+    width: 31px;
+    height: 31px;
+}
+#review nav {
+	display: inline-block;
+}
+#review nav li a {
+	color: #373535;
+    font-weight: bold;
+    font-size: 14px;
+}
+#qna nav {
+	display: inline-block;
+}
+
+#qna nav li a {
+	color: #373535;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#qna-term {
+	text-align: left;
+    color: black;
+    font-size: 11px;
+    border-bottom: solid 2px #afafaf;
+    padding-bottom: 20px;
+}
+#qna-modal-section {
+	height: 50px;
 }
