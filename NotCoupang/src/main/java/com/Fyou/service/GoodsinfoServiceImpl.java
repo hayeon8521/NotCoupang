@@ -40,6 +40,12 @@ public class GoodsinfoServiceImpl implements GoodsinfoService{
 	}
 	
 	@Override
+	public List<GoodsinfoVO> goodsListKeywordAndTcate(String tCate, String keyword) {
+		// TODO Auto-generated method stub
+		return mapper.goodsListSellerkeywordAndTcate(tCate, keyword);
+	}
+	
+	@Override
 	public boolean registerGoods(GoodsinfoVO goodsinfo) {
 		return mapper.insertgoods(goodsinfo) == 1;
 	}
@@ -53,5 +59,6 @@ public class GoodsinfoServiceImpl implements GoodsinfoService{
 	public GoodsinfoVO goodsinfo(int seqGoods) {
 		return mapper.goodsinfo(seqGoods);
 	}
+
 
 }

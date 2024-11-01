@@ -22,14 +22,27 @@ public class GoodsListCont implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+		String tCate = req.getParameter("cate");
+		String kw   = req.getParameter("keyword");
 
 		//상품 정보
 		GoodsinfoService gsvc = new GoodsinfoServiceImpl();
-		List<GoodsinfoVO> list = gsvc.goodsList();
+		
+		
+		if(tCate==null||tCate.equals("")) {
+			List<GoodsinfoVO> list = gsvc.goodsListKeyword(kw);
+			req.setAttribute("goodsList", list);
+		}else {
+			List<GoodsinfoVO> list = gsvc.goodsListKeywordAndTcate(tCate, kw);
+			req.setAttribute("goodsList", list);
+		}
+		
+		//System.out.println(tCate);
 		//이미지
 		ImgService isvc = new ImgServiceImpl();
 		
-		req.setAttribute("goodsList", list);
 		
 		
 		req.getRequestDispatcher("BuyerTAM/goodsList.tiles").forward(req, resp);
