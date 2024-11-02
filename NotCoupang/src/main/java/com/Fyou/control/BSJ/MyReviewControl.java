@@ -8,11 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
-import com.Fyou.service.MemberService;
-import com.Fyou.service.MemberServiceImpl;
 import com.Fyou.service.ReviewService;
 import com.Fyou.service.ReviewServiceImpl;
-import com.Fyou.vo.MemberVO;
 import com.Fyou.vo.ReviewVO;
 
 public class MyReviewControl implements Control {

@@ -1,7 +1,6 @@
 package com.Fyou.control.CTB;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,19 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
-import com.Fyou.service.AnswerService;
-import com.Fyou.service.AnswerServiceImpl;
 import com.Fyou.service.GoodsinfoService;
 import com.Fyou.service.GoodsinfoServiceImpl;
 import com.Fyou.service.ImgService;
 import com.Fyou.service.ImgServiceImpl;
-import com.Fyou.service.ReviewService;
-import com.Fyou.service.ReviewServiceImpl;
-import com.Fyou.vo.AnswerVO;
-import com.Fyou.vo.AskVO;
 import com.Fyou.vo.GoodsinfoVO;
 import com.Fyou.vo.ImgVO;
-import com.Fyou.vo.ReviewVO;
 
 public class GoodsinfoCont implements Control {
 

@@ -8,13 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
-import com.Fyou.service.CategoriService;
-import com.Fyou.service.CategoriServiceImpl;
 import com.Fyou.service.GoodsinfoService;
 import com.Fyou.service.GoodsinfoServiceImpl;
 import com.Fyou.service.ImgService;
 import com.Fyou.service.ImgServiceImpl;
-import com.Fyou.vo.CategoriVO;
 import com.Fyou.vo.GoodsinfoVO;
 
 public class GoodsListCont implements Control {
