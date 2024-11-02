@@ -1,4 +1,4 @@
-package com.Fyou.LSH;
+package com.Fyou.control.LSH;
 
 import java.io.IOException;
 import java.util.List;
