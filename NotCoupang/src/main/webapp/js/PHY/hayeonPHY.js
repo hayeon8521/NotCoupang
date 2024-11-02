@@ -9,6 +9,8 @@ $(function() {
 });
 
 function loginAction() {
+	let spinner = document.querySelector('.spinnermap');
+	spinner.style.display = 'flex';
 	let id = document.querySelector('#id').value;
 	let pw = document.querySelector('#pw').value;
 	console.log(id + ' ' + pw);
@@ -31,6 +33,7 @@ function loginAction() {
 				} else if (result.retCode == 'FAIL') {
 					console.log('실패');
 					document.querySelector('#pwconfig').innerHTML = "ID와 PW 가 다릅니다 다시 시도해주세요!";
+					spinner.style.display = 'none';
 				}
 			})
 			.fail(err => console.log(err));  // 세미콜론 추가
