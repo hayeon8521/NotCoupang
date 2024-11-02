@@ -129,13 +129,7 @@ p{
 	border-bottom: 1px solid #555;
 }
 
-#detail > h4{
-	text-align: left;
-	margin-top: 25px;
-    color: #555;
-    font-weight: bold;
-    font-size: 18px;
-}
+
 
 #bottomSection {
     top: 0;
@@ -157,12 +151,12 @@ p{
 	border-top: 1px solid #555;
 	border-bottom: 1px solid #555;
 }
-.bottomAlign h4 {
+.bottomAlign h3 {
+	padding-left: 10px;
 	text-align: left;
 	margin-top: 25px;
-    color: #555;
+    color: black;
     font-weight: bold;
-    font-size: 18px;
 }
 #terms p {
 	text-align: left;
@@ -224,11 +218,7 @@ p{
 #review nav {
 	display: inline-block;
 }
-#review nav li a {
-	color: #373535;
-    font-weight: bold;
-    font-size: 14px;
-}
+
 #qna nav {
 	display: inline-block;
 }
@@ -248,4 +238,43 @@ p{
 }
 #qna-modal-section {
 	height: 50px;
+}
+
+.review-content ul{
+	list-style: none;
+    text-align: left;
+    border: solid 1px #ddd;
+    color: black;
+    border-radius: 6px;
+    padding: 10px 26px;
+    width: 86%;
+    margin: 40px auto;
+	
+}
+.qna-content ul{
+	list-style: none;
+    text-align: left;
+    border: solid 1px #ddd;
+    color: black;
+    border-radius: 6px;
+    padding: 10px 26px;
+    width: 86%;
+    margin: 40px auto;
+	
+}
+.page-link {
+    border: 1px solid #dfdfdf;
+}
+.now-rpage-Oncolor {
+	--bs-pagination-bg: #4285f4;
+    --bs-pagination-color: white;
+}
+
+.now-qpage-Oncolor {
+	--bs-pagination-bg: #4285f4;
+    --bs-pagination-color: white;
+}
+
+.answerSt {
+	padding-left: 15px;
 }

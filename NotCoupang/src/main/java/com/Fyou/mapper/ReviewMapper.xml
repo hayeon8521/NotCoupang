@@ -2,60 +2,63 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.Fyou.mapper.ReviewMapper">
 	<select id="reviews" resultType="review">
 		select *
-		from   tim_review
+		from tim_review
+	</select>
+
+	<select id="totalReview" resultType="int">
+		select count(1)
+		from
+		tim_review
+		where goods_num = #{gno}
 	</select>
 
 	<select id="selectReview" resultType="review">
-		select a.* 
-		from ( select rownum ru, r.* 
-			   from tim_review r 
-		 	   where goods_num = #{gno}
-			   order by 2 desc) a 
-		where a.ru > (#{page} - 1) * 5 
+		SELECT *
+		FROM (SELECT ROWNUM ru, r.*
+			  FROM (SELECT *
+		 			FROM tim_review
+					WHERE goods_num = #{gno} 
+					ORDER BY REVIEW_DATE DESC) r) a
+		WHERE a.ru > (#{page} - 1) * 5 
 		<![CDATA[
-		and a.ru <= #{page} * 5 
-		]]>
+  		AND a.ru <= #{page} * 5
+  		]]>
 	</select>
-	<!-- 
-	select *
-		from tim_review
-		where goods_num = #{goodsNum}
-	
-	 -->
-	
-	<select id="memberReview" parameterType="String" resultType="review">
+
+	<select id="memberReview" parameterType="String"
+		resultType="review">
 		select *
 		from tim_review
 		where buyer_id = #{buyerId}
 	</select>
-	
-	<insert id="insertReview"  parameterType="review">
+
+	<insert id="insertReview" parameterType="review">
 		insert into tim_review(
-				seq_review,
-				goods_num,
-				review,
-				buyer_id)
-		values	(seq_review.nextVal,
-				 #{goodsNum},
-				 #{review},
-				 #{buyerId})
+		seq_review,
+		goods_num,
+		review,
+		buyer_id)
+		values (seq_review.nextVal,
+		#{goodsNum},
+		#{review},
+		#{buyerId})
 	</insert>
-	
+
 	<delete id="deleteReview" parameterType="String">
 		delete from tim_review
-		where  buyer_id = #{buyerId}
+		where buyer_id = #{buyerId}
 	</delete>
-	
+
 	<update id="updateReview" parameterType="review">
 		update tim_review
-		set    review_date = sysdate
-			<if test="review != null">
-				,review = #{review}
-			</if>
-		where  goods_num = #{goodsNum}
+		set review_date = sysdate
+		<if test="review != null">
+			,review = #{review}
+		</if>
+		where goods_num = #{goodsNum}
 	</update>
 </mapper>

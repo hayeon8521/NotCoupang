@@ -58,4 +58,9 @@ public class AnswerServiceImpl implements AnswerService {
 	public boolean insertAnswer(AnswerVO answer) {
 		return mapper.insertAnswer(answer) == 1;
 	}
+
+	@Override
+	public int askTotalCnt(int goodsNum) {
+		return mapper.askTotalCnt(goodsNum);
+	}
 }

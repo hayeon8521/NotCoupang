@@ -11,6 +11,9 @@ public interface ReviewMapper {
 	//모든 리뷰
 	public List<ReviewVO> reviews();
 	
+	//총 리뷰 개수
+	public int totalReview(@Param("gno")int gno);
+	
 	//해당 상품번호에 해당하는 리뷰 리스트
 	public List<ReviewVO> selectReview(@Param("gno")int gno, @Param("page")int page);
 	

@@ -85,6 +85,12 @@
 			<artifactId>gson</artifactId>
 			<version>2.11.0</version>
 		</dependency>
+		<!-- org.json.JSONObject 라이브러리 (두개이상의 리스트를 json문자열로 바꿔 웹으로 전송할 수 있음) -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20210307</version>
+		</dependency>
 
 	</dependencies>
 

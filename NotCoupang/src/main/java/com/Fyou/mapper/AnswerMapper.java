@@ -26,4 +26,6 @@ public interface AnswerMapper {
 	public int updateAnswer(int seq_answer, String answer);
 	// 답변 내역 작성
 	public int insertAnswer(AnswerVO answer);
+	//문의 총 개수 가져오기
+	public int askTotalCnt(@Param("goods_num") int goodsNum);
 }

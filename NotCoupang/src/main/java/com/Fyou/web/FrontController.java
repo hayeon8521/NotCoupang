@@ -22,8 +22,11 @@ import com.Fyou.control.BSJ.MyOrderListControl;
 import com.Fyou.control.BSJ.MyPageControl;
 import com.Fyou.control.BSJ.MyReviewControl;
 import com.Fyou.control.CTB.CartViewCont;
+import com.Fyou.control.CTB.QnaListCont;
+import com.Fyou.control.CTB.ReviewCountCont;
 import com.Fyou.control.CTB.ReviewListCont;
-import com.Fyou.control.CTB.goodsinfoCont;
+import com.Fyou.control.CTB.AskCountCont;
+import com.Fyou.control.CTB.GoodsinfoCont;
 import com.Fyou.control.PHY.cartViewCont;
 import com.Fyou.control.PHY.joingconfigform;
 import com.Fyou.control.PHY.joingform;
@@ -330,9 +333,19 @@ public class FrontController extends HttpServlet {
 		//신화 사용공간 끝
 		
 		//태백 사용공간
-		map.put("/goodsinfo.do", new goodsinfoCont());
+		
+		//상세페이지 정보
+		map.put("/goodsinfo.do", new GoodsinfoCont());
+		//장바구니 담기
 		map.put("/cartView.do", new CartViewCont());	
+		//리뷰 리스트
 		map.put("/reviewList.do", new ReviewListCont());
+		//리뷰 개수(페이징 관련)
+		map.put("/reviewCount.do", new ReviewCountCont());
+		//문의 답변 리스트
+		map.put("/qnaList.do", new QnaListCont());
+		//문의 개수
+		map.put("/askCount.do", new AskCountCont());
 		
 		
 		
