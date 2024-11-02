@@ -23,6 +23,13 @@ public class logingconfingform implements Control {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		
+		//원래는 디비가 너무 많아서 조회하는데 시간이 걸리는거 인데 것멋들어진 느낌으로 쿠팡이랑 똑같이 표현한다고 넣음
+		try {
+			Thread.sleep(200);
+		}catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		Map<String, Object> result = new HashMap<>();
 		
 		MemberService svc = new MemberServiceImpl();

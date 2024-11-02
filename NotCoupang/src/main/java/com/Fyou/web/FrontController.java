@@ -28,6 +28,7 @@ import com.Fyou.control.CTB.ReviewCountCont;
 import com.Fyou.control.CTB.ReviewListCont;
 import com.Fyou.control.LSH.GoodsListCont;
 import com.Fyou.control.LSH.welcomeCont;
+import com.Fyou.control.PHY.cartViewCNTCont;
 import com.Fyou.control.PHY.cartViewCont;
 import com.Fyou.control.PHY.joingconfigform;
 import com.Fyou.control.PHY.joingform;
@@ -452,7 +453,7 @@ public class FrontController extends HttpServlet {
 		map.put("/joinconfig.do", new joingconfigform());	//아이디 중복 확인페이지
 		map.put("/joingogo.do", new joingogoCont());		//회원가입 확인 처리 페이지
 		map.put("/cartViewing.do", new cartViewCont());		//장바구니 페이지
-		
+		map.put("/cartViewcount.do", new cartViewCNTCont());		//장바구니 상품 수량변경
 		
 		
 		

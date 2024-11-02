@@ -45,6 +45,19 @@ h1 {
 	text-align: left;
 	font-weight: bold;
 }
+.spinnermap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	display: none;
+}
 </style>
 <%
     String LOGID = (String) session.getAttribute("LOGID");
@@ -76,6 +89,14 @@ h1 {
 <p><%=LOGNAME %></p>
 <p><%=MEMBERDIVISION %></p>
  -->
+ <div class="spinnermap">
+	<div class="text-center">
+		<div class="spinner-border text-primary" style="width: 5rem; height: 5rem;" role="status">
+			<span class="visually-hidden">기다려!</span>
+		</div>
+	</div>
+</div>
+
 <div class="sidediv">
 	<h1>
 		<a href="/NotCoupang/welcome.do">
