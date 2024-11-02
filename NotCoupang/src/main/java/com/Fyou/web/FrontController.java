@@ -123,10 +123,10 @@ public class FrontController extends HttpServlet {
 		//서진 사용공간
 		//회원 마이페이지 관련
 		
-		//주문목록 orderList.do /  OrderListControl.java
+		//주문목록 
 		map.put("/myOrderList.do", new MyOrderListControl());
 		
-		//회원정보 조회 및 수정 memberInfo.do / MemberInfoCont.java
+		//회원정보 조회 및 수정 
 		map.put("/myPage.do", new MyPageControl());
 		
 		//내 리뷰 관리
