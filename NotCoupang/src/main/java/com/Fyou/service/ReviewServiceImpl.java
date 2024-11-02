@@ -38,6 +38,13 @@ public class ReviewServiceImpl implements ReviewService{
 		return mapper.updateReview(review) == 1;
 	}
 
+	@Override
+	public int totalReview(int gno) {
+		return mapper.totalReview(gno);
+	}
+
+	
+
 	
 	
 	 

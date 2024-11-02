@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         console.log('다음 검증 시작!');
         console.log('회원가입 검증 끝!');
-
+        
         const isIdValid = await foucsOutjoinId();
         if (!isIdValid) {
             console.log('ID 검증 실패!');

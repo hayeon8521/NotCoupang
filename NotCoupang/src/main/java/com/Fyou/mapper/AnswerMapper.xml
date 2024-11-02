@@ -82,4 +82,10 @@
    			#{answer}, 
      		#{sellerId})
 	</insert>
+	
+	<select id="askTotalCnt" parameterType="int">
+		select count(1)
+		from   tim_ask
+		where  goods_num = #{goods_num}
+	</select>
 </mapper>

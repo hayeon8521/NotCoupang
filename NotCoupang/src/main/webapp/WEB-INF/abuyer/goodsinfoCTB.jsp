@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -58,7 +59,7 @@
 						<!-- 판매자명 -->
 						<p>판매자: ${goodsinfo.goodsMid }</p>
 						<!-- 리뷰 개수 -->
-						<p>리뷰(${reviews.size() })</p>
+						<p>리뷰(<span class="totalReviewCnt"></span>)</p>
 					</div>
 					<hr>
 					<p>
@@ -78,7 +79,7 @@
 				<li class="makeBold"><a href="#qna">상품문의</a></li>
 			</ul>
 			<div id="detail">
-				<h4>상품상세</h4>
+				<!-- 바로 사진 들어갑니다. -->
 				<!-- 사진 가져오기 최대 5개 -->
 				<c:forEach var="imgs" items="${imgs }">
 					<!-- 이미지 폴더 위치 넣기 + 파일이름 db에서 가져오기-->
@@ -89,34 +90,21 @@
 				<br> <br> <br>
 			</div>
 			<div id="review" class="bottomAlign">
-				<h4>상품평</h4>
-				<p>상품평 리스팅</p>
+				<h3>상품평</h3>
 				<div class="review-content">
-					<span></span><span></span>
-					<!-- 상품리뷰 들어감 -->
-					<span></span>
+					<!-- 상품평 리스팅-->
 				</div>
-				<br> <br> <br>
-				<nav aria-label="Page navigation pageCenter">
-					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&lt;</span>
-						</a></li>
+				<div class="review-paging">
+				<!-- 페이징 -->				
+				</div>
+				
+				
 
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&gt;</span>
-						</a></li>
-					</ul>
-				</nav>
 				<br> <br>
 			</div>
 			<div id="qna" class="bottomAlign">
 				<div id="qna-modal-section">
-					<h4>상품문의하기</h4>
+					<h3>상품문의하기</h3>
 				
 				</div>
 				<ul id="qna-term">
@@ -126,27 +114,14 @@
 					<li>"해당 상품 자체"와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배 등의 글은 예고 없이 이동, 노출제한, 삭제 등의 조치가 취해질 수 있습니다.</li>
 					<li>공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한 개인정보는 절대 남기지 말아주세요.</li>
 				</ul>
-				<div class="review-content">
-					<span></span><span></span>
-					<!-- 상품문의 들어감 -->
-					<span></span>
+				<div class="qna-content">
+					<div class="qna-content">
+						
+					</div>
+					<div class="qna-paging">
+					<!-- 페이징 -->				
+					</div>
 				</div>
-				<br> <br> <br>
-				<nav aria-label="Page navigation pageCenter">
-					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&lt;</span>
-						</a></li>
-
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&gt;</span>
-						</a></li>
-					</ul>
-				</nav>
 				<br> <br>
 			</div>
 			<div id="terms">
@@ -207,6 +182,7 @@
 	//로그인 기능 구현후에 위에 코드 주석 풀 예정입니다. 아래는 임시!
 	const logID = "AddTestOnInfo";
 	var gno = '${ goodsinfo.seqGoods }';
+	var mid = '${goodsinfo.goodsMid}';
 	
 	//숫자 1000단위마다 콤마찍기. 숫자로 가져와서 바꾸니가 문자열로 만들지 않았음.
 	let price = ${goodsinfo.goodsPrice};

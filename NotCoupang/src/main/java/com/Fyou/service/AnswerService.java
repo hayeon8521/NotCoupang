@@ -15,4 +15,5 @@ public interface AnswerService {
 	public boolean updateAsk(int seq_ask, String ask);
 	public boolean updateAnswer(int seq_answer, String answer);
 	public boolean insertAnswer(AnswerVO answer);
+	public int askTotalCnt(int goodsNum);
 }
