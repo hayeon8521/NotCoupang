@@ -15,7 +15,6 @@ import com.Fyou.CMG.Admin_insert;
 import com.Fyou.CMG.Admin_insert_control;
 import com.Fyou.CMG.Admin_list;
 import com.Fyou.CMG.Admin_main;
-import com.Fyou.LSH.GoodsListCont;
 import com.Fyou.commom.Control;
 import com.Fyou.control.BSJ.MyAskControl;
 import com.Fyou.control.BSJ.MyOrderListControl;
@@ -24,6 +23,8 @@ import com.Fyou.control.BSJ.MyReviewControl;
 import com.Fyou.control.CTB.CartViewCont;
 import com.Fyou.control.CTB.ReviewListCont;
 import com.Fyou.control.CTB.goodsinfoCont;
+import com.Fyou.control.LSH.GoodsListCont;
+import com.Fyou.control.LSH.welcomeCont;
 import com.Fyou.control.PHY.cartViewCont;
 import com.Fyou.control.PHY.joingconfigform;
 import com.Fyou.control.PHY.joingform;
@@ -230,6 +231,7 @@ public class FrontController extends HttpServlet {
 		//서진 사용공간 끝
 		
 		//신화 사용공간
+		map.put("/welcome.do", new welcomeCont());
 		map.put("/goodsList.do", new GoodsListCont());
 		
 		
