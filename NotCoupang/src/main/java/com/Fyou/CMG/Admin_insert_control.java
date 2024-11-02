@@ -1,7 +1,7 @@
-package com.Fyou.web;
+package com.Fyou.CMG;
 
 import java.io.IOException;
-import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.Fyou.commom.Control;
 import com.Fyou.service.GoodsinfoService;
 import com.Fyou.service.GoodsinfoServiceImpl;
+import com.Fyou.service.ImgService;
+import com.Fyou.service.ImgServiceImpl;
 import com.Fyou.vo.GoodsinfoVO;
+import com.Fyou.vo.ImgVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -34,7 +37,7 @@ public class Admin_insert_control implements Control {
 		int goods_price = Integer.parseInt(mr.getParameter("goods_price"));
 		int goods_inven = Integer.parseInt(mr.getParameter("goods_inven"));
 		String goods_catename = mr.getParameter("goods_catename");
-		String img_thumbnail = mr.getParameter("img_thumbnail");
+		String img_thumbnail = mr.getFilesystemName("img_thumbnail");
 		
 		GoodsinfoVO result = new GoodsinfoVO();
 		result.setGoodsName(goods_name);
@@ -51,6 +54,19 @@ public class Admin_insert_control implements Control {
 		} else {
 			System.out.println("fail");
 		}
-	}
-
+		
+		List<GoodsinfoVO> list = gsvc.goodsListMID("test"); // 나중에 세션으로 받는 아이디로 변경
+		
+		ImgService isvc = new ImgServiceImpl();
+		ImgVO ivo = new ImgVO();
+		ivo.setGoodsNum(list.get(0).getSeqGoods());
+		ivo.setImgUrl(img_thumbnail);
+		
+		if (isvc.addImages(ivo)) {
+			System.out.println("success");
+		} else {
+			System.out.println("fail");
+		}
+		resp.sendRedirect("Admin_main.do");
+	}	
 }

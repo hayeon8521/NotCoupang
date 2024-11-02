@@ -9,10 +9,28 @@
 		from   tim_review
 	</select>
 
-	<select id="selectReview" parameterType="int" resultType="review">
-		select *
+	<select id="selectReview" resultType="review">
+		select a.* 
+		from ( select rownum ru, r.* 
+			   from tim_review r 
+		 	   where goods_num = #{gno}
+			   order by 2 desc) a 
+		where a.ru > (#{page} - 1) * 5 
+		<![CDATA[
+		and a.ru <= #{page} * 5 
+		]]>
+	</select>
+	<!-- 
+	select *
 		from tim_review
 		where goods_num = #{goodsNum}
+	
+	 -->
+	
+	<select id="memberReview" parameterType="String" resultType="review">
+		select *
+		from tim_review
+		where buyer_id = #{buyerId}
 	</select>
 	
 	<insert id="insertReview"  parameterType="review">

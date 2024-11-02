@@ -1,4 +1,4 @@
-package CMG;
+package com.Fyou.control.PHY;
 
 import java.io.IOException;
 
@@ -8,11 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
 
-public class Admin_main implements Control {
+public class joingform implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("CMG/Admin_main.jsp").forward(req, resp);
+		req.getRequestDispatcher("OnlyBody/joinFormPHY.tiles").forward(req, resp);
 	}
-
 }

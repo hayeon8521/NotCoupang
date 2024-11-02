@@ -10,19 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Fyou.BSJ.MyOrderListControl;
-import com.Fyou.BSJ.MyPageControl;
-import com.Fyou.PHY.joingconfigform;
-import com.Fyou.PHY.joingform;
-import com.Fyou.PHY.logingconfingform;
-import com.Fyou.PHY.logingform;
-import com.Fyou.PHY.logout;
+import com.Fyou.CMG.Admin_goodsinfo;
+import com.Fyou.CMG.Admin_insert;
+import com.Fyou.CMG.Admin_insert_control;
+import com.Fyou.CMG.Admin_list;
+import com.Fyou.CMG.Admin_main;
+import com.Fyou.LSH.GoodsListCont;
 import com.Fyou.commom.Control;
-import com.Fyou.control.goodsinfoCTB.goodsinfoCont;
-
-import CMG.Admin_insert;
-import CMG.Admin_main;
-
+import com.Fyou.control.BSJ.MyAskControl;
+import com.Fyou.control.BSJ.MyOrderListControl;
+import com.Fyou.control.BSJ.MyPageControl;
+import com.Fyou.control.BSJ.MyReviewControl;
+import com.Fyou.control.CTB.CartViewCont;
+import com.Fyou.control.CTB.ReviewListCont;
+import com.Fyou.control.CTB.goodsinfoCont;
+import com.Fyou.control.PHY.cartViewCont;
+import com.Fyou.control.PHY.joingconfigform;
+import com.Fyou.control.PHY.joingform;
+import com.Fyou.control.PHY.joingogoCont;
+import com.Fyou.control.PHY.logingconfingform;
+import com.Fyou.control.PHY.logingform;
+import com.Fyou.control.PHY.logout;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -49,6 +57,8 @@ public class FrontController extends HttpServlet {
 		map.put("/Admin_main.do", new Admin_main());
 		map.put("/Admin_insert.do", new Admin_insert());
 		map.put("/Admin_insert_control.do", new Admin_insert_control());
+		map.put("/Admin_list.do", new Admin_list());
+		map.put("/Admin_goodsinfo.do", new Admin_goodsinfo());
 		
 		
 		
@@ -115,18 +125,15 @@ public class FrontController extends HttpServlet {
 		
 		//주문목록 orderList.do /  OrderListControl.java
 		map.put("/myOrderList.do", new MyOrderListControl());
-		/*
-		//리뷰관리 review.do / ReviewControl.java 
-		map.put("/myReview.do", new MyReviewControl());
-		//문의내역 ask.do / AskControl.java
-		map.put("/myAsk.do", new MyReviewControl());
-		*/
 		
 		//회원정보 조회 및 수정 memberInfo.do / MemberInfoCont.java
 		map.put("/myPage.do", new MyPageControl());
 		
+		//내 리뷰 관리
+		map.put("/myReview.do", new MyReviewControl());
 		
-		
+		//문의내역 
+		map.put("/myAsk.do", new MyAskControl());
 		
 		
 		
@@ -223,7 +230,7 @@ public class FrontController extends HttpServlet {
 		//서진 사용공간 끝
 		
 		//신화 사용공간
-		
+		map.put("/goodsList.do", new GoodsListCont());
 		
 		
 		
@@ -324,8 +331,8 @@ public class FrontController extends HttpServlet {
 		
 		//태백 사용공간
 		map.put("/goodsinfo.do", new goodsinfoCont());
-		
-		
+		map.put("/cartView.do", new CartViewCont());	
+		map.put("/reviewList.do", new ReviewListCont());
 		
 		
 		
@@ -423,13 +430,13 @@ public class FrontController extends HttpServlet {
 		//태백 사용공간 끝
 		
 		//하연 사용공간
-		map.put("/login.do", new logingform());
-		map.put("/loginconfig.do", new logingconfingform());
-		map.put("/logout.do", new logout());
-		map.put("/join.do", new joingform());
-		map.put("/joinconfig.do", new joingconfigform());
-		
-		
+		map.put("/login.do", new logingform());		//로그인 페이지
+		map.put("/loginconfig.do", new logingconfingform());	//로그인 확인 페이지
+		map.put("/logout.do", new logout());				//로그아웃 페이지
+		map.put("/join.do", new joingform());				//회원가입페이지
+		map.put("/joinconfig.do", new joingconfigform());	//아이디 중복 확인페이지
+		map.put("/joingogo.do", new joingogoCont());		//회원가입 확인 처리 페이지
+		map.put("/cartViewing.do", new cartViewCont());		//장바구니 페이지
 		
 		
 		

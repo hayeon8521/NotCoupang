@@ -1,4 +1,4 @@
-package com.Fyou.PHY;
+package com.Fyou.CMG;
 
 import java.io.IOException;
 
@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
 
-public class logingform implements Control {
+public class Admin_insert implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("OnlyBody/loginFormPHY.tiles").forward(req, resp);
+		req.getRequestDispatcher("CMG/Admin_insert.jsp").forward(req, resp);
+
 	}
+
 }

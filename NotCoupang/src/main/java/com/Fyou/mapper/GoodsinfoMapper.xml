@@ -52,6 +52,17 @@
 		ORDER BY seq_goods DESC
 	</select>
 	
+	<!-- 키워드 검색 카테고리 조회, 조건 카테고리 대분류 추가 (LSH)-->
+	<select id="goodsListSellerkeywordAndTcate" resultType="goodsinfo">
+		SELECT g.*
+		FROM tim_goodsinfo g
+		JOIN tim_categori c ON g.goods_catename = c.b_cate
+		WHERE goods_state NOT IN ('end')
+		AND c.t_cate = #{tcate} 
+		AND g.goods_name like '%'||#{keyword}||'%'
+		ORDER BY seq_goods DESC
+	</select>
+	
 	<!-- 상품 등록 -->
 	<insert id="insertgoods" parameterType="goodsinfo">
 		insert into tim_goodsinfo

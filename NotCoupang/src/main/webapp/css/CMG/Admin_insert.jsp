@@ -51,27 +51,19 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active">
-                <a class="nav-link" href="Admin_insert.do">
-                    <span>상품 등록</span></a>
-            </li>
+			<li class="nav-item active"><a class="nav-link"
+				href="Admin_insert.do"> <span>상품 등록</span></a></li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="Admin_list.do?page=1">
-                    <span>등록 상품 조회</span></a>
-            </li>
+			<li class="nav-item active"><a class="nav-link"
+				href="index_edit.html"> <span>2번 카테고리 이동</span></a></li>
 
 
-            <li class="nav-item active">
-                <a class="nav-link" href="index_edit.html">
-                    <span>3번 카테고리 이동</span></a>
-            </li>
+			<li class="nav-item active"><a class="nav-link"
+				href="index_edit.html"> <span>3번 카테고리 이동</span></a></li>
 
 
-            <li class="nav-item active">
-                <a class="nav-link" href="index_edit.html">
-                    <span>4번 카테고리 이동</span></a>
-            </li>
+			<li class="nav-item active"><a class="nav-link"
+				href="index_edit.html"> <span>4번 카테고리 이동</span></a></li>
 
 		</ul>
 		<!-- End of Sidebar -->

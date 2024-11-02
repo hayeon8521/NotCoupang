@@ -1,4 +1,4 @@
-package CMG;
+package com.Fyou.control.CMG;
 
 import java.io.IOException;
 

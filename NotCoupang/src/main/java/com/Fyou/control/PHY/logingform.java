@@ -1,4 +1,4 @@
-package com.Fyou.PHY;
+package com.Fyou.control.PHY;
 
 import java.io.IOException;
 
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Fyou.commom.Control;
 
-public class joingform implements Control {
+public class logingform implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("OnlyBody/joinFormPHY.tiles").forward(req, resp);
+		req.getRequestDispatcher("OnlyBody/loginFormPHY.tiles").forward(req, resp);
 	}
 }

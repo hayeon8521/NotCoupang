@@ -14,4 +14,12 @@
 		from   tim_categori
 		where  b_cate = #{Bcate}
 	</select> 
+	
+	<select id="listOfTcate"  resultType="categori">
+		SELECT   t_cate
+		FROM     tim_categori
+		GROUP BY t_cate
+		ORDER BY MIN(seq_cate)
+	</select>
+	
 </mapper>

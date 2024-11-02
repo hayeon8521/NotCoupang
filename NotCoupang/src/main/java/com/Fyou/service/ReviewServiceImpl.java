@@ -13,8 +13,14 @@ public class ReviewServiceImpl implements ReviewService{
 	ReviewMapper mapper = sqlSession.getMapper(ReviewMapper.class);
 	
 	@Override
-	public List<ReviewVO> reviews(int goodsNum) {
-		return mapper.selectReview(goodsNum);
+	public List<ReviewVO> reviews(int goodsNum, int page) {
+		return mapper.selectReview(goodsNum, page);
+	}
+	
+	@Override
+	public List<ReviewVO> memberReview(String buyerId) {
+		// TODO Auto-generated method stub
+		return mapper.memberReview(buyerId);
 	}
 
 	@Override
@@ -31,5 +37,9 @@ public class ReviewServiceImpl implements ReviewService{
 	public boolean modifyReview(ReviewVO review) {
 		return mapper.updateReview(review) == 1;
 	}
+
+	
+	
+	 
 
 }
