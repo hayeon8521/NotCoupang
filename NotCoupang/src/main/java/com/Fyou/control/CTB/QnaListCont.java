@@ -23,10 +23,7 @@ public class QnaListCont implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/json;charset=utf-8");
 
-		// 상품리스트 페이지에서 파라미터 변수이름을 뭘로 넘겨줄지 알아야 됨 임시로 이렇게 적었음. 나중에 파라미터 String seqGoods =
-		// "1"; 지우고 주석처리된 위에 코드 사용하기
-		// String gno = req.getParameter("gno");
-		String gno = "35";
+		 String gno = req.getParameter("gno");
 		String page = req.getParameter("page");
 		String mid = req.getParameter("mid");
 

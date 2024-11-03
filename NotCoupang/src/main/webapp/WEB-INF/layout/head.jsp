@@ -8,6 +8,7 @@
 CategoriService csvc = new CategoriServiceImpl();
 List<CategoriVO> categories = csvc.listOfTcate();
 %>
+<head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,6 +33,9 @@ List<CategoriVO> categories = csvc.listOfTcate();
 <link
 	href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 	rel="stylesheet">
+
+</head>
+
 
 <header>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light py-1">
