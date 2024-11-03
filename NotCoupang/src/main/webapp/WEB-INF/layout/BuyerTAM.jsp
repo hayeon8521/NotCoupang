@@ -8,7 +8,6 @@
 	
 	
 	<tiles:insertAttribute name="header" />
-<title>Insert title here</title>
 </head>
 <body>
 	<div class="d-flex">
@@ -17,6 +16,6 @@
 	</div>
 	
 	
-	
+	<tiles:insertAttribute name="footer" />
 </body>
 </html>

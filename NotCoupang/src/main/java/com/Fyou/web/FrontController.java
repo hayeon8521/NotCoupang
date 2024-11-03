@@ -30,14 +30,18 @@ import com.Fyou.control.CTB.ReviewListCont;
 import com.Fyou.control.CTB.SendQuestionCont;
 import com.Fyou.control.LSH.GoodsListCont;
 import com.Fyou.control.LSH.welcomeCont;
+import com.Fyou.control.PHY.cartDeleteCont;
 import com.Fyou.control.PHY.cartViewCNTCont;
 import com.Fyou.control.PHY.cartViewCont;
+import com.Fyou.control.PHY.checkoutCont;
+import com.Fyou.control.PHY.checkoutcartCont;
 import com.Fyou.control.PHY.joingconfigform;
 import com.Fyou.control.PHY.joingform;
 import com.Fyou.control.PHY.joingogoCont;
 import com.Fyou.control.PHY.logingconfingform;
 import com.Fyou.control.PHY.logingform;
 import com.Fyou.control.PHY.logout;
+import com.Fyou.control.PHY.thankyouCont;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -459,9 +463,10 @@ public class FrontController extends HttpServlet {
 		map.put("/joingogo.do", new joingogoCont());		//회원가입 확인 처리 페이지
 		map.put("/cartViewing.do", new cartViewCont());		//장바구니 페이지
 		map.put("/cartViewcount.do", new cartViewCNTCont());		//장바구니 상품 수량변경
-		
-		
-		
+		map.put("/cartDelete.do", new cartDeleteCont());		//장바구니 상품 삭제(단건) (한번에는 ㅠㅠ 시간없어)
+		map.put("/checkout.do", new checkoutCont());		//즉시구매!
+		map.put("/checkoutcart.do", new checkoutcartCont());		//장바구니구매!
+		map.put("/thank-you.do", new thankyouCont());		//결제완료페이지
 		
 		
 		
