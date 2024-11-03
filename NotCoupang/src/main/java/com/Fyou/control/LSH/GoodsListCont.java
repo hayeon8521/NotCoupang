@@ -30,9 +30,13 @@ public class GoodsListCont implements Control {
 		
 		if(tCate==null||tCate.equals("")) {
 			List<GoodsinfoVO> list = gsvc.goodsListKeyword(kw);
+			req.setAttribute("cate", tCate);
+			req.setAttribute("keyword", kw);
 			req.setAttribute("goodsList", list);
 		}else {
 			List<GoodsinfoVO> list = gsvc.goodsListKeywordAndTcate(tCate, kw);
+			req.setAttribute("cate", tCate);
+			req.setAttribute("keyword", kw);
 			req.setAttribute("goodsList", list);
 		}
 		
