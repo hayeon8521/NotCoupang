@@ -28,7 +28,7 @@
 
 	<delete id="deleteCart" parameterType="cart">
 		delete from tim_cart
-		where member_id = #{memberId} and goods_num = #{goodsNum};
+		where member_id = #{memberId} and goods_num = #{goodsNum}
 	</delete>
 	
 	<update id="updateCart" parameterType="cart">
@@ -37,4 +37,10 @@
 		where member_id = #{memberId} and goods_num = #{goodsNum}
 	</update>
 
+	<select id="selectOneCart" resultType="cart">
+		select *
+		from tim_cart
+		where member_id = #{memberId}
+		and goods_num = #{goodsNum}
+	</select>
 </mapper>
