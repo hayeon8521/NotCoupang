@@ -21,5 +21,6 @@ public interface CartService {
 	//카트 수정
 	boolean updateCart(CartVO cart);
 	
-	
+	//카트 조회(아이디 상품 조합해서 1개)
+	public CartVO selectOneCart(String memberId, int goodsNum);
 }

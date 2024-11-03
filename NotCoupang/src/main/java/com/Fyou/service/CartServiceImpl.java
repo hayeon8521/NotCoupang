@@ -39,6 +39,11 @@ public class CartServiceImpl implements CartService {
 		return mapper.updateCart(cart) == 1;
 	}
 
+	@Override
+	public CartVO selectOneCart(String memberId, int goodsNum) {
+		return mapper.selectOneCart(memberId, goodsNum);
+	}
+
 	
 	
 

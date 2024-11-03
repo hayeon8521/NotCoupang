@@ -46,7 +46,7 @@ public class cartViewCont implements Control {
 		//내 아이디의 카트리스트 정보를 가져와서 담음 ( 상품번호, 재고수량 )
 		List<CartVO> cartList = svcC.selectCart(LOGID);
 		//카트정보 유무에 따라서 화면 처리
-		if(cartList != null) {
+		if(cartList != null  && !cartList.isEmpty()) {
 			//장바구니 리스트가 있으면 장바구니에 담길 나머지 정보도 가져옴
 			for (CartVO item : cartList) {
 				//장바구니정보(cartList)로 상품정보를 가져와서 mygoods객체에 담음
