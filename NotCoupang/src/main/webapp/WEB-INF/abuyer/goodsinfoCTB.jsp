@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<% String id = (String) session.getAttribute("LOGID");%>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
 <link rel="stylesheet"
@@ -12,17 +13,19 @@
 <link rel="stylesheet" href="css/CTB/goodsinfo.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	document.title = "상품 상세 페이지${goodsinfo.goodsName}";
+</script>
+</head>
+
 <body>
 	<div id="container">
 		<section class="py-5">
 			<div class="fixed-layout">
 
-				<!-- 섬네일 이미지 600*700-->
-				<div class="content-left">
-					<img class="card-img-top mb-5 mb-md-0" id="sumnail"
-						src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..."
-						style="width: 530px; height: 600px;" />
-				</div>
+				<!-- 섬네일 이미지 530*600-->
+				<!-- 테스트 이미지 https://dummyimage.com/600x700/dee2e6/6c757d.jpg -->
+				<div class="content-left"></div>
 				<div class="content-right" id="topGoodsinfo">
 					<br>
 					<!-- 상품명 -->
@@ -32,8 +35,8 @@
 						<!-- 상품가격 -->
 						<span id="price" class="goodsPrice makeBold"></span>
 						<!-- 상품재고 -->
-						<span id="stock-area" class="coupangGray">재고:
-							<span>${goodsinfo.goodsInven}</span>개</span>
+						<span id="stock-area" class="coupangGray">재고: <span>${goodsinfo.goodsInven}</span>개
+						</span>
 						<div class="topShipInfo makeBold">
 							<p>
 								무료배송 <span class="coupangGray">반품비 5,000원</span>
@@ -41,12 +44,12 @@
 							<p>배송사: CJ 대한통운</p>
 						</div>
 					</div>
-					
+
 					<div id="action-btn-menu" class="d-flex">
 						<input class="form-control text-center me-3" id="inputQuantity"
 							type="number" value="1" style="max-width: 4rem" />
 						<!-- 장바구니 버튼 -->
-						<button type="button" id="addCartBtn" 
+						<button type="button" id="addCartBtn"
 							class="btn btn-light coupangBlueBorder btnWid addCart addCartColor custom-radius">
 							장바구니 담기</button>
 						<!-- 바로 구매 버튼 -->
@@ -59,12 +62,14 @@
 						<!-- 판매자명 -->
 						<p>판매자: ${goodsinfo.goodsMid }</p>
 						<!-- 리뷰 개수 -->
-						<p>리뷰(<span class="totalReviewCnt"></span>)</p>
+						<p>
+							리뷰(<span class="totalReviewCnt"></span>)
+						</p>
 					</div>
 					<hr>
 					<p>
-						<span class="makeBold">적립</span>&nbsp;&nbsp;&nbsp;최대 5,000원 낫쿠팡캐시적립
-						· 낫쿠페이 머니 결제시
+						<span class="makeBold">적립</span>&nbsp;&nbsp;&nbsp;최대 5,000원
+						낫쿠팡캐시적립 · 낫쿠페이 머니 결제시
 					</p>
 					<hr>
 				</div>
@@ -81,45 +86,67 @@
 			<div id="detail">
 				<!-- 바로 사진 들어갑니다. -->
 				<!-- 사진 가져오기 최대 5개 -->
-				<c:forEach var="imgs" items="${imgs }">
-					<!-- 이미지 폴더 위치 넣기 + 파일이름 db에서 가져오기-->
-					<img src="" class="detailPic" alt="...">
-				</c:forEach>
-				<p>사진 영역</p>
 
-				<br> <br> <br>
+
+
 			</div>
 			<div id="review" class="bottomAlign">
-				<h3>상품평</h3>
+				<h3 id="moveR">상품평</h3>
 				<div class="review-content">
 					<!-- 상품평 리스팅-->
 				</div>
 				<div class="review-paging">
-				<!-- 페이징 -->				
+					<!-- 페이징 -->
 				</div>
-				
-				
+
+
 
 				<br> <br>
 			</div>
 			<div id="qna" class="bottomAlign">
 				<div id="qna-modal-section">
 					<h3>상품문의하기</h3>
-				
+
+					<button type="button" class="btn btn-light" id="open-modal-Btn">문의하기</button>
+
+					<div class="Qna-modal">
+						<div class="modal-content">
+							<div>
+								<span class="close">&times;</span>
+								<h3>문의하기</h3>
+							</div>
+							<hr>
+							<div>
+								<table>
+									<tbody>
+										<tr>
+											<th>문의내용</th>
+											<td><textarea cols="30" rows="5" autofocus placeholder="문의사항을 입력해주세요."></textarea></td>
+										</tr>
+									</tbody>
+								</table>
+							<div class="modalBtn">
+								<button type="button" class="btn btn-primary submit-qna">확인</button>
+								<button type="button" class="btn btn-info cancel-submit">취소</button>
+							</div>
+							
+							</div>
+						</div>
+					</div>
 				</div>
 				<ul id="qna-term">
 					<li>구매한 상품의 취소/반품은 마이쿠팡 구매내역에서 신청 가능합니다.</li>
 					<li>상품문의 및 후기게시판을 통해 취소나 환불, 반품 등은 처리되지 않습니다.</li>
-					<li>가격, 판매자, 교환/환불 및 배송 등 해당 상품 자체와 관련 없는 문의는 고객센터 내 1:1 문의하기를 이용해주세요.</li>
-					<li>"해당 상품 자체"와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배 등의 글은 예고 없이 이동, 노출제한, 삭제 등의 조치가 취해질 수 있습니다.</li>
+					<li>가격, 판매자, 교환/환불 및 배송 등 해당 상품 자체와 관련 없는 문의는 고객센터 내 1:1 문의하기를
+						이용해주세요.</li>
+					<li>"해당 상품 자체"와 관계없는 글, 양도, 광고성, 욕설, 비방, 도배 등의 글은 예고 없이 이동,
+						노출제한, 삭제 등의 조치가 취해질 수 있습니다.</li>
 					<li>공개 게시판이므로 전화번호, 메일 주소 등 고객님의 소중한 개인정보는 절대 남기지 말아주세요.</li>
 				</ul>
-				<div class="qna-content">
-					<div class="qna-content">
-						
-					</div>
+				<div>
+					<div class="qna-content"></div>
 					<div class="qna-paging">
-					<!-- 페이징 -->				
+						<!-- 페이징 -->
 					</div>
 				</div>
 				<br> <br>
@@ -165,11 +192,6 @@
 			</div>
 		</section>
 	</div>
-	<p>goodsinfo: ${goodsinfo}</p> <br>
-	<p>reviews: ${reviews}</p> <br>
-	<p>asks: ${asks}</p> <br>
-	<p>answer: ${answers}</p> <br>
-	<p>imgs: ${imgs}</p> <br>
 	<div id="quick-scroll">
 		<!-- 커서 클릭 모양으로 바뀌게 하기 위해 javascript:void(0) 사용, 실제 기능은 이벤트 핸들러에서 구현-->
 		<a href="javascript:void(0)" id="quick-scroll_top"
@@ -178,12 +200,12 @@
 	</div>
 </body>
 <script>
-	//const logID = '${LOGID}';
+	//const logID = '${id}';
 	//로그인 기능 구현후에 위에 코드 주석 풀 예정입니다. 아래는 임시!
-	const logID = "AddTestOnInfo";
+	const logID = "IDTestOnInfo";
 	var gno = '${ goodsinfo.seqGoods }';
 	var mid = '${goodsinfo.goodsMid}';
-	
+
 	//숫자 1000단위마다 콤마찍기. 숫자로 가져와서 바꾸니가 문자열로 만들지 않았음.
 	let price = ${goodsinfo.goodsPrice};
 	document.querySelector('#price').innerHTML = price.toLocaleString() + "원";
@@ -200,7 +222,6 @@
 		//behavior: 'smooth'
 		});
 	}
-	
 </script>
 <script src="js/CTB/goodsinfoCTB.js"></script>
 

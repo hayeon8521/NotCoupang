@@ -26,6 +26,8 @@ import com.Fyou.control.CTB.GoodsinfoCont;
 import com.Fyou.control.CTB.QnaListCont;
 import com.Fyou.control.CTB.ReviewCountCont;
 import com.Fyou.control.CTB.ReviewListCont;
+import com.Fyou.control.CTB.SendQuestionCont;
+import com.Fyou.control.CTB.InfoImgsCont;
 import com.Fyou.control.LSH.GoodsListCont;
 import com.Fyou.control.LSH.welcomeCont;
 import com.Fyou.control.PHY.cartViewCNTCont;
@@ -349,7 +351,10 @@ public class FrontController extends HttpServlet {
 		map.put("/qnaList.do", new QnaListCont());
 		//문의 개수
 		map.put("/askCount.do", new AskCountCont());
-		
+		//이미지 가져오기
+		map.put("/goodsinfoImgs.do", new InfoImgsCont());
+		//문의 보내기
+		map.put("/sendQuestion.do", new SendQuestionCont());
 		
 		
 		

@@ -67,8 +67,8 @@ p{
 }
 #sumnail {
 	position: relative;
-    width: 490px;
-    height: 650px;
+    width: 530px; 
+    height: 600px;
 }
 
 .mb-5 {
@@ -105,7 +105,7 @@ p{
     border-bottom: 1px solid #fff;
     display: inline-block;
     padding: 8px 20px 6px;
-    width: 32.97%;
+    width: 33.08%;
     border-right: 1px solid #ccc;
     background-color: #fafafa;
     text-align: center;
@@ -224,9 +224,10 @@ p{
 }
 
 #qna nav li a {
-	color: #373535;
+	padding: 8px 13px;
     font-weight: bold;
     font-size: 14px;
+    
 }
 
 #qna-term {
@@ -237,9 +238,18 @@ p{
     padding-bottom: 20px;
 }
 #qna-modal-section {
-	height: 50px;
+	margin-bottom: 10px;
 }
-
+#qna-modal-section button {
+	margin-top: 12px;
+    border-radius: 1px;
+    width: 100px;
+    right: 44%;
+    position: relative;
+    --bs-btn-bg: #ffffff;
+    --bs-btn-border-color: #0f5ca8;
+    --bs-btn-color: #0f5ca8;
+}
 .review-content ul{
 	list-style: none;
     text-align: left;
@@ -271,10 +281,70 @@ p{
 }
 
 .now-qpage-Oncolor {
-	--bs-pagination-bg: #4285f4;
-    --bs-pagination-color: white;
+	--bs-pagination-bg: #4285f4!important;
+    --bs-pagination-color: white!important;
 }
 
 .answerSt {
 	padding-left: 15px;
 }
+
+.disablePageBtn {
+	 --bs-pagination-color: #ccc;
+}
+.review-content .reviewSt li:nth-of-type(2) {
+	margin-left: 10px;
+	font-size: 13px;
+}
+.qna-font {
+	font-size: 13px;
+}
+.Qna-modal {
+	display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 4px;
+    top: 20%;
+    color: black;
+}
+.modal-content:first-child h3{
+	text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.Qna-modal textarea {
+	margin-left: 35px;
+}
+
+.modal-content>div {
+	margin: 0 auto;
+}
+.modalBtn {
+	position: relative;
+    left: 44%;
+}
+
+
