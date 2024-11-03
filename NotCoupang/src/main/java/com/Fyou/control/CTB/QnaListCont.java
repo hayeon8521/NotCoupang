@@ -46,7 +46,7 @@ public class QnaListCont implements Control {
 			AnswerVO answer = asvc.selectAnswer(askNum);
 			if (answer == null) {
 				answer = new AnswerVO();
-				answer.setAnswer("-문의에 대한 답변이 없습니다-");
+				answer.setAnswer("[문의에 대한 답변이 없습니다]");
 				answer.setAnswerDate(null);
 				answer.setAskNum(askNum);
 				answer.setSellerId(mid);

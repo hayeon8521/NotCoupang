@@ -2,7 +2,7 @@
 	장바구니 넣기, 구매하기, 페이징
 */
 //리뷰 초기페이지
-let page = 1;
+let rpage = 1;
 //QnA 초기 페이지
 let qpage = 1;
 
@@ -62,7 +62,7 @@ listReview();
 function listReview() {
 	document.querySelector('.review-content').innerHTML = '';  
 	
-	fetch('reviewList.do?gno=' + gno + '&page=' + page)
+	fetch('reviewList.do?gno=' + gno + '&page=' + rpage)
 		.then(resolve => resolve.json())
 		.then(result => {
 			result.forEach((item) => {
@@ -109,19 +109,19 @@ function makeLi(param) {
 function reviewPaging() {
 	fetch('reviewCount.do?gno=' + gno)
 		.then(resolve => resolve.json())
-		.then(createPageList)
+		.then(createRPageList)
 		.catch(err => console.log(err));
 }
 
 
 //리뷰 페이지 목록 출력
-function createPageList(result) {
+function createRPageList(result) {
 	document.querySelector(".totalReviewCnt").innerHTML = result;
 	let totalCnt = result;
 	let startPage, endPage, realEnd;
 	let prev, next;
 
-	endPage = Math.ceil(page / 5) * 5;
+	endPage = Math.ceil(rpage / 5) * 5;
 	startPage = endPage - 4;
 	realEnd = Math.ceil(totalCnt / 5);
 	endPage = endPage > realEnd ? realEnd : endPage;
@@ -135,17 +135,17 @@ function createPageList(result) {
 	list += '<nav aria-label="Page navigation pageCenter">';
 	list += '<ul class="pagination"> <li class="page-item">';
 	if (prev)
-		list += '  <a class="page-link" href="#" aria-label="Previous" data-page="' + (startPage - 1) + '">&lt;</a>';
+		list += '  <a class="page-link" href="#" aria-label="Previous" data-rpage="' + (startPage - 1) + '">&lt;</a>';
 	else
 		list += '  <span class="page-link" aria-hidden="true">&lt;</span>';
 	list += '    </li>';
 
 	//페이징	
 	for (let p = startPage; p <= endPage; p++) {
-		if (p == page) {
-			list += '<li class="page-item now-rpage-Oncolor" ><a class="page-link" href="#" data-page="' + p + '">' + p + '</a></li>';
+		if (p == rpage) {
+			list += '<li class="page-item now-rpage-Oncolor" ><a class="page-link" href="#" data-rpage="' + p + '">' + p + '</a></li>';
 		} else {
-			list += '<li class="page-item now-page"><a class="page-link" href="#" data-page="' + p + '">' + p + '</a></li>';
+			list += '<li class="page-item now-page"><a class="page-link" href="#" data-rpage="' + p + '">' + p + '</a></li>';
 		}
 
 
@@ -154,7 +154,7 @@ function createPageList(result) {
 	//다음페이지 이동
 	list += '<li class="page-item">';
 	if (next)
-		list += '  <a class="page-link" href="#" aria-label="Next" data-page="' + (endPage + 1) + '">&gt;</a>';
+		list += '  <a class="page-link" href="#" aria-label="Next" data-rpage="' + (endPage + 1) + '">&gt;</a>';
 	else
 		list += '  <span class="page-link" disabled aria-hidden="true">&gt;</span>';
 	list += '    </a></li></ul></nav>';
@@ -171,7 +171,7 @@ function linkMove() {
 			console.log(aTag.innerHTML);
 			//a태그는 원래 누르면 다른 페이지로 이동하지만, 이 코드를 통해 이동하지 않고 현재 페이지에서만 동작하도록 만들었음
 			e.preventDefault();
-			page = parseInt(aTag.dataset.page);	//a태그의 data-page="n" 이것의 n값을 가져옴
+			rpage = parseInt(aTag.dataset.rpage);	//a태그의 data-page="n" 이것의 n값을 가져옴
 
 			listReview();
 			document.querySelectorAll('.review-content ul').forEach((ul) => {
