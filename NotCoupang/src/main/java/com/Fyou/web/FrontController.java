@@ -15,18 +15,20 @@ import com.Fyou.CMG.Admin_insert;
 import com.Fyou.CMG.Admin_insert_control;
 import com.Fyou.CMG.Admin_list;
 import com.Fyou.CMG.Admin_main;
-import com.Fyou.LSH.GoodsListCont;
 import com.Fyou.commom.Control;
 import com.Fyou.control.BSJ.MyAskControl;
 import com.Fyou.control.BSJ.MyOrderListControl;
 import com.Fyou.control.BSJ.MyPageControl;
 import com.Fyou.control.BSJ.MyReviewControl;
+import com.Fyou.control.CTB.AskCountCont;
 import com.Fyou.control.CTB.CartViewCont;
+import com.Fyou.control.CTB.GoodsinfoCont;
 import com.Fyou.control.CTB.QnaListCont;
 import com.Fyou.control.CTB.ReviewCountCont;
 import com.Fyou.control.CTB.ReviewListCont;
-import com.Fyou.control.CTB.AskCountCont;
-import com.Fyou.control.CTB.GoodsinfoCont;
+import com.Fyou.control.LSH.GoodsListCont;
+import com.Fyou.control.LSH.welcomeCont;
+import com.Fyou.control.PHY.cartViewCNTCont;
 import com.Fyou.control.PHY.cartViewCont;
 import com.Fyou.control.PHY.joingconfigform;
 import com.Fyou.control.PHY.joingform;
@@ -126,10 +128,10 @@ public class FrontController extends HttpServlet {
 		//서진 사용공간
 		//회원 마이페이지 관련
 		
-		//주문목록 orderList.do /  OrderListControl.java
+		//주문목록 
 		map.put("/myOrderList.do", new MyOrderListControl());
 		
-		//회원정보 조회 및 수정 memberInfo.do / MemberInfoCont.java
+		//회원정보 조회 및 수정 
 		map.put("/myPage.do", new MyPageControl());
 		
 		//내 리뷰 관리
@@ -233,6 +235,7 @@ public class FrontController extends HttpServlet {
 		//서진 사용공간 끝
 		
 		//신화 사용공간
+		map.put("/welcome.do", new welcomeCont());
 		map.put("/goodsList.do", new GoodsListCont());
 		
 		
@@ -450,7 +453,7 @@ public class FrontController extends HttpServlet {
 		map.put("/joinconfig.do", new joingconfigform());	//아이디 중복 확인페이지
 		map.put("/joingogo.do", new joingogoCont());		//회원가입 확인 처리 페이지
 		map.put("/cartViewing.do", new cartViewCont());		//장바구니 페이지
-		
+		map.put("/cartViewcount.do", new cartViewCNTCont());		//장바구니 상품 수량변경
 		
 		
 		

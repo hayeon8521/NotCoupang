@@ -24,7 +24,6 @@
     String LOGNAME = (String) session.getAttribute("LOGNAME");
     String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 
-
 	if (LOGID == null) {
 %>
 		<script>
@@ -67,10 +66,62 @@
 		width: 25px;
 		height: 25px;
 	}
+	.allcheck {
+		width: 15px;
+		height: 15px;
+	}
+	.quantity-container {
+         display: flex;
+         align-items: center;
+         width: 150px;
+     }
+     .quantity-container button {
+         width: 30px;
+         height: 30px;
+         background-color: #007bff;
+         color: white;
+         border: none;
+         cursor: pointer;
+         font-size: 18px;
+         font-weight: bold;
+     }
+     .quantity-container input[type="number"] {
+         width: 60px;
+         height: 30px;
+         text-align: center;
+         border: 1px solid #ddd;
+         font-size: 16px;
+         margin: 0 5px;
+     }
+	 .link-dark:hover {
+		color:#007bff;
+	 }
+	 .floating {
+		position: fixed;
+	 }
+	 .spinnermap {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 9999;
+		display: none;
+	}
 </style>
 </head>
 <body style="background-color: #EBEBEB;">
-<%=LOGID %>
+	<div class="spinnermap">
+		<div class="text-center">
+			<div class="spinner-border text-primary" style="width: 5rem; height: 5rem;" role="status">
+				<span class="visually-hidden">기다려!</span>
+			</div>
+		</div>
+	</div>
 	<div class="d-flex flex-column align-items-center">
 		<div class="mt-3 mb-3" style="text-align: left; width: 980px;">
 			<a href="/NotCoupang/welcome.do">
@@ -114,39 +165,186 @@
 
 			<div class="boxPHY pt-3">
 				<div class="d-flex mb-0">
-					<div class="me-auto p-2 border border-1 rounded border-black" style="width: 600px;">
+					<div class="me-auto p-2 border border-1 rounded border-dark-subtle" style="width: 600px; z-index: 999;">
+<c:choose>
+	<c:when test="${isdata == 'YES'}">
+		<c:forEach var="cart" items="${myCartList}">
 						<!--요기서-->
-						<div class="d-flex mb-3 border-bottom-1 border-1 border-black">
+						<div class="d-flex mb-0 border-bottom-1 border-1 border-black">
 							<div class="p-2 align-self-center">
-								<input class="goodscheck" type="checkbox" id="checkbox" name="checkbox">
+								<input class="goodscheck" type="checkbox" id="checkbox_${cart.goodsNum}" name="checkbox">
 							</div>
 							<div class="p-1">
-								<a href="goodsinfo.do?seqGoods=11"><img src="https://picsum.photos/200/300" class="thumbnail"></a>
+								<a href="goodsinfo.do?seqGoods=${cart.goodsNum }"><img src="images/PHY/${cart.imgUrl }" class="thumbnail"></a>
 							</div>
-							<div class="p-0" style="width: 345px;">
-								<h1 class="card-title" style="text-align: left;">
-									<a class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover" href="goodsinfo.do?seqGoods=11">상품들 제목이야</a>
-									<br><br>
-								</h1>
+							<div class="pt-2" style="width: 345px;">
+								<h5 class="card-title" style="text-align: left;">
+									<a class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover" href="goodsinfo.do?seqGoods=${cart.goodsNum }">${cart.goodsName }</a>
+								</h5>
+								<div id="pricediv" class="p-2 text-start">
+									<h3 class="price" name="${cart.goodsPrice }"><fmt:formatNumber value="${cart.goodsPrice * cart.cartCount}" type="number" pattern="#,##0"/>원</h3>
+								</div>
 								<div class="d-flex">
 									<div class="p-2">
-										<h3><input data-max-quantity="1" class="quantity-input" type="text" value="1">< 수량 ></h3>
-									</div>
-									<div class="p-2 flex-grow-1">
-										<h3>150000원</h3>
+										<h3>
+											<div class="btn-group border border-2" role="group" aria-label="Basic mixed styles example">
+												<!-- 상품 번호로 버튼을 구분해 ID 설정 -->
+												<button type="button" class="btn" id="downcount_${cart.goodsNum}" data-goodsnum="${cart.goodsNum}_${cart.goodsInven}">─</button>
+												<button type="button" class="btn">${cart.cartCount}</button>
+												<button type="button" class="btn" id="upcount_${cart.goodsNum}" data-goodsnum="${cart.goodsNum}_${cart.goodsInven}">┼</button>
+											</div>
+										</h3>
 									</div>
 								</div>
 							</div>
-							<div class="ms-auto p-0">삭제</div>
+							<div class="ms-auto p-0">	
+								<a class="link-dark link-underline-opacity-100 link-underline-opacity-0-hover" href="#">삭제</a>
+							</div>
 						</div>
 						<!--요기까지 반복-->
+		</c:forEach>
+	</c:when>
+	<c:when test="${isdata == 'NO'}">
+        <p>장바구니에 담긴 상품이 없습니다.</p>
+    </c:when>
+</c:choose>
+
+
+
+						
 					</div>
-					<div class="p-2 border border-1 rounded border-black" style="width: 280px;">한쪽은 주문예상 플로팅</div>
+					<div class="floating d-flex flex-row-reverse" style="width: 900px;">
+						<div class="p-2 border border-1 rounded border-dark-subtle" style="width: 280px; height: 250px;">
+							<h3>주문 예상 금액</h3>
+							<p>체크한 상품 가격</p>
+							<p>총 할인 가격</p>
+							<p>총 배송비</p>
+							<h3>최종금액 가격</h3>
+							<button class="btn btn-primary" id="sellee">구매하기(0)</button>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="boxPHY bg-info">[]전체선택(0/0) 선택삭제</div>
-			<div class="boxPHY bg-info">안내영역 캐시적립 혜택</div>
+			<div class="boxPHY text-start m-3 p-3">
+				<label><input type="checkbox" class="allcheck">전체선택(0/3)</label> <button class="btn btn-outline-dark rounded-0" onclick="abc();">선택삭제</button>
+			</div>
 		</div>
 	</div>
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			//완성하면 동일한건 함수로 압축하고 js파일로 만들어야하는데 시간이없넹
+
+			const spinner = document.querySelector('.spinnermap');
+				function showSpinner() {
+				spinner.style.display = 'flex';
+			}
+			function hideSpinner() {
+				spinner.style.display = 'none';
+			}
+
+			//상품들 체크 박스
+			document.querySelectorAll('[id^="checkbox_"]').forEach(checkbox => {
+				checkbox.addEventListener('change',function(){
+					if(checkbox.checked){
+						console.log('체크가 되었습니다');
+					}else{
+						console.log('체크가 풀렸습니다');
+					}
+				});
+			});
+
+
+			//fetch 로 보낼위치 cartViewcount.do
+			//+ 버튼 누르면 현재고 확인해서 증감 하면서 장바구니 DB 변경
+			document.querySelectorAll('[id^="upcount_"]').forEach(button => {
+	            button.addEventListener('click', function() {
+					showSpinner();
+					//변경할 요소위치
+					let priceElement = button.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('#pricediv').querySelector('h3');
+					//1개 가격
+					let oneprice = priceElement.getAttribute('name');
+					console.log(priceElement);
+					
+					//현재재고
+					let thiscount = button.parentElement.children[1].textContent;
+
+	                let goodsInfomation = button.getAttribute('data-goodsnum');
+					console.log("상품정보 = "+goodsInfomation);
+					let parts = goodsInfomation.split("_");
+					console.log("상품총재고=",parts[1]);
+
+					if(Number(thiscount) >= Number(parts[1])){
+						alert('상품 재고가 부족합니다. 구매할수있는 총 수량은'+parts[1]+'개 입니다');
+						hideSpinner();
+					}else{
+						//장바구니 수량 업데이트
+						$.ajax({
+							url: 'cartViewcount.do',
+							data: { goodsNum: parts[0], thiscount: thiscount, pm: "P" },
+							method: "POST",
+							dataType: "json"
+						})
+						.done(function(result) {
+							if (result.retCode == 'OK') {
+								console.log('성공');
+								button.parentElement.children[1].textContent = Number(thiscount)+1;
+								priceElement.innerText = (oneprice*(Number(thiscount)+1)).toLocaleString()+"원";
+							}else if (result.retCode == 'FAIL') {
+								console.log('실패');
+							}
+							hideSpinner();
+						})
+						.fail(err => console.log(err));
+					}
+	            });
+	        });
+			//- 버튼 누르면 현재고 확인해서 차감 하면서 장바구니 DB 변경
+			document.querySelectorAll('[id^="downcount_"]').forEach(button => {
+	            button.addEventListener('click', function() {
+					showSpinner();
+					//변경할 요소위치
+					let priceElement = button.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('#pricediv').querySelector('h3');
+					//1개 가격
+					let oneprice = priceElement.getAttribute('name');
+					console.log(priceElement);
+
+					//현재재고
+					let thiscount = button.parentElement.children[1].textContent;
+
+	                let goodsInfomation = button.getAttribute('data-goodsnum');
+					console.log("상품정보 = "+goodsInfomation);
+					let parts = goodsInfomation.split("_");
+					console.log("상품총재고=",parts[1]);
+
+					if(Number(thiscount) <= 1){
+						alert('최소 수량은 1개 입니다.');
+						hideSpinner();
+					}else{
+						//장바구니 수량 업데이트
+						$.ajax({
+							url: 'cartViewcount.do',
+							data: { goodsNum: parts[0], thiscount: thiscount, pm: "M" },
+							method: "POST",
+							dataType: "json"
+						})
+						.done(function(result) {
+							if (result.retCode == 'OK') {
+								console.log('성공');
+								button.parentElement.children[1].textContent = Number(thiscount)-1;
+								priceElement.innerText = (oneprice*(Number(thiscount)-1)).toLocaleString()+"원";
+							}else if (result.retCode == 'FAIL') {
+								console.log('실패');
+							}
+							hideSpinner();
+						})
+						.fail(err => console.log(err));
+					}
+	            });
+	        });
+			
+			
+		});
+	</script>
 </body>
 </html>
