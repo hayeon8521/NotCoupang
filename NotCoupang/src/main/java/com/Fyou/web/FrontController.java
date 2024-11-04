@@ -16,10 +16,15 @@ import com.Fyou.CMG.Admin_insert_control;
 import com.Fyou.CMG.Admin_list;
 import com.Fyou.CMG.Admin_main;
 import com.Fyou.commom.Control;
+import com.Fyou.control.BSJ.ModifyAddressCont;
+import com.Fyou.control.BSJ.ModifyNickCont;
+import com.Fyou.control.BSJ.ModifyPhoneCont;
+import com.Fyou.control.BSJ.ModifyPwCont;
 import com.Fyou.control.BSJ.MyAskControl;
 import com.Fyou.control.BSJ.MyOrderListControl;
 import com.Fyou.control.BSJ.MyPageControl;
 import com.Fyou.control.BSJ.MyReviewControl;
+import com.Fyou.control.BSJ.checkMemControl;
 import com.Fyou.control.CTB.AskCountCont;
 import com.Fyou.control.CTB.CartViewCont;
 import com.Fyou.control.CTB.GoodsinfoCont;
@@ -137,8 +142,16 @@ public class FrontController extends HttpServlet {
 		//주문목록 
 		map.put("/myOrderList.do", new MyOrderListControl());
 		
-		//회원정보 조회 및 수정 
-		map.put("/myPage.do", new MyPageControl());
+		//회원정보 체크 / 조회 / 수정 
+		map.put("/checkMem.do", new checkMemControl()); //비밀번호 재확인
+		map.put("/myPage.do", new MyPageControl()); //내정보 보기
+		map.put("/modifyNick.do", new ModifyNickCont()); //닉네임 수정
+		map.put("/modifyPhone.do", new ModifyPhoneCont()); //연락처 수정
+		map.put("/modifyAddress.do", new ModifyAddressCont()); //주소 수정
+		map.put("/modifyPw.do", new ModifyPwCont()); //비밀번호 수정
+		
+		
+		//회원정보
 		
 		//내 리뷰 관리
 		map.put("/myReview.do", new MyReviewControl());
