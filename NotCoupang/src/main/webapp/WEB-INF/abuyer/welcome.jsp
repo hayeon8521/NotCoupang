@@ -22,7 +22,7 @@ List<CategoriVO> categories = csvc.listOfTcate();
 <body>
 	<!-- 상단 배너 -->
 	<section
-		style="background-image: url('imagesLSH/banner.jpg');width: 1920px; height: 450px; background-repeat: no-repeat; background-size: cover;">
+		style="background-image: url('imagesLSH/banner.jpg');width: 100%; height: 450px; background-repeat: no-repeat; background-size: cover;">
 		<div class="container-lg">
 			<div class="row">
 				<div class="col-lg-6 pt-5 mt-5">
