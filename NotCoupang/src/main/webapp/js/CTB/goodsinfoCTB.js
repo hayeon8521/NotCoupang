@@ -360,7 +360,9 @@ window.addEventListener("click", (event) => {
 
 //문의 보내기
 submitQ.addEventListener("click", () => {
+	//문의 내용 가져오기
 	let question = document.querySelector(".modal-content textarea").value;
+	
 	if(question.length < 10) {
 		alert('문의 내용은 최소 10자 이상입니다');
 		return;
