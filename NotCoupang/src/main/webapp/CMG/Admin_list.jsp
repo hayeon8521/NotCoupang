@@ -132,15 +132,23 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 										<%
 										int page_int = Integer.parseInt(pg);
 										page_int = (page_int - 1) * 10;
-										for (int i = 0; i < 10; i++) {
+										String goods_state = "";
+										for (int i = 0; (i < 10) && i < list.size() - page_int; i++) {
+											if (list.get(page_int + i).getGoodsState().equals("state")) {
+												goods_state = "판매중";
+											} else if (list.get(page_int + i).getGoodsState().equals("stop")) {
+												goods_state = "판매 중단";
+											} else if (list.get(page_int + i).getGoodsState().equals("end")) {
+												goods_state = "판매 종료";
+											}
 											if (img_arr[i] != null) {
 										%>
 										<tr>
 											<td id="<%=page_int + i %>" style="width: 15%"><a id="list_img"><img src="images/<%=img_arr[i]%>" width="150px"></a></td>
-											<td style="width: 50%"><%=list.get(i).getGoodsName()%></td>
-											<td style="width: 15%"><%=list.get(i).getGoodsPrice()%></td>
-											<td style="width: 10%"><%=list.get(i).getGoodsInven()%></td>
-											<td style="width: 10%"><%=list.get(i).getGoodsState()%></td>
+											<td style="width: 50%"><%=list.get(page_int + i).getGoodsName()%></td>
+											<td style="width: 15%"><%=list.get(page_int + i).getGoodsPrice()%></td>
+											<td style="width: 10%"><%=list.get(page_int + i).getGoodsInven()%></td>
+											<td style="width: 10%"><%=goods_state%></td>
 										</tr>
 										<%
 											}

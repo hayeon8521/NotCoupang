@@ -21,6 +21,7 @@
 				#{imgUrl})
 	</insert>
 	
+
 	<!-- 상품번호를 이용해 썸네일 이미지 가져오기 -->
 	<select id="thumbnail" parameterType="int" resultType="img">
 		SELECT 	seq_img,
@@ -39,4 +40,15 @@
 				 )
 		WHERE ru = 1
 	</select>
+	
+	<update id="updateImage" parameterType="img">
+		update tim_img 
+		set img_url = #{imgUrl} 
+		where seq_img = #{seqImg} 
+	</update>
+	
+	<delete id="deleteImage" parameterType="int">
+	delete tim_img 
+	where seq_img = #{seq_img}
+	</delete>
 </mapper>

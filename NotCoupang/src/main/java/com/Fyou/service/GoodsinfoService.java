@@ -32,5 +32,7 @@ public interface GoodsinfoService {
 	
 	//상품 상세정보 가져오기
 	GoodsinfoVO goodsinfo(int seqGoods);
-
+	
+	// 상품 seq 번호로 삭제하기
+	boolean goodsdelete(int seq_goods);
 }

@@ -25,8 +25,17 @@ public class ImgServiceImpl implements ImgService{
 
 	@Override
 	public ImgVO thumbnail(int goodsNum) {
-		// TODO Auto-generated method stub
 		return mapper.thumbnail(goodsNum);
+	}
+		
+	@Override
+	public boolean editImage(ImgVO imgUrl) {
+		return mapper.updateImage(imgUrl) == 1;
+	}
+
+	@Override
+	public boolean deleteImage(int seq_img) {
+		return mapper.deleteImage(seq_img) == 1;
 	}
 	
 	

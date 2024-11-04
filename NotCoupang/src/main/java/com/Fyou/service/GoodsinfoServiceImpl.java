@@ -60,5 +60,8 @@ public class GoodsinfoServiceImpl implements GoodsinfoService{
 		return mapper.goodsinfo(seqGoods);
 	}
 
-
+	@Override
+	public boolean goodsdelete(int seq_goods) {
+		return mapper.goodsdelete(seq_goods) == 1;
+	}
 }

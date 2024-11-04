@@ -16,4 +16,11 @@ public interface ImgService {
 	
 	//상품 번호 이용해서 썸네일 가져오기
 	public ImgVO thumbnail(int goodsNum);
+
+	//사진 업데이트를 위한 seq_img update
+	public boolean editImage(ImgVO imgUrl);
+	
+	//사진 삭제를 위한 seq_img delete
+	public boolean deleteImage(int seq_img);
+
 }
