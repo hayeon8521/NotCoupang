@@ -5,7 +5,9 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<% String id = (String) session.getAttribute("LOGID");%>
+<% String id = (String) session.getAttribute("LOGID");
+	request.setAttribute("id", id);
+%>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
 <link rel="stylesheet"
@@ -14,7 +16,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-	document.title = "상품 상세 페이지${goodsinfo.goodsName}";
+	document.title = "${goodsinfo.goodsName}";
 </script>
 </head>
 
@@ -63,7 +65,7 @@
 						<p>판매자: ${goodsinfo.goodsMid }</p>
 						<!-- 리뷰 개수 -->
 						<p>
-							리뷰(<span class="totalReviewCnt"></span>)
+							리뷰(<span class="totalReviewCnt">0</span>)
 						</p>
 					</div>
 					<hr>
@@ -113,7 +115,7 @@
 						<div class="modal-content">
 							<div>
 								<span class="close">&times;</span>
-								<h3>문의하기</h3>
+								<p><b>상품문의</b></p>
 							</div>
 							<hr>
 							<div>
@@ -127,7 +129,7 @@
 								</table>
 							<div class="modalBtn">
 								<button type="button" class="btn btn-primary submit-qna">확인</button>
-								<button type="button" class="btn btn-info cancel-submit">취소</button>
+								<button type="button" class="btn btn-primary cancel-submit">취소</button>
 							</div>
 							
 							</div>
@@ -200,9 +202,9 @@
 	</div>
 </body>
 <script>
-	//const logID = '${id}';
+	const logID = '${id}';
 	//로그인 기능 구현후에 위에 코드 주석 풀 예정입니다. 아래는 임시!
-	const logID = "IDTestOnInfo";
+	//const logID = "IDTestOnInfo";
 	var gno = '${ goodsinfo.seqGoods }';
 	var mid = '${goodsinfo.goodsMid}';
 

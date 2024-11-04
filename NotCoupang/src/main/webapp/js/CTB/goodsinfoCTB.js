@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	document.querySelector("#addCartBtn").addEventListener('click', sendCartView);
 });
 
-
+//장바구니 담기
 function addCart() {
 	//유저가 입력한 수량
 	let count = Number(document.querySelector('#inputQuantity').value);
@@ -96,7 +96,7 @@ function makeLi(param) {
 	//let formattedDate = reviewDate.toISOString().split('T')[0];
 
 	//배열에 넣어서 반복문사용
-	let buyerIdPlus = param.buyerId + ":";
+	let buyerIdPlus = '<b>' + param.buyerId + "</b>:";
 	let reviewWithLine = param.review.replace(/\n/g, "<br>");
 	let field = [buyerIdPlus, reviewWithLine];
 
@@ -124,7 +124,10 @@ function reviewPaging() {
 
 //리뷰 페이지 목록 출력
 function createRPageList(result) {
-	document.querySelector(".totalReviewCnt").innerHTML = result;
+ 	let totalReviews = document.querySelector(".totalReviewCnt");
+	
+	totalReviews.innerHTML = result;
+	
 	let totalCnt = result;
 	let startPage, endPage, realEnd;
 	let prev, next;
@@ -358,8 +361,10 @@ window.addEventListener("click", (event) => {
 //문의 보내기
 submitQ.addEventListener("click", () => {
 	let question = document.querySelector(".modal-content textarea").value;
-	console.log(question);
-	
+	if(question.length < 10) {
+		alert('문의 내용은 최소 10자 이상입니다');
+		return;
+	}	
 	fetch('sendQuestion.do?logId=' + logID + '&qcontent=' + encodeURIComponent(question) + "&gno=" + gno)
 		.then(resolve => resolve.json())
 		.then(result => {

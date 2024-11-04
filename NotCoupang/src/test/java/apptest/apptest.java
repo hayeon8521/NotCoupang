@@ -11,7 +11,7 @@ public class apptest {
 		
 		//System.out.println(svc.goodsinfo(1));
 		ReviewService svc = new ReviewServiceImpl();
-		System.out.println(svc.reviews(35, 1));
+		System.out.println("totalReview: " + svc.totalReview(35));
 		
 	}
 }
