@@ -5,6 +5,10 @@
     left: 0;
     z-index: 1000;
 }
+body {
+	--bs-primary: #0080ff;
+	--bs-primary-rgb: 0, 128, 255;
+}
 .scrollmenu {
   overflow: hidden;
   white-space: nowrap;

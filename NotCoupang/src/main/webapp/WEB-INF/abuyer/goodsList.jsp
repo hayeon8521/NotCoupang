@@ -39,12 +39,15 @@ body {
 				<div class="card-body">
 					<h5 class="card-title">${item.goodsName}</h5>
 					<p class="card-text">${item.goodsPrice}</p>
-					<p class="card-text">This is a wider card with supporting text
-						below as a natural lead-in to additional content. This content is
-						a little bit longer.</p>
+					<p class="card-text">${item.seqGoods}</p>
+					<p class="card-text">${item.goodsCatename}</p>
+					<p class="card-text">${item.goodsInven}</p>
+					
 				</div>
 				<div class="card-footer">
-					<small class="text-body-secondary">Last updated 3 mins ago</small>
+					<small class="text-body-secondary">
+						<a href="goodsinfo.do?gno=${item.seqGoods}" class="btn-link">상세 정보</a>
+					</small>
 				</div>
 			</div>
 		</div>

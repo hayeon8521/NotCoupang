@@ -22,27 +22,13 @@ public class GoodsinfoCont implements Control {
 		//상품
 		GoodsinfoService gsvc = new GoodsinfoServiceImpl();
 		
-		
-		//이미지
-		ImgService isvc = new ImgServiceImpl();
-		
-		
 		//초기 페이지
 		//상품리스트 페이지에서 파라미터 변수이름을 뭘로 넘겨줄지 알아야 됨 임시로 이렇게 적었음. 나중에 파라미터 String seqGoods = "1"; 지우고 주석처리된 위에 코드 사용하기
-		//String seqGoods = req.getParameter("seqGoods");
-		String seqGoods = "35";
+		String gno = req.getParameter("gno");
 		
 		//상품 정보 객체 넘기기
-		GoodsinfoVO goods = gsvc.goodsinfo(Integer.parseInt(seqGoods));
+		GoodsinfoVO goods = gsvc.goodsinfo(Integer.parseInt(gno));
 		req.setAttribute("goodsinfo", goods);	
-		
-		
-		
-		
-		//이미지 리스트 넘기기
-		List<ImgVO> imgs = isvc.images(Integer.parseInt(seqGoods));
-		req.setAttribute("imgs", imgs);
-		
 		
 		req.getRequestDispatcher("BuyerTM/goodsinfoCTB.tiles").forward(req, resp);
 		

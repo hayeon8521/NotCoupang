@@ -7,7 +7,13 @@
 <%
 CategoriService csvc = new CategoriServiceImpl();
 List<CategoriVO> categories = csvc.listOfTcate();
+String ct = (String) request.getAttribute("cate");
+String kw = (String) request.getAttribute("keyword");
+
+kw = kw == null ? "" : kw;
+
 %>
+<head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,6 +39,9 @@ List<CategoriVO> categories = csvc.listOfTcate();
 	href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 	rel="stylesheet">
 
+</head>
+
+
 <header>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light py-1">
 		<div class="container d-flex justify-content-between px-2 px-lg-4">
@@ -57,7 +66,7 @@ List<CategoriVO> categories = csvc.listOfTcate();
 			<div
 				class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
 				<div class="d-flex align-items-center my-3 my-sm-0">
-					<a href="#"> <img src="imagesLSH/logo.png" alt="logo"
+					<a href="welcome.do"> <img src="imagesLSH/logo.png" alt="logo"
 						class="img-fluid">
 					</a>
 				</div>
@@ -70,11 +79,13 @@ List<CategoriVO> categories = csvc.listOfTcate();
 						<div class="col-md-3">
 							<select name="cate"
 								class="form-select border-0 bg-transparent">
-								<option value="">전체</option>
+								<option value="" selected>전체</option>
 								<%
 								for (CategoriVO ele : categories) {
 								%>
-								<option value="<%=ele.getTcate()%>"><%=ele.getTcate()%></option>
+								<option value="<%=ele.getTcate()%>"
+											   <%=(ct != null && ct.equals(ele.getTcate()) ? "selected" : "") %>
+								><%=ele.getTcate()%></option>
 								<%
 								}
 								%>
@@ -83,7 +94,7 @@ List<CategoriVO> categories = csvc.listOfTcate();
 						<div class="col">
 							<input type="text" name="keyword"
 								class="form-control border-0 bg-transparent"
-								placeholder="찾고 싶은 상품을 검색해보세요!">
+								placeholder="찾고 싶은 상품을 검색해보세요!" value="<%=kw %>">
 						</div>
 						<div class="col-auto justify-content-end">
 							<button type="submit" class="btn btn-link p-0">
@@ -107,10 +118,10 @@ List<CategoriVO> categories = csvc.listOfTcate();
 						aria-expanded="false">마이쿠팡</a>
 						<ul class="dropdown-menu border-0 p-3 rounded-0 shadow"
 							id="dropdown" aria-labelledby="pages">
-							<li><a href="#" class="dropdown-item">주문목록 </a></li>
-							<li><a href="#" class="dropdown-item">리뷰관리 </a></li>
-							<li><a href="#" class="dropdown-item">문의 내역 </a></li>
-							<li><a href="#" class="dropdown-item">회원정보 조회 및 수정 </a></li>
+							<li><a href="myOrderList.do" class="dropdown-item">주문목록 </a></li>
+							<li><a href="myReview.do" class="dropdown-item">리뷰관리 </a></li>
+							<li><a href="myAsk.do" class="dropdown-item">문의 내역 </a></li>
+							<li><a href="myPage.do" class="dropdown-item">회원정보 조회 및 수정 </a></li>
 						</ul></li>
 					<li class="nav-item active"><a href="#" class="nav-link">장바구니</a>
 					</li>
@@ -124,7 +135,7 @@ List<CategoriVO> categories = csvc.listOfTcate();
 					<%
 					for (CategoriVO ele : categories) {
 					%>
-					<a href="#"><%=ele.getTcate()%></a>
+					<a href="goodsList.do?cate=<%=ele.getTcate()%>"><%=ele.getTcate()%></a>
 					<%
 					}
 					%>
@@ -152,12 +163,12 @@ List<CategoriVO> categories = csvc.listOfTcate();
 		    const scrollRightButton = document.getElementById('scrollRight');
 		
 		    // 스크롤 이동 함수
-		    const scrollAmount = 500; // 한 번에 스크롤할 거리 (픽셀)
+		    const scrollAmount = 600; // 한 번에 스크롤할 거리 (픽셀)
 		
 		 	// 스크롤에 따라 버튼 활성화/비활성화 함수
 			function updateButtonState() {
 			    scrollLeftButton.disabled = scrollableMenu.scrollLeft === 0;
-			    scrollRightButton.disabled = scrollableMenu.scrollLeft + scrollableMenu.clientWidth >= scrollableMenu.scrollWidth;
+			    scrollRightButton.disabled = scrollableMenu.scrollLeft + scrollableMenu.clientWidth >= scrollableMenu.scrollWidth -1;
 			}
 		    
 		    scrollLeftButton.addEventListener('click', () => {
