@@ -15,17 +15,14 @@ public class MyPageControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("MyInfoControl");
-		
-		
-		String mid = req.getParameter("memberId");
-		
+		req.setCharacterEncoding("utf-8");
+		String id = req.getParameter("memberId");
 		MemberService svc = new MemberServiceImpl();
-		MemberVO mvo = svc.selectMember(mid);
-		System.out.println(mvo.toString());
+		MemberVO mvo = svc.selectMember(id);
 		
-		req.setAttribute("memberId", mid);
-		req.setAttribute("membervo", mvo);
+		System.out.println(mvo);
+		
+		req.setAttribute("mvo", mvo); //화면출력
 		
 		//오픈할 페이지 설정
 		req.getRequestDispatcher("BuyerTAM/myPageBSJ.tiles").forward(req, resp);
