@@ -44,7 +44,7 @@ public class testingforyouCnt implements Control {
 			//상품리스트에서 상품번호를 가져온다
 			for (GoodsinfoVO item : goods) {
 				//이게 상품번호
-				System.out.println(item.getSeqGoods());
+				//System.out.println(item.getSeqGoods());
 				
 				
 				//이걸로 이미지 맵퍼를 호출해서 이미지를 가져온다
