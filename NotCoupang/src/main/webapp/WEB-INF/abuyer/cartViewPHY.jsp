@@ -173,7 +173,7 @@
 								<input class="goodscheck" type="checkbox" id="checkbox_${cart.goodsNum}" name="checkbox">
 							</div>
 							<div class="p-1">
-								<a href="goodsinfo.do?seqGoods=${cart.goodsNum }"><img src="images/PHY/${cart.imgUrl }" class="thumbnail"></a>
+								<a href="goodsinfo.do?seqGoods=${cart.goodsNum }"><img src="images/${cart.imgUrl }" class="thumbnail"></a>
 							</div>
 							<div class="pt-2" style="width: 345px;">
 								<h5 class="card-title" style="text-align: left;">

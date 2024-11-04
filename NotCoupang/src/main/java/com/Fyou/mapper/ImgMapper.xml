@@ -20,4 +20,23 @@
 				#{goodsNum},
 				#{imgUrl})
 	</insert>
+	
+	<!-- 상품번호를 이용해 썸네일 이미지 가져오기 -->
+	<select id="thumbnail" parameterType="int" resultType="img">
+		SELECT 	seq_img,
+       			goods_num,
+       			img_url
+		FROM 
+				(
+					SELECT ROWNUM ru, 
+						   r.*
+					FROM
+						   (SELECT *
+							FROM   tim_img
+							WHERE  goods_num = #{goodsNum}
+							ORDER BY seq_img, goods_num
+						   ) r
+				 )
+		WHERE ru = 1
+	</select>
 </mapper>

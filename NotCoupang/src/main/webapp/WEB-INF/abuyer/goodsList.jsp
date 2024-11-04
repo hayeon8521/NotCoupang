@@ -67,16 +67,15 @@ body {
 
 		<div class="row p-5">
 			<div class="col-md-12">
-
-				<div
-					class="product-grid row row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+				<div class="product-grid row row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
 					<c:forEach var="item" items="${goodsList}" varStatus="vs">
 						<div class="col">
 							<div class="product-item">
 								<figure>
 									<a href="goodsinfo.do?gno=${item.seqGoods}"
-										title="Product Title"> <img
-										src="images/product-thumb-1.png" alt="상품 이미지"
+										title="Product Title">
+										<img
+										src="images/17_반팔티.jpg" alt="상품 이미지"
 										class="tab-image">
 									</a>
 								</figure>
@@ -84,7 +83,7 @@ body {
 									<h3 class="fs-6 fw-normal">${item.goodsName}</h3>
 									<div
 										class="d-flex justify-content-start align-items-center gap-2">
-										<span id="price" class="text-dark fw-semibold goodsPrice" data-price="${item.goodsPrice}">원</span>
+										<span id="price" class="text-dark fw-semibold goodsPrice" data-price="${item.goodsPrice}"></span>
 									</div>
 									<span>리뷰 수(00)
 									</span>
@@ -101,10 +100,6 @@ body {
 							</div>
 						</div>
 					</c:forEach>
-
-
-
-
 				</div>
 				<!-- / product-grid -->
 
@@ -149,14 +144,15 @@ body {
 
 
 <!-- Bootstrap core JS-->
-<script src="js/scripts.js">
+<script src="js/scripts.js" >
+
+<script src="LSH/goodsList.js" >
+	
 	
 </script>
-<script src="LSH/goodsList.js" >
 
-</script>
 <script>
-	//가격 천단위 ,
+	//가격 천단위
     document.addEventListener("DOMContentLoaded", function () {
         const priceElements = document.querySelectorAll(".goodsPrice");
 
