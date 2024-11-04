@@ -53,6 +53,7 @@ import com.Fyou.control.PHY.joingogoCont;
 import com.Fyou.control.PHY.logingconfingform;
 import com.Fyou.control.PHY.logingform;
 import com.Fyou.control.PHY.logout;
+import com.Fyou.control.PHY.testingforyouCnt;
 import com.Fyou.control.PHY.thankyouCont;
 
 //@WebServlet("*.do")
@@ -491,7 +492,7 @@ public class FrontController extends HttpServlet {
 		map.put("/checkoutcart.do", new checkoutcartCont());		//장바구니구매!
 		map.put("/thank-you.do", new thankyouCont());		//결제완료페이지
 		
-		
+		map.put("/testingForYou.do", new testingforyouCnt());		//결제완료페이지
 		
 		
 		
