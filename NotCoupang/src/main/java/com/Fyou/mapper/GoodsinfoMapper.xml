@@ -86,4 +86,9 @@
 		from   tim_goodsinfo
 		where  seq_goods = #{seqGoods}
 	</select>
+	
+	<delete id="goodsdelete" parameterType="int">
+		delete tim_goodsinfo
+		where seq_goods = #{seq_goods}
+	</delete>
 </mapper>

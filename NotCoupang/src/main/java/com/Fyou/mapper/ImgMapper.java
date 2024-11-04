@@ -11,4 +11,10 @@ public interface ImgMapper {
 	
 	//해당 상품에 맞는 상품번호로 사진 업로드
 	public int insertImages(ImgVO imgUrl);
+	
+	//사진 업데이트를 위한 seq_img update
+	public int updateImage(ImgVO imgUrl);
+	
+	//사진 삭제를 위한 seq_img delete
+	public int deleteImage(int seq_img);
 }
