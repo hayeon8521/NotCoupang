@@ -20,4 +20,15 @@
 				#{goodsNum},
 				#{imgUrl})
 	</insert>
+	
+	<update id="updateImage" parameterType="img">
+		update tim_img 
+		set img_url = #{imgUrl} 
+		where seq_img = #{seqImg} 
+	</update>
+	
+	<delete id="deleteImage" parameterType="int">
+	delete tim_img 
+	where seq_img = #{seq_img}
+	</delete>
 </mapper>

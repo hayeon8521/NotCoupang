@@ -44,4 +44,7 @@ public interface GoodsinfoMapper {
 	
 	//상품 상세정보 가져오기 (테스트 ok - 태백)
 	GoodsinfoVO goodsinfo(int seqGoods);
+	
+	// 상품 seq 번호로 삭제하기
+	int goodsdelete(int seq_goods);
 }

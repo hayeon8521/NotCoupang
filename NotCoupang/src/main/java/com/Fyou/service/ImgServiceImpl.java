@@ -22,6 +22,16 @@ public class ImgServiceImpl implements ImgService{
 	public boolean addImages(ImgVO imgUrl) {
 		return mapper.insertImages(imgUrl) == 1;
 	}
+
+	@Override
+	public boolean editImage(ImgVO imgUrl) {
+		return mapper.updateImage(imgUrl) == 1;
+	}
+
+	@Override
+	public boolean deleteImage(int seq_img) {
+		return mapper.deleteImage(seq_img) == 1;
+	}
 	
 	
 }
