@@ -75,39 +75,38 @@ function foucsOutPw() {
 
 // 회원가입페이지 아이디 확인
 function foucsOutjoinId() {
-    return new Promise((resolve) => {
-        let id = document.querySelector('#id').value;
-        if (!id) {
-            document.querySelector('#idconfig').innerHTML = "ID를 입력 해주세요";
-            resolve(false);
+    let id = document.querySelector('#id').value;
+    if (!id) {
+        document.querySelector('#idconfig').innerHTML = "ID를 입력 해주세요";
+        return;
+    } else {
+        if (KR.test(id)) {
+            document.querySelector('#idconfig').innerHTML = "ID는 영문과 숫자로 입력해주세요";
+            return;
         } else {
-            if (KR.test(id)) {
-                document.querySelector('#idconfig').innerHTML = "ID는 영문과 숫자로 입력해주세요";
-                resolve(false);
-            } else {
-                $.ajax({
-                    url: 'joinconfig.do',
-                    data: { id: id },
-                    method: "POST",
-                    dataType: "json"
-                })
-                .done(function(result) {
-                    if (result.retCode === 'OK') {
-                        console.log('동일 ID 존재');
-                        document.querySelector('#idconfig').innerHTML = "동일한 ID가 존재합니다";
-                        resolve(false);
-                    } else if (result.retCode === 'FAIL') {
-                        resolve(true);
-                    }
-                })
-                .fail(err => {
-					console.log(err);
-					resolve(false);
-				});  // 세미콜론 추가
-                document.querySelector('#idconfig').innerHTML = "";
-            }
+			console.log("아이디디디"+id);
+            $.ajax({
+                url: 'joinconfig.do',
+                data: { id: id },
+                method: "POST",
+                dataType: "json"
+            })
+            .done(function(result) {
+                if (result.retCode === 'OK') {
+                    console.log('동일 ID 존재');
+                    document.querySelector('#idconfig').innerHTML = "동일한 ID가 존재합니다";
+                    return;
+                } else if (result.retCode === 'FAIL') {
+					console.log('아이디 정규식 통과(인풋박스 오버)');
+                }
+            })
+            .fail(err => {
+				console.log(err);
+				return;
+			});  // 세미콜론 추가
+            document.querySelector('#idconfig').innerHTML = "";
         }
-    });
+    }
 }
 
 // 회원가입페이지 비밀번호 확인
@@ -178,43 +177,69 @@ function foucsOutjoinAddres() {
 
 document.addEventListener("DOMContentLoaded", function() {
     // 회원가입 완료 버튼
-    async function joinGoAction() {
+    function joinGoAction() {
         console.log('회원가입 검증 시작!');
-        if (foucsOutPw() === false) {
-            console.log('PW 검증 실패!');
-            return;
-        }
-        if (foucsOutjoinIdPwCF() === false) {
-            console.log('PW 확인 검증 실패!');
-            return;
-        }
-        if (foucsOutjoinName() === false) {
-            console.log('이름 검증 실패!');
-            return;
-        }
-        if (foucsOutjoinNick() === false) {
-            console.log('별명 검증 실패!');
-            return;
-        }
-        if (foucsOutjoinPhone() === false) {
-            console.log('연락처 검증 실패!');
-            return;
-        }
-        if (foucsOutjoinAddres() === false) {
-            console.log('주소 검증 실패!');
-            return;
-        }
-        console.log('다음 검증 시작!');
-        console.log('회원가입 검증 끝!');
-
-        const isIdValid = await foucsOutjoinId();
-        if (!isIdValid) {
-            console.log('ID 검증 실패!');
-            return;
-        } else {
-            console.log('ID 검증 성공!');
-            document.querySelector('#joinform').submit();
-        }
+        let id = document.querySelector('#id').value;
+	    if (!id) {
+	        document.querySelector('#idconfig').innerHTML = "ID를 입력 해주세요";
+	        return;
+	    } else {
+	        if (KR.test(id)) {
+	            document.querySelector('#idconfig').innerHTML = "ID는 영문과 숫자로 입력해주세요";
+	            return;
+	        } else {
+	            $.ajax({
+	                url: 'joinconfig.do',
+	                data: { id: id },
+	                method: "POST",
+	                dataType: "json"
+	            })
+	            .done(function(result) {
+	                if (result.retCode === 'OK') {
+	                    console.log('동일 ID 존재');
+	                    document.querySelector('#idconfig').innerHTML = "동일한 ID가 존재합니다";
+	                    return;
+	                } else if (result.retCode === 'FAIL') {
+						console.log('아이디 정규식 통과(버튼클릭)');
+						
+						if (foucsOutPw() === false) {
+				            console.log('PW 검증 실패!');
+				            return;
+				        }
+				        if (foucsOutjoinIdPwCF() === false) {
+				            console.log('PW 확인 검증 실패!');
+				            return;
+				        }
+				        if (foucsOutjoinName() === false) {
+				            console.log('이름 검증 실패!');
+				            return;
+				        }
+				        if (foucsOutjoinNick() === false) {
+				            console.log('별명 검증 실패!');
+				            return;
+				        }
+				        if (foucsOutjoinPhone() === false) {
+				            console.log('연락처 검증 실패!');
+				            return;
+				        }
+				        if (foucsOutjoinAddres() === false) {
+				            console.log('주소 검증 실패!');
+				            return;
+				        }
+				        console.log('다음 검증 시작!');
+				        console.log('회원가입 검증 끝!');
+						
+						
+						document.querySelector('#joinform').submit();
+	                }
+	            })
+	            .fail(err => {
+					console.log(err);
+					return;
+				});  // 세미콜론 추가
+	            document.querySelector('#idconfig').innerHTML = "";
+	        }
+	    }
     }
 
     document.getElementById("joingobutton").addEventListener("click", joinGoAction);
