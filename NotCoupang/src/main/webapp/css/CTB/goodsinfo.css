@@ -86,9 +86,8 @@ p{
 }
 .tab-titles {
 	height: 54px;
+	border: 1px solid #ccc;
 	border-top: 2px solid #555;
-    border-bottom: 1px solid #ccc;
-    border-left: 1px solid #ccc;
     list-style-type: none;
     top: 0;
     width: 1122px;
@@ -102,10 +101,8 @@ p{
 }
 .tab-titles li {
     background: #fff;
-    border-bottom: 1px solid #fff;
     display: inline-block;
-    padding: 8px 20px 6px;
-    width: 33.08%;
+    padding: 7px 0;
     border-right: 1px solid #ccc;
     background-color: #fafafa;
     text-align: center;
@@ -114,7 +111,9 @@ p{
     font-size: 18px;
     box-sizing: border-box;
 }
-
+.tab-titles li:last-child {
+    border: none;
+}
 
 .py-5 {
     padding-top: 3rem !important;
@@ -143,9 +142,9 @@ p{
 #bottomSection > div{
 	margin-bottom: 50px;
 }
-#bottomSection .tab-titles a{
-	text-decoration: none;
-	padding: 12px 118px;
+#bottomSection .tab-titles a {
+    text-decoration: none;
+    padding: 5px 145px;
 }
 .bottomAlign {
 	border-top: 1px solid #555;
@@ -322,7 +321,7 @@ p{
     color: black;
 }
 .modal-content:first-child h3{
-	text-align: center;
+	text-align: left;
 }
 
 .close {
@@ -343,8 +342,13 @@ p{
 	margin: 0 auto;
 }
 .modalBtn {
-	position: relative;
-    left: 44%;
+	display: inline-block;
+    position: relative;
+    left: 35%;
+}
+
+.modal-content th{
+	vertical-align: top;
 }
 
 
