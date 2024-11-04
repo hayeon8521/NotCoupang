@@ -12,10 +12,10 @@
         <a href="#" style="margin-left: 10px; margin-right: 10px; color: #333; text-decoration: none;">개인정보 처리방침</a> |
         <a href="#" style="margin-left: 10px; color: #333; text-decoration: none;">쿠팡페이 이용약관</a>
     </div>
-    <div style="display: flex; justify-content: center; align-items: flex-start; margin-bottom: 20px;">
+    <div style="display: flex; justify-content: center; align-items: flex-start; margin-bottom: 0px;">
         <div style="margin-right: 40px; text-align: left;">
-            <img src="images/logo.png" alt="Coupang Logo" style="width: 100px; margin-bottom: 10px;">
-            <p style="color: #555;">
+            <img src="images/logo.png" alt="Coupang Logo" style="width: 100px; margin-bottom: 0px;">
+            <p style="color: #555; margin-bottom: 0px;">
                 상호명 및 호스팅 서비스 제공: 4you(주)<br>
                 대표이사: 낫쿠팡<br>
                 서울시 송파구 송파대로 570<br>
@@ -26,8 +26,8 @@
         </div>
 
         <div style="margin-right: 40px; text-align: left;">
-            <h3 style="font-size: 24px; color: #333;">365고객센터 | 전자금융거래분쟁처리담당</h3>
-            <p style="font-size: 24px; color: #333; font-weight: bold;">1577-7011 (유료)</p>
+            <h3 style="font-size: 15px; color: #333;">365고객센터 | 전자금융거래분쟁처리담당</h3>
+            <p style="font-size: 15px; color: #333; font-weight: bold;">1577-7011 (유료)</p>
             <p style="color: #555;">
                 서울시 송파구 송파대로 570<br>
                 email: <a href="#" style="color: #0066c0; text-decoration: none;">help@coupang.com</a>
