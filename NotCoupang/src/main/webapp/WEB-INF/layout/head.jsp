@@ -5,12 +5,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+String name = (String) session.getAttribute("LOGNAME");
+
 CategoriService csvc = new CategoriServiceImpl();
 List<CategoriVO> categories = csvc.listOfTcate();
 String ct = (String) request.getAttribute("cate");
 String kw = (String) request.getAttribute("keyword");
 
 kw = kw == null ? "" : kw;
+
+
 
 %>
 <head>
@@ -48,11 +52,19 @@ kw = kw == null ? "" : kw;
 
 			<div class="collapse navbar-collapse justify-content-end"
 				id="navbarSupportedContent">
-				<div class="navbar-brand fs-7">000님</div>
-				<form class="d-flex">
-					<button class="btn btn-outline-danger btn-sm" type="submit">
-						로그아웃</button>
-				</form>
+				<%if(name == null) {%>
+					<form class="d-flex" action="login.do">
+						<button class="btn btn-outline-primary btn-sm" type="submit">
+							로그인</button>
+					</form>
+				<%}else {%>
+					<div class="navbar-brand fs-7"><%=name %>님</div>
+					<form class="d-flex" action="logout.do">
+						<button class="btn btn-outline-danger btn-sm" type="submit">
+							로그아웃</button>
+					</form>
+				<%} %>
+				
 			</div>
 		</div>
 	</nav>
@@ -73,7 +85,7 @@ kw = kw == null ? "" : kw;
 			</div>
 
 			<div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-8">
-				<div class="search-bar row bg-light p-2 rounded-1">
+				<div id="search" class="search-bar row bg-light p-2 rounded-1">
 					<form id="search-form" class="d-flex align-items-center w-100"
 						action="goodsList.do" method="get">
 						<div class="col-md-3">

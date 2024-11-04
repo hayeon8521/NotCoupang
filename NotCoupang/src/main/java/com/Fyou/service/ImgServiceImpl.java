@@ -22,6 +22,12 @@ public class ImgServiceImpl implements ImgService{
 	public boolean addImages(ImgVO imgUrl) {
 		return mapper.insertImages(imgUrl) == 1;
 	}
+
+	@Override
+	public ImgVO thumbnail(int goodsNum) {
+		// TODO Auto-generated method stub
+		return mapper.thumbnail(goodsNum);
+	}
 	
 	
 }

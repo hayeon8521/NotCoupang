@@ -15,27 +15,18 @@ List<CategoriVO> categories = csvc.listOfTcate();
 <link rel="stylesheet" type="text/css" href="css/LSH/vendor.css">
 <link rel="stylesheet" type="text/css" href="css/LSH/style.css">
 <link rel="stylesheet" type="text/css" href="css/LSH/LSH.css">
-<title>Insert title here</title>
+<script>
+    document.title = "${goodsinfo.goodsName}";
+</script>
 </head>
 <body>
 	<!-- 상단 배너 -->
 	<section
-		style="background-image: url('imagesLSH/banner.jpg'); background-repeat: no-repeat; background-size: cover;">
+		style="background-image: url('imagesLSH/banner.jpg');width: 1920px; height: 450px; background-repeat: no-repeat; background-size: cover;">
 		<div class="container-lg">
 			<div class="row">
 				<div class="col-lg-6 pt-5 mt-5">
-					<h2 class="display-1 ls-1">
-						<span class="fw-bold text-primary">!Coupang</span> <span
-							class="fw-bold text-danger">??</span>
-					</h2>
-					<!--  
-					<p class="fs-4">Dignissim massa diam elementum.</p>
-					-->
-					<div class="d-flex gap-3">
-						<a href="goodsList.do"
-							class="btn btn-primary text-uppercase fs-6 rounded-pill px-4 py-3 mt-3">
-							상품 검색</a>
-					</div>
+					
 					<div class="row my-5"></div>
 				</div>
 			</div>
@@ -63,7 +54,7 @@ List<CategoriVO> categories = csvc.listOfTcate();
 
 	<!-- 카테고리 칸들 -->
 
-	<section class="py-3">
+	<section class="py-5">
 		<div class="container-md">
 			<div class="row">
 				<div class="col-md-12">
@@ -73,12 +64,15 @@ List<CategoriVO> categories = csvc.listOfTcate();
 					</div>
 					<div class="banner-blocks row-gap-2 column-gap-2">
 						<%
-						int cateNum = 1;
+						int cateNum = 0;
 						for (CategoriVO ele : categories) {
 						%>
+						
 						<div
-							class="banner-ad d-flex align-items-center large bg-info block-<%=cateNum++%>"
-							style="background: url('imagesLSH/cate.jpg') no-repeat; background-size: cover;">
+							class="banner-ad d-flex align-items-center large bg-info block-<%=++cateNum%>"
+							style="background: url('imagesLSH/cate (<%=cateNum %>).jpg') no-repeat; background-size: cover;">
+							<div class="overlay"></div>
+							 
 							<div class="banner-content p-5">
 								<div class="content-wrapper text-light">
 									<h3 class="banner-title text-light"><%=ele.getTcate()%></h3>
@@ -87,6 +81,7 @@ List<CategoriVO> categories = csvc.listOfTcate();
 								</div>
 							</div>
 						</div>
+						
 						<%
 						}
 						%>
@@ -188,33 +183,7 @@ List<CategoriVO> categories = csvc.listOfTcate();
 
 
 
-	<!-- 임시 칸 -->
-	<section class="py-5">
-		<div class="container-lg">
-			<div class="row row-cols-1 row-cols-sm-3 row-cols-lg-5">
-				<%
-				for (int i = 0; i < 5; i++) {
-				%>
-				<div class="col">
-					<div class="card mb-3 border border-dark-subtle p-3">
-						<div class="text-dark mb-3">
-							<svg width="32" height="32">
-								<use xlink:href="#package"></use></svg>
-						</div>
-						<div class="card-body p-0">
-							<h5>Free delivery</h5>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-								adipi elit.</p>
-						</div>
-					</div>
-				</div>
-				<%
-				}
-				%>
-			</div>
-		</div>
-	</section>
-
+	
 
 
 </body>

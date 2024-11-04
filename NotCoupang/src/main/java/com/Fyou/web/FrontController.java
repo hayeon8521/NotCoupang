@@ -34,6 +34,7 @@ import com.Fyou.control.CTB.ReviewCountCont;
 import com.Fyou.control.CTB.ReviewListCont;
 import com.Fyou.control.CTB.SendQuestionCont;
 import com.Fyou.control.LSH.GoodsListCont;
+import com.Fyou.control.LSH.GoodsListImageCont;
 import com.Fyou.control.LSH.welcomeCont;
 import com.Fyou.control.PHY.cartDeleteCont;
 import com.Fyou.control.PHY.cartViewCNTCont;
@@ -256,6 +257,7 @@ public class FrontController extends HttpServlet {
 		//신화 사용공간
 		map.put("/welcome.do", new welcomeCont());
 		map.put("/goodsList.do", new GoodsListCont());
+		map.put("/goodsListImage.do", new GoodsListImageCont());
 		
 		
 		
