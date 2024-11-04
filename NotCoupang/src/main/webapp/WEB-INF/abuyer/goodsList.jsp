@@ -25,11 +25,10 @@ ct = ct.isEmpty() ? "전체" : ct;
 <link rel="stylesheet" href="css/goodsinfo.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
-    document.title = "${goodsinfo.goodsName}";
+<script>
+	document.title = "${goodsinfo.goodsName}";
 </script>
 <style>
-
 body {
 	min-width: 1200px; /* 원하는 최소 너비를 설정 */
 }
@@ -67,26 +66,36 @@ body {
 
 		<div class="row p-5">
 			<div class="col-md-12">
-				<div class="product-grid row row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+				<c:if test="${goodsList.size() == 0}">
+					<div class="card mb-3 border  p-3">
+						<div class="card-body p-0">
+							<h5>검색 결과 없음</h5>
+							<p class="card-text">다른 검색어로 검색해보세요.</p>
+						</div>
+					</div>
+				</c:if>
+
+				<div
+					class="product-grid row row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5">
+
+
 					<c:forEach var="item" items="${goodsList}" varStatus="vs">
 						<div class="col">
 							<div class="product-item">
 								<figure>
 									<a href="goodsinfo.do?gno=${item.seqGoods}"
-										title="Product Title">
-										<img
-										src="images/17_반팔티.jpg" alt="상품 이미지"
-										class="tab-image">
+										title="Product Title"> <img src="images/${item.imgUrl }"
+										alt="상품 이미지" class="tab-image">
 									</a>
 								</figure>
 								<div class="d-flex flex-column text-start">
 									<h3 class="fs-6 fw-normal">${item.goodsName}</h3>
 									<div
 										class="d-flex justify-content-start align-items-center gap-2">
-										<span id="price" class="text-dark fw-semibold goodsPrice" data-price="${item.goodsPrice}"></span>
+										<span id="price" class="text-dark fw-semibold goodsPrice"
+											data-price="${item.goodsPrice}"></span>
 									</div>
-									<span>리뷰 수(00)
-									</span>
+									<span>리뷰 수(00) </span>
 									<div class="button-area p-3 pt-0">
 										<div class="row g-1 mt-2">
 											<div class="col">
@@ -107,62 +116,28 @@ body {
 			</div>
 		</div>
 	</div>
-
-	<!-- 
-	<div class="container mt-5">
-		<div class="row row-cols-4 g-4">
-			<c:forEach var="item" items="${goodsList}">
-				<div class="col">
-					<div class="card h-100">
-						<img src="..." class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">${item.goodsName}</h5>
-							<p class="card-text">${item.goodsPrice}</p>
-							<p class="card-text">${item.seqGoods}</p>
-							<p class="card-text">${item.goodsCatename}</p>
-							<p class="card-text">${item.goodsInven}</p>
-
-						</div>
-						<div class="card-footer">
-							<small class="text-body-secondary"> <a
-								href="goodsinfo.do?gno=${item.seqGoods}" class="btn-link">상세
-									정보</a>
-							</small>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-
-			
-		</div>
-	</div>
-	
-	-->
 </body>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <!-- Bootstrap core JS-->
-<script src="js/scripts.js" >
-
-<script src="LSH/goodsList.js" >
-	
-	
+<script src="js/scripts.js">
 </script>
 
 <script>
 	//가격 천단위
-    document.addEventListener("DOMContentLoaded", function () {
-        const priceElements = document.querySelectorAll(".goodsPrice");
+	document.addEventListener("DOMContentLoaded", function() {
+		const priceElements = document.querySelectorAll(".goodsPrice");
 
-        priceElements.forEach(function (priceElement) {
-            const priceValue = parseInt(priceElement.getAttribute("data-price"), 10);
-            if (!isNaN(priceValue)) {
-                priceElement.textContent = priceValue.toLocaleString() + "원";
-            }
-        });
-    });
+		priceElements.forEach(function(priceElement) {
+			const priceValue = parseInt(
+					priceElement.getAttribute("data-price"), 10);
+			if (!isNaN(priceValue)) {
+				priceElement.textContent = priceValue.toLocaleString() + "원";
+			}
+		});
+	});
 </script>
 
 </html>
