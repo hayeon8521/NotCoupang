@@ -15,7 +15,9 @@ List<CategoriVO> categories = csvc.listOfTcate();
 <link rel="stylesheet" type="text/css" href="css/LSH/vendor.css">
 <link rel="stylesheet" type="text/css" href="css/LSH/style.css">
 <link rel="stylesheet" type="text/css" href="css/LSH/LSH.css">
-<title>Insert title here</title>
+<script>
+    document.title = "${goodsinfo.goodsName}";
+</script>
 </head>
 <body>
 	<!-- 상단 배너 -->
@@ -25,8 +27,14 @@ List<CategoriVO> categories = csvc.listOfTcate();
 			<div class="row">
 				<div class="col-lg-6 pt-5 mt-5">
 					<h2 class="display-1 ls-1">
-						<span class="fw-bold text-primary">!Coupang</span> <span
-							class="fw-bold text-danger">??</span>
+						<span class="fw-bold text-primary">!Coupang</span> 
+						<span class="fw-bold text">C</span>
+						<span class="fw-bold text">o</span>
+						<span class="fw-bold text">u</span>
+						<span class="fw-bold text">p</span>
+						<span class="fw-bold text">a</span>
+						<span class="fw-bold text">n</span>
+						<span class="fw-bold">g</span>
 					</h2>
 					<!--  
 					<p class="fs-4">Dignissim massa diam elementum.</p>
@@ -73,12 +81,15 @@ List<CategoriVO> categories = csvc.listOfTcate();
 					</div>
 					<div class="banner-blocks row-gap-2 column-gap-2">
 						<%
-						int cateNum = 1;
+						int cateNum = 0;
 						for (CategoriVO ele : categories) {
 						%>
+						
 						<div
-							class="banner-ad d-flex align-items-center large bg-info block-<%=cateNum++%>"
-							style="background: url('imagesLSH/cate.jpg') no-repeat; background-size: cover;">
+							class="banner-ad d-flex align-items-center large bg-info block-<%=++cateNum%>"
+							style="background: url('imagesLSH/cate (<%=cateNum %>).jpg') no-repeat; background-size: cover;">
+							<div class="overlay"></div>
+							 
 							<div class="banner-content p-5">
 								<div class="content-wrapper text-light">
 									<h3 class="banner-title text-light"><%=ele.getTcate()%></h3>
@@ -87,6 +98,7 @@ List<CategoriVO> categories = csvc.listOfTcate();
 								</div>
 							</div>
 						</div>
+						
 						<%
 						}
 						%>
