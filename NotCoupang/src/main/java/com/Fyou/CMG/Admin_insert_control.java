@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.Fyou.commom.Control;
 import com.Fyou.service.GoodsinfoService;
@@ -22,6 +23,9 @@ public class Admin_insert_control implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		HttpSession session = req.getSession();
+	    String LOGID = (String) session.getAttribute("LOGID");
+		
 		
 		String savePath = req.getServletContext().getRealPath("images");
 		int maxSize = 1024 * 1024 * 5;
@@ -44,7 +48,7 @@ public class Admin_insert_control implements Control {
 		result.setGoodsPrice(goods_price);
 		result.setGoodsInven(goods_inven);
 		result.setGoodsState("state");
-		result.setGoodsMid("test"); // 나중에 세션으로 받는 아이디로 변경
+		result.setGoodsMid(LOGID);
 		result.setGoodsCatename(goods_catename);
 		
 		GoodsinfoService gsvc = new GoodsinfoServiceImpl();

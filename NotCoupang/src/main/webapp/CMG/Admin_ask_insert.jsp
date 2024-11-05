@@ -1,21 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.Fyou.vo.GoodsinfoVO"%>
-<%@page import="com.Fyou.vo.ImgVO"%>
-<%@page import="java.util.List"%>
+<%@page import="com.Fyou.vo.AskVO"%>
+<%@page import="com.Fyou.vo.AnswerVO"%>
+
 <%
 String LOGID = (String) session.getAttribute("LOGID");
 String LOGNAME = (String) session.getAttribute("LOGNAME");
 String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
-GoodsinfoVO gvo = (GoodsinfoVO) request.getAttribute("gvo");
-List<ImgVO> img_list = (List<ImgVO>) request.getAttribute("img_list");
-int seq_img = (int) request.getAttribute("seq_img");
-int list_num = (int) request.getAttribute("list_num");
-int seq_goods = (int) request.getAttribute("seq_goods");
+AskVO avo = (AskVO) request.getAttribute("avo");
+AnswerVO asvo = (AnswerVO) request.getAttribute("asvo");
 %>
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -25,16 +23,24 @@ int seq_goods = (int) request.getAttribute("seq_goods");
 
 <title>!Coupang Admin</title>
 
-<!-- Custom fonts for this template-->
+<!-- Custom fonts for this template -->
 <link href="CMG/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
-<!-- Custom styles for this template-->
+
+<!-- Custom styles for this template -->
 <link href="CMG/css/sb-admin-2.min.css" rel="stylesheet">
+
+<!-- Custom styles for this page -->
+<link href="CMG/vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
+
 </head>
-<body>
+
+<body id="page-top">
+
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -55,19 +61,27 @@ int seq_goods = (int) request.getAttribute("seq_goods");
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active"><a class="nav-link"
-				href="Admin_insert.do"> <span>상품 등록</span></a></li>
+			<li class="nav-item active">
+                <a class="nav-link" href="Admin_insert.do">
+                    <span>상품 등록</span></a>
+            </li>
 
-			<li class="nav-item active"><a class="nav-link"
-				href="Admin_list.do?page=1"> <span>등록 상품 조회</span></a></li>
+            <li class="nav-item active">
+                <a class="nav-link" href="Admin_list.do?page=1">
+                    <span>등록 상품 조회</span></a>
+            </li>
 
 
-			<li class="nav-item active"><a class="nav-link"
-				href="Admin_ask.do"> <span>문의 관리</span></a></li>
+            <li class="nav-item active">
+                <a class="nav-link" href="Admin_ask.do">
+                    <span>문의 관리</span></a>
+            </li>
 
 
-			<li class="nav-item active"><a class="nav-link"
-				href="index_edit.html"> <span>4번 카테고리 이동</span></a></li>
+            <li class="nav-item active">
+                <a class="nav-link" href="index_edit.html">
+                    <span>4번 카테고리 이동</span></a>
+            </li>
 
 		</ul>
 		<!-- End of Sidebar -->
@@ -112,73 +126,93 @@ int seq_goods = (int) request.getAttribute("seq_goods");
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">등록 상품 수정</h1>
+					<h1 class="h3 mb-2 text-gray-800">상품 등록</h1>
 					<p class="mb-4"></p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-body">
 							<div class="table-responsive">
-								<form action="Admin_update_detail_image.do" method="post"
-									enctype="multipart/form-data">
-									<input type="hidden" name="seq_img" value="<%=seq_img%>">
-									<input type="hidden" name="list_num" value="<%=list_num%>">
-									<input type="hidden" name="seq_goods" value="<%=seq_goods%>">
-									<%
-									System.out.println(seq_img);
-									System.out.println(list_num);
-									System.out.println(seq_goods);
-									%>
-									<table class="table table-bordered" id="dataTable" width="100%"
-										cellspacing="0">
+								<form action="Admin_answer_insert_control.do" method="post">
+									<input type="hidden" name="seq_ask" value="<%=avo.getSeqAsk() %>">
+									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+										<thead>
+											<tr>
+												<th style="width: 10%">문의 번호</th>
+												<th style="width: 10%">상품 번호</th>
+												<th style="width: 50%">문의</th>
+												<th style="width: 10%">구매자 ID</th>
+												<th style="width: 20%"></th>
+											</tr>
+										</thead>
 										<tbody>
 											<tr>
-												<th style="width: 15%">이미지</th>
-												<th style="width: 50%">상품명</th>
-												<th style="width: 15%">가격</th>
-												<th style="width: 10%">재고</th>
-												<th style="width: 10%">상태</th>
+												<th style="width: 10%"><%=avo.getSeqAsk() %></th>
+												<th style="width: 10%"><%=avo.getGoodsNum() %></th>
+												<th style="width: 50%; word-break: break-all"><%=avo.getAsk() %></th>
+												<th style="width: 10%"><%=avo.getBuyerId() %></th>
+												<th style="width: 20%"></th>
 											</tr>
 											<%
-											String goods_state = "";
-											if (gvo.getGoodsState().equals("state")) {
-												goods_state = "판매중";
-											} else if (gvo.getGoodsState().equals("stop")) {
-												goods_state = "판매 중단";
-											} else if (gvo.getGoodsState().equals("end")) {
-												goods_state = "판매 종료";
-											}
+											if (asvo == null) {
 											%>
 											<tr>
-												<td style="width: 15%"><a><img
-														src="images/<%=img_list.get(0).getImgUrl()%>"
-														width="150px"></a></td>
-												<td style="width: 50%"><%=gvo.getGoodsName()%></td>
-												<td style="width: 15%"><%=gvo.getGoodsPrice()%></td>
-												<td style="width: 10%"><%=gvo.getGoodsInven()%></td>
-												<td style="width: 10%"><%=goods_state%></td>
-											</tr>
-											<tr>
-												<td colspan="5" style="width: 100%"><a><img
-														src="images/<%=img_list.get(seq_img).getImgUrl()%>"></a></td>
-											</tr>
-											<tr>
-												<td style="text-align: center">수정할 파일 첨부</td>
-												<td colspan="4"><input type="file"
-													class="form-control bg-light border-0 small"
+												<td style="width: 10%">답변</td>
+												<td colspan="4" style="width: 90%; vertical-align: middle">
+												<textarea class="form-control bg-light border-0 small"
 													aria-label="Search" aria-describedby="basic-addon2"
-													name="img_update"></td>
+													name="insert_ask" rows="4"></textarea></td>
 											</tr>
+											<%
+											} else {
+											%>
+											<tr>
+												<td style="width: 10%">답변</td>
+												<td colspan="4" style="width: 90%; vertical-align: middle; word-break: break-all">
+												<%=asvo.getAnswer() %></td>
+											</tr>
+											<%
+											}
+											%>
 										</tbody>
 									</table>
-									<div style="text-align: center">
-										<input class="btn btn-primary" type="submit"
-											style="width: 250px;" value="수정">
+									<%
+									if (asvo == null) {
+									%>
+									<div style="text-align: center;">
+										<input class="btn btn-primary" type="submit" style="width: 250px;" value="제출">
+									</div>
+									<%
+									}
+									%>
+								</form>
+								<%
+								if (asvo != null) {
+								%>
+								<form action="Admin_answer_update_control.do" method="post">
+									<input type="hidden" name="seq_ask" value="<%=avo.getSeqAsk() %>">
+									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+										<thead>
+											<tr>
+												<td style="width: 10%">답변 수정</td>
+												<td colspan="4" style="width: 90%; vertical-align: middle">
+												<textarea class="form-control bg-light border-0 small"
+													aria-label="Search" aria-describedby="basic-addon2"
+													name="insert_ask" rows="4"></textarea></td>
+											</tr>
+										</thead>
+									</table>
+									<div style="text-align: center;">
+										<input class="btn btn-primary" type="submit" style="width: 250px;" value="제출">
 									</div>
 								</form>
+								<%
+								}
+								%>
 							</div>
 						</div>
 					</div>
+
 				</div>
 				<!-- /.container-fluid -->
 
@@ -205,4 +239,5 @@ int seq_goods = (int) request.getAttribute("seq_goods");
 	<script src="CMG/vendor/datatables/jquery.dataTables.min.js"></script>
 	<script src="CMG/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 </body>
+
 </html>
