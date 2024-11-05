@@ -26,6 +26,9 @@ import com.Fyou.CMG.Admin_list;
 import com.Fyou.CMG.Admin_main;
 import com.Fyou.CMG.Admin_update_detail_image;
 import com.Fyou.commom.Control;
+import com.Fyou.control.DelOrderCont;
+import com.Fyou.control.BSJ.InsertAskCont;
+import com.Fyou.control.BSJ.InsertReviewCont;
 import com.Fyou.control.BSJ.ModifyAddressCont;
 import com.Fyou.control.BSJ.ModifyNickCont;
 import com.Fyou.control.BSJ.ModifyPhoneCont;
@@ -156,7 +159,8 @@ public class FrontController extends HttpServlet {
 		//회원 마이페이지 관련
 		
 		//주문목록 
-		map.put("/myOrderList.do", new MyOrderListControl());
+		map.put("/myOrderList.do", new MyOrderListControl());  // 내주문목록
+		map.put("/delOrder.do", new DelOrderCont()); //주문목록 삭제하는 페이지
 		
 		//회원정보 체크 / 조회 / 수정 
 		map.put("/checkMem.do", new checkMemControl()); //비밀번호 재확인
@@ -170,10 +174,13 @@ public class FrontController extends HttpServlet {
 		//회원정보
 		
 		//내 리뷰 관리
-		map.put("/myReview.do", new MyReviewControl());
+		map.put("/myReview.do", new MyReviewControl()); //내리뷰내역
+		map.put("/insertReview.do", new InsertReviewCont()); //리뷰추가
 		
 		//문의내역 
-		map.put("/myAsk.do", new MyAskControl());
+		map.put("/myAsk.do", new MyAskControl()); //내문의내역
+		map.put("/insertAsk.do", new InsertAskCont()); //문의내역추가
+		
 		
 		
 		

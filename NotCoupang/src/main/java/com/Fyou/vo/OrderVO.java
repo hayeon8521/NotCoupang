@@ -12,4 +12,7 @@ public class OrderVO {
 	private int count;
 	private int price;
 	private Date orderDate;
+	
+	//주문번호 추가
+	private int seqOrder;
 }

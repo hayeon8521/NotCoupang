@@ -51,4 +51,10 @@
  		
  	</update>
  	
+ 	<delete id="deleteOrderOne" parameterType="int">
+ 		DELETE FROM tim_order
+ 		WHERE  seq_order = #{seqOrder}
+ 	</delete>
+ 	
+ 	
  </mapper>
