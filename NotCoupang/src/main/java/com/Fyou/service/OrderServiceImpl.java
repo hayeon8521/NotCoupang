@@ -40,4 +40,9 @@ public class OrderServiceImpl implements OrderService{
 		// TODO Auto-generated method stub
 		return mapper.updateOrder(order);
 	}
+	
+	@Override
+	public boolean deleteOrderOne(int seqOrder) {
+		return mapper.deleteOrderOne(seqOrder) == 1;
+	}
 }

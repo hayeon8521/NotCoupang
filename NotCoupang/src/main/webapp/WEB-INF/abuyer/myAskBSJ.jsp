@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>리뷰 관리</title>
+<title>문의 관리</title>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -13,7 +13,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <!--내 CSS 연동-->
-<link rel="stylesheet" href="css/BSJ/myOrderList.css" />
+<link rel="stylesheet" href="css/BSJ/myOrderList.css" />	
  <style>
     body {
       background-color: #f8f9fa;
@@ -120,17 +120,57 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 <link rel="stylesheet" href="css/BSJ/myOrderList.css" />
-
+<style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .list-group-item {
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .list-group-item:hover {
+            background-color: #e9ecef;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        .card-title {
+            margin: 0;
+        }
+        .img-thumbnail {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        #reviewContent {
+            resize: none;
+        }
+        .card-footer {
+            text-align: right;
+            font-size: 0.9em;
+        }
+        .nav-tabs .nav-link.active {
+    color: #ffffff !important;
+    background-color: #007bff !important;
+    border-color: #007bff #007bff #f8f9fa !important;
+}
+    </style>
     
 </head>
-
 <!-- 세션 -->
 <%
 String LOGID = (String) session.getAttribute("LOGID");
 String LOGNAME = (String) session.getAttribute("LOGNAME");
 String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 %>
-
 <body>
   <div class="container mt-4">
     <div class="row">

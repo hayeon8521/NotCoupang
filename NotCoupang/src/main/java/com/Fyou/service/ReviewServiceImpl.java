@@ -42,11 +42,11 @@ public class ReviewServiceImpl implements ReviewService{
 	public int totalReview(int gno) {
 		return mapper.totalReview(gno);
 	}
-
 	
-
-	
-	
-	 
+	@Override
+	public ReviewVO reviewOne(ReviewVO review) {
+		return mapper.reviewOne(review);
+	}
+ 
 
 }

@@ -192,7 +192,7 @@ body {
 			<div class="d-flex justify-content-end mb-3">
 				<button type="button" class="btn btn-outline-secondary me-2">
 					탈퇴하기</button>
-				<button type="submit" class="btn btn-primary">나가기</button>
+				<button type="submit" id="exitBtn" name="exitBtn" class="btn btn-primary">나가기</button>
 			</div>
 		</form>
 	</div>
@@ -291,6 +291,11 @@ body {
 			}
 
 		});
+    
+    document.querySelector("#exitBtn").addEventListener('click',function(){
+			window.location.replace('/NotCoupang/myOrderList.do?buyerId=+${LOGID }');
+		});
+		
 
     </script>
 </body>

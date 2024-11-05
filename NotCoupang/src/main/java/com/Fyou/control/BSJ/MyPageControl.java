@@ -25,7 +25,7 @@ public class MyPageControl implements Control {
 		req.setAttribute("mvo", mvo); //화면출력
 		
 		//오픈할 페이지 설정
-		req.getRequestDispatcher("BuyerTAM/myPageBSJ.tiles").forward(req, resp);
+		req.getRequestDispatcher("BuyerTM/myPageBSJ.tiles").forward(req, resp);
 		
 
 	}

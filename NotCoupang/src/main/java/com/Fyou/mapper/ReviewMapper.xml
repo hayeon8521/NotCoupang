@@ -61,4 +61,17 @@
 		</if>
 		where goods_num = #{goodsNum}
 	</update>
+	
+	
+	
+	
+	<!-- 회원아이디, 상품번호로 리뷰내역 조회 -->
+	<select id="reviewOne" parameterType="review">
+	select *
+	from tim_review
+	where goods_num= #{goodsNum} and buyer_id=#{buyerId}
+	
+	
+	
+	</select>
 </mapper>
