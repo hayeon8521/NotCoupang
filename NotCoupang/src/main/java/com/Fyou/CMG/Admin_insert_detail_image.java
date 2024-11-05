@@ -17,6 +17,7 @@ public class Admin_insert_detail_image implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		String savePath = req.getServletContext().getRealPath("images");
 		int maxSize = 1024 * 1024 * 5;
 		MultipartRequest mr = new MultipartRequest(

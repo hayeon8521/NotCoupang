@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.Fyou.commom.Control;
 import com.Fyou.service.GoodsinfoService;
@@ -19,12 +20,15 @@ public class Admin_list implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		HttpSession session = req.getSession();
+	    String LOGID = (String) session.getAttribute("LOGID");
 		String page = req.getParameter("page");
 		page = (page == null) ? "1" : page;
 		
 		GoodsinfoService gsvc = new GoodsinfoServiceImpl();
 		ImgService isvc = new ImgServiceImpl();
-		List<GoodsinfoVO> list = gsvc.goodsListMID("test"); // 세션으로 받는 아이디 입력
+		List<GoodsinfoVO> list = gsvc.goodsListMID(LOGID); // 세션으로 받는 아이디 입력
 		
 		req.setAttribute("goodsList", list);
 		req.setAttribute("page", page);

@@ -98,8 +98,9 @@
 		where  seq_goods = #{seqGoods}
 	</select>
 	
-	<delete id="goodsdelete" parameterType="int">
-		delete tim_goodsinfo
+	<update id="goodsdelete" parameterType="int">
+		update tim_goodsinfo 
+		set goods_state = 'end' 
 		where seq_goods = #{seq_goods}
-	</delete>
+	</update>
 </mapper>
