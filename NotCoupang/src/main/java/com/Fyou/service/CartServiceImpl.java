@@ -44,6 +44,11 @@ public class CartServiceImpl implements CartService {
 		return mapper.selectOneCart(memberId, goodsNum);
 	}
 
+	@Override
+	public List<CartVO> selectListCart(String memberId, int goodsNum) {
+		return mapper.selectListCart(memberId, goodsNum);
+	}
+
 	
 	
 

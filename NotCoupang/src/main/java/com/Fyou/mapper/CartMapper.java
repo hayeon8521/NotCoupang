@@ -24,4 +24,7 @@ public interface CartMapper {
 	
 	//고객 아이디, 상품번호로 1건 정보 조회
 	public CartVO selectOneCart(@Param("memberId") String memberId, @Param("goodsNum") int goodsNum);
+	
+	//카트 정보 조회 (멤버아이디와 상품번호로 여러건 조회 ㅠㅠ)
+	public List<CartVO> selectListCart(@Param("memberId") String memberId, @Param("goodsNum") int goodsNum);
 }
