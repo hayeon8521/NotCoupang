@@ -3,6 +3,7 @@ package com.Fyou.service;
 import java.util.List;
 
 import com.Fyou.vo.GoodsinfoVO;
+import com.Fyou.vo.SearchVO;
 
 public interface GoodsinfoService {
 	
@@ -24,6 +25,13 @@ public interface GoodsinfoService {
 	//카테고리(대분류)와 키워드 검색 리스팅(LSH)
 	List<GoodsinfoVO> goodsListKeywordAndTcate(String tCate, String keyword);
 	
+	//키워드 검색 리스팅 페이지
+	List<GoodsinfoVO> goodsListKeywordWithPage(SearchVO search);
+	
+	//소분류 리스팅 레이지
+	List<GoodsinfoVO> goodsListBcateWithPage(SearchVO search);
+	//
+	List<GoodsinfoVO> goodsListkeywordAndTcateWithPage(SearchVO search);
 	//상품등록
 	boolean registerGoods(GoodsinfoVO goodsinfo);
 	

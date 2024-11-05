@@ -7,8 +7,17 @@
 }
 
 body {
+	min-width: 1200px;
 	--bs-primary: #0080ff;
 	--bs-primary-rgb: 0, 128, 255;
+}
+.card {
+	display: flex;
+	flex-direction: column;
+}
+
+.card-body {
+	flex-grow: 1;
 }
 
 .btn-outline-primary {
@@ -108,10 +117,17 @@ input::placeholder {
 .product-item {
     height:400px;
 }
+.product-item:hover .item-title {
+    text-decoration: underline;
+    color: #007bff;
+}
+
+
+
 
 .product-item figure img {
     max-width: 180px;
-    width: auto;
+    width: 180px;
     max-height: 210px;
-    height: auto;
+    height: 180px;
 }

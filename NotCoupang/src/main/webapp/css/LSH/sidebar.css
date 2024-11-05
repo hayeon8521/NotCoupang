@@ -1,0 +1,55 @@
+@charset "UTF-8";
+    .sidebar-category {
+        width: 200px;
+        background-color: #f8f8f8;
+        padding: 10px;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        position: relative;
+        height: auto; /* 화면 전체 높이 차지 */
+        min-height: 1200px;
+        overflow-y: auto; /* 스크롤 활성화 */
+    }
+    
+    .category-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .category-item > a {
+        display: block;
+        padding: 10px;
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    
+    .category-item > a:hover {
+        background-color: #eaeaea;
+        color: #007bff;
+    }
+    
+    .subcategory-list {
+        list-style: none;
+        padding: 0 0 0 20px;
+        display: none;
+    }
+    
+    .category-item:hover .subcategory-list {
+        display: block;
+    }
+    
+    .subcategory-list a {
+        display: block;
+        padding: 8px;
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    
+    .subcategory-list a:hover {
+        color: #007bff;
+    }
