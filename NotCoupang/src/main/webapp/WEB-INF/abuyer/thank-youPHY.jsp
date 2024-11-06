@@ -85,7 +85,7 @@
     });
 
     document.querySelector('.orderinfo').addEventListener('click', function(){
-        window.location.replace("/NotCoupang/myOrderList.do?buyer_id=${LOGID}");
+        window.location.replace("/NotCoupang/myOrderList.do?buyerId=${LOGID}");
     });
 </script>
 </html>
