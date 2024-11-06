@@ -105,7 +105,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
                 </div>
                 <!--  버튼 -->
                 <div class="action-buttons">
-                  <button class="btn btn-warning">수정</button>
+                  <button class="btn btn-warning modifyreview">수정</button>
                   <button class="btn btn-danger">삭제</button>
                 </div>
                 <div class="mt-3 text-muted">
@@ -127,5 +127,11 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 
 
 </body>
-
+<script>
+document.querySelectorAll('.')
+  document.querySelector('#modifyreview').addEventListener('click',function(e){
+    console.log(e.target);
+  });
+</script>
       </html>
+      
