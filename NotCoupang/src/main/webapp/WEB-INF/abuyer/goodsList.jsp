@@ -39,15 +39,17 @@ ct = ct.isEmpty() ? "전체" : ct;
 
 
 	<div class="container-lg">
-
 		<div class="row">
 			<div class="col-md-12">
-
 				<div
-					class="section-header d-flex flex-wrap justify-content-between my-4">
-					<h2 class="section-title"><%=ct%>(${total})</h2>
+					class="section-header justify-content-between my-4">
+					<h2 class="section-title">
+						<%=ct%><c:if test="${bcate!=null&&bcate!=''}"> ≫ ${bcate}</c:if> 
+					</h2>
+					<div class="align-items-start">
+                		<p>(${total})</p>
+              		</div>
 				</div>
-
 			</div>
 		</div>
 		<hr>
