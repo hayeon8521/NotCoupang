@@ -65,6 +65,15 @@ public class thankyouCont implements Control {
 			order.setCount(cart.getCount());
 			order.setPrice(goods.getGoodsPrice());
 			
+			
+			//재고수량 업데이트
+			GoodsinfoVO updatdgoods = new GoodsinfoVO();
+			updatdgoods.setGoodsInven(goods.getGoodsInven()-cart.getCount());
+			updatdgoods.setSeqGoods(cart.getGoodsNum());
+			
+			//상품재고 업데이트
+			svcG.modifyGoods(updatdgoods);
+			
 			//구매내역 삽입
 			svcO.insertOrder(order);
 			

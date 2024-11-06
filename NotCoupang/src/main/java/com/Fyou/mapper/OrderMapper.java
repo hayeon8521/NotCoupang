@@ -20,9 +20,9 @@ public interface OrderMapper {
 	//수정(기준은 임의로 구매자 상품들 전체)
 	public int updateOrder(OrderVO order);
 	
-	
-	
 	//주문번호로 내 주문 삭제(마이페이지용)
 	public int deleteOrderOne(int seqOrder);
 	
+	//판매자 ID를 통한 판매 내역 전체 조회
+	public List<OrderVO> selectSellerOrder(String seller_id);
 }
