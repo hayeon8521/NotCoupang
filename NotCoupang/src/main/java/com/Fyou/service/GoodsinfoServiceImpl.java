@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.Fyou.commom.DataSource;
 import com.Fyou.mapper.GoodsinfoMapper;
 import com.Fyou.vo.GoodsinfoVO;
+import com.Fyou.vo.SearchVO;
 
 
 public class GoodsinfoServiceImpl implements GoodsinfoService{
@@ -63,5 +64,20 @@ public class GoodsinfoServiceImpl implements GoodsinfoService{
 	@Override
 	public boolean goodsdelete(int seq_goods) {
 		return mapper.goodsdelete(seq_goods) == 1;
+	}
+
+	@Override
+	public List<GoodsinfoVO> goodsListKeywordWithPage(SearchVO search) {
+		return mapper.goodsListSellerkeywordWithPage(search);
+	}
+
+	@Override
+	public List<GoodsinfoVO> goodsListBcateWithPage(SearchVO search) {
+		return mapper.goodsListSellerBcateWithPage(search);
+	}
+
+	@Override
+	public List<GoodsinfoVO> goodsListkeywordAndTcateWithPage(SearchVO search) {
+		return mapper.goodsListSellerkeywordAndTcateWithPage(search);
 	}
 }

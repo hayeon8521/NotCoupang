@@ -19,6 +19,7 @@ public class Admin_goodsedit implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		int seq_goods = Integer.parseInt(req.getParameter("seq_goods"));
 		int list_num = Integer.parseInt(req.getParameter("list_num"));
 		req.setAttribute("seq_goods", seq_goods);

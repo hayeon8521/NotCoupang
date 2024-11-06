@@ -10,12 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Fyou.CMG.Admin_answer_insert_control;
+import com.Fyou.CMG.Admin_answer_update_control;
+import com.Fyou.CMG.Admin_ask;
 import com.Fyou.CMG.Admin_delete_detail_image;
 import com.Fyou.CMG.Admin_goodsdelete;
 import com.Fyou.CMG.Admin_goodsedit;
 import com.Fyou.CMG.Admin_goodsedit_control;
 import com.Fyou.CMG.Admin_goodsinfo;
 import com.Fyou.CMG.Admin_insert;
+import com.Fyou.CMG.Admin_insert_ask;
 import com.Fyou.CMG.Admin_insert_control;
 import com.Fyou.CMG.Admin_insert_detail_image;
 import com.Fyou.CMG.Admin_list;
@@ -92,8 +96,10 @@ public class FrontController extends HttpServlet {
 		map.put("/Admin_insert_detail_image.do", new Admin_insert_detail_image());
 		map.put("/Admin_delete_detail_image.do", new Admin_delete_detail_image());
 		map.put("/Admin_update_detail_image.do", new Admin_update_detail_image());
-		
-		
+		map.put("/Admin_ask.do", new Admin_ask());
+		map.put("/Admin_insert_ask.do", new Admin_insert_ask());
+		map.put("/Admin_answer_insert_control.do", new Admin_answer_insert_control());
+		map.put("/Admin_answer_update_control.do", new Admin_answer_update_control());
 		
 		
 		

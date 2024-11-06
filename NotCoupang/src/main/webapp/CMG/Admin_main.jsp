@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String LOGID = (String) session.getAttribute("LOGID");
+String LOGNAME = (String) session.getAttribute("LOGNAME");
+String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,8 +56,8 @@
 
 
             <li class="nav-item active">
-                <a class="nav-link" href="index_edit.html">
-                    <span>3번 카테고리 이동</span></a>
+                <a class="nav-link" href="Admin_ask.do">
+                    <span>문의 관리</span></a>
             </li>
 
 
@@ -108,14 +113,14 @@
 
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">유저 ID</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=LOGID %></span>
                             </a>
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link" href="index_edit.html">
+                            <a class="nav-link" href="http://localhost/NotCoupang/logout.do">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>
                             </a>
                         </li>

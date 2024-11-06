@@ -16,6 +16,7 @@ public class Admin_delete_detail_image implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		int seq_img = Integer.parseInt(req.getParameter("seq_img"));
 		int list_num = Integer.parseInt(req.getParameter("list_num"));
 		int seq_goods = Integer.parseInt(req.getParameter("seq_goods"));

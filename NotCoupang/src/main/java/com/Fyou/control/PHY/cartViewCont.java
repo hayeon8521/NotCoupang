@@ -43,6 +43,40 @@ public class cartViewCont implements Control {
 		//이지미테이블 맵퍼 쿼리 사용하기위해서 선언한 객체
 		ImgService svcI = new ImgServiceImpl();
 		
+
+		//너는 중복 장바구니를 정리하는거야!!! 상품상세에서 거르기 요청 하려하다
+		//그냥 내가 만들지뭐 ㅋㅋㅋ
+		List<CartVO> cartList2 = svcC.selectCart(LOGID);
+		if(cartList2 != null  && !cartList2.isEmpty()) {
+			for (CartVO overlaplist : cartList2) {
+				List<CartVO> Olist = svcC.selectListCart(LOGID, overlaplist.getGoodsNum());
+				if(Olist.size() >= 2) {
+					String mameberId = "";
+					int counting = 0;
+					int goodsnumering = 0;
+					for (CartVO Olisting : Olist) {
+						mameberId = Olisting.getMemberId();
+						counting += Olisting.getCount();
+						goodsnumering = Olisting.getGoodsNum();
+					}
+					CartVO overLapVO = new CartVO();
+					overLapVO.setGoodsNum(goodsnumering);
+					overLapVO.setMemberId(mameberId);
+					overLapVO.setCount(counting);
+					
+					if(svcC.deleteCart(overLapVO)) {
+					}else {
+					}
+					if(svcC.insertCart(overLapVO)) {
+					}else {
+					}
+				}
+			}
+		}
+		
+		
+		
+		
 		//내 아이디의 카트리스트 정보를 가져와서 담음 ( 상품번호, 재고수량 )
 		List<CartVO> cartList = svcC.selectCart(LOGID);
 		//카트정보 유무에 따라서 화면 처리
@@ -82,7 +116,7 @@ public class cartViewCont implements Control {
 				
 			}//for (CartVO item : cartList)
 			
-			System.out.println(myCartList.toString());
+			//System.out.println(myCartList.toString());
 			req.setAttribute("isdata", "YES");
 			req.setAttribute("myCartList", myCartList);
 		}else {

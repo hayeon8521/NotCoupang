@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.Fyou.commom.Control;
 import com.Fyou.service.GoodsinfoService;
@@ -19,11 +20,14 @@ public class Admin_goodsinfo implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		HttpSession session = req.getSession();
+	    String LOGID = (String) session.getAttribute("LOGID");
 		int seq_goods = Integer.parseInt(req.getParameter("seq_goods"));
 		GoodsinfoService gsvc = new GoodsinfoServiceImpl();
 		ImgService isvc = new ImgServiceImpl();
 		
-		List<GoodsinfoVO> list = gsvc.goodsListMID("test");
+		List<GoodsinfoVO> list = gsvc.goodsListMID(LOGID);
 		GoodsinfoVO gvo = new GoodsinfoVO();
 		gvo = list.get(seq_goods);
 		req.setAttribute("list_num", seq_goods);
