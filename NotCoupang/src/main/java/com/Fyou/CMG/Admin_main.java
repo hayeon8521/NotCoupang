@@ -3,6 +3,7 @@ package com.Fyou.CMG;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,10 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.Fyou.commom.Control;
+import com.Fyou.service.GoodsinfoService;
+import com.Fyou.service.GoodsinfoServiceImpl;
 import com.Fyou.service.OrderService;
 import com.Fyou.service.OrderServiceImpl;
+import com.Fyou.vo.GoodsinfoVO;
 import com.Fyou.vo.MonthVO;
 import com.Fyou.vo.OrderVO;
+import com.Fyou.vo.SellerCateVO;
 
 public class Admin_main implements Control {
 
@@ -26,7 +31,6 @@ public class Admin_main implements Control {
 		OrderService osvc = new OrderServiceImpl();
 		
 		List<OrderVO> order_list = osvc.selectSellerOrder(LOGID);
-		
 		
 		int total_sales = 0;
 		DateFormat dateformat_MM = new SimpleDateFormat("MM");
@@ -61,9 +65,56 @@ public class Admin_main implements Control {
 				month_sales.setM12(month_sales.getM12() + order_list.get(i).getCount() * order_list.get(i).getPrice());
 			}
 		}
+		
+		int month_value = LocalDate.now().getMonthValue();
+		int now_month_sales = 0;
+		if (month_value == 1) {
+			now_month_sales = month_sales.getM01();
+		} else if (month_value == 2) {
+			now_month_sales = month_sales.getM02();
+		} else if (month_value == 3) {
+			now_month_sales = month_sales.getM03();
+		} else if (month_value == 4) {
+			now_month_sales = month_sales.getM04();
+		} else if (month_value == 5) {
+			now_month_sales = month_sales.getM05();
+		} else if (month_value == 6) {
+			now_month_sales = month_sales.getM06();
+		} else if (month_value == 7) {
+			now_month_sales = month_sales.getM07();
+		} else if (month_value == 8) {
+			now_month_sales = month_sales.getM08();
+		} else if (month_value == 9) {
+			now_month_sales = month_sales.getM09();
+		} else if (month_value == 10) {
+			now_month_sales = month_sales.getM10();
+		} else if (month_value == 11) {
+			now_month_sales = month_sales.getM11();
+		} else if (month_value == 12) {
+			now_month_sales = month_sales.getM12();
+		}
+		
+		List<SellerCateVO> seller_cate_list = osvc.selectSellerCate(LOGID);
+		
+		GoodsinfoService gsvc = new GoodsinfoServiceImpl();		
+		List<GoodsinfoVO> goods_all_list = gsvc.goodsListSellerAllMID(LOGID);
+		int state = 0;
+		int stop_end = 0;
+		for (int i = 0 ; i < goods_all_list.size() ; i++) {
+			if (goods_all_list.get(i).getGoodsState().equals("state")) {
+				state++;
+			} else {
+				stop_end++;
+			}
+		}
+		
 		req.setAttribute("order_list", order_list);
 		req.setAttribute("total_sales", total_sales);
 		req.setAttribute("month_sales", month_sales);
+		req.setAttribute("now_month_sales", now_month_sales);
+		req.setAttribute("seller_cate_list", seller_cate_list);
+		req.setAttribute("state", state);
+		req.setAttribute("stop_end", stop_end);
 						
 		req.getRequestDispatcher("CMG/Admin_main.jsp").forward(req, resp);
 	}
