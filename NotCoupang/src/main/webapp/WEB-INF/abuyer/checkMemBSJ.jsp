@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/BSJ/myOrderList.css" />
 
 <style>
-  /* 검색창 & 돋보기 */
+  /* 검색창 & 돋보기 *///
         .search-barBSJ {
             position: relative;
             margin-bottom: 20px;
