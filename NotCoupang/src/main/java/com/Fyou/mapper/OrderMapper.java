@@ -19,4 +19,7 @@ public interface OrderMapper {
 	public int deleteOrder(OrderVO order);
 	//수정(기준은 임의로 구매자 상품들 전체)
 	public int updateOrder(OrderVO order);
+	
+	//판매자 ID를 통한 판매 내역 전체 조회
+	public List<OrderVO> selectSellerOrder(String seller_id);
 }

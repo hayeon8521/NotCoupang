@@ -14,4 +14,6 @@ public interface OrderService {
 	public int deleteOrder(OrderVO order);
 	//수정
 	public int updateOrder(OrderVO order);
+	
+	public List<OrderVO> selectSellerOrder(String seller_id);
 }

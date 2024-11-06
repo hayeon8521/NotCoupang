@@ -48,7 +48,15 @@
 	  		,price = #{price}
 	  	</if>
 	  	WHERE buyer_id = #{buyerId}
- 		
  	</update>
+ 	
+ 	<select id="selectSellerOrder" parameterType="string">
+ 		select seq_order, buyer_id, goods_num, count, price, order_date 
+		from TIM_ORDER 
+		join TIM_GOODSINFO 
+		on seq_goods = goods_num 
+		where goods_mid = #{seller_id} 
+		order by 1 desc
+ 	</select>
  	
  </mapper>

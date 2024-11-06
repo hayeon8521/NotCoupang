@@ -40,4 +40,10 @@ public class OrderServiceImpl implements OrderService{
 		// TODO Auto-generated method stub
 		return mapper.updateOrder(order);
 	}
+
+
+	@Override
+	public List<OrderVO> selectSellerOrder(String seller_id) {
+		return mapper.selectSellerOrder(seller_id);
+	}
 }

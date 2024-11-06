@@ -110,7 +110,7 @@ int list_num = (int) request.getAttribute("list_num");
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">등록 상품 수정</h1>
+					<h1 class="h3 mb-2 text-gray-800">등록 상품 상세 조회</h1>
 					<p class="mb-4"></p>
 
 					<!-- DataTales Example -->
@@ -171,8 +171,8 @@ int list_num = (int) request.getAttribute("list_num");
 										for (int i = 1; i < img_list.size(); i++) {
 										%>
 										<tr>
-											<td style="width: 100%"><a><img
-													src="images/<%=img_list.get(i).getImgUrl()%>"></a></td>
+											<td style="width: 100%"><a><img src="images/<%=img_list.get(i).getImgUrl()%>"
+											style="width: 80%"></a></td>
 										</tr>
 										<tr>
 											<td>

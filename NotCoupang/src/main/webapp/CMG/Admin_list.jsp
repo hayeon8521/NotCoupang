@@ -173,7 +173,8 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 										<%
 										} else {
 										%>
-										<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+										<li class="page-item"><a class="page-link"
+										href="Admin_list.do?page=<%=(((int) ((now_page - 1) / 10) + 1) * 10) - 10%>">&laquo;</a></li>
 										<%
 										}
 										int last_page = ((int) (real_end / 10) + 1);
