@@ -120,7 +120,7 @@ AnswerVO asvo = (AnswerVO) request.getAttribute("asvo");
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">상품 등록</h1>
+					<h1 class="h3 mb-2 text-gray-800">문의 답변</h1>
 					<p class="mb-4"></p>
 
 					<!-- DataTales Example -->
