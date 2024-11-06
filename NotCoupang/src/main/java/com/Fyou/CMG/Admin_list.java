@@ -28,7 +28,7 @@ public class Admin_list implements Control {
 		
 		GoodsinfoService gsvc = new GoodsinfoServiceImpl();
 		ImgService isvc = new ImgServiceImpl();
-		List<GoodsinfoVO> list = gsvc.goodsListMID(LOGID); // 세션으로 받는 아이디 입력
+		List<GoodsinfoVO> list = gsvc.goodsListMID(LOGID);
 		
 		req.setAttribute("goodsList", list);
 		req.setAttribute("page", page);

@@ -59,7 +59,7 @@ public class Admin_insert_control implements Control {
 			System.out.println("fail");
 		}
 		
-		List<GoodsinfoVO> list = gsvc.goodsListMID("test"); // 나중에 세션으로 받는 아이디로 변경
+		List<GoodsinfoVO> list = gsvc.goodsListMID(LOGID);
 		
 		ImgService isvc = new ImgServiceImpl();
 		ImgVO ivo = new ImgVO();

@@ -88,6 +88,7 @@
 		from   tim_ask
 		where  goods_num = #{goods_num}
 	</select>
+	
 	<select id="selectAskSellerlist" >
 		select seq_ask, goods_num, ask, buyer_id, ask_date 
 		from tim_goodsinfo 

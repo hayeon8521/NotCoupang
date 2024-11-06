@@ -69,7 +69,7 @@
 	<select id="reviewOne" parameterType="review">
 	select *
 	from tim_review
-	where goods_num= #{goodsNum} and buyer_id=#{buyerId}
+	where goods_num= #{goodsNum} and buyer_id= #{buyerId}
 	</select>
 	
 	<!-- 상품번호로 상품삭제(마이페이지) -->

@@ -152,6 +152,12 @@
 		<![CDATA[
 		AND r.ru <= #{page} * 30
 		]]>
+	</select>
 	
+	<select id="goodsListSellerAllMID" resultType="goodsinfo">
+		SELECT *
+		FROM tim_goodsinfo
+		WHERE goods_mid = #{goodsMid}
+		order by seq_goods desc
 	</select>
 </mapper>

@@ -65,10 +65,6 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 			<li class="nav-item active"><a class="nav-link"
 				href="Admin_ask.do"> <span>문의 관리</span></a></li>
 
-
-			<li class="nav-item active"><a class="nav-link"
-				href="index_edit.html"> <span>4번 카테고리 이동</span></a></li>
-
 		</ul>
 		<!-- End of Sidebar -->
 
@@ -173,7 +169,8 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 										<%
 										} else {
 										%>
-										<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+										<li class="page-item"><a class="page-link"
+										href="Admin_list.do?page=<%=(((int) ((now_page - 1) / 10) + 1) * 10) - 10%>">&laquo;</a></li>
 										<%
 										}
 										int last_page = ((int) (real_end / 10) + 1);

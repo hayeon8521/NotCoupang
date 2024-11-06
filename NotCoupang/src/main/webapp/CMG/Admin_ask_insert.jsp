@@ -77,12 +77,6 @@ AnswerVO asvo = (AnswerVO) request.getAttribute("asvo");
                     <span>문의 관리</span></a>
             </li>
 
-
-            <li class="nav-item active">
-                <a class="nav-link" href="index_edit.html">
-                    <span>4번 카테고리 이동</span></a>
-            </li>
-
 		</ul>
 		<!-- End of Sidebar -->
 
@@ -126,7 +120,7 @@ AnswerVO asvo = (AnswerVO) request.getAttribute("asvo");
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">상품 등록</h1>
+					<h1 class="h3 mb-2 text-gray-800">문의 답변</h1>
 					<p class="mb-4"></p>
 
 					<!-- DataTales Example -->

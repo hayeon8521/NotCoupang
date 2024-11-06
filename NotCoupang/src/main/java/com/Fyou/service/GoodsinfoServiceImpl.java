@@ -80,4 +80,9 @@ public class GoodsinfoServiceImpl implements GoodsinfoService{
 	public List<GoodsinfoVO> goodsListkeywordAndTcateWithPage(SearchVO search) {
 		return mapper.goodsListSellerkeywordAndTcateWithPage(search);
 	}
+
+	@Override
+	public List<GoodsinfoVO> goodsListSellerAllMID(String goodsMid) {
+		return mapper.goodsListSellerAllMID(goodsMid);
+	}
 }
