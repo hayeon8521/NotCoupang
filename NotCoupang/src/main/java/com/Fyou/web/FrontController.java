@@ -27,6 +27,8 @@ import com.Fyou.CMG.Admin_main;
 import com.Fyou.CMG.Admin_update_detail_image;
 import com.Fyou.commom.Control;
 import com.Fyou.control.DelOrderCont;
+import com.Fyou.control.MyReviewDelCont;
+import com.Fyou.control.BSJ.DeleteAskCont;
 import com.Fyou.control.BSJ.InsertAskCont;
 import com.Fyou.control.BSJ.InsertReviewCont;
 import com.Fyou.control.BSJ.ModifyAddressCont;
@@ -37,6 +39,7 @@ import com.Fyou.control.BSJ.MyAskControl;
 import com.Fyou.control.BSJ.MyOrderListControl;
 import com.Fyou.control.BSJ.MyPageControl;
 import com.Fyou.control.BSJ.MyReviewControl;
+import com.Fyou.control.BSJ.MyReviewModifyCont;
 import com.Fyou.control.BSJ.checkMemControl;
 import com.Fyou.control.CTB.AskCountCont;
 import com.Fyou.control.CTB.CartViewCont;
@@ -176,10 +179,14 @@ public class FrontController extends HttpServlet {
 		//내 리뷰 관리
 		map.put("/myReview.do", new MyReviewControl()); //내리뷰내역
 		map.put("/insertReview.do", new InsertReviewCont()); //리뷰추가
+		map.put("/myReviewModify.do", new MyReviewModifyCont());//내리뷰수정
+		map.put("/myReviewDel.do", new MyReviewDelCont());//내리뷰삭제
 		
 		//문의내역 
 		map.put("/myAsk.do", new MyAskControl()); //내문의내역
 		map.put("/insertAsk.do", new InsertAskCont()); //문의내역추가
+		map.put("/deleteAsk.do", new DeleteAskCont()); //문의내역삭제
+		
 		
 		
 		

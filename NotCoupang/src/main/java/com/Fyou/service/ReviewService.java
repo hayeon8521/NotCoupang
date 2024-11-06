@@ -29,4 +29,7 @@ public interface ReviewService {
 	//리뷰 조회(구매자, 상품번호로 조회)
 	public ReviewVO reviewOne(ReviewVO review);
 	
+	//리뷰 삭제(리뷰번호로 삭제/마이페이지)
+	public boolean removeMyReview(int seqReview);
+	
 }

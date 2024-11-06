@@ -86,6 +86,7 @@ public class MyReviewControl implements Control {
 					
 					String reviewBSJ = "";
 					Date ReviewDateBSJ;
+					int ReviewSeqBSJ=0;
 					ReviewVO rvo2 = rsvc.reviewOne(rvo3);
 					if(rvo2==null) {
 						ReviewDateBSJ = temp.getOrderDate();
@@ -97,6 +98,7 @@ public class MyReviewControl implements Control {
 						System.out.println("값있어요!!!");
 						reviewBSJ = rvo2.getReview();
 						ReviewDateBSJ = rvo2.getReviewDate();
+						ReviewSeqBSJ = rvo2.getSeqReview();
 						System.out.println(rvo2.getReview());
 						System.out.println("값있어요!!!");
 						System.out.println("값있어요!!!");
@@ -120,7 +122,7 @@ public class MyReviewControl implements Control {
 							temp.getOrderDate(),//주문날짜
 							temp.getOrderDate(),
 							imgurl,
-							temp.getSeqOrder() //goodsReviews
+							ReviewSeqBSJ //리뷰번호
 							));
 					
 					
@@ -148,4 +150,3 @@ public class MyReviewControl implements Control {
 			}
 
 }
-

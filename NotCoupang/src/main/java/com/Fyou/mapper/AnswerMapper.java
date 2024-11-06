@@ -30,4 +30,9 @@ public interface AnswerMapper {
 	public int askTotalCnt(@Param("goods_num") int goodsNum);	
 	
 	public List<AskVO> selectAskSellerlist(@Param("seller_id") String seller_id);
+	
+	
+	
+	// 유저 ID로 문의한 전체 목록 반환
+	public AskVO selectMyAskList(AskVO ask);
 }
