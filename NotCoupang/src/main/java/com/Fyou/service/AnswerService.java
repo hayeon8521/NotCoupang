@@ -16,4 +16,9 @@ public interface AnswerService {
 	public boolean updateAnswer(int seq_answer, String answer);
 	public boolean insertAnswer(AnswerVO answer);
 	public int askTotalCnt(int goodsNum);
+	public List<AskVO> selectAskSellerlist(String seller_id);
+	
+	
+	//마이페이지: 회원아이디,상품번호 문의 반환
+	public AskVO selectMyAskList(AskVO ask);
 }

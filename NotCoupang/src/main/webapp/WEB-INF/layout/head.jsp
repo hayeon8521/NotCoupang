@@ -4,6 +4,8 @@
 <%@page import="com.Fyou.service.CategoriService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 String name = (String) session.getAttribute("LOGNAME");
 
@@ -20,7 +22,6 @@ kw = kw == null ? "" : kw;
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="author" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -46,7 +47,7 @@ kw = kw == null ? "" : kw;
 </head>
 
 
-<header>
+<body id="LSH">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light py-1">
 		<div class="container d-flex justify-content-between px-2 px-lg-4">
 
@@ -130,12 +131,22 @@ kw = kw == null ? "" : kw;
 						aria-expanded="false">마이쿠팡</a>
 						<ul class="dropdown-menu border-0 p-3 rounded-0 shadow"
 							id="dropdown" aria-labelledby="pages">
-							<li><a href="myOrderList.do" class="dropdown-item">주문목록 </a></li>
-							<li><a href="myReview.do" class="dropdown-item">리뷰관리 </a></li>
-							<li><a href="myAsk.do" class="dropdown-item">문의 내역 </a></li>
-							<li><a href="myPage.do" class="dropdown-item">회원정보 조회 및 수정 </a></li>
+							<c:choose>
+								<c:when test="${LOGID==null }">
+									<li><a href="login.do" class="dropdown-item">주문목록 </a></li>
+									<li><a href="login.do" class="dropdown-item">리뷰관리 </a></li>
+									<li><a href="login.do" class="dropdown-item">문의 내역 </a></li>
+									<li><a href="login.do" class="dropdown-item">회원정보 조회 및 수정 </a></li>
+								</c:when>	
+								<c:otherwise>
+									<li><a href="myOrderList.do?buyerId=${LOGID}" class="dropdown-item">주문목록 </a></li>
+									<li><a href="myReview.do?buyerId=${LOGID}" class="dropdown-item">리뷰관리 </a></li>
+									<li><a href="myAsk.do?buyerId=${LOGID}" class="dropdown-item">문의 내역 </a></li>
+									<li><a href="checkMem.do?memberId=${LOGID}" class="dropdown-item">회원정보 조회 및 수정 </a></li>
+								</c:otherwise>
+							</c:choose>
 						</ul></li>
-					<li class="nav-item active"><a href="#" class="nav-link">장바구니</a>
+					<li class="nav-item active"><a href="cartViewing.do" class="nav-link">장바구니</a>
 					</li>
 
 				</ul>
@@ -159,7 +170,7 @@ kw = kw == null ? "" : kw;
 
 
 	</div>
-</header>
+</body>
 
 <script src="js/LSH/jquery-1.11.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

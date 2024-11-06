@@ -2,6 +2,7 @@ package com.Fyou.control.BSJ;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -77,16 +78,38 @@ public class MyReviewControl implements Control {
 					
 					//ID로 리뷰 가져오기
 					ReviewService rsvc= new ReviewServiceImpl();
-					List<ReviewVO> rvo= rsvc.memberReview(mid);
-					System.out.println("rvo는");
-					System.out.println(rvo);
-					for(ReviewVO temp2 : rvo) {
-						temp2.getBuyerId();        //구매자아이디
-						temp2.getSeqReview();      //리뷰번호
-						temp2.getReview();         //리뷰내용
-						temp2.getReviewDate();     //리뷰날짜
-						
 					
+					
+					ReviewVO rvo3 = new ReviewVO();
+					rvo3.setGoodsNum(temp.getGoodsNum());
+					rvo3.setBuyerId(mid);
+					
+					String reviewBSJ = "";
+					Date ReviewDateBSJ;
+					int ReviewSeqBSJ=0;
+					ReviewVO rvo2 = rsvc.reviewOne(rvo3);
+					if(rvo2==null) {
+						ReviewDateBSJ = temp.getOrderDate();
+						System.out.println("값없어요!!!");
+						System.out.println("값없어요!!!");
+						System.out.println("값없어요!!!");
+					}else {
+						System.out.println("값있어요!!!");
+						System.out.println("값있어요!!!");
+						reviewBSJ = rvo2.getReview();
+						ReviewDateBSJ = rvo2.getReviewDate();
+						ReviewSeqBSJ = rvo2.getSeqReview();
+						System.out.println(rvo2.getReview());
+						System.out.println("값있어요!!!");
+						System.out.println("값있어요!!!");
+					}
+					
+					//rvo2.getBuyerId();        //구매자아이디
+					//rvo2.getSeqReview();      //리뷰번호
+					//rvo2.getReview();         //리뷰내용
+					//rvo2.getReviewDate();     //리뷰날짜
+							
+							
 					
 					goodsmylist.add(new GoodsmylistVO(
 							temp.getGoodsNum(), //상품번호
@@ -94,17 +117,19 @@ public class MyReviewControl implements Control {
 							temp.getPrice(), //가격
 							temp.getCount(), //수량
 							String.valueOf(temp.getSeqOrder()),//주문번호
-							temp2.getReview(),//리뷰내용
-							String.valueOf(temp2.getReviewDate()),//리뷰날짜
+							reviewBSJ,//리뷰내용
+							String.valueOf(ReviewDateBSJ),//리뷰날짜
 							temp.getOrderDate(),//주문날짜
 							temp.getOrderDate(),
-							imgurl
+							imgurl,
+							ReviewSeqBSJ //리뷰번호
 							));
-					}
+					
 					
 				}
 				
-				System.out.println(goodsmylist.toString());
+				
+				//System.out.println(goodsmylist.toString());
 				
 				
 				
@@ -124,5 +149,4 @@ public class MyReviewControl implements Control {
 				
 			}
 
-		}
-
+}

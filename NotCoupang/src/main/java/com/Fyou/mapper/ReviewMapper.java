@@ -25,6 +25,7 @@ public interface ReviewMapper {
 	
 	//리뷰 업데이트
 	public int updateReview(ReviewVO review);
+	
 
 	//구매자가 전체리뷰를 봄
 	public List<ReviewVO> memberReview(String buyerId);
@@ -34,6 +35,10 @@ public interface ReviewMapper {
 	
 	//회원아이디와 상품번호로 리뷰내역 조회
 	public ReviewVO reviewOne(ReviewVO review);
+	
+	//상품번호로 리뷰 삭제
+	public int deleteMyReview(int seqReview);
+
 	
 	
 }

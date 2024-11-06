@@ -16,10 +16,11 @@ public class GoodsmylistVO {
 	private Date goodsMdate;
 	private Date goodsRdate;
 	private String imgUrl;
+	private int goodsReviews;
 	
 	 public GoodsmylistVO(int seqGoods, String goodsName, int goodsPrice, int goodsInven, 
              String goodsState, String goodsMid, String goodsCatename, 
-             Date goodsMdate, Date goodsRdate, String imgUrl) {
+             Date goodsMdate, Date goodsRdate, String imgUrl, int goodsReviews) {
 	this.seqGoods = seqGoods;
 	this.goodsName = goodsName;
 	this.goodsPrice = goodsPrice;
@@ -30,6 +31,7 @@ public class GoodsmylistVO {
 	this.goodsMdate = goodsMdate;
 	this.goodsRdate = goodsRdate;
 	this.imgUrl = imgUrl;
+	this.goodsReviews = goodsReviews;
 	}
 	
 }

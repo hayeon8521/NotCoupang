@@ -74,7 +74,8 @@ public class testingforyouCnt implements Control {
 						item.getGoodsCatename(),
 						item.getGoodsMdate(),
 						item.getGoodsRdate(),
-						imgurl
+						imgurl,
+						1234
 						));
 
 			}//for (GoodsinfoVO item : goods)

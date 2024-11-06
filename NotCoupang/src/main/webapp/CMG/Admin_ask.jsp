@@ -1,17 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.Fyou.vo.GoodsinfoVO"%>
-<%@page import="com.Fyou.vo.ImgVO"%>
+<%@page import="com.Fyou.vo.AskVO"%>
 <%@page import="java.util.List"%>
+
 <%
 String LOGID = (String) session.getAttribute("LOGID");
 String LOGNAME = (String) session.getAttribute("LOGNAME");
 String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
-GoodsinfoVO gvo = (GoodsinfoVO) request.getAttribute("gvo");
-List<ImgVO> img_list = (List<ImgVO>) request.getAttribute("img_list");
-int seq_img = (int) request.getAttribute("seq_img");
-int list_num = (int) request.getAttribute("list_num");
-int seq_goods = (int) request.getAttribute("seq_goods");
+List<AskVO> list = (List<AskVO>) request.getAttribute("askList");
+String pg = (String) request.getAttribute("page");
 %>
 <!DOCTYPE html>
 <html>
@@ -34,7 +31,8 @@ int seq_goods = (int) request.getAttribute("seq_goods");
 <!-- Custom styles for this template-->
 <link href="CMG/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
-<body>
+<body id="page-top">
+
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -108,73 +106,92 @@ int seq_goods = (int) request.getAttribute("seq_goods");
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">등록 상품 수정</h1>
+					<h1 class="h3 mb-2 text-gray-800">문의 관리</h1>
 					<p class="mb-4"></p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-body">
 							<div class="table-responsive">
-								<form action="Admin_update_detail_image.do" method="post"
-									enctype="multipart/form-data">
-									<input type="hidden" name="seq_img" value="<%=seq_img%>">
-									<input type="hidden" name="list_num" value="<%=list_num%>">
-									<input type="hidden" name="seq_goods" value="<%=seq_goods%>">
-									<%
-									System.out.println(seq_img);
-									System.out.println(list_num);
-									System.out.println(seq_goods);
-									%>
-									<table class="table table-bordered" id="dataTable" width="100%"
-										cellspacing="0">
-										<tbody>
-											<tr>
-												<th style="width: 15%">이미지</th>
-												<th style="width: 50%">상품명</th>
-												<th style="width: 15%">가격</th>
-												<th style="width: 10%">재고</th>
-												<th style="width: 10%">상태</th>
-											</tr>
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<thead>
+										<tr>
+											<th style="width: 10%">문의 번호</th>
+											<th style="width: 10%">상품 번호</th>
+											<th style="width: 50%">문의</th>
+											<th style="width: 10%">구매자 ID</th>
+											<th style="width: 20%"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<%
+										int page_int = Integer.parseInt(pg);
+										page_int = (page_int - 1) * 10;
+										String goods_state = "";
+										for (int i = 0; (i < 10) && i < list.size() - page_int; i++) {
+										%>
+										<tr id="<%=page_int + i%>">
+											<td style="width: 10%"><%=list.get(page_int + i).getSeqAsk()%></td>
+											<td style="width: 10%"><%=list.get(page_int + i).getGoodsNum()%></td>
+											<td style="width: 50%; word-break: break-all"><%=list.get(page_int + i).getAsk()%></td>
+											<td style="width: 10%"><%=list.get(page_int + i).getBuyerId()%></td>
+											<td style="width: 20%"><button id="ask_button">작성하기</button></td>
+										</tr>
+										<%
+										}
+										%>
+									</tbody>
+								</table>
+								<nav aria-label="..." style="float: right">
+									<ul class="pagination">
+										<%
+										int now_page = Integer.parseInt(pg);
+										int real_end = list.size();
+										if (now_page < 10) {
+										%>
+										<li class="page-item disabled"><a class="page-link">&laquo;</a></li>
+										<%
+										} else {
+										%>
+										<li class="page-item"><a class="page-link" 
+										href="Admin_ask.do?page=<%=(((int) ((now_page - 1) / 10) + 1) * 10) - 10%>">&laquo;</a></li>
+										<%
+										}
+										int last_page = ((int) (real_end / 10) + 1);
+										for (int i = 0; i < 10; i++) {
+										if (last_page < (int) ((now_page - 1) / 10) + i + 1) {
+											break;
+										}
+										if (Integer.parseInt(pg) == ((int) ((now_page - 1) / 10 + 1) * 10 + i - 9)) {
+										%>
+										<li class="page-item active" aria-current="page"><a
+											class="page-link"><%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%></a></li>
+										<%
+										} else {
+										%>
+										<li class="page-item"><a class="page-link"
+											href="Admin_ask.do?page=<%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%>"><%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%></a></li>
+										<%
+										}
+										}
+										if ((((int) ((now_page - 1) / 10) + 1) * 10) > last_page) {
+										%>
+										<li class="page-item disabled"><a class="page-link">&raquo;</a>
 											<%
-											String goods_state = "";
-											if (gvo.getGoodsState().equals("state")) {
-												goods_state = "판매중";
-											} else if (gvo.getGoodsState().equals("stop")) {
-												goods_state = "판매 중단";
-											} else if (gvo.getGoodsState().equals("end")) {
-												goods_state = "판매 종료";
-											}
+											} else {
 											%>
-											<tr>
-												<td style="width: 15%"><a><img
-														src="images/<%=img_list.get(0).getImgUrl()%>"
-														width="150px"></a></td>
-												<td style="width: 50%"><%=gvo.getGoodsName()%></td>
-												<td style="width: 15%"><%=gvo.getGoodsPrice()%></td>
-												<td style="width: 10%"><%=gvo.getGoodsInven()%></td>
-												<td style="width: 10%"><%=goods_state%></td>
-											</tr>
-											<tr>
-												<td colspan="5" style="width: 100%"><a><img
-														src="images/<%=img_list.get(seq_img).getImgUrl()%>"></a></td>
-											</tr>
-											<tr>
-												<td style="text-align: center">수정할 파일 첨부</td>
-												<td colspan="4"><input type="file"
-													class="form-control bg-light border-0 small"
-													aria-label="Search" aria-describedby="basic-addon2"
-													name="img_update"></td>
-											</tr>
-										</tbody>
-									</table>
-									<div style="text-align: center">
-										<input class="btn btn-primary" type="submit"
-											style="width: 250px;" value="수정">
-									</div>
-								</form>
+										<li class="page-item"><a class="page-link"
+											href="Admin_ask.do=<%=(((int) ((now_page - 1) / 10) + 1) * 10) + 1%>">&raquo;</a>
+											<%
+											}
+											%></li>
+									</ul>
+								</nav>
 							</div>
 						</div>
 					</div>
+
 				</div>
 				<!-- /.container-fluid -->
 
@@ -200,5 +217,18 @@ int seq_goods = (int) request.getAttribute("seq_goods");
 	<!-- Page level plugins -->
 	<script src="CMG/vendor/datatables/jquery.dataTables.min.js"></script>
 	<script src="CMG/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<script>
+		let arr = document.querySelectorAll("#ask_button")
+		for (i = 0; i < arr.length; i++) {
+			console.log(arr[i].parentNode.id)
+			arr[i].addEventListener("click", function(e) {
+				console.log(e.target.parentNode.parentNode.id);
+				location.href = "Admin_insert_ask.do?list_num="
+						+ e.target.parentNode.parentNode.id
+			})
+		}
+	</script>
+
 </body>
 </html>

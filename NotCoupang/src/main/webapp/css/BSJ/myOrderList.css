@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
 	margin: 0;
 	padding: 0;
@@ -10,6 +11,8 @@ body {
 	color: #333;
 }
 
+=======
+>>>>>>> branch 'BSJ' of https://github.com/hayeon8521/jspbasiccode.git
 .containerBSJ {
 	background-color: #ffffff;
 	border: 1px solid #ddd;
@@ -18,11 +21,14 @@ body {
 	margin-top: 15px;
 }
 
+<<<<<<< HEAD
 .mt-5, .my-5 {
 	margin-top: 1.5rem !important;
 }
 
 
+=======
+>>>>>>> branch 'BSJ' of https://github.com/hayeon8521/jspbasiccode.git
 .sidebar {
 	background-color: #f9fbff;
 	padding: 20px;
@@ -54,6 +60,7 @@ body {
 	padding: 20px;
 }
 
+<<<<<<< HEAD
 .headerBSJ {
 	background-color: #f0f8ff;
 	border-radius: 8px;
@@ -64,6 +71,8 @@ body {
 .headerBSJ  .balance, .header .points {
 	font-size: 1em;
 }
+=======
+>>>>>>> branch 'BSJ' of https://github.com/hayeon8521/jspbasiccode.git
 .order-section h2 {
 	font-size: 1.5em;
 	margin-bottom: 20px;
@@ -108,6 +117,7 @@ body {
 	color: #0077ff;
 	margin-bottom: 20px;
 }
+
 
 .order-item {
 	background-color: #fafafa;
@@ -172,21 +182,30 @@ body {
 		min-width: 0;
 		width: 100%;
 	}
-
+	
 	#nav_div a {
 		font-size: 0.95rem;
 	}
+<<<<<<< HEAD
 	
 	#nav_div a:hover {
+=======
+	#nav_div a:hover {	
+>>>>>>> branch 'BSJ' of https://github.com/hayeon8521/jspbasiccode.git
 		background-color: #4285f4;
 		color: white;
 		font-weight: bold;
 	}
+<<<<<<< HEAD
+=======
+}
+>>>>>>> branch 'BSJ' of https://github.com/hayeon8521/jspbasiccode.git
 
 #sidebar-wrapper{
 	margin-left:0;
 }
 
+<<<<<<< HEAD
   /* 검색창 & 돋보기 */
         .search-barBSJ {
             position: relative;
@@ -211,3 +230,5 @@ body {
         
         
         
+=======
+>>>>>>> branch 'BSJ' of https://github.com/hayeon8521/jspbasiccode.git

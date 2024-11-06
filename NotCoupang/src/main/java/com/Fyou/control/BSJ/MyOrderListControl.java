@@ -77,7 +77,8 @@ public class MyOrderListControl implements Control {
 					"Catename",
 					temp.getOrderDate(),//주문날짜
 					temp.getOrderDate(),
-					imgurl
+					imgurl,
+					1234
 					));
 			
 		}

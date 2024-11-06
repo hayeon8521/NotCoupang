@@ -1,48 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>회원정보 확인</title>
 
 
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-
+<link rel="stylesheet" href="css/BSJ/myOrderList.css" />
 
 <style>
-body {
-	padding: 20px;
-	font-size: 0.9rem;
-}
-
-.form-label {
-	font-weight: bold;
-}
-
-.form-section {
-	border-bottom: 1px solid #ddd;
-	
-}
-
-.form-section:last-child {
-	border-bottom: none;
-}
-
-.btn-custom {
-	background-color: #f8f9fa;
-	color: #000;
-	border: 1px solid #ddd;
-	padding: 5px 10px;
-}
-
-
+  /* 검색창 & 돋보기 */
+        .search-barBSJ {
+            position: relative;
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+        .search-barBSJ input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding-right: 40px;
+        }
+        .search-barBSJ i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+        }
 </style>
-</head>
 
 <!-- 세션 -->
 <%
@@ -51,8 +40,7 @@ String LOGNAME = (String) session.getAttribute("LOGNAME");
 String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 %>
 
-
-<body>
+ <div class="container mt-4 containerBSJ" style="padding-top: 100px;">
 	<form action="checkMem.do" method="post">
 		<div class="container mt-5 w-75"
 			style="width: 1300px; height: 1000px; background-color: white;">
@@ -72,7 +60,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 				</div>
 			</div>
 			<div class="form-section">
-				<div class="mb-3 row mbrow">
+				<div class="mb-3 row ">
 					<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
 					<div class="col-sm-8">
 						<input type="password" class="form-control mb-2" id="inputPassword" name="inputPassword"
@@ -83,18 +71,13 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 
 
 			<div class="container col-sm-3 text-center">
-				<button class="btn btn-sm btn-primary mt-3" type="submit">수정</button>
+				<button class="btn btn-sm btn-primary mt-3" type="submit">확인</button>
 				<button class="btn btn-sm btn-secondary mt-3">취소</button>
 			</div>
 		</div>
 	</form>
+</div>
 
-
-
-	<!-- JS -->
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

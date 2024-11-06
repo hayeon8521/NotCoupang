@@ -43,4 +43,12 @@
 		where member_id = #{memberId}
 		and goods_num = #{goodsNum}
 	</select>
+	
+	<!-- 같지만 이건 여러건 조회하는 LIST타입 반환 -->
+	<select id="selectListCart" resultType="cart">
+		select *
+		from tim_cart
+		where member_id = #{memberId}
+		and goods_num = #{goodsNum}
+	</select>
 </mapper>

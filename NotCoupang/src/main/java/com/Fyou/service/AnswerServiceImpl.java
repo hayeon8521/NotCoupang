@@ -51,7 +51,7 @@ public class AnswerServiceImpl implements AnswerService {
 	
 	@Override
 	public boolean updateAnswer(int seq_answer, String answer) {
-		return mapper.updateAsk(seq_answer, answer) == 1;
+		return mapper.updateAnswer(seq_answer, answer) == 1;
 	}
 	
 	@Override
@@ -62,5 +62,15 @@ public class AnswerServiceImpl implements AnswerService {
 	@Override
 	public int askTotalCnt(int goodsNum) {
 		return mapper.askTotalCnt(goodsNum);
+	}
+
+	@Override
+	public List<AskVO> selectAskSellerlist(String seller_id) {
+		return mapper.selectAskSellerlist(seller_id);
+	}
+
+	@Override
+	public AskVO selectMyAskList(AskVO ask) {
+		return mapper.selectMyAskList(ask);
 	}
 }

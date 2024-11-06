@@ -1,6 +1,7 @@
 package com.Fyou.control.PHY;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +44,18 @@ public class thankyouCont implements Control {
 		String[] parts = hiddenGoods.split("_");
 		for(int i=0; i<parts.length; i++) {
 			//장바구니정보가져오기
-			CartVO cart = svcC.selectOneCart(LOGID, Integer.parseInt(parts[i]));
+			//CartVO cart = svcC.selectOneCart(LOGID, Integer.parseInt(parts[i]));
+			
+			//장바구니에 동일 중복값이 있으면 제일 마지막 정보만 가져와서 cart객체에 넣자!!
+			//(삭제는 아쉽게도 장바구니에있는 중복 상품도 삭제) 더만들고 싶은데 오늘 시간 데드라인
+			CartVO cart = new CartVO();
+			List<CartVO> cartlist =svcC.selectListCart(LOGID, Integer.parseInt(parts[i]));
+			if (!cartlist.isEmpty()) {
+			    cart = cartlist.get(cartlist.size() - 1);
+			} else {
+			    System.out.println("텅텅 비어있어 너 망한거야!");
+			}
+			
 			
 			//상품정보 당기기
 			GoodsinfoVO goods = svcG.goodsinfo(cart.getGoodsNum());
@@ -52,6 +64,15 @@ public class thankyouCont implements Control {
 			order.setGoodsNum(cart.getGoodsNum());
 			order.setCount(cart.getCount());
 			order.setPrice(goods.getGoodsPrice());
+			
+			
+			//재고수량 업데이트
+			GoodsinfoVO updatdgoods = new GoodsinfoVO();
+			updatdgoods.setGoodsInven(goods.getGoodsInven()-cart.getCount());
+			updatdgoods.setSeqGoods(cart.getGoodsNum());
+			
+			//상품재고 업데이트
+			svcG.modifyGoods(updatdgoods);
 			
 			//구매내역 삽입
 			svcO.insertOrder(order);

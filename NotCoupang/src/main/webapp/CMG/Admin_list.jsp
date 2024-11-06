@@ -5,6 +5,9 @@
 <%@page import="java.util.List"%>
 
 <%
+String LOGID = (String) session.getAttribute("LOGID");
+String LOGNAME = (String) session.getAttribute("LOGNAME");
+String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 List<GoodsinfoVO> list = (List<GoodsinfoVO>) request.getAttribute("goodsList");
 String pg = (String) request.getAttribute("page");
 String[] img_arr = (String[]) request.getAttribute("img_arr");
@@ -60,11 +63,7 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 
 
 			<li class="nav-item active"><a class="nav-link"
-				href="index_edit.html"> <span>3번 카테고리 이동</span></a></li>
-
-
-			<li class="nav-item active"><a class="nav-link"
-				href="index_edit.html"> <span>4번 카테고리 이동</span></a></li>
+				href="Admin_ask.do"> <span>문의 관리</span></a></li>
 
 		</ul>
 		<!-- End of Sidebar -->
@@ -90,14 +89,13 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 					<ul class="navbar-nav ml-auto">
 
 						<li class="nav-item dropdown no-arrow"><a class="nav-link">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">유저
-									ID</span>
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=LOGID %></span>
 						</a></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>
 
 						<li class="nav-item dropdown no-arrow"><a class="nav-link"
-							href="index_edit.html"> <span
+							href="http://localhost/NotCoupang/logout.do"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>
 						</a></li>
 
@@ -122,7 +120,8 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 									<thead>
 										<tr>
 											<th style="width: 15%">이미지</th>
-											<th style="width: 50%">상품명</th>
+											<th style="width: 35%">상품명</th>
+											<th style="width: 15%">카테고리</th>
 											<th style="width: 15%">가격</th>
 											<th style="width: 10%">재고</th>
 											<th style="width: 10%">상태</th>
@@ -144,58 +143,64 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 											if (img_arr[i] != null) {
 										%>
 										<tr>
-											<td id="<%=page_int + i %>" style="width: 15%"><a id="list_img"><img src="images/<%=img_arr[i]%>" width="150px"></a></td>
-											<td style="width: 50%"><%=list.get(page_int + i).getGoodsName()%></td>
+											<td id="<%=page_int + i%>" style="width: 15%"><a
+												id="list_img"><img src="images/<%=img_arr[i]%>"
+													width="150px"></a></td>
+											<td style="width: 35%"><%=list.get(page_int + i).getGoodsName()%></td>
+											<td style="width: 15%"><%=list.get(page_int + i).getGoodsCatename()%></td>
 											<td style="width: 15%"><%=list.get(page_int + i).getGoodsPrice()%></td>
 											<td style="width: 10%"><%=list.get(page_int + i).getGoodsInven()%></td>
 											<td style="width: 10%"><%=goods_state%></td>
 										</tr>
 										<%
-											}
+										}
 										}
 										%>
 									</tbody>
 								</table>
 								<nav aria-label="..." style="float: right">
 									<ul class="pagination">
-									<%
-									int now_page = Integer.parseInt(pg);
-									int real_end = list.size();
-									if (now_page < 10) {
-									%>
+										<%
+										int now_page = Integer.parseInt(pg);
+										int real_end = list.size();
+										if (now_page < 10) {
+										%>
 										<li class="page-item disabled"><a class="page-link">&laquo;</a></li>
-									<%	
-									} else {
-									%>
-										<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-									<%
-									}
-									int last_page = ((int)(real_end / 10) + 1);
-									for (int i = 0 ; i < 10 ; i++) {
-										if (last_page < (int)((now_page - 1) / 10) + i + 1) {
-											break;
-										}
-										if (Integer.parseInt(pg) == ((int)((now_page - 1) / 10 + 1) * 10 + i - 9)) {
-									%>
-										<li class="page-item active" aria-current="page"><a class="page-link"><%=(int)((now_page - 1) / 10 + 1) * 10 + i - 9 %></a></li>
 										<%
 										} else {
 										%>
-										<li class="page-item"><a class="page-link" href="Admin_list.do?page=<%=(int)((now_page - 1) / 10 + 1) * 10 + i - 9 %>"><%=(int)((now_page - 1) / 10 + 1) * 10 + i - 9 %></a></li>
-									<%
+										<li class="page-item"><a class="page-link"
+										href="Admin_list.do?page=<%=(((int) ((now_page - 1) / 10) + 1) * 10) - 10%>">&laquo;</a></li>
+										<%
 										}
-									}
-									if ((((int)((now_page - 1) / 10) + 1) * 10) > last_page) {
-									%>
+										int last_page = ((int) (real_end / 10) + 1);
+										for (int i = 0; i < 10; i++) {
+										if (last_page < (int) ((now_page - 1) / 10) + i + 1) {
+											break;
+										}
+										if (Integer.parseInt(pg) == ((int) ((now_page - 1) / 10 + 1) * 10 + i - 9)) {
+										%>
+										<li class="page-item active" aria-current="page"><a
+											class="page-link"><%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%></a></li>
+										<%
+										} else {
+										%>
+										<li class="page-item"><a class="page-link"
+											href="Admin_list.do?page=<%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%>"><%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%></a></li>
+										<%
+										}
+										}
+										if ((((int) ((now_page - 1) / 10) + 1) * 10) > last_page) {
+										%>
 										<li class="page-item disabled"><a class="page-link">&raquo;</a>
-									<%
-									} else {
-									%>
-										<li class="page-item"><a class="page-link" href="Admin_list.do?page=<%=(((int)((now_page - 1) / 10) + 1) * 10) + 1 %>">&raquo;</a>
-									<%
-									}
-									%>
-										</li>
+											<%
+											} else {
+											%>
+										<li class="page-item"><a class="page-link"
+											href="Admin_list.do?page=<%=(((int) ((now_page - 1) / 10) + 1) * 10) + 1%>">&raquo;</a>
+											<%
+											}
+											%></li>
 									</ul>
 								</nav>
 							</div>
@@ -227,14 +232,16 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 	<!-- Page level plugins -->
 	<script src="CMG/vendor/datatables/jquery.dataTables.min.js"></script>
 	<script src="CMG/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-	
+
 	<script>
-	let arr = document.querySelectorAll("#list_img")
-	for (i = 0 ; i < arr.length ; i++) {
-		console.log(arr[i].parentNode.id)
-		arr[i].addEventListener("click", function(e) {
-		location.href = "Admin_goodsinfo.do?seq_goods=" + e.target.parentNode.parentNode.id
-	})}
+		let arr = document.querySelectorAll("#list_img")
+		for (i = 0; i < arr.length; i++) {
+			console.log(arr[i].parentNode.id)
+			arr[i].addEventListener("click", function(e) {
+				location.href = "Admin_goodsinfo.do?seq_goods="
+						+ e.target.parentNode.parentNode.id
+			})
+		}
 	</script>
 
 </body>

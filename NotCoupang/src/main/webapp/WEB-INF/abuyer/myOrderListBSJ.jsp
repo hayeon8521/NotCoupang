@@ -1,23 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><!-- 날짜포맷 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<!DOCTYPE html>
-<html lang="ko">
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>주문 목록</title>
 
-<!-- Bootstrap 아이콘 -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-<!--내 CSS 연동-->
 
-<link rel="stylesheet" href="css/BSJ/myOrderList.css">
-</head>
+<link rel="stylesheet" href="css/BSJ/myOrderList.css" />
+
+<style>
+  /* 검색창 & 돋보기 */
+        .search-barBSJ {
+            position: relative;
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+        .search-barBSJ input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding-right: 40px;
+        }
+        .search-barBSJ i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+        }
+</style>
 
 <!-- 세션 -->
 <%
@@ -26,14 +40,10 @@ String LOGNAME = (String) session.getAttribute("LOGNAME");
 String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 %>
 
+ <div class="container mt-4 containerBSJ">
 
-
-<body>
-	<div class="container mt-5">
-
-		<!-- 사이드바 -->
 		<div class="d-flex" id="wrapper">
-			<!-- Sidebar-->
+		<!-- 사이드바 -->
 			<div class="col-md-3 border-end bg-white" id="sidebar-wrapper">
 				<div
 					class="sidebar-heading d-flex align-items-center border-bottom mt-3 fw-bold">MY쿠팡</div>
@@ -55,7 +65,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 			<main class="col-md-9 main-content">
 				<!-- 헤더 -->
 				<header
-					class="headerBSJ d-flex justify-content-between align-items-center p-3 mb-4">
+					class="header d-flex justify-content-between align-items-center p-3 mb-4">
 					<div class="balance">
 						<span>총 주문 금액</span> <span class="font-weight-bold">96,095원</span>
 					</div>
@@ -69,8 +79,8 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 					<h2 class="mb-3">주문목록</h2>
 					<!-- 검색창 & 돋보기 HTML -->
 					<div class="search-bar search-barBSJ">
-						<input type="text" class="form-control form-controlBSJ" placeholder="내가 쓴 리뷰 검색">
-						<i class="bi bi-search bi-searchBSJ"
+						<input type="text" class="form-control" placeholder="내 주문 상품 검색">
+						<i class="bi bi-search"
 							style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
 					</div>
 
@@ -95,10 +105,10 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 							</div>
 							<div class="order-item d-flex align-items-center mb-3">
 								<img src="images/${order.imgUrl }" alt="상품썸네일"
-									class="product-img mr-3">
+									class="product-img mr-3 me-3">
 								<div class="product-details flex-grow-1">
 									<p class="mb-1 font-weight-bold">${order.goodsName }</p>
-									<span><fmt:formatNumber value="${order.goodsPrice}" type="number" groupingUsed="true"/>원 · ${order.goodsInven }개</span>
+									<span>${order.goodsPrice }원 · ${order.goodsInven }개</span>
 								</div>
 								<div class="order-actions d-flex flex-column align-items-center">
 									<button onclick="deleteFunc('${order.goodsState}',this);"
@@ -202,65 +212,62 @@ function deleteFunc(orderNum, thisEvnet){
   }
 		
 
-// 모달
-
+//모달 생성
 var exampleModal = document.getElementById('exampleModal');
 exampleModal.addEventListener('show.bs.modal', function (event) {
-  var button = event.relatedTarget;
-  let goodsNum = button.getAttribute('data-num');
- 
-  if(button.innerText=="문의 작성하기"){
-	  console.log("문의 작성하기 클릭함");
-	  document.querySelector("#sendAskBtn").addEventListener('click',function(){
-			let message = document.querySelector("#message-text").value;
-			console.log(message);
-			console.log(encodeURIComponent(message));
-			$.ajax({
-	          url: 'insertAsk.do',  //이화면에
-	          data: { goodsNum : goodsNum, message : encodeURIComponent(message) },
-	          method: "POST",
-	          dataType: "json"
-	       })
-	       .done(function(result) {
-	      	 if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
-					alert("문의가 등록 되었습니다.");
-				    delItem.remove(); //성공시 화면에서 삭제
-				    
-				} else if (result.retCode == 'FAIL') {
-					alert("문의 등록에 실패했습니다.");
-				}
-	       })
-	       .fail(err => console.log(err));  // 세미콜론 추가
-			document.querySelector("#message-text").value = "";
-		});
-  }else if(button.innerText=="리뷰 작성하기"){
-	  console.log("리뷰 작성하기 클릭함");
-	  document.querySelector("#sendAskBtn").addEventListener('click',function(){
-	  let message = document.querySelector("#message-text").value;
-	  console.log(message);
+	var button = event.relatedTarget;
+	let goodsNum = button.getAttribute('data-num');
+	exampleModal.setAttribute('data-goodsnum', goodsNum);
+	exampleModal.setAttribute('data-AskReview', button.innerText);
+});
+
+
+//모달 버튼 클릭시 이벤트 발생
+document.querySelector("#sendAskBtn").addEventListener('click',function(){
+	let goodsNum = exampleModal.getAttribute('data-goodsnum');
+	let button = exampleModal.getAttribute('data-AskReview');
+	let message = document.querySelector("#message-text").value;
 	
-			$.ajax({
-	          url: 'insertReview.do',  //이화면에
-	          data: { goodsNum : goodsNum, message : encodeURIComponent(message) },
-	          method: "POST",
-	          dataType: "json"
-	       })
-	       .done(function(result) {
-	      	 if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
-					alert("리뷰가 등록 되었습니다.");
-				} else if (result.retCode == 'FAIL') {
-					alert("리뷰 등록에 실패했습니다.");
-				} else if (result.retCode == 'OVERLAP'){
-					alert("등록된 리뷰가 이미 있습니다.");
-				}
-	       })
-	       .fail(err => console.log(err));  // 세미콜론 추가
-	       
-			document.querySelector("#message-text").value = "";
-		});
-	  
-  }
-})
+	if(button=="문의 작성하기"){
+		console.log("문의 작성하기 클릭함");
+		$.ajax({
+			url: 'insertAsk.do',  //이화면에
+			data: { goodsNum : goodsNum, message : encodeURIComponent(message) },
+			method: "POST",
+			dataType: "json"
+		})
+		.done(function(result) {
+			if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
+				alert("문의가 등록 되었습니다.");
+				    
+			} else if (result.retCode == 'FAIL') {
+					alert("문의 등록에 실패했습니다.");
+			}
+		})
+		.fail(err => console.log(err));  // 세미콜론 추가
+		
+	}else if(button=="리뷰 작성하기"){
+		console.log("리뷰 작성하기 클릭함");
+		$.ajax({
+			url: 'insertReview.do',  //이화면에
+			data: { goodsNum : goodsNum, message : encodeURIComponent(message) },
+			method: "POST",
+			dataType: "json"
+		})
+		.done(function(result) {
+		if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
+		alert("리뷰가 등록 되었습니다.");
+		} else if (result.retCode == 'FAIL') {
+		alert("리뷰 등록에 실패했습니다.");
+		} else if (result.retCode == 'OVERLAP'){
+		alert("등록된 리뷰가 이미 있습니다.");
+		}
+		})
+		.fail(err => console.log(err));  // 세미콜론 추가
+	}
+	
+	document.querySelector("#message-text").value = "";
+});
 		 
   </script>
 </body>

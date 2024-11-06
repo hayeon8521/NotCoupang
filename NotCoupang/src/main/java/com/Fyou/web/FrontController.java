@@ -10,12 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Fyou.CMG.Admin_answer_insert_control;
+import com.Fyou.CMG.Admin_answer_update_control;
+import com.Fyou.CMG.Admin_ask;
 import com.Fyou.CMG.Admin_delete_detail_image;
 import com.Fyou.CMG.Admin_goodsdelete;
 import com.Fyou.CMG.Admin_goodsedit;
 import com.Fyou.CMG.Admin_goodsedit_control;
 import com.Fyou.CMG.Admin_goodsinfo;
 import com.Fyou.CMG.Admin_insert;
+import com.Fyou.CMG.Admin_insert_ask;
 import com.Fyou.CMG.Admin_insert_control;
 import com.Fyou.CMG.Admin_insert_detail_image;
 import com.Fyou.CMG.Admin_list;
@@ -23,6 +27,8 @@ import com.Fyou.CMG.Admin_main;
 import com.Fyou.CMG.Admin_update_detail_image;
 import com.Fyou.commom.Control;
 import com.Fyou.control.DelOrderCont;
+import com.Fyou.control.MyReviewDelCont;
+import com.Fyou.control.BSJ.DeleteAskCont;
 import com.Fyou.control.BSJ.InsertAskCont;
 import com.Fyou.control.BSJ.InsertReviewCont;
 import com.Fyou.control.BSJ.ModifyAddressCont;
@@ -33,6 +39,7 @@ import com.Fyou.control.BSJ.MyAskControl;
 import com.Fyou.control.BSJ.MyOrderListControl;
 import com.Fyou.control.BSJ.MyPageControl;
 import com.Fyou.control.BSJ.MyReviewControl;
+import com.Fyou.control.BSJ.MyReviewModifyCont;
 import com.Fyou.control.BSJ.checkMemControl;
 import com.Fyou.control.CTB.AskCountCont;
 import com.Fyou.control.CTB.CartViewCont;
@@ -92,8 +99,10 @@ public class FrontController extends HttpServlet {
 		map.put("/Admin_insert_detail_image.do", new Admin_insert_detail_image());
 		map.put("/Admin_delete_detail_image.do", new Admin_delete_detail_image());
 		map.put("/Admin_update_detail_image.do", new Admin_update_detail_image());
-		
-		
+		map.put("/Admin_ask.do", new Admin_ask());
+		map.put("/Admin_insert_ask.do", new Admin_insert_ask());
+		map.put("/Admin_answer_insert_control.do", new Admin_answer_insert_control());
+		map.put("/Admin_answer_update_control.do", new Admin_answer_update_control());
 		
 		
 		
@@ -170,10 +179,14 @@ public class FrontController extends HttpServlet {
 		//내 리뷰 관리
 		map.put("/myReview.do", new MyReviewControl()); //내리뷰내역
 		map.put("/insertReview.do", new InsertReviewCont()); //리뷰추가
+		map.put("/myReviewModify.do", new MyReviewModifyCont());//내리뷰수정
+		map.put("/myReviewDel.do", new MyReviewDelCont());//내리뷰삭제
 		
 		//문의내역 
 		map.put("/myAsk.do", new MyAskControl()); //내문의내역
 		map.put("/insertAsk.do", new InsertAskCont()); //문의내역추가
+		map.put("/deleteAsk.do", new DeleteAskCont()); //문의내역삭제
+		
 		
 		
 		

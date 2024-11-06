@@ -47,6 +47,13 @@ public class ReviewServiceImpl implements ReviewService{
 	public ReviewVO reviewOne(ReviewVO review) {
 		return mapper.reviewOne(review);
 	}
+
+	@Override
+	public boolean removeMyReview(int seqReview) {
+		return mapper.deleteMyReview(seqReview)==1 ;
+	}
+	
+	
  
 
 }
