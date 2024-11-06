@@ -14,8 +14,10 @@ public interface OrderService {
 	public int deleteOrder(OrderVO order);
 	//수정
 	public int updateOrder(OrderVO order);
-	
-	
+
 	//주문번호로 삭제
 	public boolean deleteOrderOne(int seqOrder);
+	
+	public List<OrderVO> selectSellerOrder(String seller_id);
+	
 }
