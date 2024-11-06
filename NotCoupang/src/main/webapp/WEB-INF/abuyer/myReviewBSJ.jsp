@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
@@ -45,11 +44,11 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 <div class="container mt-4 containerBSJ">
 	<div class="row">
 		<!-- 사이드바 -->
-		<aside class="col-md-3">
-			<div class="border-end bg-white p-3">
+		<div class="col-md-3 border-end bg-white" id="sidebar-wrapper">
 				<div
 					class="sidebar-heading d-flex align-items-center border-bottom mt-3 fw-bold">MY쿠팡</div>
-				<div class="list-group list-group-flush mt-2">
+
+				<div class="list-group list-group-flush" id="nav_div">
 					<a
 						class="list-group-item list-group-item-action list-group-item-light p-3"
 						href="myOrderList.do?buyerId=${LOGID }">주문 목록</a> <a
@@ -60,8 +59,8 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 						class="list-group-item list-group-item-action list-group-item-light p-3"
 						href="checkMem.do?memberId=${LOGID }">회원 정보 수정</a>
 				</div>
+
 			</div>
-		</aside>
 
 		<!-- 리뷰 섹션 -->
 		<div class="col-md-9">
@@ -70,21 +69,21 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 
 				<!-- 검색창 & 돋보기 HTML -->
 				<div class="search-bar search-barBSJ">
-					<input type="text" class="form-control" placeholder="내가 쓴 리뷰 검색">
+					<input type="text" class="form-control" id="orderSearchInputBSJ" placeholder="상품명으로 검색">
 					<i class="bi bi-search"
 						style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
 				</div>
 
 				<!-- 탭 내비 -->
 
-				<%-- <ul class="nav nav-tabs" id="reviewTabs" role="tablist">
+			<!--	 <ul class="nav nav-tabs" id="reviewTabs" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="written-tab" data-bs-toggle="tab" data-bs-target="#written" type="button" role="tab" aria-controls="written" aria-selected="true">작성한 리뷰</button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="unwritten-tab" data-bs-toggle="tab" data-bs-target="#unwritten" type="button" role="tab" aria-controls="unwritten" aria-selected="false">리뷰 작성하기</button>
             </li>
-          </ul> --%>
+          </ul> -->
 
 
 
@@ -97,14 +96,17 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 							groupingUsed="true" />
 						<!-- 반복문 시작 -->
 						<c:forEach var="review" items="${goodsmylist }">
+						<c:choose>
+                        <c:when test="${not empty review.goodsMid }">
+    
 
 							<!-- 작성한 리뷰 콘텐츠 -->
-							<div class="review-card mt-3">
+							<div class="review-card mt-3 reviewGroupBSJ">
 								<div class="product-info">
 									<img src="images/${review.imgUrl }" alt="Product Image"
 										style="width: 150px; height: 150px;">
 									<div>
-										<h6 class="mb-0">${review.goodsName }</h6>
+										<h6 class="mb-0" id="reviewGoodsNameBSJ">${review.goodsName }</h6>
 
 										<!-- 천단위 가격 콤마 포맷팅 -->
 										<p class="text-muted mb-0">
@@ -130,7 +132,9 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 								</div>
 								<div class="mt-3 text-muted">작성일자: 2024-10-18 15:53:28</div>
 							</div>
-						</c:forEach>
+						 </c:when>
+                      </c:choose>
+					</c:forEach>
 
 					</div>
 
@@ -217,6 +221,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
      	   	       modifyTextBtn.value = "";
      	   	   let reviewNum = e.target.getAttribute("data-reviewNum");
       	        console.log(reviewNum);
+      	      e.target.parentElement.parentElement.remove();
       	        
       	      $.ajax({
                   url: 'myReviewDel.do',
@@ -243,6 +248,31 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
     		  
     	  });
     	  
+      });
+      
+    //상품명 검색
+      $(document).ready(function() {
+      	 	// 1. 검색창에 키보드 입력을 감지하는 이벤트 추가
+          $('#orderSearchInputBSJ').on('keypress', function(event) {
+          	 // 2. 엔터 키 (keyCode 13)가 눌렸는지 확인
+          	   
+              if (event.keyCode === 13) {
+                  event.preventDefault();  // 엔터만 입력되는거 방지
+                  
+                  const searchText = $(this).val().toLowerCase();
+
+                  // 각 주문 항목을 검사하여 검색어 포함 여부에 따라 표시/숨김
+                  $('.reviewGroupBSJ').each(function() {
+                      const goodsName = $(this).find('#reviewGoodsNameBSJ').text().toLowerCase();
+
+                      if (goodsName.includes(searchText)) {
+                          $(this).show();  // 검색어가 포함된 항목 표시
+                      } else {
+                          $(this).hide();  // 포함되지 않은 항목 숨기기
+                      }
+                  });
+              }
+          });
       });
      
 

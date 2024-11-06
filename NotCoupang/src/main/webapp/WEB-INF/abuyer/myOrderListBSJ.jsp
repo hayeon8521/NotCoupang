@@ -6,6 +6,7 @@
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <link rel="stylesheet" href="css/BSJ/myOrderList.css" />
 
@@ -63,23 +64,13 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 			</div>
 			<!-- 메인 -->
 			<main class="col-md-9 main-content">
-				<!-- 헤더 -->
-				<header
-					class="header d-flex justify-content-between align-items-center p-3 mb-4">
-					<div class="balance">
-						<span>총 주문 금액</span> <span class="font-weight-bold">96,095원</span>
-					</div>
-					<div class="points">
-						<span>이 달 주문 금액</span> <span class="font-weight-bold">10,000원</span>
-					</div>
-				</header>
 
 				<!-- 주문 목록 섹션 -->
 				<section class="order-section">
-					<h2 class="mb-3">주문목록</h2>
+					<h2 class="mb-4 mb-4 mt-5">주문목록</h2>
 					<!-- 검색창 & 돋보기 HTML -->
 					<div class="search-bar search-barBSJ">
-						<input type="text" class="form-control" placeholder="내 주문 상품 검색">
+						<input type="text" class="form-control" id="orderSearchInputBSJ" placeholder="상품명으로 검색">
 						<i class="bi bi-search"
 							style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
 					</div>
@@ -98,17 +89,18 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 					<c:forEach var="order" items="${goodsmylist }">
 						<!-- 주문 항목 리스트 -->
 						<fieldset class="order-group border p-3 mb-4 rounded">
+						
 							<div class="order-date font-weight-bold text-muted">
-								<fmt:formatDate value="${order.goodsMdate }"
-									pattern="yyyy.MM.dd" />
+								<fmt:formatDate value="${order.goodsMdate }"  
+									pattern="yyyy.MM.dd" />            
 								주문
-							</div>
+							</div>  
 							<div class="order-item d-flex align-items-center mb-3">
-								<img src="images/${order.imgUrl }" alt="상품썸네일"
-									class="product-img mr-3 me-3">
+								<div id="orderGoodsImage"><img src="images/${order.imgUrl }" alt="상품썸네일"
+									class="product-img mr-3 me-3"></div>   
 								<div class="product-details flex-grow-1">
-									<p class="mb-1 font-weight-bold">${order.goodsName }</p>
-									<span>${order.goodsPrice }원 · ${order.goodsInven }개</span>
+									<div id="orderGoodsName"> <p class="mb-1 font-weight-bold">${order.goodsName }</p> </div> 
+									<span>${order.goodsPrice }원 · ${order.goodsInven }개</span> 
 								</div>
 								<div class="order-actions d-flex flex-column align-items-center">
 									<button onclick="deleteFunc('${order.goodsState}',this);"
@@ -122,6 +114,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 										data-num="${order.seqGoods }">리뷰 작성하기</button>
 								</div>
 							</div>
+							
 						</fieldset>
 					</c:forEach>
 
@@ -268,6 +261,32 @@ document.querySelector("#sendAskBtn").addEventListener('click',function(){
 	
 	document.querySelector("#message-text").value = "";
 });
+
+//상품명 검색
+$(document).ready(function() {
+	 	// 1. 검색창에 키보드 입력을 감지하는 이벤트 추가
+    $('#orderSearchInputBSJ').on('keypress', function(event) {
+    	 // 2. 엔터 키 (keyCode 13)가 눌렸는지 확인
+    	   
+        if (event.keyCode === 13) {
+            event.preventDefault();  // 엔터만 입력되는거 방지
+            
+            const searchText = $(this).val().toLowerCase();
+
+            // 각 주문 항목을 검사하여 검색어 포함 여부에 따라 표시/숨김
+            $('.order-group').each(function() {
+                const goodsName = $(this).find('#orderGoodsName p').text().toLowerCase();
+
+                if (goodsName.includes(searchText)) {
+                    $(this).show();  // 검색어가 포함된 항목 표시
+                } else {
+                    $(this).hide();  // 포함되지 않은 항목 숨기기
+                }
+            });
+        }
+    });
+});
+
 		 
   </script>
 </body>
