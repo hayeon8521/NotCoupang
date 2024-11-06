@@ -96,4 +96,16 @@
 		where goods_mid = #{seller_id}
 		order by 1 desc
 	</select>
+	
+	
+	<!-- 마이페이지에서 회원아이디로 문의 반환 -->
+	
+	<select id="selectMyAskList" resultType="ask">
+		select *
+		from   tim_ask
+		where  buyer_id = #{buyerId}
+		and goods_num = #{goodsNum}
+	</select>
+	
+	
 </mapper>

@@ -59,7 +59,7 @@
 		<if test="review != null">
 			,review = #{review}
 		</if>
-		where goods_num = #{goodsNum}
+		where seq_review = #{seqReview}
 	</update>
 	
 	
@@ -70,8 +70,15 @@
 	select *
 	from tim_review
 	where goods_num= #{goodsNum} and buyer_id=#{buyerId}
-	
-	
-	
 	</select>
+	
+	<!-- 상품번호로 상품삭제(마이페이지) -->
+	<delete id="deleteMyReview" parameterType="int">
+		delete from tim_review
+		where seq_review = #{seqReview}
+	</delete>
+	
+	
+	
+	
 </mapper>

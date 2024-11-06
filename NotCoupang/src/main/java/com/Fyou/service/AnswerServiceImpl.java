@@ -68,4 +68,9 @@ public class AnswerServiceImpl implements AnswerService {
 	public List<AskVO> selectAskSellerlist(String seller_id) {
 		return mapper.selectAskSellerlist(seller_id);
 	}
+
+	@Override
+	public AskVO selectMyAskList(AskVO ask) {
+		return mapper.selectMyAskList(ask);
+	}
 }

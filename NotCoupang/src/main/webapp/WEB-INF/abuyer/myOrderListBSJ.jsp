@@ -1,25 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%><!-- 날짜포맷 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<!DOCTYPE html>
-<html lang="ko">
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>주문 목록</title>
-<!-- Bootstrap CSS -->
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- Bootstrap 아이콘 -->
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-<!--내 CSS 연동-->
+
 <link rel="stylesheet" href="css/BSJ/myOrderList.css" />
-</head>
+
+<style>
+  /* 검색창 & 돋보기 */
+        .search-barBSJ {
+            position: relative;
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+        .search-barBSJ input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding-right: 40px;
+        }
+        .search-barBSJ i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+        }
+</style>
 
 <!-- 세션 -->
 <%
@@ -28,14 +40,10 @@ String LOGNAME = (String) session.getAttribute("LOGNAME");
 String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 %>
 
+ <div class="container mt-4 containerBSJ">
 
-
-<body>
-	<div class="container mt-5">
-
-		<!-- 사이드바 -->
 		<div class="d-flex" id="wrapper">
-			<!-- Sidebar-->
+		<!-- 사이드바 -->
 			<div class="col-md-3 border-end bg-white" id="sidebar-wrapper">
 				<div
 					class="sidebar-heading d-flex align-items-center border-bottom mt-3 fw-bold">MY쿠팡</div>
@@ -70,8 +78,8 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 				<section class="order-section">
 					<h2 class="mb-3">주문목록</h2>
 					<!-- 검색창 & 돋보기 HTML -->
-					<div class="search-bar">
-						<input type="text" class="form-control" placeholder="내가 쓴 리뷰 검색">
+					<div class="search-bar search-barBSJ">
+						<input type="text" class="form-control" placeholder="내 주문 상품 검색">
 						<i class="bi bi-search"
 							style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
 					</div>
@@ -97,7 +105,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 							</div>
 							<div class="order-item d-flex align-items-center mb-3">
 								<img src="images/${order.imgUrl }" alt="상품썸네일"
-									class="product-img mr-3">
+									class="product-img mr-3 me-3">
 								<div class="product-details flex-grow-1">
 									<p class="mb-1 font-weight-bold">${order.goodsName }</p>
 									<span>${order.goodsPrice }원 · ${order.goodsInven }개</span>
