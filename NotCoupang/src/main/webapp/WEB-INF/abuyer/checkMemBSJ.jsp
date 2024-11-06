@@ -7,14 +7,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>회원정보 확인</title>
-<!-- Bootstrap CSS -->
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	rel="stylesheet" />
-<!-- Bootstrap 아이콘 -->
+
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
-<link rel="stylesheet" href="styles/styles2.css" />
+
+
 
 <style>
 body {
@@ -28,7 +26,7 @@ body {
 
 .form-section {
 	border-bottom: 1px solid #ddd;
-	margin-bottom: 20px !important;
+	
 }
 
 .form-section:last-child {
@@ -41,6 +39,8 @@ body {
 	border: 1px solid #ddd;
 	padding: 5px 10px;
 }
+
+
 </style>
 </head>
 
@@ -72,7 +72,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 				</div>
 			</div>
 			<div class="form-section">
-				<div class="mb-3 row ">
+				<div class="mb-3 row mbrow">
 					<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
 					<div class="col-sm-8">
 						<input type="password" class="form-control mb-2" id="inputPassword" name="inputPassword"

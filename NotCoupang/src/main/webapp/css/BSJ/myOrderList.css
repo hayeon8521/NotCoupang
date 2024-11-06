@@ -10,7 +10,7 @@ body {
 	color: #333;
 }
 
-.container {
+.containerBSJ {
 	background-color: #ffffff;
 	border: 1px solid #ddd;
 	border-radius: 8px;
@@ -22,11 +22,13 @@ body {
 	margin-top: 1.5rem !important;
 }
 
+
 .sidebar {
 	background-color: #f9fbff;
 	padding: 20px;
 	border-right: 1px solid #ddd;
 }
+
 
 .sidebar h2 {
 	color: #0077ff;
@@ -52,17 +54,16 @@ body {
 	padding: 20px;
 }
 
-.header {
+.headerBSJ {
 	background-color: #f0f8ff;
 	border-radius: 8px;
 	font-size: 1.1em;
 	color: #333;
 }
 
-.header .balance, .header .points {
+.headerBSJ  .balance, .header .points {
 	font-size: 1em;
 }
-
 .order-section h2 {
 	font-size: 1.5em;
 	margin-bottom: 20px;
@@ -72,6 +73,7 @@ body {
 	position: relative; /* 돋보기 부모 */
 	width: 500px;
 }
+
 
 /* 돋보기 위치 */
 .input-group-append {
@@ -86,15 +88,10 @@ body {
 	border: none;
 }
 
+
 .search-button {
 	background-color: transparent;
 	border: none;
-}
-
-/* 돋보기 호버 효과 빼기*/
-.search-button:hover {
-	background-color: transparent;
-	color: inherit;
 }
 
 .btn-group .btn {
@@ -130,10 +127,12 @@ body {
 	font-size: 1em;
 }
 
+
 .order-actions .btn {
 	width: 100%;
 	font-size: 0.85em;
 }
+
 
 #wrapper {
 	overflow-x: hidden;
@@ -146,6 +145,7 @@ body {
 	-o-transition: margin .25s ease-out;
 	transition: margin .25s ease-out;
 }
+
 
 #sidebar-wrapper .sidebar-heading {
 	padding: 0.875rem 1.25rem;
@@ -164,10 +164,10 @@ body {
 	margin-left: 0;
 }
 
-@media ( min-width : 768px) {
 	#sidebar-wrapper {
 		margin-left: 0;
 	}
+
 	#page-content-wrapper {
 		min-width: 0;
 		width: 100%;
@@ -176,30 +176,31 @@ body {
 	#nav_div a {
 		font-size: 0.95rem;
 	}
+	
 	#nav_div a:hover {
 		background-color: #4285f4;
 		color: white;
 		font-weight: bold;
 	}
-}
+
 #sidebar-wrapper{
 	margin-left:0;
 }
 
   /* 검색창 & 돋보기 */
-        .search-bar {
+        .search-barBSJ {
             position: relative;
             margin-bottom: 20px;
             max-width: 400px;
         }
-        .search-bar input {
+        .search-bar form-controlBSJ {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             padding-right: 40px;
         }
-        .search-bar i {
+        .bi-searchBSJ {
             position: absolute;
             right: 15px;
             top: 50%;
@@ -207,3 +208,6 @@ body {
             cursor: pointer;
             color: #888;
         }
+        
+        
+        

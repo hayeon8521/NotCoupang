@@ -10,15 +10,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>주문 목록</title>
-<!-- Bootstrap CSS -->
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	rel="stylesheet">
+
 <!-- Bootstrap 아이콘 -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <!--내 CSS 연동-->
-<link rel="stylesheet" href="css/BSJ/myOrderList.css" />
+
+<link rel="stylesheet" href="css/BSJ/myOrderList.css">
 </head>
 
 <!-- 세션 -->
@@ -57,7 +55,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 			<main class="col-md-9 main-content">
 				<!-- 헤더 -->
 				<header
-					class="header d-flex justify-content-between align-items-center p-3 mb-4">
+					class="headerBSJ d-flex justify-content-between align-items-center p-3 mb-4">
 					<div class="balance">
 						<span>총 주문 금액</span> <span class="font-weight-bold">96,095원</span>
 					</div>
@@ -70,9 +68,9 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 				<section class="order-section">
 					<h2 class="mb-3">주문목록</h2>
 					<!-- 검색창 & 돋보기 HTML -->
-					<div class="search-bar">
-						<input type="text" class="form-control" placeholder="내가 쓴 리뷰 검색">
-						<i class="bi bi-search"
+					<div class="search-bar search-barBSJ">
+						<input type="text" class="form-control form-controlBSJ" placeholder="내가 쓴 리뷰 검색">
+						<i class="bi bi-search bi-searchBSJ"
 							style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
 					</div>
 
@@ -100,7 +98,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 									class="product-img mr-3">
 								<div class="product-details flex-grow-1">
 									<p class="mb-1 font-weight-bold">${order.goodsName }</p>
-									<span>${order.goodsPrice }원 · ${order.goodsInven }개</span>
+									<span><fmt:formatNumber value="${order.goodsPrice}" type="number" groupingUsed="true"/>원 · ${order.goodsInven }개</span>
 								</div>
 								<div class="order-actions d-flex flex-column align-items-center">
 									<button onclick="deleteFunc('${order.goodsState}',this);"
