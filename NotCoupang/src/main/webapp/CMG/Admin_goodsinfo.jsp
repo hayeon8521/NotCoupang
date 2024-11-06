@@ -63,10 +63,6 @@ int list_num = (int) request.getAttribute("list_num");
 			<li class="nav-item active"><a class="nav-link"
 				href="Admin_ask.do"> <span>문의 관리</span></a></li>
 
-
-			<li class="nav-item active"><a class="nav-link"
-				href="index_edit.html"> <span>4번 카테고리 이동</span></a></li>
-
 		</ul>
 		<!-- End of Sidebar -->
 

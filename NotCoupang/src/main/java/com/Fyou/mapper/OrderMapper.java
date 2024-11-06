@@ -3,6 +3,7 @@ package com.Fyou.mapper;
 import java.util.List;
 
 import com.Fyou.vo.OrderVO;
+import com.Fyou.vo.SellerCateVO;
 
 public interface OrderMapper {
 	//전체 구매 내역 리스트
@@ -25,4 +26,7 @@ public interface OrderMapper {
 	
 	//판매자 ID를 통한 판매 내역 전체 조회
 	public List<OrderVO> selectSellerOrder(String seller_id);
+	
+	//판매자 ID를 통한 판매 내역 카테고리별 조회
+	public List<SellerCateVO> selectSellerCate(String seller_id);
 }
