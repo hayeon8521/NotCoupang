@@ -35,7 +35,7 @@ ct = ct.isEmpty() ? "전체" : ct;
 
 
 
-<body>
+<body id="LSH">
 
 
 	<div class="container-lg">
@@ -115,7 +115,7 @@ ct = ct.isEmpty() ? "전체" : ct;
 			</div>
 		</div>
 		<nav aria-label="Page navigation example">
-		  <ul class="pagination justify-content-start">
+		  <ul class="pagination justify-content-center">
 		  	<c:choose>
 		  		<c:when test="${prev}">
 		  			<li class="page-item">
