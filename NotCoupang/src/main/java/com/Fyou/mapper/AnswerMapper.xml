@@ -69,11 +69,11 @@
 		update tim_answer
 		set answer = #{answer}, 
 		    answer_date = sysdate
-		where seq_answer = #{seq_answer}
+		where ask_num = #{seq_answer}
 	</update>
 	
 	<insert id="insertAnswer" parameterType="answer">
-	insert into tim_ask (seq_answer, 
+	insert into tim_answer (seq_answer, 
                          ask_num, 
                          answer, 
                          seller_id) 
@@ -87,5 +87,14 @@
 		select count(1)
 		from   tim_ask
 		where  goods_num = #{goods_num}
+	</select>
+	
+	<select id="selectAskSellerlist" >
+		select seq_ask, goods_num, ask, buyer_id, ask_date 
+		from tim_goodsinfo 
+		join tim_ask 
+		on seq_goods = goods_num 
+		where goods_mid = #{seller_id}
+		order by 1 desc
 	</select>
 </mapper>

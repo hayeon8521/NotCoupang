@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.Fyou.vo.GoodsinfoVO;
+import com.Fyou.vo.SearchVO;
 
 public interface GoodsinfoMapper {
 
@@ -47,9 +48,16 @@ public interface GoodsinfoMapper {
 	//페이징 글목록
 	//List<GoodsinfoVO> listWithPage(SearchDTO search);
 	
+	//페이징 리스트 - 검색
+	List<GoodsinfoVO> goodsListSellerkeywordWithPage(SearchVO search);
+	//페이징 리스트 - 소분류 카테고리 목록
+	List<GoodsinfoVO> goodsListSellerBcateWithPage(SearchVO search);
+	//페이징 리스트 - 키워드와 대분류 카테고리로 검색한 목록
+	List<GoodsinfoVO> goodsListSellerkeywordAndTcateWithPage(SearchVO search);
+	
 	//상품 상세정보 가져오기 (테스트 ok - 태백)
 	GoodsinfoVO goodsinfo(int seqGoods);
 	
-	// 상품 seq 번호로 삭제하기
+	// 상품 seq 번호로 삭제하기 (state -> end)
 	int goodsdelete(int seq_goods);
 }

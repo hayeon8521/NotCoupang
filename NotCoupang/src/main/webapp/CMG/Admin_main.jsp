@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.Fyou.vo.OrderVO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.Fyou.vo.MonthVO"%>
+<%
+String LOGID = (String) session.getAttribute("LOGID");
+String LOGNAME = (String) session.getAttribute("LOGNAME");
+String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
+List<OrderVO> img_list = (List<OrderVO>) request.getAttribute("img_list");
+int total_sales = (int) request.getAttribute("total_sales");
+MonthVO month_sales = (MonthVO) request.getAttribute("month_sales");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,8 +62,8 @@
 
 
             <li class="nav-item active">
-                <a class="nav-link" href="index_edit.html">
-                    <span>3번 카테고리 이동</span></a>
+                <a class="nav-link" href="Admin_ask.do">
+                    <span>문의 관리</span></a>
             </li>
 
 
@@ -108,14 +119,14 @@
 
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">유저 ID</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=LOGID %></span>
                             </a>
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link" href="index_edit.html">
+                            <a class="nav-link" href="http://localhost/NotCoupang/logout.do">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>
                             </a>
                         </li>
@@ -143,8 +154,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                총 매출</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%=total_sales %>원</div>
                                         </div>
                                         <div class="col-auto">
                                         </div>
@@ -277,6 +288,20 @@
 
     </div>
     <!-- End of Page Wrapper -->
+    <script>
+    chart_data = [<%=month_sales.getM01()%>, 
+    			  <%=month_sales.getM02()%>, 
+    			  <%=month_sales.getM03()%>, 
+    			  <%=month_sales.getM04()%>, 
+    			  <%=month_sales.getM05()%>, 
+    			  <%=month_sales.getM06()%>, 
+    			  <%=month_sales.getM07()%>, 
+    			  <%=month_sales.getM08()%>, 
+    			  <%=month_sales.getM09()%>, 
+    			  <%=month_sales.getM10()%>, 
+    			  <%=month_sales.getM11()%>, 
+    			  <%=month_sales.getM12()%>]
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="CMG/vendor/jquery/jquery.min.js"></script>

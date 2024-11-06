@@ -14,7 +14,12 @@ body {
 	padding: 20px;
 	font-size: 0.9rem;
 }
-
+/*
+.form-control{
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+*/.
 .form-label {
 	font-weight: bold;
 }
@@ -34,6 +39,8 @@ body {
 	border: 1px solid #ddd;
 	padding: 5px 10px;
 }
+
+
 </style>
 </head>
 
@@ -41,14 +48,14 @@ body {
 
 <body>
 	<div class="container">
-		<h4 class="mb-4">회원정보 수정</h4>
+		<h4 class="mb-4 mt-3">회원정보 수정</h4>
 		<form>
 			<!-- ID -->
 			<div class="form-section">
 				<div class="mb-3 row">
 					<label for="u_id" class="col-sm-2 col-form-label">아이디</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control mb-2" id="u_id" name="u_id"
+						<input type="text" class="form-control" id="u_id" name="u_id"
 							value="${mvo.memberId }" readonly />
 					</div>
 				</div>
@@ -56,62 +63,65 @@ body {
 
 			<!-- 이름 -->
 			<div class="form-section">
-				<div class="mb-3 row">
+				<div class="row">
 					<label for="u_name" class="col-sm-2 col-form-label">이름</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="u_name" name="u_name"
+						<input type="text" class="form-control mb-2" id="u_name" name="u_name"
 							value="${mvo.memberName }" readonly />
-						<p class="text-primary mt-3">※개명 회원 시 관리자에게 문의해주세요.</p>
+						<p class="text-primary mt-2 mb-3">※개명 회원 시 관리자에게 문의해주세요.</p>
 					</div>
 					<!-- <div class="col-sm-2">
                         <button type="button" class="btn btn-custom">이름 변경</button>
                     </div> -->
-				</div>	
+				</div>
 			</div>
 
 			<!-- 닉네임 -->
 			<div class="form-section">
 				<div class="mb-3 row">
-					<label for="u_nick" class="col-sm-2 col-form-label d-inline">기존
-						닉네임</label>
+					<label for="u_nick" class="col-sm-2 col-form-label d-inline">기존 닉네임</label>
 					<div class="col-sm-8">
+					<div class="d-grid gap-3">
 						<input type="text" class="form-control" id="u_nick" name="u_nick"
 							value="${mvo.memberNick }" readonly />
 					</div>
-
-					<div class="mb-3 row">
-						<label for="new_u_nick" class="col-sm-2 col-form-label">변경
-							닉네임</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control d-inline-block" id="new_u_nick"
-								name="new_u_nick" placeholder="변경할 닉네임을 입력하세요" />
-								
-							<button type="button" id="modifyNickBtn" name="modifyNickBtn"
-								class="btn btn-secondary">닉네임 수정</button>
-						</div>
 					</div>
-					<div class="col-sm-2"></div>
+					</div>
+				<div class="mb-3 row">
+					<label for="new_u_nick" class="col-sm-2 col-form-label">변경 닉네임</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control"
+							id="new_u_nick" name="new_u_nick" placeholder="변경할 닉네임을 입력하세요" />
+							</div>
+						<div class="col-sm-2">
+						<button type="button" id="modifyNickBtn" name="modifyNickBtn"
+							class="btn btn btn-secondary">닉네임 수정</button>
+							</div>
+					</div>
 				</div>
-			</div>
+
 
 			<!-- 연락처 -->
 			<div class="form-section">
 				<div class="mb-3 row">
-					<label for="u_phone" class="col-sm-2 col-form-label">기존
-						연락처</label> <label for="new_u_phone" class="col-sm-2 col-form-label">변경
-						연락처</label>
+					<label for="u_phone" class="col-sm-2 col-form-label">기존 연락처</label>
 					<div class="col-sm-8">
-						<input type="tel" class="form-control mb-2" id="u_phone"
-							name="u_phone" value="${mvo.memberPhone }" /> <input
-							type="tel" class="form-control mb-2" id="new_u_phone"
-							name="new_u_phone" placeholder="변경할 연락처를 입력하세요" />
+						<input type="tel" class="form-control" id="u_phone"
+							name="u_phone" value="${mvo.memberPhone }" />
 					</div>
+				</div>
+
+				<div class="mb-3 row">
+					<label for="new_u_phone" class="col-sm-2 col-form-label">변경
+						연락처</label> 
+						<div class="col-sm-8">
+						<input type="tel" class="form-control" id="new_u_phone"
+						name="new_u_phone" placeholder="변경할 연락처를 입력하세요" /></div>
+
 					<div class="col-sm-2">
-						<div class="d-grid gap-2">
 							<button type="button" id="ModifyPhoneBtn" name="ModifyPhoneBtn"
-								class="btn btn-secondary">휴대폰 번호 수정</button>
+								class="btn btn-secondary">연락처 수정</button>
 						</div>
-					</div>
 				</div>
 			</div>
 
@@ -121,14 +131,11 @@ body {
 					<label class="col-sm-2 col-form-label">비밀번호 변경</label>
 					<div class="col-sm-8">
 						<div class="d-grid gap-3">
-							<input type="password" id="thisPw" name="thisPw" class="form-control"
-								placeholder="현재 비밀번호" /> <input
-								type="password" id="newPw" name="newPw" class="form-control"
-								placeholder="새 비밀번호" /> <input type="password"
-								name="newPw2" id="newPw2" class="form-control" placeholder="비밀번호 다시 입력" />
-							<div class="col-sm-2">
-								<button type="button" id="modifyPwBtn" name="modifyPwBtn"
-									class="btn btn-primary">비밀번호 변경</button>
+							<input type="password" id="thisPw" name="thisPw" class="form-control" placeholder="현재 비밀번호" /> 
+							<input type="password" id="newPw" name="newPw" class="form-control" placeholder="새 비밀번호" /> 
+							<input type="password" name="newPw2" id="newPw2" class="form-control" placeholder="비밀번호 다시 입력" />
+							<div class="col-sm-4">
+								<button type="button" id="modifyPwBtn" name="modifyPwBtn" class="btn btn-primary">비밀번호 변경</button>
 							</div>
 						</div>
 					</div>
@@ -138,22 +145,29 @@ body {
 			<!-- 주소 -->
 			<div class="form-section">
 				<div class="mb-3 row">
-					<label for="u_address" class="col col-form-label">기존
-						배송지</label> <input type="text" class="form-control mb-2" id="u_address"
-						name="u_address" value="${mvo.memberAddress }" readonly />
-
+					<label for="u_address" class="col-sm-2 col-form-label">기존 배송지</label> 
 					<div class="col-sm-8">
-						<label for="new_u_address" class="col col-form-label">수정
-							배송지</label> <input type="text" class="form-control mb-2"
-							id="new_u_address" name="new_u_address" placeholder="변경할 주소" />
+					<div class="d-grid gap-3">
+					<input type="text" class="form-control mb-2" id="u_address"
+						name="u_address" value="${mvo.memberAddress }" readonly />
+						</div>
+						</div>
+						</div>
+				<div class="mb-3 row">
+					
+						<label for="new_u_address" class="col-sm-2 col-form-label">수정 배송지</label> 
+						<div class="col-sm-8">
+						<input type="text" class="form-control mb-2"
+							id="new_u_address" name="new_u_address" placeholder="변경할 주소를 입력하세요" />
 					</div>
 					<div class="col-sm-2">
-						<div class="d-grid gap-2">
+						
 							<button type="button" id="modifyAddress" name="modifyAddress"
 								class="btn btn-secondary">배송지 수정</button>
-						</div>
+						
 					</div>
-				</div>
+					</div>
+				
 			</div>
 
 			<!-- Subscription Settings -->
@@ -168,18 +182,17 @@ body {
 					</div>
 					<div class="form-check mt-2">
 						<input class="form-check-input" type="checkbox" id="ads-consent"
-							checked /> <label class="form-check-label"
-							for="ads-consent"> 광고성 정보 수신 동의함 </label> <a href="#"
-							class="text-muted">전문보기 ></a>
+							checked /> <label class="form-check-label" for="ads-consent">
+							광고성 정보 수신 동의함 </label> <a href="#" class="text-muted">전문보기 ></a>
 					</div>
 				</div>
 			</div>
 
 			<!-- 탈퇴/취소 -->
-			<div class="d-flex justify-content-end">
+			<div class="d-flex justify-content-end mb-3">
 				<button type="button" class="btn btn-outline-secondary me-2">
 					탈퇴하기</button>
-				<button type="submit" class="btn btn-primary">나가기</button>
+				<button type="submit" id="exitBtn" name="exitBtn" class="btn btn-primary">나가기</button>
 			</div>
 		</form>
 	</div>
@@ -278,6 +291,11 @@ body {
 			}
 
 		});
+    
+    document.querySelector("#exitBtn").addEventListener('click',function(){
+			window.location.replace('/NotCoupang/myOrderList.do?buyerId=+${LOGID }');
+		});
+		
 
     </script>
 </body>

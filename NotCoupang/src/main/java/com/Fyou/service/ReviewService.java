@@ -24,4 +24,9 @@ public interface ReviewService {
 	//리뷰 업데이트 (테스트 완료)
 	public boolean modifyReview(ReviewVO review);
 	
+	
+	
+	//리뷰 조회(구매자, 상품번호로 조회)
+	public ReviewVO reviewOne(ReviewVO review);
+	
 }

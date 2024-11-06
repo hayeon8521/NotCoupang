@@ -1,4 +1,4 @@
-.dropdown:hover .dropdown-menu {
+#LSH .dropdown:hover .dropdown-menu {
 	display: block;
 	position: absolute;
 	top: 100%;
@@ -6,12 +6,21 @@
 	z-index: 1000;
 }
 
-body {
+#LSH {
+	min-width: 1200px;
 	--bs-primary: #0080ff;
 	--bs-primary-rgb: 0, 128, 255;
 }
+#LSH .card {
+	display: flex;
+	flex-direction: column;
+}
 
-.btn-outline-primary {
+#LSH .card-body {
+	flex-grow: 1;
+}
+
+#LSH .btn-outline-primary {
 	--bs-btn-color: var(--bs-primary);
 	--bs-btn-border-color: var(--bs-primary);
 	--bs-btn-hover-color: #fff;
@@ -28,33 +37,33 @@ body {
 	--bs-gradient: none;
 }
 
-#price.text-dark {
+#LSH #price.text-dark {
 	--bs-text-opacity: 1;
 	color: red !important;
 }
 
-.scrollmenu {
+#LSH .scrollmenu {
 	overflow: hidden;
 	white-space: nowrap;
 	display: flex; /* 버튼과 함께 수평 정렬 */
 	align-items: center; /* 중앙 정렬 */
 }
 
-.scrollmenu a {
+#LSH .scrollmenu a {
 	display: inline-block;
 	text-align: center;
 	padding: 0 14px;
 	text-decoration: none;
 }
 
-.scroll-buttons {
+#LSH .scroll-buttons {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
 	position: relative; /* 절대 위치를 위해 필요 */
 }
 
-.scroll-button {
+#LSH .scroll-button {
 	--bs-btn-color: #000000;
 	--bs-btn-bg: #fff;
 	--bs-btn-border-color: transparent;
@@ -69,29 +78,29 @@ body {
 	border: none;
 }
 
-input::placeholder {
+#LSH input::placeholder {
 	color: #a3a3a4 !important;
 	font-style: italic;
 }
 
-#search.p-2 {
+#LSH #search.p-2 {
 	border: 2px solid #4285f4;
 }
 
-#search.rounded-1 {
+#LSH #search.rounded-1 {
 	border-radius: 0 !important;
 }
 
-#search tab-titles:last-child {
+#LSH #search tab-titles:last-child {
 	border: solid red;
 }
 
-.banner-ad {
+#LSH .banner-ad {
 	position: relative;
 	overflow: hidden;
 }
 
-.banner-ad .overlay {
+#LSH .banner-ad .overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -101,17 +110,24 @@ input::placeholder {
 	z-index: 1;
 }
 
-.banner-content {
+#LSH .banner-content {
 	position: relative;
 	z-index: 2; /* 필터 위에 컨텐츠 표시 */
 }
-.product-item {
+#LSH .product-item {
     height:400px;
 }
+#LSH .product-item:hover .item-title {
+    text-decoration: underline;
+    color: #007bff;
+}
 
-.product-item figure img {
+
+
+
+#LSH .product-item figure img {
     max-width: 180px;
-    width: auto;
+    width: 180px;
     max-height: 210px;
-    height: auto;
+    height: 180px;
 }

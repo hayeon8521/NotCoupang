@@ -23,9 +23,11 @@ public interface AnswerMapper {
 	// 문의 번호로 문의 내역 수정
 	public int updateAsk(int seq_ask, String ask);
 	// 문의 번호로 답변 내역 수정
-	public int updateAnswer(int seq_answer, String answer);
+	public int updateAnswer(@Param("seq_answer") int seq_answer, @Param("answer") String answer);
 	// 답변 내역 작성
 	public int insertAnswer(AnswerVO answer);
 	//문의 총 개수 가져오기
-	public int askTotalCnt(@Param("goods_num") int goodsNum);
+	public int askTotalCnt(@Param("goods_num") int goodsNum);	
+	
+	public List<AskVO> selectAskSellerlist(@Param("seller_id") String seller_id);
 }

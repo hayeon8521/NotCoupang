@@ -98,8 +98,60 @@
 		where  seq_goods = #{seqGoods}
 	</select>
 	
-	<delete id="goodsdelete" parameterType="int">
-		delete tim_goodsinfo
+	<update id="goodsdelete" parameterType="int">
+		update tim_goodsinfo 
+		set goods_state = 'end' 
 		where seq_goods = #{seq_goods}
-	</delete>
+	</update>
+	
+	<!-- 상품 리스트 페이징들 -->
+	<!-- 카테고리 없이 검색 -->
+	<select id="goodsListSellerkeywordWithPage" resultType="Goodsinfo">
+		SELECT g.* 
+		FROM
+		(
+		SELECT rownum ru, r.*
+		FROM tim_goodsinfo r
+		WHERE goods_state NOT IN ('end')
+		AND goods_name like '%'||#{keyword}||'%'
+		ORDER BY seq_goods DESC
+		) g
+		WHERE g.ru > (#{page} - 1) * 30 
+		<![CDATA[
+		AND g.ru <= #{page} * 30
+		]]>
+	</select>
+	<select id="goodsListSellerBcateWithPage" resultType="Goodsinfo">
+		SELECT g.* 
+		FROM
+		(
+		SELECT rownum ru, r.*
+		FROM tim_goodsinfo r
+		WHERE goods_state NOT IN ('end')
+		and goods_catename = #{bCate}
+		order by seq_goods desc
+		) g
+		WHERE g.ru > (#{page} - 1) * 30 
+		<![CDATA[
+		AND g.ru <= #{page} * 30
+		]]>
+	</select>
+	<select id="goodsListSellerkeywordAndTcateWithPage" resultType="Goodsinfo">
+		SELECT r.* 
+		FROM
+		(
+		SELECT rownum ru, g.*
+		FROM tim_goodsinfo g
+		JOIN tim_categori c ON g.goods_catename = c.b_cate
+		WHERE goods_state NOT IN ('end')
+		AND c.t_cate = #{tCate} 
+		AND g.goods_name like '%'||#{keyword}||'%'
+		ORDER BY seq_goods DESC
+		) r
+		WHERE r.ru > (#{page} - 1) * 30
+		<![CDATA[
+		AND r.ru <= #{page} * 30
+		]]>
+	
+	</select>
 </mapper>

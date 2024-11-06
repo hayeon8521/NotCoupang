@@ -29,4 +29,11 @@ public interface ReviewMapper {
 	//구매자가 전체리뷰를 봄
 	public List<ReviewVO> memberReview(String buyerId);
 	
+	
+	
+	
+	//회원아이디와 상품번호로 리뷰내역 조회
+	public ReviewVO reviewOne(ReviewVO review);
+	
+	
 }

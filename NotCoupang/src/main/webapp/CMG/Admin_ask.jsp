@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.Fyou.vo.GoodsinfoVO"%>
-<%@page import="com.Fyou.vo.ImgVO"%>
+<%@page import="com.Fyou.vo.AskVO"%>
 <%@page import="java.util.List"%>
 
 <%
 String LOGID = (String) session.getAttribute("LOGID");
 String LOGNAME = (String) session.getAttribute("LOGNAME");
 String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
-List<GoodsinfoVO> list = (List<GoodsinfoVO>) request.getAttribute("goodsList");
+List<AskVO> list = (List<AskVO>) request.getAttribute("askList");
 String pg = (String) request.getAttribute("page");
-String[] img_arr = (String[]) request.getAttribute("img_arr");
 %>
 <!DOCTYPE html>
 <html>
@@ -112,7 +110,7 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">등록 상품 조회</h1>
+					<h1 class="h3 mb-2 text-gray-800">문의 관리</h1>
 					<p class="mb-4"></p>
 
 					<!-- DataTales Example -->
@@ -123,12 +121,11 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th style="width: 15%">이미지</th>
-											<th style="width: 35%">상품명</th>
-											<th style="width: 15%">카테고리</th>
-											<th style="width: 15%">가격</th>
-											<th style="width: 10%">재고</th>
-											<th style="width: 10%">상태</th>
+											<th style="width: 10%">문의 번호</th>
+											<th style="width: 10%">상품 번호</th>
+											<th style="width: 50%">문의</th>
+											<th style="width: 10%">구매자 ID</th>
+											<th style="width: 20%"></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -137,27 +134,15 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 										page_int = (page_int - 1) * 10;
 										String goods_state = "";
 										for (int i = 0; (i < 10) && i < list.size() - page_int; i++) {
-											if (list.get(page_int + i).getGoodsState().equals("state")) {
-												goods_state = "판매중";
-											} else if (list.get(page_int + i).getGoodsState().equals("stop")) {
-												goods_state = "판매 중단";
-											} else if (list.get(page_int + i).getGoodsState().equals("end")) {
-												goods_state = "판매 종료";
-											}
-											if (img_arr[i] != null) {
 										%>
-										<tr>
-											<td id="<%=page_int + i%>" style="width: 15%"><a
-												id="list_img"><img src="images/<%=img_arr[i]%>"
-													width="150px"></a></td>
-											<td style="width: 35%"><%=list.get(page_int + i).getGoodsName()%></td>
-											<td style="width: 15%"><%=list.get(page_int + i).getGoodsCatename()%></td>
-											<td style="width: 15%"><%=list.get(page_int + i).getGoodsPrice()%></td>
-											<td style="width: 10%"><%=list.get(page_int + i).getGoodsInven()%></td>
-											<td style="width: 10%"><%=goods_state%></td>
+										<tr id="<%=page_int + i%>">
+											<td style="width: 10%"><%=list.get(page_int + i).getSeqAsk()%></td>
+											<td style="width: 10%"><%=list.get(page_int + i).getGoodsNum()%></td>
+											<td style="width: 50%; word-break: break-all"><%=list.get(page_int + i).getAsk()%></td>
+											<td style="width: 10%"><%=list.get(page_int + i).getBuyerId()%></td>
+											<td style="width: 20%"><button id="ask_button">작성하기</button></td>
 										</tr>
 										<%
-										}
 										}
 										%>
 									</tbody>
@@ -173,8 +158,8 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 										<%
 										} else {
 										%>
-										<li class="page-item"><a class="page-link"
-										href="Admin_list.do?page=<%=(((int) ((now_page - 1) / 10) + 1) * 10) - 10%>">&laquo;</a></li>
+										<li class="page-item"><a class="page-link" 
+										href="Admin_ask.do?page=<%=(((int) ((now_page - 1) / 10) + 1) * 10) - 10%>">&laquo;</a></li>
 										<%
 										}
 										int last_page = ((int) (real_end / 10) + 1);
@@ -190,7 +175,7 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 										} else {
 										%>
 										<li class="page-item"><a class="page-link"
-											href="Admin_list.do?page=<%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%>"><%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%></a></li>
+											href="Admin_ask.do?page=<%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%>"><%=(int) ((now_page - 1) / 10 + 1) * 10 + i - 9%></a></li>
 										<%
 										}
 										}
@@ -201,7 +186,7 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 											} else {
 											%>
 										<li class="page-item"><a class="page-link"
-											href="Admin_list.do?page=<%=(((int) ((now_page - 1) / 10) + 1) * 10) + 1%>">&raquo;</a>
+											href="Admin_ask.do=<%=(((int) ((now_page - 1) / 10) + 1) * 10) + 1%>">&raquo;</a>
 											<%
 											}
 											%></li>
@@ -238,11 +223,12 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 	<script src="CMG/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 	<script>
-		let arr = document.querySelectorAll("#list_img")
+		let arr = document.querySelectorAll("#ask_button")
 		for (i = 0; i < arr.length; i++) {
 			console.log(arr[i].parentNode.id)
 			arr[i].addEventListener("click", function(e) {
-				location.href = "Admin_goodsinfo.do?seq_goods="
+				console.log(e.target.parentNode.parentNode.id);
+				location.href = "Admin_insert_ask.do?list_num="
 						+ e.target.parentNode.parentNode.id
 			})
 		}

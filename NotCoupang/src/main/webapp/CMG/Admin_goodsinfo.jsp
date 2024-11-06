@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@page import="com.Fyou.vo.GoodsinfoVO"%>
 <%@page import="com.Fyou.vo.ImgVO"%>
 <%@page import="java.util.List"%>
 <%
+String LOGID = (String) session.getAttribute("LOGID");
+String LOGNAME = (String) session.getAttribute("LOGNAME");
+String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 GoodsinfoVO gvo = (GoodsinfoVO) request.getAttribute("gvo");
 List<ImgVO> img_list = (List<ImgVO>) request.getAttribute("img_list");
 int list_num = (int) request.getAttribute("list_num");
@@ -58,7 +61,7 @@ int list_num = (int) request.getAttribute("list_num");
 
 
 			<li class="nav-item active"><a class="nav-link"
-				href="index_edit.html"> <span>3번 카테고리 이동</span></a></li>
+				href="Admin_ask.do"> <span>문의 관리</span></a></li>
 
 
 			<li class="nav-item active"><a class="nav-link"
@@ -88,14 +91,13 @@ int list_num = (int) request.getAttribute("list_num");
 					<ul class="navbar-nav ml-auto">
 
 						<li class="nav-item dropdown no-arrow"><a class="nav-link">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">유저
-									ID</span>
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=LOGID%></span>
 						</a></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>
 
 						<li class="nav-item dropdown no-arrow"><a class="nav-link"
-							href="index_edit.html"> <span
+							href="http://localhost/NotCoupang/logout.do"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">Logout</span>
 						</a></li>
 
@@ -108,7 +110,7 @@ int list_num = (int) request.getAttribute("list_num");
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">등록 상품 수정</h1>
+					<h1 class="h3 mb-2 text-gray-800">등록 상품 상세 조회</h1>
 					<p class="mb-4"></p>
 
 					<!-- DataTales Example -->
@@ -120,7 +122,8 @@ int list_num = (int) request.getAttribute("list_num");
 									<tbody>
 										<tr>
 											<th style="width: 15%">이미지</th>
-											<th style="width: 50%">상품명</th>
+											<th style="width: 35%">상품명</th>
+											<th style="width: 15%">카테고리</th>
 											<th style="width: 15%">가격</th>
 											<th style="width: 10%">재고</th>
 											<th style="width: 10%">상태</th>
@@ -136,8 +139,10 @@ int list_num = (int) request.getAttribute("list_num");
 										}
 										%>
 										<tr>
-											<td style="width: 15%"><a><img src="images/<%=img_list.get(0).getImgUrl()%>" width="150px"></a></td>
-											<td style="width: 50%"><%=gvo.getGoodsName()%></td>
+											<td style="width: 15%"><a><img
+													src="images/<%=img_list.get(0).getImgUrl()%>" width="150px"></a></td>
+											<td style="width: 35%"><%=gvo.getGoodsName()%></td>
+											<td style="width: 15%"><%=gvo.getGoodsCatename()%></td>
 											<td style="width: 15%"><%=gvo.getGoodsPrice()%></td>
 											<td style="width: 10%"><%=gvo.getGoodsInven()%></td>
 											<td style="width: 10%"><%=goods_state%></td>
@@ -145,8 +150,10 @@ int list_num = (int) request.getAttribute("list_num");
 									</tbody>
 								</table>
 								<div style="float: right">
-									<input id="goods_edit" type="submit" value="edit" class="btn btn-warning">
-									<input id="goods_delete" type="submit" value="delete" class="btn btn-danger">
+									<input id="goods_edit" type="submit" value="edit"
+										class="btn btn-warning">
+									<input id="goods_delete"
+										type="submit" value="delete" class="btn btn-danger">
 								</div>
 							</div>
 						</div>
@@ -157,31 +164,34 @@ int list_num = (int) request.getAttribute("list_num");
 								<div>
 									<h5 class="h3 mb-2 text-gray-800">상세 이미지</h5>
 								</div>
-									<table class="table table-bordered" id="dataTable" width="100%"
-										cellspacing="0">
-										<tbody id="detaie_img_tbody">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<tbody id="detaie_img_tbody">
 										<%
-										for (int i = 1 ; i < img_list.size() ; i++) {
+										for (int i = 1; i < img_list.size(); i++) {
 										%>
-											<tr>
-												<td style="width: 100%"><a><img src="images/<%=img_list.get(i).getImgUrl()%>"></a></td>
-											</tr>
-											<tr>
-												<td>
-													<div style="float: right" id="<%=i %>">
-														<button id="edit" class="btn btn-warning">edit</button>
-														<button id="delete" class="btn btn-danger">delete</button>
-													</div>
-												</td>
-											</tr>
+										<tr>
+											<td style="width: 100%"><a><img src="images/<%=img_list.get(i).getImgUrl()%>"
+											style="width: 80%"></a></td>
+										</tr>
+										<tr>
+											<td>
+												<div style="float: right" id="<%=i%>">
+													<button id="edit" class="btn btn-warning">edit</button>
+													<button id="delete" class="btn btn-danger">delete</button>
+												</div>
+											</td>
+										</tr>
 										<%
 										}
 										%>
-										</tbody>
-									</table>
-								<form action="Admin_insert_detail_image.do" method="post" enctype="multipart/form-data">
-									<input type="hidden" name="goods_num" value="<%=gvo.getSeqGoods() %>">
-									<input type="hidden" name="list_num" value="<%=list_num %>">
+									</tbody>
+								</table>
+								<form action="Admin_insert_detail_image.do" method="post"
+									enctype="multipart/form-data">
+									<input type="hidden" name="goods_num"
+										value="<%=gvo.getSeqGoods()%>"> <input type="hidden"
+										name="list_num" value="<%=list_num%>">
 									<table class="table table-bordered" id="dataTable" width="100%">
 										<tbody>
 											<tr>
@@ -193,7 +203,8 @@ int list_num = (int) request.getAttribute("list_num");
 										</tbody>
 									</table>
 									<div style="text-align: center;">
-										<input class="btn btn-primary" type="submit" style="width: 250px;" value="등록">
+										<input class="btn btn-primary" type="submit"
+											style="width: 250px;" value="등록">
 									</div>
 								</form>
 							</div>
@@ -225,27 +236,27 @@ int list_num = (int) request.getAttribute("list_num");
 	<!-- Page level plugins -->
 	<script src="CMG/vendor/datatables/jquery.dataTables.min.js"></script>
 	<script src="CMG/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-	
+
 	<script>
 	seq_goods = <%=gvo.getSeqGoods()%>
 	document.querySelector('#goods_edit').addEventListener('click', function(e) {
-		location.href = 'Admin_goodsedit.do?seq_goods=<%=gvo.getSeqGoods()%>&list_num=<%=list_num%>';
+		location.href = 'Admin_goodsedit.do?seq_goods=<%=gvo.getSeqGoods()%>&list_num=<%=list_num%>'
 	});
 	document.querySelector('#goods_delete').addEventListener('click', function(e) {
-		location.href = 'Admin_goodsdelete.do?seq_goods=<%=gvo.getSeqGoods()%>';
+		location.href = 'Admin_goodsdelete.do?seq_goods=<%=gvo.getSeqGoods()%>'
 	});
 	
 	edit_button = document.querySelectorAll('#edit');
 	delete_button = document.querySelectorAll('#delete');
 	for (let i = 0 ; i < edit_button.length ; i++) {
 		edit_button[i].addEventListener("click", function(e) {
-			location.href = 'Admin_update_detail_image.do?seq_img=' + e.target.parentElement.id + '&list_num=<%=list_num%>&seq_goods=<%=gvo.getSeqGoods() %>';
+			location.href = 'Admin_update_detail_image.do?seq_img=' + e.target.parentElement.id + '&list_num=<%=list_num%>&seq_goods=<%=gvo.getSeqGoods()%>'
 		});
 	}
 	for (let i = 0 ; i < edit_button.length ; i++) {
 		delete_button[i].addEventListener("click", function(e) {
 			console.log(e.target.parentElement.id);
-			location.href = 'Admin_delete_detail_image.do?seq_img=' + e.target.parentElement.id + '&list_num=<%=list_num%>&seq_goods=<%=gvo.getSeqGoods() %>';
+			location.href = 'Admin_delete_detail_image.do?seq_img=' + e.target.parentElement.id + '&list_num=<%=list_num%>&seq_goods=<%=gvo.getSeqGoods()%>'
 		});
 	}
 	</script>

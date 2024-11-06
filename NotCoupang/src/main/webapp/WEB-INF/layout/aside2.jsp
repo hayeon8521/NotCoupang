@@ -8,77 +8,43 @@
 CategoriService csvc = new CategoriServiceImpl();
 List<CategoriVO> categories = csvc.listOfTcate();
 %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/LSH/sidebar.css">
 
-<div class="search-filter ">
-	<div class="search-filter-content">
+</head>
+<body>
+	<div class="sidebar-category">
 		<h4>카테고리</h4>
-		<div class="search-filter-options search-category-component">
-			<h5>카테고리</h5>
-			<div>
-				<ul>
-					<li>
-						<input type="radio"id="component" name="component" title="componentFilter" value="" checked=""> 
-						<label for="component" >전체</label>
-					</li>
-
+		<ul class="category-list">
+			<li class="category-item"><a href="goodsList.do">전체</a></li>
+		</ul>
+		<%
+		for (CategoriVO T : categories) {
+			String tcate = T.getTcate();
+		%>
+		<ul class="category-list">
+			<li class="category-item"><a href="goodsList.do?cate=<%=tcate%>"><%=tcate%></a>
+				<ul class="subcategory-list">
+					<%
+					List<CategoriVO> bCategories = csvc.Tcates(tcate);
+					for (CategoriVO B : bCategories) {
+						String bcate = B.getBcate();
+					%>
+					<li><a href="goodsList.do?cate=<%=tcate%>&bcate=<%=bcate%>"><%=bcate%></a></li>
+					<%
+					}
+					%>
 				</ul>
+			</li>
+		</ul>
 
-			</div>
-		</div>
+		<%
+		}
+		%>
 		
-		<%for(CategoriVO T : categories) {%>
-		<div class="search-filter-options search-category-component">
-			<%String tcate = T.getTcate(); %>
-			<h5><%=tcate %></h5>
-			<div>
-				<ul>
-			<%List<CategoriVO> bCategories = csvc.Tcates(tcate);%>
-			<%for(CategoriVO B : bCategories) {%>
-					<li>
-						<input type="radio"id="component" name="component" title="componentFilter" value="" checked=""> 
-						<label for="component" ><%=B.getBcate() %></label>
-					</li>
-			
-			<%} %>
-				</ul>
-			</div>
-			
-
-
-		</div>
-		<%} %>
-
-
-		<!--  참고용 주석
-		<div class="search-filter-options search-category-component">
-			<h5>카테고리</h5>
-			<div>
-				<ul>
-					<li class="search-option-item selected opened  selected opened all"
-						data-category-id="" data-linkcode=""><input type="radio"
-						id="component" name="component" title="componentFilter" value=""
-						checked="checked"> <label for="component"
-						data-srp-log="{&quot;group&quot;:&quot;FILTER&quot;, &quot;filterType&quot;:&quot;CATEGORY&quot;, &quot;id&quot;:&quot;all&quot;, &quot;depth&quot;:&quot;1&quot;}">전체</label>
-					</li>
-
-				</ul>
-
-			</div>
-		</div>
-		-->
-
-
-
-
-
-
-
-
-
-
-
-
-
 	</div>
-</div>
 
+</body>
