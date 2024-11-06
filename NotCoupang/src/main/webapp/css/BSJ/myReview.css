@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .containerBSJ {
 	background-color: #ffffff;
 	border: 1px solid #ddd;
@@ -146,11 +148,11 @@
 		min-width: 0;
 		width: 100%;
 	}
-	
+
 	#nav_div a {
 		font-size: 0.95rem;
 	}
-	#nav_div a:hover {	
+	#nav_div a:hover {
 		background-color: #4285f4;
 		color: white;
 		font-weight: bold;
@@ -160,4 +162,5 @@
 #sidebar-wrapper{
 	margin-left:0;
 }
+
 
