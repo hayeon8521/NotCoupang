@@ -24,6 +24,7 @@
       <typeAlias alias="goodsinfo" type="com.Fyou.vo.GoodsinfoVO"/>
       <typeAlias alias="img" type="com.Fyou.vo.ImgVO"/>
       <typeAlias alias="categori" type="com.Fyou.vo.CategoriVO"/>
+      <typeAlias alias="sellercate" type="com.Fyou.vo.SellerCateVO"/>
 
    </typeAliases>
     

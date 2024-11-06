@@ -60,4 +60,7 @@ public interface GoodsinfoMapper {
 	
 	// 상품 seq 번호로 삭제하기 (state -> end)
 	int goodsdelete(int seq_goods);
+	
+	// 판매자 상품 리스트 (END도 포함)
+	List<GoodsinfoVO> goodsListSellerAllMID(String goodsMid);
 }

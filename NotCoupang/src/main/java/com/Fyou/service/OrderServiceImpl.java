@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.Fyou.commom.DataSource;
 import com.Fyou.mapper.OrderMapper;
 import com.Fyou.vo.OrderVO;
+import com.Fyou.vo.SellerCateVO;
 
 public class OrderServiceImpl implements OrderService{
 
@@ -49,5 +50,11 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public List<OrderVO> selectSellerOrder(String seller_id) {
 		return mapper.selectSellerOrder(seller_id);
+	}
+
+
+	@Override
+	public List<SellerCateVO> selectSellerCate(String seller_id) {
+		return mapper.selectSellerCate(seller_id);
 	}
 }

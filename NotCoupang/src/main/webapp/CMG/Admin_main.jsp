@@ -3,6 +3,7 @@
 <%@page import="com.Fyou.vo.OrderVO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.Fyou.vo.MonthVO"%>
+<%@page import="com.Fyou.vo.SellerCateVO"%>
 <%
 String LOGID = (String) session.getAttribute("LOGID");
 String LOGNAME = (String) session.getAttribute("LOGNAME");
@@ -10,6 +11,10 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 List<OrderVO> img_list = (List<OrderVO>) request.getAttribute("img_list");
 int total_sales = (int) request.getAttribute("total_sales");
 MonthVO month_sales = (MonthVO) request.getAttribute("month_sales");
+int now_month_sales = (int) request.getAttribute("now_month_sales");
+List<SellerCateVO> seller_cate_list = (List<SellerCateVO>) request.getAttribute("seller_cate_list");
+int state = (int) request.getAttribute("state");
+int stop_end = (int) request.getAttribute("stop_end");
 %>
 <!DOCTYPE html>
 <html>
@@ -64,12 +69,6 @@ MonthVO month_sales = (MonthVO) request.getAttribute("month_sales");
             <li class="nav-item active">
                 <a class="nav-link" href="Admin_ask.do">
                     <span>문의 관리</span></a>
-            </li>
-
-
-            <li class="nav-item active">
-                <a class="nav-link" href="index_edit.html">
-                    <span>4번 카테고리 이동</span></a>
             </li>
 
         </ul>
@@ -155,7 +154,19 @@ MonthVO month_sales = (MonthVO) request.getAttribute("month_sales");
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 총 매출</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%=total_sales %>원</div>
+                                                <%
+                                                String total_str = " ";
+                                                if (total_sales >= 100000000) {
+                                                	total_str = total_str + (int)(total_sales / 100000000) + "억";
+                                                	total_sales = total_sales % 100000000;
+                                                }
+                                                if (total_sales >= 10000) {
+                                                	total_str = total_str + " " + (int)(total_sales / 10000) + "만";
+                                                	total_sales = total_sales % 10000;
+                                                }
+                                                total_str = total_str + " " + total_sales + "원";
+                                                %>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%=total_str %></div>
                                         </div>
                                         <div class="col-auto">
                                         </div>
@@ -171,8 +182,20 @@ MonthVO month_sales = (MonthVO) request.getAttribute("month_sales");
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                                이번달 매출</div>
+                                            	<%
+                                                String month_str = " ";
+                                                if (now_month_sales >= 100000000) {
+                                                	month_str = month_str + (int)(now_month_sales / 100000000) + "억";
+                                                	now_month_sales = now_month_sales % 100000000;
+                                                }
+                                                if (now_month_sales >= 10000) {
+                                                	month_str = month_str + " " + (int)(now_month_sales / 10000) + "만";
+                                                	now_month_sales = now_month_sales % 10000;
+                                                }
+                                                month_str = month_str + " " + now_month_sales + "원";
+                                                %>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%=month_str %></div>
                                         </div>
                                         <div class="col-auto">
                                         </div>
@@ -185,22 +208,11 @@ MonthVO month_sales = (MonthVO) request.getAttribute("month_sales");
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
+                                	<div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                판매중인 상품</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%=state %></div>
                                         </div>
                                         <div class="col-auto">
                                         </div>
@@ -216,8 +228,8 @@ MonthVO month_sales = (MonthVO) request.getAttribute("month_sales");
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                판매 중단 & 종료</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><%=stop_end %></div>
                                         </div>
                                         <div class="col-auto">
                                         </div>
@@ -263,13 +275,10 @@ MonthVO month_sales = (MonthVO) request.getAttribute("month_sales");
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
                                         </span>
                                     </div>
                                 </div>
@@ -301,6 +310,19 @@ MonthVO month_sales = (MonthVO) request.getAttribute("month_sales");
     			  <%=month_sales.getM10()%>, 
     			  <%=month_sales.getM11()%>, 
     			  <%=month_sales.getM12()%>]
+    
+    pie_labels = []
+    pie_data = []
+    <%
+    for (int i = 0 ; i < seller_cate_list.size() ; i++) {
+    %>
+    pie_labels.push("<%=seller_cate_list.get(i).getGoodsCatename()%>")
+    pie_data.push(<%=seller_cate_list.get(i).getTotal()%>)
+    <%
+    }
+    %>
+    console.log(pie_labels)
+    console.log(pie_data)
     </script>
 
     <!-- Bootstrap core JavaScript-->
