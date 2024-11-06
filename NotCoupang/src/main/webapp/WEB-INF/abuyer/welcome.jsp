@@ -61,6 +61,9 @@ List<CategoriVO> categories = csvc.listOfTcate();
 					<div
 						class="section-header d-flex flex-wrap justify-content-between mb-2">
 						<h2 class="section-title">카테고리</h2>
+						<div class="d-flex align-items-center">
+		                	<a href="goodsList.do" class="btn btn-primary me-2">전체 보기</a>
+		              	</div>
 					</div>
 					<div class="banner-blocks row-gap-2 column-gap-2">
 						<%
