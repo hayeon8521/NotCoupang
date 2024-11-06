@@ -272,7 +272,7 @@ window.addEventListener('DOMContentLoaded', event => {
  				alert("문의가 삭제 되었습니다.");
  				
  				delAsktBtn.remove();
- 				//review-card mt-3
+ 				//review-card mt-3  
  				    
  			} else if (result.retCode == 'FAIL') {
  					alert("문의 삭제에 실패했습니다.");
