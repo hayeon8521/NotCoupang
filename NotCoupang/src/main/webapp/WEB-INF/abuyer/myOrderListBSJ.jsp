@@ -204,65 +204,62 @@ function deleteFunc(orderNum, thisEvnet){
   }
 		
 
-// 모달
-
+//모달 생성
 var exampleModal = document.getElementById('exampleModal');
 exampleModal.addEventListener('show.bs.modal', function (event) {
-  var button = event.relatedTarget;
-  let goodsNum = button.getAttribute('data-num');
- 
-  if(button.innerText=="문의 작성하기"){
-	  console.log("문의 작성하기 클릭함");
-	  document.querySelector("#sendAskBtn").addEventListener('click',function(){
-			let message = document.querySelector("#message-text").value;
-			console.log(message);
-			console.log(encodeURIComponent(message));
-			$.ajax({
-	          url: 'insertAsk.do',  //이화면에
-	          data: { goodsNum : goodsNum, message : encodeURIComponent(message) },
-	          method: "POST",
-	          dataType: "json"
-	       })
-	       .done(function(result) {
-	      	 if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
-					alert("문의가 등록 되었습니다.");
-				    delItem.remove(); //성공시 화면에서 삭제
-				    
-				} else if (result.retCode == 'FAIL') {
-					alert("문의 등록에 실패했습니다.");
-				}
-	       })
-	       .fail(err => console.log(err));  // 세미콜론 추가
-			document.querySelector("#message-text").value = "";
-		});
-  }else if(button.innerText=="리뷰 작성하기"){
-	  console.log("리뷰 작성하기 클릭함");
-	  document.querySelector("#sendAskBtn").addEventListener('click',function(){
-	  let message = document.querySelector("#message-text").value;
-	  console.log(message);
+	var button = event.relatedTarget;
+	let goodsNum = button.getAttribute('data-num');
+	exampleModal.setAttribute('data-goodsnum', goodsNum);
+	exampleModal.setAttribute('data-AskReview', button.innerText);
+});
+
+
+//모달 버튼 클릭시 이벤트 발생
+document.querySelector("#sendAskBtn").addEventListener('click',function(){
+	let goodsNum = exampleModal.getAttribute('data-goodsnum');
+	let button = exampleModal.getAttribute('data-AskReview');
+	let message = document.querySelector("#message-text").value;
 	
-			$.ajax({
-	          url: 'insertReview.do',  //이화면에
-	          data: { goodsNum : goodsNum, message : encodeURIComponent(message) },
-	          method: "POST",
-	          dataType: "json"
-	       })
-	       .done(function(result) {
-	      	 if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
-					alert("리뷰가 등록 되었습니다.");
-				} else if (result.retCode == 'FAIL') {
-					alert("리뷰 등록에 실패했습니다.");
-				} else if (result.retCode == 'OVERLAP'){
-					alert("등록된 리뷰가 이미 있습니다.");
-				}
-	       })
-	       .fail(err => console.log(err));  // 세미콜론 추가
-	       
-			document.querySelector("#message-text").value = "";
-		});
-	  
-  }
-})
+	if(button=="문의 작성하기"){
+		console.log("문의 작성하기 클릭함");
+		$.ajax({
+			url: 'insertAsk.do',  //이화면에
+			data: { goodsNum : goodsNum, message : encodeURIComponent(message) },
+			method: "POST",
+			dataType: "json"
+		})
+		.done(function(result) {
+			if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
+				alert("문의가 등록 되었습니다.");
+				    
+			} else if (result.retCode == 'FAIL') {
+					alert("문의 등록에 실패했습니다.");
+			}
+		})
+		.fail(err => console.log(err));  // 세미콜론 추가
+		
+	}else if(button=="리뷰 작성하기"){
+		console.log("리뷰 작성하기 클릭함");
+		$.ajax({
+			url: 'insertReview.do',  //이화면에
+			data: { goodsNum : goodsNum, message : encodeURIComponent(message) },
+			method: "POST",
+			dataType: "json"
+		})
+		.done(function(result) {
+		if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
+		alert("리뷰가 등록 되었습니다.");
+		} else if (result.retCode == 'FAIL') {
+		alert("리뷰 등록에 실패했습니다.");
+		} else if (result.retCode == 'OVERLAP'){
+		alert("등록된 리뷰가 이미 있습니다.");
+		}
+		})
+		.fail(err => console.log(err));  // 세미콜론 추가
+	}
+	
+	document.querySelector("#message-text").value = "";
+});
 		 
   </script>
 </body>

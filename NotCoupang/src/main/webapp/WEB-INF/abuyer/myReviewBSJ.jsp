@@ -1,128 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>리뷰 관리</title>
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- Bootstrap 아이콘 -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-<!--내 CSS 연동-->
-<link rel="stylesheet" href="css/BSJ/myOrderList.css" />
- <style>
-    body {
-      background-color: #f8f9fa;
-      font-family: Arial, sans-serif;
-    }
 
-    .list-group-item {
-      font-weight: bold;
-      cursor: pointer;
-    }
 
-    .list-group-item:hover {
-      background-color: #e9ecef;
-    }
-
-    .nav-tabs {
-      border-bottom: 2px solid #ddd;
-      margin-bottom: 0;
-    }
-
-    .nav-tabs .nav-link {
-      color: #333;
-      font-weight: bold;
-    }
-
-    .nav-tabs .nav-link.active {
-      color: #007bff;
-      border: 1px solid #ddd;
-      border-bottom: 2px solid #f8f9fa;
-      background-color: #fff;
-    }
-
-    /* 검색창 & 돋보기 */
-    .search-bar {
-      position: relative;
-      margin-bottom: 20px;
-      max-width: 400px;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding-right: 40px;
-    }
-
-    .search-bar i {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      color: #888;
-    }
-
-    .tab-content {
-      padding: 20px;
-      border-radius: 8px;
-      background-color: #fff;
-    }
-
-    .review-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      background-color: #ffffff;
-    }
-
-    .review-card .product-info {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #ddd;
-      padding-left: 20px;
-    }
-
-    .product-info img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .review-content {
-      padding: 15px;
-    }
-
-    .action-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .action-buttons button {
-      width: 80px;
-    }
-  </style>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-<link rel="stylesheet" href="css/BSJ/myOrderList.css" />
-
-    
-</head>
 
 <!-- 세션 -->
 <%
@@ -131,7 +11,7 @@ String LOGNAME = (String) session.getAttribute("LOGNAME");
 String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 %>
 
-<body>
+
   <div class="container mt-4">
     <div class="row">
       <!-- 사이드바 -->
