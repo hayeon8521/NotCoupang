@@ -23,4 +23,7 @@ public interface CartService {
 	
 	//카트 조회(아이디 상품 조합해서 1개)
 	public CartVO selectOneCart(String memberId, int goodsNum);
+	
+	//카트 조회 ( 아이디 상품 조합해서 2건 이상)
+	public List<CartVO> selectListCart(String memberId, int goodsNum);
 }
