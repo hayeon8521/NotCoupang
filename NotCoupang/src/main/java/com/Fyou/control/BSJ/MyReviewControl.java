@@ -2,6 +2,7 @@ package com.Fyou.control.BSJ;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -78,23 +79,35 @@ public class MyReviewControl implements Control {
 					//ID로 리뷰 가져오기
 					ReviewService rsvc= new ReviewServiceImpl();
 					
+					
 					ReviewVO rvo3 = new ReviewVO();
 					rvo3.setGoodsNum(temp.getGoodsNum());
 					rvo3.setBuyerId(mid);
-					ReviewVO rvo2 = new ReviewVO();
-					rvo2= rsvc.reviewOne(rvo3);
-					if(rvo2 == null) {
-						rvo2.setReviewDate(temp.getOrderDate());
-						rvo2.setReview("값없음");
-					}else {
-						
-					}
-							rvo2.getBuyerId();        //구매자아이디
-							rvo2.getSeqReview();      //리뷰번호
-							rvo2.getReview();         //리뷰내용
-							rvo2.getReviewDate();     //리뷰날짜
-								
 					
+					String reviewBSJ = "";
+					Date ReviewDateBSJ;
+					ReviewVO rvo2 = rsvc.reviewOne(rvo3);
+					if(rvo2==null) {
+						ReviewDateBSJ = temp.getOrderDate();
+						System.out.println("값없어요!!!");
+						System.out.println("값없어요!!!");
+						System.out.println("값없어요!!!");
+					}else {
+						System.out.println("값있어요!!!");
+						System.out.println("값있어요!!!");
+						reviewBSJ = rvo2.getReview();
+						ReviewDateBSJ = rvo2.getReviewDate();
+						System.out.println(rvo2.getReview());
+						System.out.println("값있어요!!!");
+						System.out.println("값있어요!!!");
+					}
+					
+					//rvo2.getBuyerId();        //구매자아이디
+					//rvo2.getSeqReview();      //리뷰번호
+					//rvo2.getReview();         //리뷰내용
+					//rvo2.getReviewDate();     //리뷰날짜
+							
+							
 					
 					goodsmylist.add(new GoodsmylistVO(
 							temp.getGoodsNum(), //상품번호
@@ -102,8 +115,8 @@ public class MyReviewControl implements Control {
 							temp.getPrice(), //가격
 							temp.getCount(), //수량
 							String.valueOf(temp.getSeqOrder()),//주문번호
-							rvo2.getReview(),//리뷰내용
-							String.valueOf(rvo2.getReviewDate()),//리뷰날짜
+							reviewBSJ,//리뷰내용
+							String.valueOf(ReviewDateBSJ),//리뷰날짜
 							temp.getOrderDate(),//주문날짜
 							temp.getOrderDate(),
 							imgurl,
