@@ -6,26 +6,55 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>회원정보 수정</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link rel="stylesheet" href="css/BSJ/myOrderList.css">
-</head>
-<Style>
-.containerBSJ{
-padding: 30px;
-padding-left: 70px;
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+<style>
+body {
+	padding: 20px;
+	font-size: 0.9rem;
 }
-</Style>
+/*
+.form-control{
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+*/.
+.form-label {
+	font-weight: bold;
+}
+
+.form-section {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 20px;
+}
+
+.form-section:last-child {
+	border-bottom: none;
+}
+
+.btn-custom {
+	background-color: #f8f9fa;
+	color: #000;
+	border: 1px solid #ddd;
+	padding: 5px 10px;
+}
+
+
+</style>
+</head>
+
 
 
 <body>
-	<div class="container containerBSJ">
+	<div class="container">
 		<h4 class="mb-4 mt-3">회원정보 수정</h4>
-		<form id="formBSJ">
+		<form>
 			<!-- ID -->
-			<div class="form-section form-sectionBSJ">
+			<div class="form-section">
 				<div class="mb-3 row">
 					<label for="u_id" class="col-sm-2 col-form-label">아이디</label>
-					<div class="col-sm-8 ">
+					<div class="col-sm-8">
 						<input type="text" class="form-control" id="u_id" name="u_id"
 							value="${mvo.memberId }" readonly />
 					</div>
@@ -33,7 +62,7 @@ padding-left: 70px;
 			</div>
 
 			<!-- 이름 -->
-			<div class="form-section form-sectionBSJ">
+			<div class="form-section">
 				<div class="row">
 					<label for="u_name" class="col-sm-2 col-form-label">이름</label>
 					<div class="col-sm-8">
@@ -48,7 +77,7 @@ padding-left: 70px;
 			</div>
 
 			<!-- 닉네임 -->
-			<div class="form-section form-sectionBSJ">
+			<div class="form-section">
 				<div class="mb-3 row">
 					<label for="u_nick" class="col-sm-2 col-form-label d-inline">기존 닉네임</label>
 					<div class="col-sm-8">
@@ -73,7 +102,7 @@ padding-left: 70px;
 
 
 			<!-- 연락처 -->
-			<div class="form-section form-sectionBSJ">
+			<div class="form-section">
 				<div class="mb-3 row">
 					<label for="u_phone" class="col-sm-2 col-form-label">기존 연락처</label>
 					<div class="col-sm-8">
@@ -97,7 +126,7 @@ padding-left: 70px;
 			</div>
 
 			<!-- Password -->
-			<div class="form-section form-sectionBSJ">
+			<div class="form-section">
 				<div class="mb-3 row">
 					<label class="col-sm-2 col-form-label">비밀번호 변경</label>
 					<div class="col-sm-8">
@@ -114,7 +143,7 @@ padding-left: 70px;
 			</div>
 
 			<!-- 주소 -->
-			<div class="form-section form-sectionBSJ">
+			<div class="form-section">
 				<div class="mb-3 row">
 					<label for="u_address" class="col-sm-2 col-form-label">기존 배송지</label> 
 					<div class="col-sm-8">

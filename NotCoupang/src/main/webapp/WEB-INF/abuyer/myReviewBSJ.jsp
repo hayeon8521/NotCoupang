@@ -75,15 +75,9 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 						style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
 				</div>
 
-<<<<<<< HEAD
-          <!-- 탭 내비 -->
-          
-          <%-- <ul class="nav nav-tabs" id="reviewTabs" role="tablist">
-=======
 				<!-- 탭 내비 -->
 
 				<%-- <ul class="nav nav-tabs" id="reviewTabs" role="tablist">
->>>>>>> branch 'BSJ' of https://github.com/hayeon8521/jspbasiccode.git
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="written-tab" data-bs-toggle="tab" data-bs-target="#written" type="button" role="tab" aria-controls="written" aria-selected="true">작성한 리뷰</button>
             </li>
@@ -91,56 +85,8 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
               <button class="nav-link" id="unwritten-tab" data-bs-toggle="tab" data-bs-target="#unwritten" type="button" role="tab" aria-controls="unwritten" aria-selected="false">리뷰 작성하기</button>
             </li>
           </ul> --%>
-<<<<<<< HEAD
-          
-
-=======
->>>>>>> branch 'BSJ' of https://github.com/hayeon8521/jspbasiccode.git
 
 
-<<<<<<< HEAD
-=======
-          <div class="tab-content border mb-3" id="reviewTabsContent">
-            <div class="tab-pane fade show active" id="written" role="tabpanel" aria-labelledby="written-tab">
-              <fmt:formatDate value="${review.goodsMdate }"
-									pattern="yyyy-MM-dd HH:mm:ss" />
-			  <fmt:formatNumber value="${review.goodsPrice}" type="number" groupingUsed="true"/>
-              <!-- 반복문 시작 -->
-              <c:forEach var="review" items="${goodsmylist }">
-              
-              <!-- 작성한 리뷰 콘텐츠 -->
-              <div class="review-card mt-3">
-                <div class="product-info">
-<<<<<<< HEAD
-                  <img src="images/${review.imgUrl }" alt="Product Image">
-=======
-                  <img src="images/${review.imgUrl }" alt="Product Image" style="width:150px; height:150px;">
->>>>>>> branch 'BSJ' of https://github.com/hayeon8521/jspbasiccode.git
-                  <div>
-                    <h6 class="mb-0">${review.goodsName }</h6>
-                   
-                     <!-- 천단위 가격 콤마 포맷팅 -->
-                    <p class="text-muted mb-0"><fmt:formatNumber value="${review.goodsPrice}" type="number" groupingUsed="true"/>원 · ${review.goodsInven }개</p>
-                  </div>
-                </div>
-                <!-- 리뷰 내용 -->
-                <div class="review-content mb-3">
-                  <label for="reviewContent1" class="form-label"></label>
-                  <textarea id="reviewContent1" class="form-control" rows="5" readonly="readonly">${review.goodsMid }</textarea>
-                </div>
-                <!--  버튼 -->
-                <div class="action-buttons">
-                  <button class="btn btn-warning modifyreview">수정</button>
-                  <button class="btn btn-danger">삭제</button>
-                </div>
-                <div class="mt-3 text-muted">
-                  작성일자: 2024-10-18 15:53:28
-                </div>
-              </div>
-			 </c:forEach>
-              
-            </div>
->>>>>>> refs/heads/master
 
 				<div class="tab-content border mb-3" id="reviewTabsContent">
 					<div class="tab-pane fade show active" id="written" role="tabpanel"
@@ -200,7 +146,6 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 
 
 </body>
-<<<<<<< HEAD
 
 </html>
 
@@ -302,13 +247,3 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
      
 
       </script>
-=======
-<script>
-document.querySelectorAll('.')
-  document.querySelector('#modifyreview').addEventListener('click',function(e){
-    console.log(e.target);
-  });
-</script>
-      </html>
-      
->>>>>>> refs/heads/master
