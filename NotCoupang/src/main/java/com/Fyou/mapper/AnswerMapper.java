@@ -21,7 +21,7 @@ public interface AnswerMapper {
 	// 문의 번호로 문의 답변 삭제
 	public int deleteAnswer(int seq_answer);
 	// 문의 번호로 문의 내역 수정
-	public int updateAsk(int seq_ask, String ask);
+	public int updateAsk(@Param("ask")String ask, @Param("seqAsk")int seqAsk);
 	// 문의 번호로 답변 내역 수정
 	public int updateAnswer(@Param("seq_answer") int seq_answer, @Param("answer") String answer);
 	// 답변 내역 작성
