@@ -18,6 +18,8 @@ public interface AnswerService {
 	public int askTotalCnt(int goodsNum);
 	public List<AskVO> selectAskSellerlist(String seller_id);
 	
+	public List<AskVO> selectBSJAskList(String buyerId);
+	
 	
 	//마이페이지: 회원아이디,상품번호 문의 반환
 	public AskVO selectMyAskList(AskVO ask);

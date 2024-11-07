@@ -264,38 +264,38 @@ body {
      });
     
     document.querySelector("#modifyPwBtn").addEventListener('click',function(){
-         let thisPw = document.querySelector("#thisPw").value;
-         let newPw = document.querySelector("#newPw").value;   
-         let newPw2 = document.querySelector("#newPw2").value;
-         let uId = document.querySelector("#u_id").value;
-         
-         console.log('a', thisPw);
-         console.log('b', newPw);
-         console.log('c', newPw2);
-         console.log('d', uId);
+      let thisPw = document.querySelector("#thisPw").value;
+      let newPw = document.querySelector("#newPw").value;   
+      let newPw2 = document.querySelector("#newPw2").value;
+      let uId = document.querySelector("#u_id").value;
 
-         if(newPw == newPw2){
-               //업데이트 진행
-            fetch('modifyPw.do?id=' + uId +'&thisPw='+thisPw+'&newPw='+newPw)
-            .then(resolve => resolve.json())
-            .then(result => {
-               console.log(result); //{retCode: 'OK'} 리턴코드
-               if (result.retCode == 'OK') {
-                  alert("비밀번호 변경에 성공했습니다.");
-                  location.reload();
-   
-               } else if (result.retCode == 'FAIL') {
-                  alert("비밀번호 변경에 실패했습니다.");
-               }
-            })
-            .catch(err => { console.log(err) })
+      console.log('a', thisPw);
+      console.log('b', newPw);
+      console.log('c', newPw2);
+      console.log('d', uId);
 
-         }else{
-            alert("비밀번호를 확인해주세요.")
-         }
+      if (newPw == newPw2) {
+         fetch('modifyPw.do?id=' + uId +'&thisPw='+thisPw+'&newPw='+newPw)
+         .then(function(resolve) {
+            console.log(resolve);
+            return resolve.json();
+         })	
+         .then(function(result){		// 변환된 JSON 데이터를 처리
+            console.log(result); //{retCode: 'OK'} 리턴코드
+            if (result.retCode == 'OK') {
+               alert("비밀번호 변경에 성공했습니다.");
+            location.reload();
+            } else if (result.retCode == 'FAIL') {
+               alert("비밀번호 변경에 실패했습니다.");
+            }
+            
+         })
+         .catch(err => { console.log(err) })
+      }else{
+         alert("비밀번호를 확인해주세요.");
+      }
 
-      });
-    
+   });
     document.querySelector("#exitBtn").addEventListener('click',function(){
          window.location.replace('/NotCoupang/myOrderList.do?buyerId=+${LOGID }');
       });

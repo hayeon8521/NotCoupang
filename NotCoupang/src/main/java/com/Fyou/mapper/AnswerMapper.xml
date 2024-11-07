@@ -108,5 +108,11 @@
 		and goods_num = #{goodsNum}
 	</select>
 	
+	<select id="selectBSJAskList" resultType="ask">
+		select *
+		from   tim_ask
+		where  buyer_id = #{buyerId}
+	</select>
+	
 	
 </mapper>

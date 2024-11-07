@@ -31,6 +31,8 @@ public interface AnswerMapper {
 	
 	public List<AskVO> selectAskSellerlist(@Param("seller_id") String seller_id);
 	
+	public List<AskVO> selectBSJAskList(String buyerId);
+	
 	
 	
 	// 유저 ID로 문의한 전체 목록 반환
