@@ -136,7 +136,7 @@ String pg = (String) request.getAttribute("page");
 											<td style="width: 10%"><%=list.get(page_int + i).getGoodsNum()%></td>
 											<td style="width: 50%; word-break: break-all"><%=list.get(page_int + i).getAsk()%></td>
 											<td style="width: 10%"><%=list.get(page_int + i).getBuyerId()%></td>
-											<td style="width: 20%"><button id="ask_button">작성하기</button></td>
+											<td style="width: 20%"><button id="ask_button" class="btn btn-primary">작성하기</button></td>
 										</tr>
 										<%
 										}
