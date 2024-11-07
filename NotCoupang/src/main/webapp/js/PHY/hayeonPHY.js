@@ -38,6 +38,11 @@ function loginAction() {
 			})
 			.fail(err => console.log(err));  // 세미콜론 추가
 		}
+	}else{
+		document.querySelector('#idconfig').innerHTML = "ID를 입력 해주세요";
+		document.querySelector('#pwconfig').innerHTML = "PW을 입력 해주세요";
+		console.log('실패');
+		spinner.style.display = 'none';
 	}
 }
 

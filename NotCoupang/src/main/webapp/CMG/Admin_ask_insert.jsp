@@ -155,7 +155,7 @@ AnswerVO asvo = (AnswerVO) request.getAttribute("asvo");
 												<td colspan="4" style="width: 90%; vertical-align: middle">
 												<textarea class="form-control bg-light border-0 small"
 													aria-label="Search" aria-describedby="basic-addon2"
-													name="insert_ask" rows="4"></textarea></td>
+													id="insert_ask" name="insert_ask" rows="4"></textarea></td>
 											</tr>
 											<%
 											} else {
@@ -174,7 +174,7 @@ AnswerVO asvo = (AnswerVO) request.getAttribute("asvo");
 									if (asvo == null) {
 									%>
 									<div style="text-align: center;">
-										<input class="btn btn-primary" type="submit" style="width: 250px;" value="제출">
+										<input disabled id="sublit_button" class="btn btn-primary" type="submit" style="width: 250px;" value="제출">
 									</div>
 									<%
 									}
@@ -192,12 +192,12 @@ AnswerVO asvo = (AnswerVO) request.getAttribute("asvo");
 												<td colspan="4" style="width: 90%; vertical-align: middle">
 												<textarea class="form-control bg-light border-0 small"
 													aria-label="Search" aria-describedby="basic-addon2"
-													name="insert_ask" rows="4"></textarea></td>
+													id="insert_ask" name="insert_ask" rows="4"></textarea></td>
 											</tr>
 										</thead>
 									</table>
 									<div style="text-align: center;">
-										<input class="btn btn-primary" type="submit" style="width: 250px;" value="제출">
+										<input disabled id="sublit_button" class="btn btn-primary" type="submit" style="width: 250px;" value="제출">
 									</div>
 								</form>
 								<%
@@ -232,6 +232,16 @@ AnswerVO asvo = (AnswerVO) request.getAttribute("asvo");
 	<!-- Page level plugins -->
 	<script src="CMG/vendor/datatables/jquery.dataTables.min.js"></script>
 	<script src="CMG/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	
+	<script>
+	document.querySelector("#insert_ask").addEventListener("change", function(e) {
+		if (document.querySelector("#insert_ask").value == "") {
+			document.querySelector("#sublit_button").disabled = true;
+		} else {
+			document.querySelector("#sublit_button").disabled = false;
+		}
+	})
+	</script>
 </body>
 
 </html>

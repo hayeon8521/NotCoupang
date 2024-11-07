@@ -45,8 +45,8 @@ public class AnswerServiceImpl implements AnswerService {
 	}
 	
 	@Override
-	public boolean updateAsk(int seq_ask, String ask) {
-		return mapper.updateAsk(seq_ask, ask) == 1;
+	public boolean updateAsk(String ask, int seq_ask) {
+		return mapper.updateAsk(ask, seq_ask) == 1;
 	}
 	
 	@Override

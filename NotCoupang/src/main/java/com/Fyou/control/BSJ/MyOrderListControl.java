@@ -75,7 +75,7 @@ public class MyOrderListControl implements Control {
 					String.valueOf(temp.getSeqOrder()),//주문번호
 					"Mid",
 					"Catename",
-					temp.getOrderDate(),
+					temp.getOrderDate(),//주문날짜
 					temp.getOrderDate(),
 					imgurl,
 					1234

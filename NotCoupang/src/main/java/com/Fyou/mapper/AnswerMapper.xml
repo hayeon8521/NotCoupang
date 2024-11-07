@@ -62,7 +62,7 @@
 		update tim_ask
 		set ask = #{ask}, 
 		    ask_date = sysdate
-		where seq_ask = #{seq_ask}
+		where seq_ask = #{seqAsk}
 	</update>
 	
 	<update id="updateAnswer">

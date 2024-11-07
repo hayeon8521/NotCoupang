@@ -130,21 +130,21 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 												<td><input type="text"
 													class="form-control bg-light border-0 small"
 													aria-label="Search" aria-describedby="basic-addon2"
-													name="goods_name"></td>
+													id="goods_name" name="goods_name"></td>
 											</tr>
 											<tr>
 												<td style="vertical-align: middle">가격</td>
 												<td><input type="text"
 													class="form-control bg-light border-0 small"
 													aria-label="Search" aria-describedby="basic-addon2"
-													name="goods_price"></td>
+													id="goods_price" name="goods_price"></td>
 											</tr>
 											<tr>
 												<td style="vertical-align: middle">재고</td>
 												<td><input type="text"
 													class="form-control bg-light border-0 small"
 													aria-label="Search" aria-describedby="basic-addon2"
-													name="goods_inven"></td>
+													id="goods_inven" name="goods_inven"></td>
 											</tr>
 											<tr>
 												<td style="vertical-align: middle">카테고리</td>
@@ -181,12 +181,12 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 												<td><input type="file"
 													class="form-control bg-light border-0 small"
 													aria-label="Search" aria-describedby="basic-addon2"
-													name="img_thumbnail"></td>
+													id="img_thumbnail" name="img_thumbnail"></td>
 											</tr>
 										</tbody>
 									</table>
 									<div style="text-align: center;">
-										<input class="btn btn-primary" type="submit" style="width: 250px;" value="제출">
+										<input disabled id="sublit_button" class="btn btn-primary" type="submit" style="width: 250px;" value="제출">
 									</div>
 								</form>
 							</div>
@@ -262,6 +262,63 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 			opt.value = cate_arr[i]
 			opt.innerText = cate_arr[i]
 			document.querySelector('#option_box').appendChild(opt);
+		}
+	})
+	
+	
+	document.querySelector("#goods_name").addEventListener("change", function(e) {
+		if (document.querySelector("#goods_name").value == "" || 
+		    document.querySelector("#goods_price").value == "" || 
+		    document.querySelector("#goods_inven").value == "" || 
+		    document.querySelector("#option_box").value == "" || 
+			document.querySelector("#img_thumbnail").value == "") {
+			document.querySelector("#sublit_button").disabled = true;
+		} else {
+			document.querySelector("#sublit_button").disabled = false;
+		}
+	})
+	document.querySelector("#goods_price").addEventListener("change", function(e) {
+		if (document.querySelector("#goods_name").value == "" || 
+		    document.querySelector("#goods_price").value == "" || 
+		    document.querySelector("#goods_inven").value == "" || 
+		    document.querySelector("#option_box").value == "" || 
+			document.querySelector("#img_thumbnail").value == "") {
+			document.querySelector("#sublit_button").disabled = true;
+		} else {
+			document.querySelector("#sublit_button").disabled = false;
+		}
+	})
+	document.querySelector("#goods_inven").addEventListener("change", function(e) {
+		if (document.querySelector("#goods_name").value == "" || 
+		    document.querySelector("#goods_price").value == "" || 
+		    document.querySelector("#goods_inven").value == "" || 
+		    document.querySelector("#option_box").value == "" || 
+			document.querySelector("#img_thumbnail").value == "") {
+			document.querySelector("#sublit_button").disabled = true;
+		} else {
+			document.querySelector("#sublit_button").disabled = false;
+		}
+	})
+	document.querySelector("#option_bigbox").addEventListener("change", function(e) {
+		if (document.querySelector("#goods_name").value == "" || 
+		    document.querySelector("#goods_price").value == "" || 
+		    document.querySelector("#goods_inven").value == "" || 
+		    document.querySelector("#option_box").value == "" || 
+			document.querySelector("#img_thumbnail").value == "") {
+			document.querySelector("#sublit_button").disabled = true;
+		} else {
+			document.querySelector("#sublit_button").disabled = false;
+		}
+	})
+	document.querySelector("#img_thumbnail").addEventListener("change", function(e) {
+		if (document.querySelector("#goods_name").value == "" || 
+		    document.querySelector("#goods_price").value == "" || 
+		    document.querySelector("#goods_inven").value == "" || 
+		    document.querySelector("#option_box").value == "" || 
+			document.querySelector("#img_thumbnail").value == "") {
+			document.querySelector("#sublit_button").disabled = true;
+		} else {
+			document.querySelector("#sublit_button").disabled = false;
 		}
 	})
 	</script>

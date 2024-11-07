@@ -1,163 +1,163 @@
 .containerBSJ {
-	background-color: #ffffff;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	margin-top: 15px;
+   background-color: #ffffff;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   margin-top: 15px;
 }
 
 .sidebar {
-	background-color: #f9fbff;
-	padding: 20px;
-	border-right: 1px solid #ddd;
+   background-color: #f9fbff;
+   padding: 20px;
+   border-right: 1px solid #ddd;
 }
 
 .sidebar h2 {
-	color: #0077ff;
-	margin-bottom: 20px;
-	font-size: 1.2em;
+   color: #0077ff;
+   margin-bottom: 20px;
+   font-size: 1.2em;
 }
 
 .sidebar ul li {
-	margin: 15px 0;
+   margin: 15px 0;
 }
 
 .sidebar ul li a {
-	color: #333;
-	text-decoration: none;
-	font-weight: 500;
+   color: #333;
+   text-decoration: none;
+   font-weight: 500;
 }
 
 .sidebar ul li a:hover {
-	color: #0077ff;
+   color: #0077ff;
 }
 
 .main-content {
-	padding: 20px;
+   padding: 20px;
 }
 
 .order-section h2 {
-	font-size: 1.5em;
-	margin-bottom: 20px;
+   font-size: 1.5em;
+   margin-bottom: 20px;
 }
 
 .input-group {
-	position: relative; /* 돋보기 부모 */
-	width: 500px;
+   position: relative; /* 돋보기 부모 */
+   width: 500px;
 }
 
 /* 돋보기 위치 */
 .input-group-append {
-	position: absolute;
-	right: 10px;
-	top: 50%;
-	transform: translateY(-50%);
+   position: absolute;
+   right: 10px;
+   top: 50%;
+   transform: translateY(-50%);
 }
 
 .input-group-append .btn {
-	padding: 0;
-	border: none;
+   padding: 0;
+   border: none;
 }
 
 .search-button {
-	background-color: transparent;
-	border: none;
+   background-color: transparent;
+   border: none;
 }
 
 /* 돋보기 호버 효과 빼기*/
 .search-button:hover {
-	background-color: transparent;
-	color: inherit;
+   background-color: transparent;
+   color: inherit;
 }
 
 .btn-group .btn {
-	font-size: 0.875em;
+   font-size: 0.875em;
 }
 
 .order-group {
-	border: 1px solid #ddd;
-	padding: 20px;
+   border: 1px solid #ddd;
+   padding: 20px;
 }
 
 .order-date {
-	font-size: 1.2em;
-	color: #0077ff;
-	margin-bottom: 20px;
+   font-size: 1.2em;
+   color: #0077ff;
+   margin-bottom: 20px;
 }
 
 
 .order-item {
-	background-color: #fafafa;
-	padding: 10px;
-	border-radius: 5px;
-	margin-bottom: 10px;
-	width: 100%; /* 폭 100%*/
+   background-color: #fafafa;
+   padding: 10px;
+   border-radius: 5px;
+   margin-bottom: 10px;
+   width: 100%; /* 폭 100%*/
 }
 
 .product-img {
-	width: 60px;
-	height: 60px;
-	border-radius: 4px;
+   width: 60px;
+   height: 60px;
+   border-radius: 4px;
 }
 
 .product-details p {
-	font-size: 1em;
+   font-size: 1em;
 }
 
 .order-actions .btn {
-	width: 100%;
-	font-size: 0.85em;
+   width: 100%;
+   font-size: 0.85em;
 }
 
 #wrapper {
-	overflow-x: hidden;
+   overflow-x: hidden;
 }
 
 #sidebar-wrapper {
-	min-height: 100vh;
-	-webkit-transition: margin .25s ease-out;
-	-moz-transition: margin .25s ease-out;
-	-o-transition: margin .25s ease-out;
-	transition: margin .25s ease-out;
+   min-height: 100vh;
+   -webkit-transition: margin .25s ease-out;
+   -moz-transition: margin .25s ease-out;
+   -o-transition: margin .25s ease-out;
+   transition: margin .25s ease-out;
 }
 
 #sidebar-wrapper .sidebar-heading {
-	padding: 0.875rem 1.25rem;
-	font-size: 1.2rem;
+   padding: 0.875rem 1.25rem;
+   font-size: 1.2rem;
 }
 
 #sidebar-wrapper .list-group {
-	width: 15rem;
+   width: 15rem;
 }
 
 #page-content-wrapper {
-	min-width: 100vw;
+   min-width: 100vw;
 }
 
 #wrapper.toggled #sidebar-wrapper {
-	margin-left: 0;
+   margin-left: 0;
 }
 
 @media ( min-width : 768px) {
-	#sidebar-wrapper {
-		margin-left: 0;
-	}
-	#page-content-wrapper {
-		min-width: 0;
-		width: 100%;
-	}
-	
-	#nav_div a {
-		font-size: 0.95rem;
-	}
-	#nav_div a:hover {	
-		background-color: #4285f4;
-		color: white;
-		font-weight: bold;
-	}
+   #sidebar-wrapper {
+      margin-left: 0;
+   }
+   #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+   }
+   
+   #nav_div a {
+      font-size: 0.95rem;
+   }
+   #nav_div a:hover {   
+      background-color: #4285f4;
+      color: white;
+      font-weight: bold;
+   }
 }
 
 #sidebar-wrapper{
-	margin-left:0;
+   margin-left:0;
 }
 

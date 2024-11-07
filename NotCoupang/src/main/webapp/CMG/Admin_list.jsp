@@ -236,7 +236,6 @@ String[] img_arr = (String[]) request.getAttribute("img_arr");
 	<script>
 		let arr = document.querySelectorAll("#list_img")
 		for (i = 0; i < arr.length; i++) {
-			console.log(arr[i].parentNode.id)
 			arr[i].addEventListener("click", function(e) {
 				location.href = "Admin_goodsinfo.do?seq_goods="
 						+ e.target.parentNode.parentNode.id
