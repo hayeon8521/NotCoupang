@@ -321,8 +321,6 @@ int stop_end = (int) request.getAttribute("stop_end");
     <%
     }
     %>
-    console.log(pie_labels)
-    console.log(pie_data)
     </script>
 
     <!-- Bootstrap core JavaScript-->

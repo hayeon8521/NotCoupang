@@ -71,6 +71,6 @@ public class Admin_insert_control implements Control {
 		} else {
 			System.out.println("fail");
 		}
-		resp.sendRedirect("Admin_main.do");
+		resp.sendRedirect("Admin_goodsinfo.do?seq_goods=0");
 	}	
 }

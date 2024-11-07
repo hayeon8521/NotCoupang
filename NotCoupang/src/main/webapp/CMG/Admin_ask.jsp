@@ -136,7 +136,7 @@ String pg = (String) request.getAttribute("page");
 											<td style="width: 10%"><%=list.get(page_int + i).getGoodsNum()%></td>
 											<td style="width: 50%; word-break: break-all"><%=list.get(page_int + i).getAsk()%></td>
 											<td style="width: 10%"><%=list.get(page_int + i).getBuyerId()%></td>
-											<td style="width: 20%"><button id="ask_button">작성하기</button></td>
+											<td style="width: 20%"><button id="ask_button" class="btn btn-primary">작성하기</button></td>
 										</tr>
 										<%
 										}
@@ -221,9 +221,7 @@ String pg = (String) request.getAttribute("page");
 	<script>
 		let arr = document.querySelectorAll("#ask_button")
 		for (i = 0; i < arr.length; i++) {
-			console.log(arr[i].parentNode.id)
 			arr[i].addEventListener("click", function(e) {
-				console.log(e.target.parentNode.parentNode.id);
 				location.href = "Admin_insert_ask.do?list_num="
 						+ e.target.parentNode.parentNode.id
 			})
