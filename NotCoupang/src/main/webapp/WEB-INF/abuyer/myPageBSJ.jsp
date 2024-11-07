@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>회원정보 수정</title>
+<script>
+	document.title = "마이페이지-회원정보";
+</script>
 <link
    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
    rel="stylesheet" />
@@ -190,12 +192,32 @@ body {
 
          <!-- 탈퇴/취소 -->
          <div class="d-flex justify-content-end mb-3">
-            <button type="button" class="btn btn-outline-secondary me-2">
+            <button type="button" class="btn btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
                탈퇴하기</button>
-            <button type="submit" id="exitBtn" name="exitBtn" class="btn btn-primary">나가기</button>
+            <a href="myOrderList.do?buyerId=${LOGID}" class="btn btn-primary" id="exitBtn" name="exitBtn">나가기</a>
          </div>
       </form>
    </div>
+   
+   <!-- 탈퇴 확인 모달 -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmModalLabel">탈퇴 확인</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                정말 탈퇴하시겠어요?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelBtn" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+   
 
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -302,6 +324,29 @@ body {
          window.location.replace('/NotCoupang/myOrderList.do?buyerId=+${LOGID }');
       });
       
+    //회원탈퇴
+    document.querySelector("#confirmDeleteBtn").addEventListener("click", function() {
+    // 모달 숨김
+    $('#deleteConfirmModal').modal('hide');
+
+    // 알림창 표시 및 시간지나서 로그아웃으로 이동
+    setTimeout(function() {
+        alert("그동안 감사했습니다.");
+        
+        // 알림창 확인 후 페이지 이동
+        window.location.href = "logout.do";
+    }, 500); // 500ms 후 모달 닫히고나서 알림 표시함(이동해버려서 안됨..)
+});
+
+// 취소 버튼 클릭 시 페이지 새로고침
+document.querySelector("#cancelBtn").addEventListener("click", function() {
+    location.reload();
+});
+
+// "나가기" 버튼 클릭 시 주문 목록 페이지로 이동 
+document.querySelector("#exitBtn").addEventListener("click", function() {
+    location.href = "myOrderList.do?buyerId=${LOGID}"; // 해당 URL로 이동
+});
 
     </script>
 </body>
