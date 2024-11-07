@@ -3,6 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script>
+    document.title = "마이페이지-문의";
+</script>
 
 
 <link rel="stylesheet"
@@ -35,6 +38,24 @@
     cursor: pointer;
     color: #888;
     z-index: 50;
+}
+
+.tab-contentBSJ{
+	padding: .7rem !important;
+	
+}
+
+
+.centeredBSJ{
+	position: relative;
+	top: 0px;
+	left: 230px;
+}
+
+.priceAndCountBSJ{
+	position: relative;
+	top: -60px;
+	left: 170px;
 }
 
 </style>
@@ -79,32 +100,38 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 						<button class="nav-link" id="unwritten-tab" data-bs-toggle="tab" data-bs-target="#unwritten" type="button" role="tab" aria-controls="unwritten" aria-selected="false">답변없는 문의</button>
 					</li>
 				</ul>
-
-				<div class="tab-content border mb-3" id="reviewTabsContent">
+					
+					
+				<div class="tab-content border mb-3 tab-contentBSJ" id="reviewTabsContent">
 					<div class="tab-pane fade show active" id="written" role="tabpanel" aria-labelledby="written-tab">
+					
+				
 						<!-- 반복문 시작 - 답변받은 문의 -->
 						<c:forEach var="ask" items="${goodsmylist }">
 							<c:choose>
 								<c:when test="${not empty ask.goodsState && not empty ask.goodsMid}">
 									<div class="review-card mt-3 askGroupBSJ">
-										<fmt:formatDate value="${ask.goodsMdate }" pattern="yyyy-MM-dd HH:mm:ss" />
-										<div class="product-info">
-											<img src="images/${ask.imgUrl }" alt="Product Image" style="width: 150px; height: 150px;">
-											<div>
-												<h6 class="mb-0 askGoodsNameBSJ">${ask.goodsName }</h6>
-												<p class="text-muted mb-0">${ask.goodsPrice }원, ${ask.goodsInven }개</p>
+										<h5>문의일: <fmt:formatDate value="${ask.goodsMdate }" pattern="yyyy-MM-dd" /></h5>
+										<div class="product-info centeredBSJ" style="display:inline-block;">
+											<a href="goodsinfo.do?gno=${ask.seqGoods }"><img src="images/${ask.imgUrl }" alt="Product Image" style="width: 150px; height: 150px;"></a>
+											<div class="priceAndCountBSJ">
+												<h5 class="mb-0 askGoodsNameBSJ">${ask.goodsName }</h5>
+												<p><fmt:formatNumber value="${ask.goodsPrice}" type="number"
+										groupingUsed="true" />
+								    원 · ${ask.goodsInven }개</p>
 											</div>
 										</div>
 										<div class="review-content mb-3">
 											<label for="reviewContent1" class="form-label">문의내용</label>
 											<textarea class="form-control" rows="5" readonly="readonly">${ask.goodsState }</textarea>
 										</div>
-										<div class="action-buttons">
-											<button class="btn btn-danger delAskBtn" data-askNum="${ask.seqGoods }">삭제</button>
-										</div>
+										
 										<div class="review-content mb-3">
 											<label for="reviewContent1" class="form-label">문의답변</label>
 											<textarea class="form-control" rows="5" readonly="readonly">${ask.goodsMid }</textarea>
+										</div>
+										<div class="action-buttons tab-contentBSJ">
+											<button class="btn btn-danger delAskBtn" data-askNum="${ask.seqGoods }">문의 삭제</button>
 										</div>
 									</div>
 								</c:when>
@@ -118,11 +145,11 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 							<c:choose>
 								<c:when test="${not empty ask.goodsState && empty ask.goodsMid}">
 									<div class="review-card mt-3 askGroupBSJ">
-										<fmt:formatDate value="${ask.goodsMdate }" pattern="yyyy-MM-dd HH:mm:ss" />
-										<div class="product-info">
+										<H5>문의일: <fmt:formatDate value="${ask.goodsMdate }" pattern="yyyy-MM-dd" /></H5>
+										<div class="product-info centeredBSJ" style="display:inline-block;">
 											<img src="images/${ask.imgUrl }" alt="Product Image" style="width: 150px; height: 150px;">
-											<div>
-												<h6 class="mb-0 askGoodsNameBSJ">${ask.goodsName }</h6>
+											<div class="priceAndCountBSJ">
+												<h5 class="mb-0 askGoodsNameBSJ">${ask.goodsName }</h5>
 												<p class="text-muted mb-0">${ask.goodsPrice }원, ${ask.goodsInven }개</p>
 											</div>
 										</div>
@@ -154,127 +181,122 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
-          window.addEventListener('DOMContentLoaded', event => {
-            document.querySelectorAll(".delAskBtn").forEach(button => {
-              button.addEventListener('click', function (e) {
-                console.log("삭제 버튼눌림");
-                console.log(e.target.parentElement.parentElement);
-                e.target.parentElement.parentElement.remove();
+window.addEventListener('DOMContentLoaded', event => {
+    document.querySelectorAll(".delAskBtn").forEach(button => {
+        button.addEventListener('click', function (e) {
+            console.log("삭제 버튼 눌림");
+            console.log(e.target.parentElement.parentElement);
+            e.target.parentElement.parentElement.remove();
 
-                let delAsktBtn = e.target.closest(".review-card");
+            let delAskBtn = e.target.closest(".review-card");
+            let askNum = e.target.getAttribute("data-askNum");
 
-                let askNum = e.target.getAttribute("data-askNum"); 
-                //console.log(askNum);
+            $.ajax({
+                url: 'deleteAsk.do?askNum=' + askNum,
+                data: { askNum: askNum },
+                method: "POST",
+                dataType: "json"
+            })
+            .done(function (result) {
+                if (result.retCode === 'OK') {
+                    alert("문의가 삭제되었습니다.");
+                    delAskBtn.remove();
+                } else if (result.retCode === 'FAIL') {
+                    alert("문의 삭제에 실패했습니다.");
+                }
+            })
+            .fail(err => console.log(err));
+        });
+    });
+});
 
+$(document).ready(function() {
+    // 검색 함수 정의
+    function searchInActiveTab() {
+        const searchText = $('#askSearchInputBSJ').val().toLowerCase();
+        const activeTab = $('#reviewTabs .nav-link.active').attr('aria-controls');
 
-
-                //conosole.log(e.target);	
-                $.ajax({
-                  url: 'deleteAsk.do?askNum='+askNum,
-                  data: { askNum: askNum }, //앞:파라미터이름 뒤:실제 데이터이름
-                  method: "POST",
-                  dataType: "json"
-                })
-                  .done(function (result) {
-                    if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
-                      alert("문의가 삭제 되었습니다.");
-
-                      delAsktBtn.remove();
-                      //review-card mt-3  
-
-                    } else if (result.retCode == 'FAIL') {
-                      alert("문의 삭제에 실패했습니다.");
-                    }
-
-
-                  })
-                  .fail(err => console.log(err));
-
-
-              });
-
+        if (activeTab === 'written') {
+            $('#written .askGroupBSJ').each(function() {
+                const goodsName = $(this).find('.askGoodsNameBSJ').text().toLowerCase();
+                $(this).toggle(goodsName.includes(searchText));
             });
-          });
-          
-          
-          
-          
-          $(document).ready(function() {
-        	    function searchInActiveTab() {
-        	        const searchText = $('#askSearchInputBSJ').val().toLowerCase();
-        	        const activeTab = $('#reviewTabs .nav-link.active').attr('aria-controls');
+        } else if (activeTab === 'unwritten') {
+            $('#unwritten .askGroupBSJ').each(function() {
+                const goodsName = $(this).find('.askGoodsNameBSJ').text().toLowerCase();
+                $(this).toggle(goodsName.includes(searchText));
+            });
+        }
+    }
 
-        	        if (activeTab === 'written') {
-        	            $('#written .askGroupBSJ').each(function() {
-        	                const goodsName = $(this).find('.askGoodsNameBSJ').text().toLowerCase();
-        	                $(this).toggle(goodsName.includes(searchText));
-        	            });
-        	        } else if (activeTab === 'unwritten') {
-        	            $('#unwritten .askGroupBSJ').each(function() {
-        	                const goodsName = $(this).find('.askGoodsNameBSJ').text().toLowerCase();
-        	                $(this).toggle(goodsName.includes(searchText));
-        	            });
-        	        }
-        	    }
+    // 검색창에서 엔터 키를 누를 때 검색
+    $('#askSearchInputBSJ').on('keypress', function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            searchInActiveTab();
+        }
+    });
 
-        	    $('#askSearchInputBSJ').on('keypress', function(event) {
-        	        if (event.keyCode === 13) {
-        	            event.preventDefault();
-        	            searchInActiveTab();
-        	        }
-        	    });
+    // 돋보기 아이콘 클릭 시 검색
+    $('.bi-search').on('click', function() {
+        searchInActiveTab();
+    });
 
-        	    $('#reviewTabs button').on('shown.bs.tab', function() {
-        	        $('#askSearchInputBSJ').val('');
-        	        $('.askGroupBSJ').show();
-        	    });
+    // 탭 전환 시 검색창 초기화
+    $('#reviewTabs button').on('shown.bs.tab', function() {
+        $('#askSearchInputBSJ').val('');
+        $('.askGroupBSJ').show();
+    });
 
-        	    $(document).on('click', '.reAskBtn', function() {
-        	        const $thisButton = $(this); // 현재 버튼의 참조
-        	        const reviewCard = $thisButton.closest('.review-card');
-        	        const askTextarea = reviewCard.find('textarea').first();
-        	        const deleteBtn = reviewCard.find('.delAskBtn');
-        	        const askNum = $thisButton.data('asknum');
+    // 재문의 버튼 클릭 이벤트
+    $(document).on('click', '.reAskBtn', function() {
+        const $thisButton = $(this);
+        const reviewCard = $thisButton.closest('.review-card');
+        const askTextarea = reviewCard.find('textarea').first();
+        const deleteBtn = reviewCard.find('.delAskBtn');
+        const askNum = $thisButton.data('asknum');
 
-        	        if ($thisButton.text() === '재문의') {
-        	            // 재문의 버튼 클릭 시 재문의 등록 모드로 전환
-        	            $thisButton.text('재문의 등록');
-        	            deleteBtn.hide();
-        	            askTextarea.data('originalText', askTextarea.val()); // 기존 텍스트 저장
-        	            askTextarea.prop('readonly', false);
-        	        } else {
-        	            const updatedContent = askTextarea.val();
+        if ($thisButton.text() === '재문의') {
+            $thisButton.text('재문의 등록');
+            deleteBtn.hide();
+            askTextarea.data('originalText', askTextarea.val());
+            askTextarea.prop('readonly', false);
+        } else {
+            const updatedContent = askTextarea.val();
+            console.log(updatedContent);
 
-        	            $.ajax({
-        	                url: 'updateAsk.do', //경로에 서버에서 문의 수정기능으로 넘어가야함
-        	                method: 'POST',
-        	                data: { askNum: askNum, updatedContent: updatedContent },
-        	                success: function(response) {
-        	                    if (response.retCode === 'OK') {
-        	                        alert('재문의 등록되었습니다.');
-        	                        askTextarea.prop('readonly', true);
-        	                        deleteBtn.show();
-        	                        $thisButton.text('재문의');
-        	                    } else {
-        	                        alert('문의 수정에 실패했습니다.');
-        	                        resetReAskMode();
-        	                    }
-        	                },
-        	                error: function() {
-        	                    alert('서버 요청 중 오류가 발생했습니다.');
-        	                    resetReAskMode();
-        	                }
-        	            });
-        	        }
+            $.ajax({
+            	
+                url: 'updateAsk.do',
+                method: 'POST',
+                dataType: "json",
+                data: { askNum: askNum, updatedContent: updatedContent },
+                success: function(response) {
+                	console.log(response);
+                    if (response.retCode == 'OK') {
+                        alert('재문의가 등록되었습니다.');
+                        askTextarea.prop('readonly', true);
+                        deleteBtn.show();
+                        $thisButton.text('재문의');
+                    } else {
+                        alert('문의 수정에 실패했습니다.');
+                        resetReAskMode();
+                    }
+                },
+                error: function() {
+                    alert('서버 요청 중 오류가 발생했습니다.');
+                    resetReAskMode();
+                }
+            });
+        }
 
-        	        function resetReAskMode() {
-        	            // 실패 시 버튼 및 텍스트 영역 상태 복구
-        	            askTextarea.val(askTextarea.data('originalText')).prop('readonly', true); // 기존 텍스트 복구 및 readonly 설정
-        	            deleteBtn.show();
-        	            $thisButton.text('재문의'); // 버튼 텍스트 원래대로 변경
-        	        }
-        	    });
-        	});
+        function resetReAskMode() {
+            askTextarea.val(askTextarea.data('originalText')).prop('readonly', true);
+            deleteBtn.show();
+            $thisButton.text('재문의');
+        }
+    });
+});
             
           
          

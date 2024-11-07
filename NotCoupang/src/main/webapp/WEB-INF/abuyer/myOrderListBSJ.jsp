@@ -10,6 +10,10 @@
 
 <link rel="stylesheet" href="css/BSJ/myOrderList.css" />
 
+  <script>
+    document.title = "마이페이지-주문목록";
+    	</script>
+
 <style>
   /* 검색창 & 돋보기 */
         .search-barBSJ {
@@ -96,11 +100,13 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 								주문
 							</div>  
 							<div class="order-item d-flex align-items-center mb-3">
-								<div id="orderGoodsImage"><img src="images/${order.imgUrl }" alt="상품썸네일"
-									class="product-img mr-3 me-3"></div>   
+								<div id="orderGoodsImage"><a href="goodsinfo.do?gno=${order.seqGoods }"><img src="images/${order.imgUrl }" alt="상품썸네일"
+									class="product-img mr-3 me-3"></a></div>   
 								<div class="product-details flex-grow-1">
 									<div id="orderGoodsName"> <p class="mb-1 font-weight-bold">${order.goodsName }</p> </div> 
-									<span>${order.goodsPrice }원 · ${order.goodsInven }개</span> 
+									<p><fmt:formatNumber value="${order.goodsPrice}" type="number"
+										groupingUsed="true" />
+								    원 · ${order.goodsInven }개</p> 
 								</div>
 								<div class="order-actions d-flex flex-column align-items-center">
 									<button onclick="deleteFunc('${order.goodsState}',this);"
@@ -128,7 +134,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">문의 작성하기</h5>
+					<h5 class="modal-title" id="exampleModalLabel">내용 작성하기</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
@@ -221,8 +227,11 @@ document.querySelector("#sendAskBtn").addEventListener('click',function(){
 	let button = exampleModal.getAttribute('data-AskReview');
 	let message = document.querySelector("#message-text").value;
 	
+	
+	
 	if(button=="문의 작성하기"){
 		console.log("문의 작성하기 클릭함");
+
 		$.ajax({
 			url: 'insertAsk.do',  //이화면에
 			data: { goodsNum : goodsNum, message : encodeURIComponent(message) },

@@ -40,6 +40,7 @@ import com.Fyou.control.BSJ.MyOrderListControl;
 import com.Fyou.control.BSJ.MyPageControl;
 import com.Fyou.control.BSJ.MyReviewControl;
 import com.Fyou.control.BSJ.MyReviewModifyCont;
+import com.Fyou.control.BSJ.UpdateAskCont;
 import com.Fyou.control.BSJ.checkMemControl;
 import com.Fyou.control.CTB.AskCountCont;
 import com.Fyou.control.CTB.CartViewCont;
@@ -186,6 +187,8 @@ public class FrontController extends HttpServlet {
 		map.put("/myAsk.do", new MyAskControl()); //내문의내역
 		map.put("/insertAsk.do", new InsertAskCont()); //문의내역추가
 		map.put("/deleteAsk.do", new DeleteAskCont()); //문의내역삭제
+		map.put("/updateAsk.do", new UpdateAskCont()); //문의내역수정(재문의)
+		
 		
 		
 		

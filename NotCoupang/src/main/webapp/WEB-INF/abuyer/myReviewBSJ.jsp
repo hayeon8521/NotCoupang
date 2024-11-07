@@ -3,6 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script>
+    document.title = "마이페이지-리뷰";
+</script>
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
@@ -31,6 +35,11 @@
 	transform: translateY(-50%);
 	cursor: pointer;
 	color: #888;
+}
+
+.motherContentBSH{	
+	padding:30px;
+	border: 1px solid #eee;
 }
 </style>
 
@@ -63,7 +72,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 			</div>
 
 		<!-- 리뷰 섹션 -->
-		<div class="col-md-9">
+		<div class="col-md-9 p-3">
 			<section class="order-section">
 				<h2 class="mb-4 mb-4 mt-5">리뷰 목록</h2>
 
@@ -76,7 +85,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 
 				<!-- 탭 내비 -->
 
-			<!--	 <ul class="nav nav-tabs" id="reviewTabs" role="tablist">
+				<!--  <ul class="nav nav-tabs" id="reviewTabs" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="written-tab" data-bs-toggle="tab" data-bs-target="#written" type="button" role="tab" aria-controls="written" aria-selected="true">작성한 리뷰</button>
             </li>
@@ -94,44 +103,56 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 							pattern="yyyy-MM-dd HH:mm:ss" />
 						<fmt:formatNumber value="${review.goodsPrice}" type="number"
 							groupingUsed="true" />
+						  
+														
 						<!-- 반복문 시작 -->
 						<c:forEach var="review" items="${goodsmylist }">
 						<c:choose>
                         <c:when test="${not empty review.goodsMid }">
+                        
+                        
     
 
 							<!-- 작성한 리뷰 콘텐츠 -->
-							<div class="review-card mt-3 reviewGroupBSJ">
-								<div class="product-info">
-									<img src="images/${review.imgUrl }" alt="Product Image"
-										style="width: 150px; height: 150px;">
-									<div>
-										<h6 class="mb-0" id="reviewGoodsNameBSJ">${review.goodsName }</h6>
-
-										<!-- 천단위 가격 콤마 포맷팅 -->
-										<p class="text-muted mb-0">
-											<fmt:formatNumber value="${review.goodsPrice}" type="number"
-												groupingUsed="true" />
-											원 · ${review.goodsInven }개
-										</p>
-									</div>
-								</div>
-								<!-- 리뷰 내용 -->
-								<div class="review-content mb-3">
-									<label for="reviewContent1" class="form-label"></label>
-									<textarea id="reviewContent1" class="form-control" rows="5"
+							<!--요기서-->
+						<div class="d-flex mb-0 border border-bottom-1 border-0 border-black motherContentBSH">
+						   <div class="p-1 me-3">
+						      <a href="goodsinfo.do?gno=${review.seqGoods }"><img
+						         src="images/${review.imgUrl }" style="width: 300px; height: 300px;" class="thumbnail"></a>
+						   </div>
+						   <div class="mt-2" style="width: 60%;">
+						      <h5 class="card-title" id="goodsNameBSJ" style="text-align: left;">
+						         ${review.goodsName } 
+									
+						      </h5>
+						      <p><fmt:formatNumber value="${review.goodsPrice}" type="number"
+										groupingUsed="true" />
+								    원 · ${review.goodsInven }개</p>
+						      <div class="mt-3 text-muted">작성일자: <fmt:formatDate value="${review.goodsMdate }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+						      <div id="pricediv" class="p-2 text-start">
+						         <h3 class="price" name="${cart.goodsPrice }">
+						            <textarea id="reviewContent1" class="form-control" rows="5"
 										readonly="readonly">${review.goodsMid }</textarea>
-								</div>
-								<!--  버튼 -->
-								<div class="action-buttons">
+						         </h3>
+						      </div>
+						      <div class="d-flex">
+						         <div class="p-2">
+						            						               <!--  버튼 -->
+									<div class="action-buttons">
 									<button class="btn btn-warning modifyReviewBtn">수정</button>
 									<button class="btn btn-warning modifyDoneBtn"
 										style="display: none;" data-goodsNum="${review.seqGoods}" data-reviewNum="${review.goodsReviews}">수정
 										완료</button>
 									<button class="btn btn-danger delReviewBtn" data-reviewNum="${review.goodsReviews}">삭제</button>
 								</div>
-								<div class="mt-3 text-muted">작성일자: 2024-10-18 15:53:28</div>
-							</div>
+						            
+						         </div>
+						      </div>
+						   </div>
+						</div>
+						<!--요기까지 반복-->
+							
+							
 						 </c:when>
                       </c:choose>
 					</c:forEach>
@@ -157,16 +178,25 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
       
       window.addEventListener('DOMContentLoaded', event => {
     	   // console.log('DOMContentLoaded 실행됨');  // 이 메시지가 콘솔에 출력되는지 확인
-    	    document.querySelectorAll(".modifyReviewBtn").forEach(button => {
-    	        button.addEventListener('click', function(e) {
-    	            console.log("수정버튼 클릭됨");
-    	            let modifyTextBtn = (e.target.closest(".review-card").querySelector("textarea"));
-    	            modifyTextBtn.removeAttribute("readonly");
-    	            let modifyDoneBtn = e.target.parentElement.querySelector(".modifyDoneBtn");
-    	            modifyDoneBtn.style.display = 'inline-block'; //수정완료버튼
-    	            let delReviewBtn = e.target.parentElement.querySelector(".delReviewBtn");
-    	            e.target.style.display = 'none';
-    	            delReviewBtn.style.display = 'none';
+    	      document.querySelectorAll(".modifyReviewBtn").forEach(button => {
+    	      button.addEventListener('click', function(e) {
+    	      console.log("수정버튼 클릭됨");
+    	      	
+    	      	      
+    	      	// 클릭된 버튼의 부모 요소를 찾아 해당 섹션에서 <textarea> 찾기
+    	        let reviewContainer = e.target.closest(".motherContentBSH");
+    	        let modifyTextBtn = reviewContainer.querySelector("textarea#reviewContent1"); //수정부 testarea
+    	        modifyTextBtn.removeAttribute("readonly"); //readonly속성빼기 -입력가능
+    	        
+    	        
+    	        // 해당 섹션 내의 <textarea> 요소 선택
+    	        let modifyDoneBtn = e.target.parentElement.querySelector(".modifyDoneBtn"); //수정완료 버튼가져옴
+    	        modifyDoneBtn.style.display = 'inline-block'; //수정완료버튼 보이게
+    	        let delReviewBtn = e.target.parentElement.querySelector(".delReviewBtn");
+	            e.target.style.display = 'none';
+	            delReviewBtn.style.display = 'none';
+    	        
+    	        
     	            
     	        });
     	    });
@@ -176,22 +206,21 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
    	    document.querySelectorAll(".modifyDoneBtn").forEach(button => {
    	        button.addEventListener('click', function(e) {
    	            console.log("수정완료 버튼눌림");
-   	           let modifyReviewBtn = e.target.parentElement.querySelector(".modifyReviewBtn");
-   	            modifyReviewBtn.style.display = 'inline-block'; //수정버튼
-	            let delReviewBtn = e.target.parentElement.querySelector(".delReviewBtn");
-	            e.target.style.display = 'none';
-	            delReviewBtn.style.display = 'inline-block';
-   	        
-   	         
-   	        
-   	         
-   	         let modifyTextBtn = (e.target.closest(".review-card").querySelector("textarea"));
-   	     	 let modifyText = modifyTextBtn.value;
-   	        let modGoodsNum = e.target.getAttribute("data-goodsNum");
-   	        let reviewNum = e.target.getAttribute("data-reviewNum");
-	        console.log(reviewNum);
-   	        console.log(modGoodsNum);
-   	     	console.log(modifyText);
+   	            
+   	         let modifyReviewBtn = e.target.parentElement.querySelector(".modifyReviewBtn");    
+   	         modifyReviewBtn.style.display = 'inline-block'; //수정버튼 보이고
+ 	        let delReviewBtn = e.target.parentElement.querySelector(".delReviewBtn");
+	         delReviewBtn.style.display = 'inline-block'; //삭제버튼 보이고
+	         e.target.style.display = 'none'; //수정완료버튼 감추고
+   	            
+   	         let reviewContainer = e.target.closest(".motherContentBSH");
+ 	         let modifyTextBtn = reviewContainer.querySelector("textarea#reviewContent1"); //수정부 testarea
+ 	         let modifyText = modifyTextBtn.value;
+ 	         let modGoodsNum = e.target.getAttribute("data-goodsNum");
+  	         let reviewNum = e.target.getAttribute("data-reviewNum");
+  	        
+   	       console.log(modifyTextBtn);
+   	           
    	     $.ajax({
              url: 'myReviewModify.do',
              data: { modifyText : modifyText, modGoodsNum: modGoodsNum , reviewNum : reviewNum }, //앞:파라미터이름 뒤:실제 데이터이름
@@ -201,6 +230,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
           .done(function(result) {
         	  if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
   				alert("리뷰 수정 성공하셨습니다.");
+  				
   				    
   			} else if (result.retCode == 'FAIL') {
   					alert("리뷰 수정에 실패했습니다.");
@@ -217,11 +247,26 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
     	  document.querySelectorAll(".delReviewBtn").forEach(button => {
     		  button.addEventListener('click', function(e) {
      	            console.log("삭제 버튼눌림");
-     	           let modifyTextBtn = (e.target.closest(".review-card").querySelector("textarea"));
-     	   	       modifyTextBtn.value = "";
+     	            
+     	            /*
+     	             let reviewContainer = e.target.closest(".d-flex.mb-0.border-bottom-1.border-1.border-black");
+ 	         let modifyTextBtn = reviewContainer.querySelector("textarea#reviewContent1"); //수정부 testarea
+     	            */
+     	            
+     	           //motherContentBSH
      	   	   let reviewNum = e.target.getAttribute("data-reviewNum");
       	        console.log(reviewNum);
-      	      e.target.parentElement.parentElement.remove();
+      	    	
+      	      /*
+      	      
+      	       // 클릭된 버튼의 부모 요소를 찾아 해당 섹션에서 <textarea> 찾기
+        const reviewContainer = e.target.closest(".d-flex.mb-0.border-bottom-1.border-1.border-black");
+        
+        // 해당 섹션 내의 <textarea> 요소 선택
+        let reviewTextarea = reviewContainer.querySelector("textarea#reviewContent1");
+        
+        
+      	      */
       	        
       	      $.ajax({
                   url: 'myReviewDel.do',
@@ -232,6 +277,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
                .done(function(result) {
             	   if (result.retCode == 'OK') {  // 화면에 [{retCode:OK}] ->result
        				alert("리뷰가 삭제 되었습니다.");
+       				e.target.closest(".motherContentBSH").remove();
        				    
        			} else if (result.retCode == 'FAIL') {
        					alert("리뷰 삭제에 실패했습니다.");
@@ -250,30 +296,25 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
     	  
       });
       
-    //상품명 검색
       $(document).ready(function() {
-      	 	// 1. 검색창에 키보드 입력을 감지하는 이벤트 추가
-          $('#orderSearchInputBSJ').on('keypress', function(event) {
-          	 // 2. 엔터 키 (keyCode 13)가 눌렸는지 확인
-          	   
-              if (event.keyCode === 13) {
-                  event.preventDefault();  // 엔터만 입력되는거 방지
-                  
-                  const searchText = $(this).val().toLowerCase();
+    	    $('#orderSearchInputBSJ').on('input', function() {  
+    	        const searchText = $(this).val().toLowerCase().trim();
 
-                  // 각 주문 항목을 검사하여 검색어 포함 여부에 따라 표시/숨김
-                  $('.reviewGroupBSJ').each(function() {
-                      const goodsName = $(this).find('#reviewGoodsNameBSJ').text().toLowerCase();
+    	        $('.motherContentBSH').each(function() {
+    	            // goodsNameBSJ 클래스로 선택
+    	            const goodsNameElement = $(this).find('.goodsNameBSJ');  
+    	            const goodsName = goodsNameElement.text().toLowerCase().trim();
 
-                      if (goodsName.includes(searchText)) {
-                          $(this).show();  // 검색어가 포함된 항목 표시
-                      } else {
-                          $(this).hide();  // 포함되지 않은 항목 숨기기
-                      }
-                  });
-              }
-          });
-      });
-     
+    	            console.log("Search Text:", searchText);
+    	            console.log("Goods Name:", goodsName);
+
+    	            if (goodsName.includes(searchText)) {
+    	                $(this).show();
+    	            } else {
+    	                $(this).hide();
+    	            }
+    	        });
+    	    });
+    	});
 
       </script>
