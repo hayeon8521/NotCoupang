@@ -46,7 +46,6 @@ public class ModifyPwCont implements Control {
 			System.out.println("비밀번호 변경 실패"); //기존비밀번호 다를때
 			result.put("retCode", "FAIL");
 		}
-		System.out.println(mvo.getMemberPw());
 
 		// 화면에 결과출력
 		Gson gson = new GsonBuilder().create();

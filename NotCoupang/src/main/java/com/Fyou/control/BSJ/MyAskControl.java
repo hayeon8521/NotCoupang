@@ -37,6 +37,72 @@ public class MyAskControl implements Control {
 		// 검색조건 (1.파라미터 받기)
 		HttpSession session = req.getSession();
 		String LOGID = (String) session.getAttribute("LOGID");
+		
+		//질문한 리스트를 다가져온다
+		AnswerService svcA = new AnswerServiceImpl();
+	
+		GoodsinfoService svcG = new GoodsinfoServiceImpl();
+		
+		List<AskVO> asklist = svcA.selectBSJAskList(LOGID);
+	
+		List<GoodsmylistVO> goodsmylist = new ArrayList<>();
+		
+		//★나중에 주석처리 해야함
+		//★나중에 주석처리 해야함
+		//★나중에 주석처리 해야함
+		LOGID = "testerbsj";
+		//★나중에 주석처리 해야함
+		//★나중에 주석처리 해야함
+		//★나중에 주석처리 해야함
+		
+		
+		for(AskVO temp : asklist) {
+			temp.getSeqAsk();	//질문번호
+			temp.getAsk();		//질문내용
+			temp.getGoodsNum();	//상품번호
+			temp.getAskDate();	//문의작성일
+			System.out.println("질문내용"+temp.getAsk());
+			GoodsinfoVO goodsitem =  svcG.goodsinfo(temp.getGoodsNum());
+			goodsitem.getGoodsName();	//상품이름
+			goodsitem.getGoodsPrice();	//상품가격
+			goodsitem.getGoodsInven();	//상품재고
+			System.out.println("상품정보"+goodsitem.getGoodsName());
+			
+			//상품번호로 썸네일이미지 가져오기
+			ImgService Isvc = new ImgServiceImpl();
+			List<ImgVO> Ivo = Isvc.images(temp.getGoodsNum());
+			
+			ImgVO voI = Ivo.get(0);
+			System.out.println(voI.getImgUrl()); //썸네일 이미지 주소
+			String imgurl = voI.getImgUrl();
+			
+			AnswerVO answerlist = svcA.selectAnswer(temp.getSeqAsk());
+			String aser = "";
+			Date aserdate = temp.getAskDate();
+			if(answerlist != null) {
+				aser = answerlist.getAnswer();
+				aserdate = answerlist.getAnswerDate();
+			}
+			
+			
+			goodsmylist.add(new GoodsmylistVO(
+						temp.getSeqAsk(), //문의번호 (숫자)              확인
+						goodsitem.getGoodsName(), //상품이름 (스트링) 확인
+						goodsitem.getGoodsPrice(), //가격 (숫자)   확인
+						goodsitem.getGoodsInven(), //수량(숫자)  확인
+						temp.getAsk(),//문의내역 (스트링)                 확인
+						aser,//답변내용 (스트링)                            확인
+						"123",//	(스트링)                                     확인
+						temp.getAskDate(),//문의작성일 (데이트)       확인
+						aserdate,//답변날짜 (데이트)              확인
+						imgurl, //이미지url (스트링)                  확인
+						1 //리뷰번호 (숫자)                                        확인
+						));
+		}
+		
+		
+		
+		/*
 		List<GoodsmylistVO> goodsmylist = new ArrayList<>();
 		
 		OrderService svc = new OrderServiceImpl();
@@ -124,23 +190,11 @@ public class MyAskControl implements Control {
 					));
 			
 			//System.out.println(asvc.toString());
-			
-			
-			
-		}
-			
+			}
+		*/
 	
 		req.setAttribute("goodsmylist", goodsmylist);
 		
-		
-		
-
-		// System.out.println(list.toString()); //list 제대로 안 찍힘
-
-		// 조회해서 어트리뷰트에 값담기
-		// 내 리뷰 리스트 넘기기
-		// req.setAttribute("memberReview", list);
-
 		try {
 			req.getRequestDispatcher("BuyerTM/myAskBSJ.tiles").forward(req, resp);
 		} catch (Exception e) {

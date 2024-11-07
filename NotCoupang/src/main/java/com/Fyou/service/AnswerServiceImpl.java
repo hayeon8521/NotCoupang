@@ -73,4 +73,9 @@ public class AnswerServiceImpl implements AnswerService {
 	public AskVO selectMyAskList(AskVO ask) {
 		return mapper.selectMyAskList(ask);
 	}
+
+	@Override
+	public List<AskVO> selectBSJAskList(String buyerId) {
+		return mapper.selectBSJAskList(buyerId);
+	}
 }
