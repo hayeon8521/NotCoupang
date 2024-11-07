@@ -221,9 +221,7 @@ String pg = (String) request.getAttribute("page");
 	<script>
 		let arr = document.querySelectorAll("#ask_button")
 		for (i = 0; i < arr.length; i++) {
-			console.log(arr[i].parentNode.id)
 			arr[i].addEventListener("click", function(e) {
-				console.log(e.target.parentNode.parentNode.id);
 				location.href = "Admin_insert_ask.do?list_num="
 						+ e.target.parentNode.parentNode.id
 			})
