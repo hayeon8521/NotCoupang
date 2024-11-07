@@ -80,8 +80,8 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 					</div>
 
 					<div class="btn-group mb-4" role="group">
-						<button class="btn btn-outline-secondary">최근 6개월</button>
-						<button class="btn btn-outline-secondary">2024</button>
+						<a href="myOrderList.do?buyerId=${LOGID}" class="btn btn-outline-secondary">최근 6개월</a>
+						<a href="myOrderList.do?buyerId=${LOGID}" class="btn btn-outline-secondary">2024</a>
 						<button class="btn btn-outline-secondary">2023</button>
 						<button class="btn btn-outline-secondary">2022</button>
 						<button class="btn btn-outline-secondary">2021</button>
