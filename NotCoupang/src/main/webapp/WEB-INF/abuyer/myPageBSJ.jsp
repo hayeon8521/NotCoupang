@@ -287,12 +287,14 @@ body {
             location.reload();
             } else if (result.retCode == 'FAIL') {
                alert("비밀번호 변경에 실패했습니다.");
+               location.reload();
             }
             
          })
          .catch(err => { console.log(err) })
       }else{
          alert("비밀번호를 확인해주세요.");
+         location.reload();
       }
 
    });
