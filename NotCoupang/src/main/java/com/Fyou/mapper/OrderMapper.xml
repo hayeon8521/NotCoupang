@@ -12,7 +12,7 @@
  		SELECT   *
  		FROM     tim_order
  		WHERE    buyer_id = #{buyerId}
- 		ORDER BY order_date
+ 		ORDER BY order_date desc
  	</select>
  	
  	<insert id="insertOrder" parameterType="order">

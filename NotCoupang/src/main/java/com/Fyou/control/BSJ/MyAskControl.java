@@ -65,7 +65,7 @@ public class MyAskControl implements Control {
 			GoodsinfoVO goodsitem =  svcG.goodsinfo(temp.getGoodsNum());
 			goodsitem.getGoodsName();	//상품이름
 			goodsitem.getGoodsPrice();	//상품가격
-			goodsitem.getGoodsInven();	//상품재고
+//			goodsitem.getGoodsInven();	//상품재고
 			System.out.println("상품정보"+goodsitem.getGoodsName());
 			
 			//상품번호로 썸네일이미지 가져오기
@@ -96,7 +96,7 @@ public class MyAskControl implements Control {
 						temp.getAskDate(),//문의작성일 (데이트)       확인
 						aserdate,//답변날짜 (데이트)              확인
 						imgurl, //이미지url (스트링)                  확인
-						1 //리뷰번호 (숫자)                                        확인
+						goodsitem.getSeqGoods() //리뷰번호 (숫자)                                        확인
 						));
 		}
 		

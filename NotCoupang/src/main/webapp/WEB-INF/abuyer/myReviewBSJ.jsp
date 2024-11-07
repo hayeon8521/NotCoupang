@@ -72,8 +72,7 @@
 								<!-- 검색창 & 돋보기 HTML -->
 								<div class="search-bar search-barBSJ">
 									<input type="text" class="form-control" id="orderSearchInputBSJ" placeholder="상품명으로 검색">
-									<i class="bi bi-search"
-										style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+									<i class="bi bi-search search-icon" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
 								</div>
 
 								<!-- 탭 내비 -->
@@ -296,55 +295,33 @@
 					});
 
 					$(document).ready(function () {
-						$('#orderSearchInputBSJ').on('input', function (e) {
-							//console.log(e.target);
-							const searchText = $(this).val().toLowerCase().trim();
+					    // 엔터 키 이벤트
+					    $('#orderSearchInputBSJ').on('keypress', function (e) {
+					        if (e.key === 'Enter') {
+					            e.preventDefault();
+					            performSearch();
+					        }
+					    });
 
-							$('.motherContentBSH').each(function () {
-								// goodsNameBSJ 클래스로 선택
-								const goodsNameElement = $(this).find('.goodsNameBSJ');
-								const goodsName = goodsNameElement.text().toLowerCase().trim();
+					    // 돋보기 버튼 클릭 이벤트
+					    $('.search-icon').on('click', function () {
+					        performSearch();
+					    });
 
-								console.log("Search Text:", searchText);
-								console.log("Goods Name:", goodsName);
+					    // 검색 수행 함수
+					    function performSearch() {
+					        const searchText = $('#orderSearchInputBSJ').val().toLowerCase().trim();
 
-								/*
-								if (goodsName.includes(searchText)) {	//일치하면
-									console.log('aaaa');
-									console.log(document.querySelector('.motherContentBSH'));
-									document.querySelector('.motherContentBSH').classList.add('d-flex');
-									document.querySelector('.motherContentBSH').setAttribute('style', 'display: block !important;');
-									//$('.motherContentBSH').remove();
-									//$(this).closest(".motherContentBSH").show();
-									//$(this).show();
-								} else {										//일치하지 않으면
-									console.log('bbbb');
-									console.log(document.querySelector('.motherContentBSH'));
-									document.querySelector('.motherContentBSH').classList.remove('d-flex');
-									document.querySelector('.motherContentBSH').setAttribute('style', 'display: none !important;');
-									//$('.motherContentBSH').remove();
-									//$(this).closest(".motherContentBSH").hide();
-									//$(this).hide();
-								}
-								*/
-								document.querySelectorAll('.motherContentBSH').forEach(element => {
-									if (goodsName.includes(searchText)) {
-										console.log('aaaa');
-										element.classList.add('d-flex');
-										element.style.display = 'block';
-									} else {
-										console.log('bbbb');
-										element.classList.remove('d-flex');
-										element.style.display = 'none';
-									}
-								});
-								
+					        $('.motherContentBSH').each(function () {
+					            const goodsName = $(this).find('.goodsNameBSJ').text().toLowerCase().trim();
 
-
-
-
-							});
-						});
+					            if (goodsName.includes(searchText)) {
+					                $(this).addClass('d-flex').show();
+					            } else {
+					                $(this).removeClass('d-flex').hide();
+					            }
+					        });
+					    }
 					});
 
 				</script>

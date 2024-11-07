@@ -113,7 +113,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 									<div class="review-card mt-3 askGroupBSJ">
 										<h5>문의일: <fmt:formatDate value="${ask.goodsMdate }" pattern="yyyy-MM-dd" /></h5>
 										<div class="product-info centeredBSJ" style="display:inline-block;">
-											<a href="goodsinfo.do?gno=${ask.seqGoods }"><img src="images/${ask.imgUrl }" alt="Product Image" style="width: 150px; height: 150px;"></a>
+											<a href="goodsinfo.do?gno=${ask.goodsReviews }"><img src="images/${ask.imgUrl }" alt="Product Image" style="width: 150px; height: 150px;"></a>
 											<div class="priceAndCountBSJ">
 												<h5 class="mb-0 askGoodsNameBSJ">${ask.goodsName }</h5>
 												<p><fmt:formatNumber value="${ask.goodsPrice}" type="number"
@@ -147,7 +147,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 									<div class="review-card mt-3 askGroupBSJ">
 										<H5>문의일: <fmt:formatDate value="${ask.goodsMdate }" pattern="yyyy-MM-dd" /></H5>
 										<div class="product-info centeredBSJ" style="display:inline-block;">
-											<img src="images/${ask.imgUrl }" alt="Product Image" style="width: 150px; height: 150px;">
+											<a href="goodsinfo.do?gno=${ask.goodsReviews }"><img src="images/${ask.imgUrl }" alt="Product Image" style="width: 150px; height: 150px;"></a>
 											<div class="priceAndCountBSJ">
 												<h5 class="mb-0 askGoodsNameBSJ">${ask.goodsName }</h5>
 												<p>
