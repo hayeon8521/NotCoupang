@@ -327,7 +327,6 @@
 									//$(this).hide();
 								}
 								*/
-								/*
 								document.querySelectorAll('.motherContentBSH').forEach(element => {
 									if (goodsName.includes(searchText)) {
 										console.log('aaaa');
@@ -339,7 +338,7 @@
 										element.style.display = 'none';
 									}
 								});
-								*
+								
 
 
 

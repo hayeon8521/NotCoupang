@@ -118,7 +118,7 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 												<h5 class="mb-0 askGoodsNameBSJ">${ask.goodsName }</h5>
 												<p><fmt:formatNumber value="${ask.goodsPrice}" type="number"
 										groupingUsed="true" />
-								    원 · ${ask.goodsInven }개</p>
+								    원 · ${ask.goodsInven }개 남음</p>
 											</div>
 										</div>
 										<div class="review-content mb-3">
@@ -150,7 +150,11 @@ String MEMBERDIVISION = (String) session.getAttribute("MEMBERDIVISION");
 											<img src="images/${ask.imgUrl }" alt="Product Image" style="width: 150px; height: 150px;">
 											<div class="priceAndCountBSJ">
 												<h5 class="mb-0 askGoodsNameBSJ">${ask.goodsName }</h5>
-												<p class="text-muted mb-0">${ask.goodsPrice }원, ${ask.goodsInven }개</p>
+												<p>
+													<fmt:formatNumber value="${ask.goodsPrice}" type="number"
+														groupingUsed="true" />
+													원 · ${ask.goodsInven }개 남음
+												</p>
 											</div>
 										</div>
 										<div class="review-content mb-3">
