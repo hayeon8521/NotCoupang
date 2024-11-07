@@ -173,11 +173,11 @@
 								<input class="goodscheck" type="checkbox" id="checkbox_${cart.goodsNum}" name="checkbox">
 							</div>
 							<div class="p-1">
-								<a href="goodsinfo.do?seqGoods=${cart.goodsNum }"><img src="images/${cart.imgUrl }" class="thumbnail"></a>
+								<a href="goodsinfo.do?gno=${cart.goodsNum }"><img src="images/${cart.imgUrl }" class="thumbnail"></a>
 							</div>
 							<div class="pt-2" style="width: 345px;">
 								<h5 class="card-title" style="text-align: left;">
-									<a class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover" href="goodsinfo.do?seqGoods=${cart.goodsNum }">${cart.goodsName }</a>
+									<a class="link-dark link-underline-opacity-0 link-underline-opacity-100-hover" href="goodsinfo.do?gno=${cart.goodsNum }">${cart.goodsName }</a>
 								</h5>
 								<div id="pricediv" class="p-2 text-start">
 									<h3 class="price" name="${cart.goodsPrice }"><fmt:formatNumber value="${cart.goodsPrice * cart.cartCount}" type="number" pattern="#,##0"/>원</h3>

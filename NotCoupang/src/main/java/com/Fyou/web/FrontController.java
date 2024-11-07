@@ -64,6 +64,7 @@ import com.Fyou.control.PHY.logingconfingform;
 import com.Fyou.control.PHY.logingform;
 import com.Fyou.control.PHY.logout;
 import com.Fyou.control.PHY.testingforyouCnt;
+import com.Fyou.control.PHY.testingforyouCnt2;
 import com.Fyou.control.PHY.thankyouCont;
 
 //@WebServlet("*.do")
@@ -513,7 +514,7 @@ public class FrontController extends HttpServlet {
 		map.put("/thank-you.do", new thankyouCont());		//결제완료페이지
 		
 		map.put("/testingForYou.do", new testingforyouCnt());		//
-		
+		map.put("/testingForYou2.do", new testingforyouCnt2());		//
 		
 		
 		
