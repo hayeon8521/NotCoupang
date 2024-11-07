@@ -76,6 +76,7 @@ ct = ct.isEmpty() ? "전체" : ct;
 										<li><p class="card-text">두 단어 이상의 검색어인 경우, 띄어쓰기를 확인해
 												보세요.</p></li>
 										<li><p class="card-text">검색 옵션을 변경해서 다시 검색해 보세요.</p></li>
+										<li><p class="card-text">없는 상품일 수도 있어요.</p></li>
 									</ul>
 								</c:otherwise>
 							</c:choose>
